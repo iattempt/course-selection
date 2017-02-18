@@ -7,8 +7,6 @@
 Homestead.json
 Homestead.yaml
 .env
-controllers
-views
-middleware
-proposal
-DS_Store
+/controllers
+/views
+/middleware
