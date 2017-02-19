@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Route::get('selection', 'Selection@index');
 
+Route::get('feedback', 'Feedback@index');
+
 Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
     Route::get('signin', 'Signin@index');
     Route::get('signout', 'Signout@index');
@@ -45,6 +47,8 @@ Route::group(['middleware' => 'authority',
             Route::get('department', 'Department@index');
         });
     });
+    Route::get('approve', 'Approve@index');
+    Route::get('listcourse', 'Listcourse@index');
 });
 
 Route::group(['middleware' => 'student',
