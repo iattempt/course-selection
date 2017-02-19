@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Applyfor extends Controller
 {
     //
+    function index() {
+        echo 'Applyfor';
+    }
 }

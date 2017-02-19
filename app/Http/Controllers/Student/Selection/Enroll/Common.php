@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Common extends Controller
 {
     //
+    function index() {
+        echo 'Common';
+    }
 }

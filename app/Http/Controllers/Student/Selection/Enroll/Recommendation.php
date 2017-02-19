@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Recommendation extends Controller
 {
     //
+    function index() {
+        echo 'Recommendation';
+    }
 }

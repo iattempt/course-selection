@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Drop extends Controller
 {
     //
+    function index() {
+        echo 'Drop  ';
+    }
 }

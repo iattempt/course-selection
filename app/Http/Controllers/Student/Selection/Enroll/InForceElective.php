@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class InForceElective extends Controller
 {
     //
+    function index() {
+        echo 'IFE';
+    }
 }

@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Signout extends Controller
 {
     //
+    function index() {
+        echo 'signout';
+    }
 }

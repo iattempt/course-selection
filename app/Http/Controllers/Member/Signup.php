@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Signup extends Controller
 {
     //
+    function index() {
+        echo 'signup';
+    }
 }

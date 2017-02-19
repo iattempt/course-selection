@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Semester extends Controller
 {
     //
+    function index() {
+        echo 'Semester';
+    }
 }

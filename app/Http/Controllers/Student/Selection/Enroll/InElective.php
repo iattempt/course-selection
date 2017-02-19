@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class InElective extends Controller
 {
     //
+    function index() {
+        echo 'IE';
+    }
 }

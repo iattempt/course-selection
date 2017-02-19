@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class OutElective extends Controller
 {
     //
+    function index() {
+        echo 'OE';
+    }
 }

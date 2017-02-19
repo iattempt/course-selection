@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Department extends Controller
 {
     //
+    function index() {
+        echo 'Department';
+    }
 }
