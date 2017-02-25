@@ -15,16 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//selection
 Route::get('selection', 'Selection@index');
 
+//feedback
 Route::get('feedback', 'Feedback@index');
 
+//member
 Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
     Route::get('signin', 'Signin@index');
     Route::get('signout', 'Signout@index');
     Route::get('signup', 'Signup@index');
 });
 
+//authority
 Route::group(['middleware' => 'authority',
                  'prefix' => 'authority/',
                  'namespace' => 'Authority'], function () {
@@ -51,6 +55,7 @@ Route::group(['middleware' => 'authority',
     Route::get('listcourse', 'Listcourse@index');
 });
 
+//student
 Route::group(['middleware' => 'student',
                 'prefix' => 'student',
                 'namespace' => 'Student'], function () {
