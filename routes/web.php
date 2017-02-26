@@ -16,21 +16,20 @@ Route::get('/', function () {
 });
 
 //selection
-Route::get('selection', 'Selection@index');
+Route::get('selection', 'Selection@index')->middleware('authority', 'student');
 
 //feedback
-Route::get('feedback', 'Feedback@index');
+Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
 
 //member
 Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
     Route::get('signin', 'Signin@index');
-    Route::get('signout', 'Signout@index');
+    Route::get('signout', 'Signout@index')->middleware('authority', 'student');
     Route::get('signup', 'Signup@index');
 });
 
 //authority
 Route::group(['middleware' => 'authority',
-                 'prefix' => 'authority/',
                  'namespace' => 'Authority'], function () {
     Route::group(['prefix' => 'modify',
                     'namespace' => 'Modify'], function () {
@@ -57,7 +56,6 @@ Route::group(['middleware' => 'authority',
 
 //student
 Route::group(['middleware' => 'student',
-                'prefix' => 'student',
                 'namespace' => 'Student'], function () {
     Route::group(['prefix' => 'selection',
                     'namespace' => 'Selection'], function () {

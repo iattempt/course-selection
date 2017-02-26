@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Auth;
 
 class Student
 {
@@ -15,6 +16,8 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (auth::check())
+            return $next($request);
+        return redirect()->route('signin');
     }
 }
