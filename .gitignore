@@ -10,4 +10,5 @@ Homestead.yaml
 /controllers
 /views
 /middleware
+~*.*
 *.md.html
