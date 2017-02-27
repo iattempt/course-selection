@@ -9,6 +9,6 @@ Homestead.yaml
 .env
 /controllers
 /views
-/middleware
+/middlewares
 ~*.*
 *.md.html
