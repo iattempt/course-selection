@@ -12,7 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $data['title'] = 'master';
+    return view('child', $data);
+});
+Route::get('login', function () {
+    $data['title'] = 'master';
+    return view('signin', $data);
 });
 
 //selection
@@ -51,7 +56,7 @@ Route::group(['middleware' => 'authority',
         });
     });
     Route::get('approve', 'Approve@index');
-    Route::get('listcourse', 'Listcourse@index');
+    Route::get('listcourse', 'ListCourse@index');
 });
 
 //student
