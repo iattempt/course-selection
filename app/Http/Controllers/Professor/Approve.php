@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Approve extends Controller
 {
     //
+    function index() {
+        echo 'approve';
+    }
 }

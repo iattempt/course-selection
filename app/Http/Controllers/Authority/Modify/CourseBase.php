@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Student\State;
+namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class Scheduler extends Controller
+class CourseBase extends Controller
 {
     //
 }
