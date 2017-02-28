@@ -16,8 +16,9 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        if (auth::check())
-            return $next($request);
-        return redirect()->route('signin');
+//      if (auth::check())
+//          return $next($request);
+//      return redirect()->route('signin');
+        return $next($request);
     }
 }

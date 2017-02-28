@@ -12,9 +12,26 @@
 */
 
 Route::get('/', function () {
-    $data['title'] = 'master';
-    return view('child', $data);
+    return view('welcome');
 });
+Route::get('student', function () {
+    $data['title'] = 'student';
+    $data['home'] = 'student';
+    return view('student', $data);
+});
+
+Route::get('teacher', function () {
+    $data['title'] = 'teacher';
+    $data['home'] = 'teacher';
+    return view('teacher', $data);
+});
+
+Route::get('authority', function () {
+    $data['title'] = 'authority';
+    $data['home'] = 'authority';
+    return view('authority', $data);
+});
+
 Route::get('login', function () {
     $data['title'] = 'master';
     return view('signin', $data);
