@@ -42,8 +42,6 @@ Route::group(['middleware' => 'authority',
         Route::get('syllabus', 'Syllabus@index');
         Route::get('classroom', 'Classroom@index');
     });
-    Route::get('approve', 'Approve@index');
-    Route::get('listcourse', 'ListCourse@index');
 });
 
 //professor

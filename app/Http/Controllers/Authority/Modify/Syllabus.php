@@ -8,4 +8,7 @@ use App\Http\Controllers\Controller;
 class Syllabus extends Controller
 {
     //
+    function index() {
+        echo 'syllabus';
+    }
 }
