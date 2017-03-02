@@ -22,7 +22,7 @@ Route::get('coursesearch', 'CourseSearch@index')->middleware('authority', 'stude
 Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
 
 //member
-Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
+Route::group(['namespace' => 'Member'], function () {
     Route::get('signin', 'Signin@index');
     Route::get('signout', 'Signout@index')->middleware('authority', 'student');
     Route::get('signup', 'Signup@index');
