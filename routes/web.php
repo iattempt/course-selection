@@ -11,8 +11,14 @@
 |
 */
 
+Route::get('test', function () {
+    $data['title'] = 'My Life, My Rules';
+    return view('course_search', $data);
+});
+
 Route::get('/', function () {
-    return view('welcome');
+    $data['title'] = 'My Life, My Rules';
+    return view('index', $data);
 });
 
 //coursesearch
@@ -22,9 +28,9 @@ Route::get('coursesearch', 'CourseSearch@index')->middleware('authority', 'stude
 Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
 
 //member
-Route::group(['prefix' => 'member', 'namespace' => 'Member'], function () {
+Route::group(['namespace' => 'Member'], function () {
     Route::get('signin', 'Signin@index');
-    Route::get('signout', 'Signout@index')->middleware('authority', 'student');
+    Route::get('signout', 'Signout@index')->middleware('authority', 'student', 'professor');
     Route::get('signup', 'Signup@index');
 });
 
