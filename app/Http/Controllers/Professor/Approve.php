@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Authority\Modify\Human;
+namespace App\Http\Controllers\Professor;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class Student extends Controller
+class Approve extends Controller
 {
     //
     function index() {
-        echo 'Student';
+        echo 'approve';
     }
 }

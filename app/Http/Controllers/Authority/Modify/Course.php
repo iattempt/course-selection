@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Authority\Modify\Course;
+namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class Category extends Controller
+class Course extends Controller
 {
     //
     function index() {
-        echo 'Category';
+        echo 'course';
     }
 }

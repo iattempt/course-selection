@@ -1,9 +1,11 @@
+@extends('schema/bootstrap_cdn')
 <!DOCTYPE html>
 <html lang='zh-tw'>
   <meta charset="utf-8">
   <title>{{ $title }}</title>
-  <link href="{{asset('css/bootstrap.theme.css')}}" rel="stylesheet" type="text/css" />
-  <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css" />
+  @section('bootstrap_cdn')
+    @parent
+  @endsection
 </html>
 <body class="bd-docs" data-spy="scroll" data-target=".bd-sidenav-active">
   <a id="skippy" class="sr-only sr-only-focusable" href="#content">
@@ -13,7 +15,6 @@
   </a>
 
   @section('main')
-      this is master section.
   @show
 
   <footer class="bd-footer text-muted">
@@ -27,6 +28,5 @@
       </p>
     </div>
   </footer>
-  <script type="text/javascript" src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
 </html>
