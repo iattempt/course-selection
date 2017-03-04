@@ -1,4 +1,4 @@
-@extends('schema/head')
+@extends('schema/preset')
 @section('main')
 @parent
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">

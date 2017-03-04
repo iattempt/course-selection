@@ -1,3 +1,3 @@
-@extends('schema/head')
+@extends('schema/preset')
 @section('main')
 @endsection

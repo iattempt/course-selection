@@ -1,4 +1,4 @@
-@extends('schema/head')
+@extends('schema/preset')
 @section('main')
 <div class="container">
   <div class="row">
