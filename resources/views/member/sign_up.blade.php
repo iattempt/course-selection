@@ -1,4 +1,4 @@
-@extends('../schema/sign')
+@extends('schema/preset')
 
 @section('main')
   @parent

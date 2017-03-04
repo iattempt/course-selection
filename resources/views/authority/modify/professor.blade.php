@@ -1,4 +1,4 @@
-@extends('../schema/preset')
+@extends('schema/preset')
 @section('main')
 <form>
   <div class="form-group">

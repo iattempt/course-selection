@@ -1,3 +1,3 @@
-@extends('../schema/preset')
+@extends('schema/preset')
 @section('main')
 @endsection
