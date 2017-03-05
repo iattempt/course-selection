@@ -33,19 +33,19 @@ Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
 
 //member
 Route::group(['namespace' => 'Member'], function () {
-    Route::post('signin', 'Signin@index');
-    Route::post('signout', 'Signout@index')->middleware('authority', 'student', 'professor');
-    Route::post('signup', 'Signup@index')->middleware('authority');
+    Route::post('sign_in', 'Signin@index');
+    Route::post('sign_out', 'Signout@index')->middleware('authority', 'student', 'professor');
+    Route::post('sign_up', 'Signup@index')->middleware('authority');
 
-    Route::get('signin', function () {
+    Route::get('sign_in', function () {
         $data['title'] = 'sign in';
         return view('member/sign_in');
     });
-    Route::get('signup', function () {
+    Route::get('sign_up', function () {
         $data['title'] = 'sign up';
         return view('member/sign_up');
     });
-    Route::get('signout', function () {
+    Route::get('sign_out', function () {
         $data['title'] = 'sign out';
         return view('member/sign_out');
     });
@@ -53,55 +53,57 @@ Route::group(['namespace' => 'Member'], function () {
 
 //authority
 Route::group(['middleware' => 'authority',
-                 'namespace' => 'Authority'], function () {
+                'prefix' => 'authority',
+                'namespace' => 'Authority'], function () {
     Route::group(['prefix' => 'modify',
                     'namespace' => 'Modify'], function () {
-        Route::post('professor_des', 'Professor@index');
-        Route::post('student_des', 'Student@index');
-        Route::post('course_des', 'Course@index');
-        Route::post('unit_des', 'Unit@index');
-        Route::post('threshold_des', 'Threshold@index');
-        Route::post('coursebase_des', 'CourseBase@index');
-        Route::post('syllabus_des', 'Syllabus@index');
-        Route::post('classroom_des', 'Classroom@index');
+        Route::post('professor', 'Professor@index');
+        Route::post('student', 'Student@index');
+        Route::post('course', 'Course@index');
+        Route::post('unit', 'Unit@index');
+        Route::post('threshold', 'Threshold@index');
+        Route::post('course_base', 'CourseBase@index');
+        Route::post('syllabus', 'Syllabus@index');
+        Route::post('classroom', 'Classroom@index');
 
         Route::get('professor', function () {
             $data['title'] = " modify professor";
-            return view('professor', $data);
+            return view('authority/modify/professor', $data);
         });
         Route::get('student', function () {
             $data['title'] = " modify student";
-            return view('student', $data);
+            return view('authority/modify/student', $data);
         });
         Route::get('course', function () {
             $data['title'] = " modify course";
-            return view('course', $data);
+            return view('authority/modify/course', $data);
         });
         Route::get('unit', function () {
             $data['title'] = " modify unit ";
-            return view('unit', $data);
+            return view('authority/modify/unit', $data);
         });
         Route::get('threshold', function () {
             $data['title'] = " modify threshold";
-            return view('threshold', $data);
+            return view('authority/modify/threshold', $data);
         });
-        Route::get('coursebase', function () {
+        Route::get('course_base', function () {
             $data['title'] = " modify course base";
-            return view('course_base', $data);
+            return view('authority/modify/course_base', $data);
         });
         Route::get('syllabus', function () {
             $data['title'] = " modify syllabus";
-            return view('syllabus', $data);
+            return view('authority/modify/syllabus', $data);
         });
         Route::get('classroom', function () {
             $data['title'] = " modify classroom";
-            return view('classroom', $data);
+            return view('authority/modify/classroom', $data);
         });
     });
 });
 
 //professor
 Route::group(['middleware' => 'professor',
+                'prefix' => 'professor',
                 'namespace' => 'Professor'], function() {
     Route::get('approve', 'Approve@index');
     Route::get('unit_course', 'UnitCourse@index');
@@ -110,10 +112,11 @@ Route::group(['middleware' => 'professor',
 
 //student
 Route::group(['middleware' => 'student',
+                'prefix' => 'student',
                 'namespace' => 'Student'], function () {
     Route::group(['prefix' => 'selection',
                     'namespace' => 'Selection'], function () {
-        Route::get('applyfor', 'Applyfor@index');
+        Route::get('apply_for', 'Applyfor@index');
         Route::get('drop', 'Drop@index');
         Route::group(['prefix' => 'enroll', 
             'namespace' => 'Enroll'], function () {
