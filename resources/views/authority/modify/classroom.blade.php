@@ -1,7 +1,7 @@
 @extends('schema/preset')
 @section('main')
 <div class="container">
-  <form action="classroom" method="post">
+  <form action="classroom" method="get">
     <div class="form-group row">
       <label for="name_tw" class="col-2 col-form-label">Name (tw)</label>
       <div class="col-10">
