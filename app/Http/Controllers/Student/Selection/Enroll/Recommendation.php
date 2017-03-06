@@ -9,6 +9,7 @@ class Recommendation extends Controller
 {
     //
     function index() {
-        echo 'Recommendation';
+        $data['title'] = "Enroll recommendation";
+        return view('student/selection/enroll/recommendation', $data);
     }
 }

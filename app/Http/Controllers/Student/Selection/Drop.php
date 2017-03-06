@@ -9,6 +9,7 @@ class Drop extends Controller
 {
     //
     function index() {
-        echo 'Drop  ';
+        $data['title'] = "Drop";
+        return view('student/selection/drop', $data);
     }
 }

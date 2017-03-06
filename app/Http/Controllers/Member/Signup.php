@@ -9,6 +9,7 @@ class Signup extends Controller
 {
     //
     function index() {
-        echo 'signup';
+        $data['title'] = "Sign up";
+        return view('sign_up', $data);
     }
 }

@@ -9,6 +9,7 @@ class Signin extends Controller
 {
     //
     function index() {
-        echo 'signin';
+        $data['title'] = "Sign in";
+        return view('sign_in', $data);
     }
 }

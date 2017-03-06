@@ -8,6 +8,7 @@ class Feedback extends Controller
 {
     //
     function index() {
-        echo 'feedback';
+        $data['title'] = "Feedback";
+        return view('feedback', $data);
     }
 }

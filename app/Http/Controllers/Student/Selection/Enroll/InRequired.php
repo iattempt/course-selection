@@ -9,6 +9,7 @@ class InRequired extends Controller
 {
     //
     function index() {
-        echo 'IR';
+        $data['title'] = "Enroll in-required";
+        return view('student/selection/enroll/in_required', $data);
     }
 }

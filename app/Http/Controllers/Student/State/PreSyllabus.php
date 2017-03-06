@@ -9,6 +9,7 @@ class PreSyllabus extends Controller
 {
     //
     function index() {
-        echo 'Pre';
+        $data['title'] = "Pre-syllabus";
+        return view('student/state/pre_syllabus', $data);
     }
 }

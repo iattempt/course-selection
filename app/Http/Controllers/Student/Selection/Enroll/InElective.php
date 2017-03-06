@@ -9,6 +9,7 @@ class InElective extends Controller
 {
     //
     function index() {
-        echo 'IE';
+        $data['title'] = "Enroll in-elective";
+        return view('student/selection/enroll/in_elective', $data);
     }
 }

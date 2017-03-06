@@ -9,6 +9,7 @@ class Signout extends Controller
 {
     //
     function index() {
-        echo 'signout';
+        $data['title'] = "Sign out";
+        return view('sign_out', $data);
     }
 }

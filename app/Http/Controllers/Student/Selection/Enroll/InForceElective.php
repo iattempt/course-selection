@@ -9,6 +9,7 @@ class InForceElective extends Controller
 {
     //
     function index() {
-        echo 'IFE';
+        $data['title'] = "Enroll in-force-elective";
+        return view('student/selection/enroll/in_force_elective', $data);
     }
 }

@@ -9,6 +9,7 @@ class Unit extends Controller
 {
     //
     function index() {
-        echo 'unit';
+        $data['title'] = "Modify unit";
+        return view('authority/modify/unit', $data);
     }
 }

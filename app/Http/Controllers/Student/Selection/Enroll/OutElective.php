@@ -9,6 +9,7 @@ class OutElective extends Controller
 {
     //
     function index() {
-        echo 'OE';
+        $data['title'] = "Enroll out-elective";
+        return view('student/selection/enroll/out_elective', $data);
     }
 }

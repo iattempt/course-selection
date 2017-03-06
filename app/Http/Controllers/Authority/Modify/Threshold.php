@@ -9,6 +9,7 @@ class Threshold extends Controller
 {
     //
     function index() {
-        echo 'threshold';
+        $data['title'] = "Modify threshold";
+        return view('authority/modify/threshold', $data);
     }
 }

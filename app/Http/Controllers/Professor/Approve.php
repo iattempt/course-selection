@@ -9,6 +9,7 @@ class Approve extends Controller
 {
     //
     function index() {
-        echo 'approve';
+        $data['title'] = "Approve";
+        return view('professor/approve', $data);
     }
 }

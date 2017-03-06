@@ -9,6 +9,7 @@ class Syllabus extends Controller
 {
     //
     function index() {
-        echo 'Syllabus';
+        $data['title'] = "Syllabus";
+        return view('student/state/syllabus', $data);
     }
 }

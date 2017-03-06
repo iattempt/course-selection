@@ -9,6 +9,7 @@ class CommonRequired extends Controller
 {
     //
     function index() {
-        echo 'CommonRequired';
+        $data['title'] = "Enroll common required";
+        return view('student/selection/enroll/common_required', $data);
     }
 }

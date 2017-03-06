@@ -9,6 +9,7 @@ class Schedule extends Controller
 {
     //
     function index(){
-        echo 'scheduler';
+        $data['title'] = "Schedule";
+        return view('student/state/schedule', $data);
     }
 }

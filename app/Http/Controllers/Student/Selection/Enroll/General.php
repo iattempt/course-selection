@@ -9,6 +9,7 @@ class General extends Controller
 {
     //
     function index() {
-      echo "general";
+        $data['title'] = "Enroll general";
+        return view('student/selection/enroll/general', $data);
     }
 }

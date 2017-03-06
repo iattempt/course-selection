@@ -9,6 +9,7 @@ class MyCourse extends Controller
 {
     //
     function index() {
-        echo 'mycourse';
+        $data['title'] = "My course";
+        return view('professor/my_course', $data);
     }
 }

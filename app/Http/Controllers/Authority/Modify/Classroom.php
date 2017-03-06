@@ -9,6 +9,7 @@ class Classroom extends Controller
 {
     //
     function index() {
-        echo 'classroom';
+        $data['title'] = "Modify classroom";
+        return view('authority/modify/classroom', $data);
     }
 }

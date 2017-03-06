@@ -9,6 +9,7 @@ class Applyfor extends Controller
 {
     //
     function index() {
-        echo 'Applyfor';
+        $data['title'] = "Apply for";
+        return view('student/selection/apply_for', $data);
     }
 }
