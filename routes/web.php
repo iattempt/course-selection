@@ -13,16 +13,8 @@
 
 // check post and get class
 
-
-
-Route::get('test', function () {
-    $data['title'] = 'My Life, My Rules';
-    return view('course_search', $data);
-});
-
 Route::get('/', function () {
-    $data['title'] = 'My Life, My Rules';
-    return view('index', $data);
+    return view('welcome');
 });
 
 //coursesearch
@@ -33,22 +25,8 @@ Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
 
 //member
 Route::group(['namespace' => 'Member'], function () {
-    Route::post('sign_in', 'Signin@index');
-    Route::post('sign_out', 'Signout@index')->middleware('authority', 'student', 'professor');
-    Route::post('sign_up', 'Signup@index')->middleware('authority');
-
-    Route::get('sign_in', function () {
-        $data['title'] = 'sign in';
-        return view('member/sign_in');
-    });
-    Route::get('sign_up', function () {
-        $data['title'] = 'sign up';
-        return view('member/sign_up');
-    });
-    Route::get('sign_out', function () {
-        $data['title'] = 'sign out';
-        return view('member/sign_out');
-    });
+    Route::match(['get', 'post'], 'sign_in', 'SignIn@index');
+    Route::match(['get', 'post'], 'sign_out', 'SignOut@index')->middleware('authority', 'student', 'professor');
 });
 
 //authority

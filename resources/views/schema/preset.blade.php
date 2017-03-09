@@ -1,1 +1,1 @@
-@extends('schema.head')
+@extends('schema/nav')
