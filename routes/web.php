@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//coursesearch
-Route::get('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
-
+//common
 //feedback
 Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
 
@@ -28,8 +26,13 @@ Route::group(['namespace' => 'Member'], function () {
     Route::match(['get', 'post'], 'sign_in', 'SignIn@index');
     Route::match(['get', 'post'], 'sign_out', 'SignOut@index')->middleware('authority', 'student', 'professor');
 });
+//endcommn
+
+//coursesearch
+Route::get('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
 
 //authority
+Route::get('authority', 'Authority@index');
 Route::group(['middleware' => 'authority',
                 'prefix' => 'authority',
                 'namespace' => 'Authority'], function () {
@@ -38,15 +41,16 @@ Route::group(['middleware' => 'authority',
         Route::get('professor', 'Professor@index');
         Route::get('student', 'Student@index');
         Route::get('course', 'Course@index');
+        Route::get('course_base', 'CourseBase@index');
         Route::get('unit', 'Unit@index');
         Route::get('threshold', 'Threshold@index');
-        Route::get('course_base', 'CourseBase@index');
         Route::get('syllabus', 'Syllabus@index');
         Route::get('classroom', 'Classroom@index');
     });
 });
 
 //professor
+Route::get('professor', 'Professor@index');
 Route::group(['middleware' => 'professor',
                 'prefix' => 'professor',
                 'namespace' => 'Professor'], function() {
@@ -56,12 +60,13 @@ Route::group(['middleware' => 'professor',
 });
 
 //student
+Route::get('student', 'Student@index');
 Route::group(['middleware' => 'student',
                 'prefix' => 'student',
                 'namespace' => 'Student'], function () {
     Route::group(['prefix' => 'selection',
                     'namespace' => 'Selection'], function () {
-        Route::get('apply_for', 'Applyfor@index');
+        Route::get('apply_for', 'ApplyFor@index');
         Route::get('drop', 'Drop@index');
         Route::group(['prefix' => 'enroll', 
             'namespace' => 'Enroll'], function () {
