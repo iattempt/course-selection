@@ -1,1 +1,1 @@
-@extends('schema/nav')
+@extends('schema/footer')

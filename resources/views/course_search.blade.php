@@ -1,43 +1,111 @@
 @extends('schema/preset')
 @section('main')
 <div class="container">
-  <div class="row">
-    <div class="col-2">
-    </div>
-    <div class="col">
-      <div class="row">
-        <div class="col">Mon</div>
-        <div class="col">Tue</div>
-        <div class="col">Wed</div>
-        <div class="col">Thu</div>
-        <div class="col">Fri</div>
-        <div class="col">Sat</div>
-      </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <span class="col-3">課程名稱</span>
+    <span class="col-3">授課教師</span>
+    <span class="col-2">修別</span>
+    <span class="col-1">學分</span>
+    <span class="col-1">星期</span>
+    <span class="col-1">時段</span>
+    <span class="col-1"></span>
+  </div>
+  <div class="row justify-content-center">
+    <span class="col-3">
+      <a class="btn" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-condivols="collapseExample">
+        Link widiv href
+      </a>
+    </span>
+    <span class="col-3">授課教師</span>
+    <span class="col-2">修別</span>
+    <span class="col-1">學分</span>
+    <span class="col-1">星期</span>
+    <span class="col-1">時段</span>
+    <span class="col-1">
+      <label class="custom-condivol custom-checkbox">
+        <input type="checkbox" class="custom-condivol-input">
+        <span class="custom-condivol-indicator"></span>
+        <span class="custom-condivol-description">加選</span>
+      </label>
+    </span>
+  </div>
+  <div class="collapse row" id="collapseExample">
+    <div class="card card-block">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>
   </div>
-  <div class="row">
-    <div class="col-2">
-      <div class="col-">01.</div>
-      <div class="col-">02.</div>
-      <div class="col-">03.</div>
-      <div class="col-">04.</div>
-      <div class="col-">05.</div>
-      <div class="col-">06.</div>
-      <div class="col-">07.</div>
-      <div class="col-">08.</div>
-      <div class="col-">09.</div>
-      <div class="col-">10.</div>
-      <div class="col-">11.</div>
-      <div class="col-">12.</div>
-      <div class="col-">13.</div>
+  <div class="row justify-content-center">
+    <span class="col-3">
+      <a class="btn" data-toggle="collapse" href="#collapseExample1" aria-expanded="false" aria-condivols="collapseExample">
+        Link widiv href
+      </a>
+    </span>
+    <span class="col-3">授課教師</span>
+    <span class="col-2">修別</span>
+    <span class="col-1">學分</span>
+    <span class="col-1">星期</span>
+    <span class="col-1">時段</span>
+    <span class="col-1">
+      <label class="custom-condivol custom-checkbox">
+        <input type="checkbox" class="custom-condivol-input">
+        <span class="custom-condivol-indicator"></span>
+        <span class="custom-condivol-description">加選</span>
+      </label>
+    </span>
+  </div>
+  <div class="collapse row" id="collapseExample1">
+    <div class="card card-block">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>
-    <div class="col">
-      <div class="row">
-        <div class="col">//scheduler</div>
-      </div>
-      <div class="row">
-      <div class="col">//scheduler</div>
-      </div>
+  </div>
+  <div class="row justify-content-center">
+    <span class="col-3">
+      <a class="btn" data-toggle="collapse" href="#collapseExample2" aria-expanded="false" aria-condivols="collapseExample">
+        Link widiv href
+      </a>
+    </span>
+    <span class="col-3">授課教師</span>
+    <span class="col-2">修別</span>
+    <span class="col-1">學分</span>
+    <span class="col-1">星期</span>
+    <span class="col-1">時段</span>
+    <span class="col-1">
+      <label class="custom-condivol custom-checkbox">
+        <input type="checkbox" class="custom-condivol-input">
+        <span class="custom-condivol-indicator"></span>
+        <span class="custom-condivol-description">加選</span>
+      </label>
+    </span>
+  </div>
+  <div class="collapse row" id="collapseExample2">
+    <div class="card card-block">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <span class="col-3">
+      <a class="btn" data-toggle="collapse" href="#collapseExample3" aria-expanded="false" aria-condivols="collapseExample">
+        Link widiv href
+      </a>
+    </span>
+    <span class="col-3">授課教師</span>
+    <span class="col-2">修別</span>
+    <span class="col-1">學分</span>
+    <span class="col-1">星期</span>
+    <span class="col-1">時段</span>
+    <span class="col-1">
+      <label class="custom-condivol custom-checkbox">
+        <input type="checkbox" class="custom-condivol-input">
+        <span class="custom-condivol-indicator"></span>
+        <span class="custom-condivol-description">加選</span>
+      </label>
+    </span>
+  </div>
+  <div class="collapse row" id="collapseExample3">
+    <div class="card card-block">
+      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>
   </div>
 </div>
