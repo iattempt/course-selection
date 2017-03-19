@@ -29,7 +29,7 @@ Route::group(['namespace' => 'Member'], function () {
 //endcommn
 
 //coursesearch
-Route::get('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
+Route::post('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
 
 //authority
 Route::get('authority', 'Authority@index');

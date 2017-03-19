@@ -3,14 +3,15 @@
 @endsection
 @section('main')
 <div class="container">
-  <form>
+  <form action="/sign_out" method="post">
+    {{ csrf_field() }}
     <div class="row">
       <a class="btn btn-warning col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-controls="filter">
         篩選器
       </a>
     </div>
     <div class="row">
-      <div id="filter" class="collapse col-12" role="tabpanel" aria-labelledby="headingFilter">
+      <div id="filter" class="collapse col-12 show" role="tabpanel" aria-labelledby="headingFilter">
         <!--Level 2-->
         <div id="filterOptions" role="tablist" aria-multiselectable="true">
           <div class="card">
@@ -43,8 +44,8 @@
 
             <div id="collapseCredit" class="collapse" role="tabpanel" aria-labelledby="headingCredit">
               <div class="card-block">
-                <div class="form-check btn-group" role="group">
-                  <label class="form-check-label btn">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
                     <input type="checkbox" class="form-check-input">
                     2
                   </label>
@@ -57,32 +58,182 @@
             </div>
             <div id="collapseDay" class="collapse" role="tabpanel" aria-labelledby="headingDay">
               <div class="card-block">
-                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    星期一
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    星期二
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    星期三
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    星期四
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    星期五
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    星期六
+                  </label>
+                  <label class="form-check-label sr-only">
+                    <input type="checkbox" class="form-check-input">
+                    星期日
+                  </label>
+                </div>
               </div>
             </div>
             <div id="collapseLanguage" class="collapse" role="tabpanel" aria-labelledby="headingLanguage">
               <div class="card-block">
-                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    中文
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    英文
+                  </label>
+                </div>
               </div>
             </div>
             <div id="collapseMOOCs" class="collapse" role="tabpanel" aria-labelledby="headingMOOCs">
               <div class="card-block">
-                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    是
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    否
+                  </label>
+                </div>
               </div>
             </div>
             <div id="collapsePeriod" class="collapse" role="tabpanel" aria-labelledby="headingPeriod">
               <div class="card-block">
-                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第一節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第二節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第三節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第四節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第五節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第六節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第七節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第八節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第九節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第十節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第十一節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第十二節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    第十三節
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    包含
+                  </label>
+                </div>
               </div>
             </div>
             <div id="collapseType" class="collapse" role="tabpanel" aria-labelledby="headingType">
               <div class="card-block">
-                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    基礎必修
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    系必修
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    必選修
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    本系選修
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    外系選修
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    通識自然
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    通識社會
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    通識人文
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    通識文明與經典
+                  </label>
+                </div>
               </div>
             </div>
             <div id="collapseUnit" class="collapse" role="tabpanel" aria-labelledby="headingUnit">
               <div class="card-block">
-                craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    資工系
+                  </label>
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input">
+                    資工系軟工組
+                  </label>
+                </div>
               </div>
             </div>
           </div>

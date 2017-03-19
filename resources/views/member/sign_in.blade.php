@@ -1,7 +1,8 @@
 @extends('schema/preset')
 @section('main')
 <div class="container">
-  <form action="/sign_in" method="post">
+  <form action="/course_search" method="post">
+    {{ csrf_field() }}
     <div class="form-group row">
       <label for="email" class="col-4 col-sm-2 col-form-label d-flex justify-content-center">Email</label>
       <div class="col-8 col-sm-10">
@@ -20,9 +21,7 @@
           <input type="checkbox" aria-label="Checkbox for following text input">
         </span>
         <span class="input-group-addon">Remember me</span>
-        <a href="/sign_in" class="btn btn-primary">
-          Sign in
-        </a>
+        <input type="submit" class="btn btn-primary" value="Sign in">
       </div>
     </div>
   </form>
