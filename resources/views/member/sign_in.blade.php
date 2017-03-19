@@ -1,27 +1,30 @@
 @extends('schema/preset')
 @section('main')
 <div class="container">
-  <div class="row">
-    <div id="carouselExampleIndicators" class="carousel slide col-" data-ride="carousel">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      </ol>
-      <div class="carousel-inner" role="listbox">
-        <div class="carousel-item active">
-          <img class="d-block img-fluid" src="{{asset('img/mylifemyrules.jpg')}}" alt="First slide">
-        </div>
+  <form action="/sign_in" method="post">
+    <div class="form-group row">
+      <label for="email" class="col-4 col-sm-2 col-form-label d-flex justify-content-center">Email</label>
+      <div class="col-8 col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="account@example.com">
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-    <div class="col"></div>
-  </div>
+    <div class="form-group row">
+      <label for="password" class="col-4 col-sm-2 col-form-label d-flex justify-content-center">Password</label>
+      <div class="col-8 col-sm-10">
+        <input type="password" class="form-control" id="password">
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="input-group col-12 d-flex justify-content-end">
+        <span class="input-group-addon">
+          <input type="checkbox" aria-label="Checkbox for following text input">
+        </span>
+        <span class="input-group-addon">Remember me</span>
+        <a href="/sign_in" class="btn btn-primary">
+          Sign in
+        </a>
+      </div>
+    </div>
+  </form>
 </div>
 @endsection

@@ -16,5 +16,7 @@
   </a>
   @section('main-nav')
   @show
+  @section('main')
+  @show
   @section('footer')
   @show
