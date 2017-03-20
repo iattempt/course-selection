@@ -6,7 +6,7 @@
     <div class="form-group row">
       <label for="email" class="col-4 col-sm-2 col-form-label d-flex justify-content-center">Email</label>
       <div class="col-8 col-sm-10">
-        <input type="email" class="form-control" id="email" placeholder="account@example.com">
+        <input type="email" class="form-control" id="authority" placeholder="account@example.com">
       </div>
     </div>
     <div class="form-group row">
