@@ -23,66 +23,69 @@ Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
 
 //member
 Route::group(['namespace' => 'Member'], function () {
-    Route::match(['get', 'post'], 'sign_in', 'SignIn@index');
-    Route::match(['get', 'post'], 'sign_out', 'SignOut@index')->middleware('authority', 'student', 'professor');
+    Route::get('sign_in', 'SignIn@index');
+    Route::get('sign_out', 'SignOut@index');
 });
 //endcommn
 
 //coursesearch
-Route::post('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
+//Route::post('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
+Route::post('course_search', 'CourseSearch@index')->middleware('authority');
 
 //authority
-Route::get('authority', 'Authority@index');
-Route::group(['middleware' => 'authority',
-                'prefix' => 'authority',
-                'namespace' => 'Authority'], function () {
-    Route::group(['prefix' => 'modify',
-                    'namespace' => 'Modify'], function () {
-        Route::get('professor', 'Professor@index');
-        Route::get('student', 'Student@index');
-        Route::get('course', 'Course@index');
-        Route::get('course_base', 'CourseBase@index');
-        Route::get('unit', 'Unit@index');
-        Route::get('threshold', 'Threshold@index');
-        Route::get('syllabus', 'Syllabus@index');
-        Route::get('classroom', 'Classroom@index');
+Route::group(['middleware' => 'authority'], function () {
+    Route::post('authority', 'Authority@index');
+    Route::group(['prefix' => 'authority',
+            'namespace' => 'Authority'], function () {
+        Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
+        Route::post('professor', 'Professor@index');
+        Route::post('student', 'Student@index');
+        Route::post('course', 'Course@index');
+        Route::post('course_base', 'CourseBase@index');
+        Route::post('unit', 'Unit@index');
+        Route::post('threshold', 'Threshold@index');
+        Route::post('syllabus', 'Syllabus@index');
+        Route::post('classroom', 'Classroom@index');
+    });
     });
 });
 
 //professor
-Route::get('professor', 'Professor@index');
-Route::group(['middleware' => 'professor',
-                'prefix' => 'professor',
-                'namespace' => 'Professor'], function() {
-    Route::get('approve', 'Approve@index');
-    Route::get('unit_course', 'UnitCourse@index');
-    Route::get('my_course', 'MyCourse@index');
+Route::group(['middleware' => 'professor'], function() {
+    Route::get('professor', 'Professor@index');
+    Route::group(['prefix' => 'professor',
+            'namespace' => 'Professor'], function() {
+        Route::post('approve', 'Approve@index');
+        Route::post('unit_course', 'UnitCourse@index');
+        Route::post('my_course', 'MyCourse@index');
+    });    
 });
-
+ 
 //student
-Route::get('student', 'Student@index');
-Route::group(['middleware' => 'student',
-                'prefix' => 'student',
-                'namespace' => 'Student'], function () {
-    Route::group(['prefix' => 'selection',
-                    'namespace' => 'Selection'], function () {
-        Route::get('apply_for', 'ApplyFor@index');
-        Route::get('drop', 'Drop@index');
-        Route::group(['prefix' => 'enroll', 
-            'namespace' => 'Enroll'], function () {
-            Route::get('recommendation', 'Recommendation@index');
-            Route::get('in_required', 'InRequired@index');
-            Route::get('common_required', 'CommonRequired@index');
-            Route::get('in_force_elective', 'InForceElective@index');
-            Route::get('in_elective', 'InElective@index');
-            Route::get('out_elective', 'OutElective@index');
-            Route::get('general', 'General@index');
+Route::groupostp(['middleware' => 'student'], function() {
+    Route::post('student', 'Student@index');
+    Route::group(['prefix' => 'student',
+            'namespace' => 'Student'], function () {
+        Route::group(['prefix' => 'selection',
+                'namespace' => 'Selection'], function () {
+            Route::post('apply_for', 'ApplyFor@index');
+            Route::post('drop', 'Drop@index');
+            Route::group(['prefix' => 'enroll', 
+                'namespace' => 'Enroll'], function () {
+                Route::post('recommendation', 'Recommendation@index');
+                Route::post('in_required', 'InRequired@index');
+                Route::post('common_required', 'CommonRequired@index');
+                Route::post('in_force_elective', 'InForceElective@index');
+                Route::post('in_elective', 'InElective@index');
+                Route::post('out_elective', 'OutElective@index');
+                Route::post('general', 'General@index');
+            });
         });
-    });
-    Route::group(['prefix' => 'state', 
-                    'namespace' => 'State'], function () {
-        Route::get('pre_syllabus', 'PreSyllabus@index');
-        Route::get('syllabus', 'Syllabus@index');
-        Route::get('schedule', 'Schedule@index');
+        Route::group(['prefix' => 'state', 
+                'namespace' => 'State'], function () {
+            Route::post('pre_syllabus', 'PreSyllabus@index');
+            Route::post('syllabus', 'Syllabus@index');
+            Route::post('schedule', 'Schedule@index');
+        });
     });
 });
