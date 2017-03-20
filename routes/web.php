@@ -62,7 +62,7 @@ Route::group(['middleware' => 'professor'], function() {
 });
  
 //student
-Route::groupostp(['middleware' => 'student'], function() {
+Route::group(['middleware' => 'student'], function() {
     Route::post('student', 'Student@index');
     Route::group(['prefix' => 'student',
             'namespace' => 'Student'], function () {
