@@ -16,9 +16,9 @@ class Professor
      */
     public function handle($request, Closure $next)
     {
-//      if (auth::check())
-//          return $next($request);
-//      return redirect()->route('signin');
+        if ($request->session()->get('authority') === null) {
+            return redirect('/sign_in');
+        }
         return $next($request);
     }
 }
