@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Auth;
 
-class Authority
+class Authentication
 {
     /**
      * Handle an incoming request.
@@ -16,7 +15,7 @@ class Authority
      */
     public function handle($request, Closure $next)
     {
-        if (false) {
+        if ($request->session()->get('authority') === null) {
             return redirect('/sign_in');
         }
         return $next($request);
