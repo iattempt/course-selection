@@ -32,26 +32,24 @@ Route::group(['namespace' => 'Member'], function () {
 //Route::post('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
 Route::post('course_search', 'CourseSearch@index')->middleware('authority');
 
+Route::group(['middleware' => 'authentication'], function () {
 //authority
-Route::group(['middleware' => 'authority'], function () {
     Route::post('authority', 'Authority@index');
     Route::group(['prefix' => 'authority',
             'namespace' => 'Authority'], function () {
         Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
-        Route::post('professor', 'Professor@index');
-        Route::post('student', 'Student@index');
-        Route::post('course', 'Course@index');
-        Route::post('course_base', 'CourseBase@index');
-        Route::post('unit', 'Unit@index');
-        Route::post('threshold', 'Threshold@index');
-        Route::post('syllabus', 'Syllabus@index');
-        Route::post('classroom', 'Classroom@index');
+            Route::post('professor', 'Professor@index');
+            Route::post('student', 'Student@index');
+            Route::post('course', 'Course@index');
+            Route::post('course_base', 'CourseBase@index');
+            Route::post('unit', 'Unit@index');
+            Route::post('threshold', 'Threshold@index');
+            Route::post('syllabus', 'Syllabus@index');
+            Route::post('classroom', 'Classroom@index');
+        });
     });
-    });
-});
 
 //professor
-Route::group(['middleware' => 'professor'], function() {
     Route::get('professor', 'Professor@index');
     Route::group(['prefix' => 'professor',
             'namespace' => 'Professor'], function() {
@@ -59,10 +57,8 @@ Route::group(['middleware' => 'professor'], function() {
         Route::post('unit_course', 'UnitCourse@index');
         Route::post('my_course', 'MyCourse@index');
     });    
-});
  
 //student
-Route::group(['middleware' => 'student'], function() {
     Route::post('student', 'Student@index');
     Route::group(['prefix' => 'student',
             'namespace' => 'Student'], function () {
