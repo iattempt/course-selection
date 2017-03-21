@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 //common
 //feedback
-Route::get('feedback', 'Feedback@index')->middleware('authority', 'student');
+Route::get('feedback', 'Feedback@index')->middleware('guest');
 
 //member
 Route::group(['namespace' => 'Member'], function () {
@@ -30,9 +30,9 @@ Route::group(['namespace' => 'Member'], function () {
 
 //coursesearch
 //Route::post('course_search', 'CourseSearch@index')->middleware('authority', 'student', 'professor');
-Route::post('course_search', 'CourseSearch@index')->middleware('authority');
+Route::post('course_search', 'CourseSearch@index')->middleware('guest');
 
-Route::group(['middleware' => 'authentication'], function () {
+Route::group(['middleware' => 'guest'], function () {
 //authority
     Route::post('authority', 'Authority@index');
     Route::group(['prefix' => 'authority',
