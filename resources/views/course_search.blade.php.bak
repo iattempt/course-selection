@@ -7,37 +7,32 @@
     {{ csrf_field() }}
     <!-- Filter -->
     <div class="row">
-      <a class="btn btn-warning col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
+      <a class="btn btn-warning col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-controls="filter">
         篩選器
       </a>
-      <div id="filter" class="collapse">
-        <div class="card">
-          <!-- Filter options -->
-          <loop>
-          <!--
-            use json format
-            categories = 星期,修別...
-            options = 星期一/星期二,必修/外系選修...
-          @foreach ($categories as $category)
-            @foreach ($categories->options as $option)
-            
-            @endforeach
-          @endforeach
-
-          
-          -->
-
-
-          <div id="filter_options" role="tablist" aria-multiselectable="true">
-                  <a class="btn btn-secondary" data-toggle="collapse" data-parent="#filter_ptions" href="#collapseDay" aria-expanded="true" aria-controls="collapseOne">
-                    星期
-                  </a>
-                  <a class="btn btn-secondary" data-toggle="collapse" data-parent="#filter_options" href="#collapseDay2" aria-expanded="true" aria-controls="collapseOne2">
-                    星期
-                  </a>
-                  <a class="btn btn-secondary" data-toggle="collapse" data-parent="#filter_options" href="#collapseDay3" aria-expanded="true" aria-controls="collapseOne3">
-                    星期
-                  </a>
+      <div id="filter" class="collapse col-12 show" role="tabpanel" aria-labelledby="headingFilter">
+        <!---->
+              <div class="btn-group-vertical d-flex justify-content-center" role="group">
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-parent="#filterOptions" href="#collapseCredit" aria-expanded="true" aria-controls="collapseOne">
+                  學分
+                </button>
+                  <div id="collapseCredit" class="collapse" role="tabpanel" aria-labelledby="headingCredit">
+                    <div class="card-block">
+                      <div class="btn-group-vertical" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          2
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          3
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-parent="#filterOptions" href="#collapseDay" aria-expanded="true" aria-controls="collapseOne">
+                  星期
+                </button>
                   <div id="collapseDay" class="collapse" role="tabpanel" aria-labelledby="headingDay">
                     <div class="card-block">
                       <div class="btn-group-vertical" data-toggle="buttons">
@@ -72,78 +67,152 @@
                       </div>
                     </div>
                   </div>
-                  <div id="collapseDay2" class="collapse" role="tabpanel" aria-labelledby="headingDay2">
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-parent="#filterOptions" href="#collapseLanguage" aria-expanded="true" aria-controls="collapseOne">
+                  語言
+                </button>
+                  <div id="collapseLanguage" class="collapse" role="tabpanel" aria-labelledby="headingLanguage">
                     <div class="card-block">
                       <div class="btn-group-vertical" data-toggle="buttons">
                         <label class="btn btn-secondary">
                           <input type="checkbox" class="form-check-input">
-                          星期一
+                          中文
                         </label>
                         <label class="btn btn-secondary">
                           <input type="checkbox" class="form-check-input">
-                          星期二
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期三
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期四
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期五
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期六
-                        </label>
-                        <label class="btn btn-secondary sr-only">
-                          <input type="checkbox" class="form-check-input">
-                          星期日
+                          英文
                         </label>
                       </div>
                     </div>
                   </div>
-                  <div id="collapseDay3" class="collapse" role="tabpanel" aria-labelledby="headingDay3">
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-parent="#filterOptions" href="#collapseMOOCs" aria-expanded="true" aria-controls="collapseOne">
+                  MOOCs
+                </button>
+                  <div id="collapseMOOCs" class="collapse" role="tabpanel" aria-labelledby="headingMOOCs">
                     <div class="card-block">
                       <div class="btn-group-vertical" data-toggle="buttons">
                         <label class="btn btn-secondary">
                           <input type="checkbox" class="form-check-input">
-                          星期一
+                          是
                         </label>
                         <label class="btn btn-secondary">
                           <input type="checkbox" class="form-check-input">
-                          星期二
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期三
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期四
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期五
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="checkbox" class="form-check-input">
-                          星期六
-                        </label>
-                        <label class="btn btn-secondary sr-only">
-                          <input type="checkbox" class="form-check-input">
-                          星期日
+                          否
                         </label>
                       </div>
                     </div>
                   </div>
-          </div>
-          <!-- end of Filter options  -->
-        </div>
-        <r class="my-4">
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-parent="#filterOptions" href="#collapsePeriod" aria-expanded="true" aria-controls="collapseOne">
+                  時段
+                </button>
+                  <div id="collapsePeriod" class="collapse" role="tabpanel" aria-labelledby="headingPeriod">
+                    <div class="card-block">
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第一節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第二節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第三節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第四節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第五節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第六節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第七節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第八節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第九節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第十節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第十一節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第十二節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          第十三節
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          包含
+                        </label>
+                    </div>
+                  </div>
+                <button type="button" class="btn btn-secondary" data-toggle="collapse" data-parent="#filterOptions" href="#collapseType" aria-expanded="true" aria-controls="collapseOne">
+                  修別
+                </button>
+                  <div id="collapseType" class="collapse" role="tabpanel" aria-labelledby="headingType">
+                    <div class="card-block">
+                      <div class="btn-group-vertical" data-toggle="buttons">
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          基礎必修
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          系必修
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          必選修
+                        </label>
+                        <hr>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          本系選修
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          外系選修
+                        </label>
+                        <hr>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          自然
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          社會
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          人文
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="checkbox" class="form-check-input">
+                          文明與經典
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+        <hr class="my-4">
       </div>
     </div>
     <!-- end of Filter form  -->

@@ -14,4 +14,7 @@ class CourseSearch extends Controller
 
         return view('course_search', $data);
     }
+    function enroll() {
+    
+    }
 }
