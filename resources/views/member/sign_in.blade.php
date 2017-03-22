@@ -5,7 +5,7 @@
     {{ csrf_field() }}
     <div class="form-group row d-flex justify-content-center">
       <div class="col-12 col-sm-8 col-md-6 row my-4">
-        <h2 class="">登入</h2>
+        <h2>登入</h2>
         <hr class="col-12">
         <input type="email" class="form-control" id="authority" placeholder="account@example.com">
         <input type="password" class="form-control my-2" id="password" placeholder="password">
