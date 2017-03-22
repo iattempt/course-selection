@@ -31,7 +31,7 @@
    ```
 ---
 #### 功能
-+ 基本
++ 修訂
    1. 統計個人畢業門檻狀態
       `註：`使用畢業門檻資訊計算學分，判斷缺少的課程
    1. 課表呈現
@@ -49,6 +49,12 @@
    1. 全校課程搜尋
       `註：`使用分層式搜尋，以及區分各大類的方式（e.g. 通識為每系學生搜尋率極高的課程，應該將其歸類在大類別）
       `註：`提供複選的機制，使學生可以一次找出他想要的課程
+
+---
+### 程式碼實作
++ 可讀性
++ 可維護性
++ 可擴充性
 
 ---
 ## 介面
@@ -169,6 +175,15 @@
    * 網頁上線用
 1. 網域
    * [網頁上線用](http://iattempt.net)
+1. 參考書籍/官方文件
+   * front end
+      + 打造最強網頁UI/UX設計腦:設計師都該懂的絕佳設計.溝通法則
+   * back end
+      + 無暇程式碼
+      + 重構-改善既有程式的設計
+      + [Laravel framework](https://laravel.com/docs/5.4/routing)
+   * others
+      + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
 
 ---
 #### 網站設計工具
@@ -179,13 +194,14 @@
    * [Git](https://github.com/iattempt/elegant-selection)
 1. 程式語言
    * PHP
-      - [Laravel framework](https://laravel.com/docs/5.4/routing)
    * HTML5
    * CSS
    * Javascript
    * SQL
       - MySQL
-   * [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
+   * Markdown
+   * bash
+   * git
 
 ---
 #### 甘特圖
