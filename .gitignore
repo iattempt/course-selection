@@ -11,4 +11,3 @@ Homestead.yaml
 /views
 /middlewares
 ~*.*
-*.md.html
