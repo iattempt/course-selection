@@ -12,9 +12,9 @@
       </a>
       <div id="filter" class="collapse">
         <div class="card">
-          <!-- Filter options -->
+          {{-- Filter options
           <loop>
-          <!--
+          
             use json format
             categories = 星期,修別...
             options = 星期一/星期二,必修/外系選修...
@@ -23,9 +23,7 @@
             
             @endforeach
           @endforeach
-
-          
-          -->
+          --}}
 
 
           <div id="filter_options" role="tablist" aria-multiselectable="true">
