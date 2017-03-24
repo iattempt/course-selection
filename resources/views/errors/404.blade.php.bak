@@ -37,7 +37,7 @@
   <p align="left" class="style2">That's all we know.</p>
   <p>&nbsp;</p>
 </div>
-<a href="³sµ²«e©¹ªººô§}"><img src="thu.png" alt="ªF®ü¤j¾Ç" width="286" height="80"></a>
+<a href="³sµ²«e©¹ªººô§}"><img src="{{asset('img/thu_logo.png')}}" alt="ªF®ü¤j¾Ç" width="286" height="80"></a>
 <img src="thu LOGO.png" alt="LOGO" width="150" height="150">
 </body>
 </html>
