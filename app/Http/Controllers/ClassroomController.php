@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\classroom;
+use App\Models\Student;
 
 class ClassroomController extends Controller
 {
     //
     function index() {
-        $classrooms = classroom::all();
-        return view('classroom', compact('classrooms'));
+        $students = Student::all();
+        return view('classroom', compact('students'));
     }
 }

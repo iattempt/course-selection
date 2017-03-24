@@ -29,8 +29,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 //authority
     Route::get('authority', 'AuthorityController@index');
-    Route::group(['prefix' => 'authority',
-            'namespace' => 'Authority'], function () {
+    Route::group(['namespace' => 'Authority'], function () {
         Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
             Route::get('professor', 'ProfessorController@index');
             Route::get('student', 'StudentController@index');

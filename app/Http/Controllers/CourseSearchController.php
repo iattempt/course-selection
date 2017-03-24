@@ -11,6 +11,7 @@ class CourseSearchController extends Controller
         $data['title'] = 'Course search';
         $data['G_SCHOOL'] = "東海";
         $data['G_SCHOOL_WEBSITE'] = "http://www.thu.edu.tw";
+        $data['auth'] = "student";
 
         return view('course_search', $data);
     }

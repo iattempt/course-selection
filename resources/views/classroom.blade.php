@@ -1,3 +1,3 @@
-@foreach ($classrooms as $classroom)
-  {{ $classroom->name }}
+@foreach ($students as $student)
+  {{ $student }}
 @endforeach
