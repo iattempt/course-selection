@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Student\Selection;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Student\SelectionController;
 
-class DropController extends Controller
+class DropController extends SelectionController
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Drop";
+    }
     function index() {
-        $data['title'] = "Drop";
-        return view('student/selection/drop', $data);
+        return view('student/selection/drop', $this->data);
     }
 }

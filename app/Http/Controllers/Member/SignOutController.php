@@ -8,11 +8,11 @@ use App\Http\Controllers\Controller;
 class SignOutController extends Controller
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Sign out";
+    }
     function index() {
-        $data['title'] = "Sign out";
-        $data['G_SCHOOL'] = "東海";
-        $data['G_SCHOOL_WEBSITE'] = "http://www.thu.edu.tw";
-
-        return view('member/sign_out', $data);
+        return view('member/sign_out', $this->data);
     }
 }

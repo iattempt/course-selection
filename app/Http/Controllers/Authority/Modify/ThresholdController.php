@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Authority\ModifyController;
 
-class ThresholdController extends Controller
+class ThresholdController extends ModifyController
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Modify threshold";
+    }
     function index() {
-        $data['title'] = "Modify threshold";
-        return view('authority/modify/threshold', $data);
+        return view('authority/modify/threshold', $this->data);
     }
 }

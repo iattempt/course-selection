@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 class StudentController extends Controller
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Student";
+        $this->data['auth'] = "student";
+    }
     function index() {
-        $data['title'] = "Sign in";
-        $data['G_SCHOOL'] = "東海";
-        $data['G_SCHOOL_WEBSITE'] = "http://www.thu.edu.tw";
-
-        return view('student', $data);
+        return view('student', $this->data);
     }
 }

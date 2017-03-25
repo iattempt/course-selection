@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Student\Selection\Enroll;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Student\Selection\EnrollController;
 
-class InElectiveController extends Controller
+class InElectiveController extends EnrollController
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Enroll in-elective";
+    }
     function index() {
-        $data['title'] = "Enroll in-elective";
-        return view('student/selection/enroll/in_elective', $data);
+        return view('student/selection/enroll/in_elective', $this->data);
     }
 }

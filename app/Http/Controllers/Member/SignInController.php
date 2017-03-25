@@ -8,11 +8,11 @@ use App\Http\Controllers\Controller;
 class SignInController extends Controller
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Sign in";
+    }
     function index() {
-        $data['title'] = "Sign in";
-        $data['G_SCHOOL'] = "東海";
-        $data['G_SCHOOL_WEBSITE'] = "http://www.thu.edu.tw";
-
-        return view('member/sign_in', $data);
+        return view('member/sign_in', $this->data);
     }
 }

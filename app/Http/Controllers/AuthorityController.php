@@ -7,11 +7,12 @@ use Illuminate\Http\Request;
 class AuthorityController extends Controller
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = 'Authority';
+        $this->data['auth'] = "authority";
+    }
     function index() {
-        $data['title'] = "Sign in";
-        $data['G_SCHOOL'] = "東海";
-        $data['G_SCHOOL_WEBSITE'] = "http://www.thu.edu.tw";
-
-        return view('authority', $data);
+        return view('course_search', $this->data);
     }
 }

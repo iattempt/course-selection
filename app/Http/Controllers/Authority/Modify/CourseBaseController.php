@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Authority\ModifyController;
 
-class CourseBaseController extends Controller
+class CourseBaseController extends ModifyController
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Modify course base";
+    }
     function index() {
-        $data['title'] = "Modify course-base";
-        return view('authority/modify/course_base', $data);
+        return view('authority/modify/course_base', $this->data);
     }
 }

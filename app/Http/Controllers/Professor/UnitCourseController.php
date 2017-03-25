@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Professor;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfessorController;
 
-class UnitCourseController extends Controller
+class UnitCourseController extends ProfessorController
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Unit course";
+    }
     function index() {
-        $data['title'] = "Unit course";
-        return view('professor/unit_course', $data);
+        return view('professor/unit_course', $this->data);
     }
 }

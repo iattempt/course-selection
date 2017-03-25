@@ -7,15 +7,14 @@ use Illuminate\Http\Request;
 class CourseSearchController extends Controller
 {
     //
-    function index() {
-        $data['title'] = 'Course search';
-        $data['G_SCHOOL'] = "東海";
-        $data['G_SCHOOL_WEBSITE'] = "http://www.thu.edu.tw";
-        $data['auth'] = "student";
-
-        return view('course_search', $data);
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = 'Course search';
+        // temporary
+        $this->data['auth'] = "student";
     }
-    function enroll() {
-    
+    function index() {
+
+        return view('course_search', $this->data);
     }
 }

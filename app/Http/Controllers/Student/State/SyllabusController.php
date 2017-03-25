@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Student\State;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Student\StateController;
 
-class SyllabusController extends Controller
+class SyllabusController extends StateController
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Syllabus";
+    }
     function index() {
-        $data['title'] = "Syllabus";
-        return view('student/state/syllabus', $data);
+        return view('student/state/syllabus', $this->data);
     }
 }

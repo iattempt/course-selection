@@ -3,13 +3,16 @@
 namespace App\Http\Controllers\Student\Selection;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Student\SelectionController;
 
-class ApplyForController extends Controller
+class ApplyForController extends SelectionController
 {
     //
+    function __construct () {
+        parent::__construct();
+        $this->data['title'] = "Apply for";
+    }
     function index() {
-        $data['title'] = "Apply for";
-        return view('student/selection/apply_for', $data);
+        return view('student/selection/apply_for', $this->data);
     }
 }
