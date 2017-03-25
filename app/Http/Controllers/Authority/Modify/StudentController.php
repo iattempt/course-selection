@@ -15,4 +15,22 @@ class StudentController extends ModifyController
     function index() {
         return view('authority/modify/student', $this->data);
     }
+    function create() {
+    
+    }
+    function store() {
+    
+    }
+    function show($id) {
+    
+    }
+    function edit($id) {
+    
+    }
+    function update($id) {
+
+    }
+    function destory($id) {
+    
+    }
 }

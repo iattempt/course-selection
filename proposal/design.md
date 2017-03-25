@@ -185,9 +185,15 @@
    * front end
       + 打造最強網頁UI/UX設計腦:設計師都該懂的絕佳設計.溝通法則
    * back end
-      + 無暇程式碼
       + 重構-改善既有程式的設計
       + [Laravel framework](https://laravel.com/docs/5.4/routing)
+      + [Easy Laravel 5](http://www.easylaravelbook.com)
+         1. Eloquent ORM
+         2. Migration
+         3. ...
+      + 無暇程式碼
+         1. Meaningful names
+         2. ...
    * others
       + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
 

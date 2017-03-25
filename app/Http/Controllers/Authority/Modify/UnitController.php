@@ -15,4 +15,22 @@ class UnitController extends ModifyController
     function index() {
         return view('authority/modify/unit', $this->data);
     }
+    function create() {
+    
+    }
+    function store() {
+    
+    }
+    function show($id) {
+    
+    }
+    function edit($id) {
+    
+    }
+    function update($id) {
+
+    }
+    function destory($id) {
+    
+    }
 }
