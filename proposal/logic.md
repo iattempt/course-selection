@@ -34,6 +34,6 @@
       + UnitCourseController
    - FeedbackController
    - CourseSearchController
-   - `Member`
+   - `Member\`
       + SignInController
       + SignOutController
