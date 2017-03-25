@@ -1,7 +1,7 @@
 @extends('schema/preset')
 @section('main')
 <div class="container">
-  <form action="/course_search" method="get">
+  <form action="/sign_in" method="post">
     {{ csrf_field() }}
     <div class="form-group row d-flex justify-content-center">
       <div class="col-12 col-sm-8 col-md-6 row my-4">
