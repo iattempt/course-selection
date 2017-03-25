@@ -16,8 +16,8 @@
         其他
       </a>
       <div class="dropdown-menu">
-        <a class="nav-link text-primary" href="http://www.thu.edu.tw/web/calendar/detail.php?scid=23&sid=36">行事曆</a>
-        <hr>
+        <a class="nav-link text-primary" href="{{$G_SCHOOL_WEBSITE}}">{{$G_SCHOOL}}首頁</a>
+        <a class="nav-link text-primary" href="{{$G_SCHOOL_CALANDER}}">行事曆</a>
         <a class="nav-link text-primary" href="/feedback">意見回饋</a>
       </div>
     </div>

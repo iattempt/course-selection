@@ -1,4 +1,4 @@
-@extends('schema/preset')
+@extends('pre-selection')
 @section('main')
 <div class="container">
   <form action="student" method="post">
