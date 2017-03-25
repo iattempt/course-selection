@@ -11,8 +11,8 @@
 |
 */
 
-// check post and get class
-//
+Route::get('test', 'TestController@index');
+
 Route::get('/', 'Controller@index');
 Route::get('sign_in', 'Member\SignInController@index');
 
