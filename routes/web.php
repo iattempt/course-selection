@@ -11,13 +11,14 @@
 |
 */
 
-// check post and get class
-//
-Route::get('/', 'Controller@index');
-Route::get('sign_in', 'Member\SignInController@index');
+Route::get('test', 'TestController@index');
+
+Route::get('sign_in', 'SignInController@index');
+Route::post('sign_in', 'SignInController@verify');
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('sign_out', 'Member\SignOutController@index');
+    Route::get('/', 'IndexController@index');
+    Route::get('sign_out', 'SignOutController@index');
 
     Route::get('feedback', 'FeedbackController@index');
     Route::get('course_search', 'CourseSearchController@index');
@@ -27,21 +28,68 @@ Route::group(['middleware' => 'guest'], function () {
     Route::group(['namespace' => 'Authority'], function () {
         Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
             Route::get('professor', 'ProfessorController@index');
-            Route::post('professor', 'ProfessorController@verify');
             Route::get('course', 'CourseController@index');
-            Route::post('course', 'CourseController@verify');
             Route::get('unit', 'UnitController@index');
-            Route::post('unit', 'UnitController@verify');
             Route::get('syllabus', 'SyllabusController@index');
-            Route::post('syllabus', 'SyllabusController@verify');
             Route::get('student', 'StudentController@index');
-            Route::post('student', 'StudentController@verify');
             Route::get('course_base', 'CourseBaseController@index');
-            Route::post('course_base', 'CourseBaseController@verify');
             Route::get('threshold', 'ThresholdController@index');
-            Route::post('threshold', 'ThresholdController@verify');
             Route::get('classroom', 'ClassroomController@index');
-            Route::post('classroom', 'ClassroomController@verify');
+
+            Route::get('professor/new', 'ProfessorController@create');
+            Route::get('course/new', 'CourseController@create');
+            Route::get('unit/new', 'UnitController@create');
+            Route::get('syllabus/new', 'SyllabusController@create');
+            Route::get('student/new', 'StudentController@create');
+            Route::get('course_base/new', 'CourseBaseController@create');
+            Route::get('threshold/new', 'ThresholdController@create');
+            Route::get('classroom/new', 'ClassroomController@create');
+
+            Route::post('professor', 'ProfessorController@store');
+            Route::post('course', 'CourseController@store');
+            Route::post('unit', 'UnitController@store');
+            Route::post('syllabus', 'SyllabusController@store');
+            Route::post('student', 'StudentController@store');
+            Route::post('course_base', 'CourseBaseController@store');
+            Route::post('threshold', 'ThresholdController@store');
+            Route::post('classroom', 'ClassroomController@store');
+
+            Route::get('professor/{id}', 'ProfessorController@show');
+            Route::get('course/{id}', 'CourseController@show');
+            Route::get('unit/{id}', 'UnitController@show');
+            Route::get('syllabus/{id}', 'SyllabusController@show');
+            Route::get('student/{id}', 'StudentController@show');
+            Route::get('course_base/{id}', 'CourseBaseController@show');
+            Route::get('threshold/{id}', 'ThresholdController@show');
+            Route::get('classroom/{id}', 'ClassroomController@show');
+
+            Route::get('professor/{id}/edit', 'ProfessorController@edit');
+            Route::get('course/{id}/edit', 'CourseController@edit');
+            Route::get('unit/{id}/edit', 'UnitController@edit');
+            Route::get('syllabus/{id}/edit', 'SyllabusController@edit');
+            Route::get('student/{id}/edit', 'StudentController@edit');
+            Route::get('course_base/{id}/edit', 'CourseBaseController@edit');
+            Route::get('threshold/{id}/edit', 'ThresholdController@edit');
+            Route::get('classroom/{id}/edit', 'ClassroomController@edit');
+
+            Route::put('professor/{id}', 'ProfessorController@update');
+            Route::put('course/{id}', 'CourseController@update');
+            Route::put('unit/{id}', 'UnitController@update');
+            Route::put('syllabus/{id}', 'SyllabusController@update');
+            Route::put('student/{id}', 'StudentController@update');
+            Route::put('course_base/{id}', 'CourseBaseController@update');
+            Route::put('threshold/{id}', 'ThresholdController@update');
+            Route::put('classroom/{id}', 'ClassroomController@update');
+
+            Route::delete('professor/{id}', 'ProfessorController@destory');
+            Route::delete('course/{id}', 'CourseController@destory');
+            Route::delete('unit/{id}', 'UnitController@destory');
+            Route::delete('syllabus/{id}', 'SyllabusController@destory');
+            Route::delete('student/{id}', 'StudentController@destory');
+            Route::delete('course_base/{id}', 'CourseBaseController@destory');
+            Route::delete('threshold/{id}', 'ThresholdController@destory');
+            Route::delete('classroom/{id}', 'ClassroomController@destory');
+
         });
     });
 
