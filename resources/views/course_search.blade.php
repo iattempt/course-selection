@@ -134,7 +134,7 @@
   <div class="col-12">
     <ul class="list-group">
       <li class="list-group-item row">
-        @if ($auth === "student")
+        @if ($general->title === "Student")
           <span class="col-1">加選</span>
           <span class="col-6">課程名稱</span>
         @else

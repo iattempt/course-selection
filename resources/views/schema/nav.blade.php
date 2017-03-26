@@ -16,8 +16,8 @@
             其他
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownElse">
-            <a class="dropdown-item" href="{{$G_SCHOOL_WEBSITE}}">{{$G_SCHOOL}}首頁</a>
-            <a class="dropdown-item" href="{{$G_SCHOOL_CALANDER}}">行事曆</a>
+            <a class="dropdown-item" href="{{ $general->school->website }}">{{ $general->school->name }}首頁</a>
+            <a class="dropdown-item" href="{{ $general->school->calender }}">行事曆</a>
             <a class="dropdown-item" href="/feedback">意見回饋</a>
         </li>
       </ul>

@@ -3,7 +3,7 @@
 <html lang='zh-tw'>
   <head>
     <meta charset="utf-8">
-    <title>{{ $title }}</title>
+    <title>{{ $general->title }}</title>
     @section('bootstrap_cdn')
       @parent
     @endsection

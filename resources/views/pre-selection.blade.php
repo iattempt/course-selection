@@ -1,4 +1,4 @@
-@extends( ($auth === "student")
-            ? 'student' : (($auth === "professor")
-            ? 'professor' : ($auth === "authority"
+@extends( ($general->title === "Student")
+            ? 'student' : (($general->title === "Professor")
+            ? 'professor' : ($general->title === "Authority"
             ? 'authority' : 'errors/404')))

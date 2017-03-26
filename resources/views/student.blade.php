@@ -2,7 +2,13 @@
 @section('nav')
 
 <li class="nav-item">
-  <a class="nav-link" href="/student/state/threshold">修課概覽</a>
+  <a class="nav-link" href="/student/threshold">修課概覽</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/student/syllabus">課表</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/student/pre_syllabus">預選課表</a>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="/course_search">課程搜尋</a>
@@ -17,7 +23,7 @@
     <a class="dropdown-item" href="/student/selection/enroll/common_required">共必修</a>
     <a class="dropdown-item" href="/student/selection/enroll/in_force_elective">系必選</a>
     <a class="dropdown-item" href="/student/selection/enroll/in_elective">系選</a>
-    <a class="dropdown-item" href="/student/selection/enroll/out_elective">選修</a>
+    <a class="dropdown-item" href="/student/selection/enroll/elective">選修</a>
     <a class="dropdown-item" href="/student/selection/enroll/general">通識</a>
   </div>
 </li>
