@@ -10,10 +10,10 @@ class StudentController extends ModifyController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Modify student";
+        $this->general->title = "Modify student";
     }
     function index() {
-        return view('authority/modify/student', $this->data);
+        return view('authority/modify/student', ['general' => $this->general]);
     }
     function create() {
     

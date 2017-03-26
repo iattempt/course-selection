@@ -9,9 +9,9 @@ class FeedbackController extends Controller
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Feedback";
+        $this->genral->title = "Feedback";
     }
     function index() {
-        return view('feedback', $this->data);
+        return view('feedback', ['general' => $this->general]);
     }
 }

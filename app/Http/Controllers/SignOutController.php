@@ -10,9 +10,9 @@ class SignOutController extends Controller
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Sign out";
+        $this->general->title = "Sign out";
     }
     function index() {
-        return view('sign_out', $this->data);
+        return view('sign_out', ['general' => $this->general]);
     }
 }

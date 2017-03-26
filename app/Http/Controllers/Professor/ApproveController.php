@@ -10,9 +10,9 @@ class ApproveController extends ProfessorController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Approve";
+        $this->general->title = "Approve";
     }
     function index() {
-        return view('professor/approve', $this->data);
+        return view('professor/approve', ['general' => $this->general]);
     }
 }

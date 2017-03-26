@@ -10,9 +10,9 @@ class RecommendationController extends EnrollController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Enroll recommendation";
+        $this->general->title = "Enroll recommendation";
     }
     function index() {
-        return view('student/selection/enroll/recommendation', $this->data);
+        return view('student/selection/enroll/recommendation', ['general' => $this->general]);
     }
 }

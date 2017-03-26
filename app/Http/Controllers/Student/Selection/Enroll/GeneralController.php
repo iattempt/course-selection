@@ -10,9 +10,9 @@ class GeneralController extends EnrollController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Enroll general";
+        $this->general->title = "Enroll general";
     }
     function index() {
-        return view('student/selection/enroll/general', $this->data);
+        return view('student/selection/enroll/general', ['general' => $this->general]);
     }
 }

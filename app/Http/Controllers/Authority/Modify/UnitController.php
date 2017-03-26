@@ -10,10 +10,10 @@ class UnitController extends ModifyController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Modify unit";
+        $this->general->title = "Modify unit";
     }
     function index() {
-        return view('authority/modify/unit', $this->data);
+        return view('authority/modify/unit', ['general' => $this->general]);
     }
     function create() {
     

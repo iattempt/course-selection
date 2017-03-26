@@ -10,10 +10,10 @@ class ThresholdController extends ModifyController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Modify threshold";
+        $this->general->title = "Modify threshold";
     }
     function index() {
-        return view('authority/modify/threshold', $this->data);
+        return view('authority/modify/threshold', ['general' => $this->general]);
     }
     function create() {
     

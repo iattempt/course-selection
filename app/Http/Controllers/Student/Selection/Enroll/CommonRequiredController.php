@@ -10,9 +10,9 @@ class CommonRequiredController extends EnrollController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Enroll common required";
+        $this->general->title = "Enroll common required";
     }
     function index() {
-        return view('student/selection/enroll/common_required', $this->data);
+        return view('student/selection/enroll/common_required', ['general' => $this->general]);
     }
 }

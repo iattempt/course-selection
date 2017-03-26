@@ -10,9 +10,9 @@ class InElectiveController extends EnrollController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Enroll in-elective";
+        $this->general->title = "Enroll in-elective";
     }
     function index() {
-        return view('student/selection/enroll/in_elective', $this->data);
+        return view('student/selection/enroll/in_elective', ['general' => $this->general]);
     }
 }

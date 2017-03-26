@@ -10,9 +10,9 @@ class InForceElectiveController extends EnrollController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Enroll in-force-elective";
+        $this->general->title = "Enroll in-force-elective";
     }
     function index() {
-        return view('student/selection/enroll/in_force_elective', $this->data);
+        return view('student/selection/enroll/in_force_elective', ['general' => $this->general]);
     }
 }

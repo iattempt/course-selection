@@ -10,9 +10,9 @@ class ApplyForController extends SelectionController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Apply for";
+        $this->general->title = "Apply for";
     }
     function index() {
-        return view('student/selection/apply_for', $this->data);
+        return view('student/selection/apply_for', ['general' => $this->general]);
     }
 }

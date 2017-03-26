@@ -10,9 +10,9 @@ class InRequiredController extends EnrollController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Enroll in-required";
+        $this->general->title = "Enroll in-required";
     }
     function index() {
-        return view('student/selection/enroll/in_required', $this->data);
+        return view('student/selection/enroll/in_required', ['general' => $this->general]);
     }
 }

@@ -9,10 +9,9 @@ class StudentController extends Controller
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Student";
-        $this->data['auth'] = "student";
+        $this->general->title = "Student";
     }
     function index() {
-        return view('student', $this->data);
+        return view('student', ['general' => $this->general]);
     }
 }

@@ -10,9 +10,9 @@ class DropController extends SelectionController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Drop";
+        $this->general->title = "Drop";
     }
     function index() {
-        return view('student/selection/drop', $this->data);
+        return view('student/selection/drop', ['general' => $this->general]);
     }
 }

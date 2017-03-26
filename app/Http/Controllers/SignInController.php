@@ -10,10 +10,10 @@ class SignInController extends Controller
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Sign in";
+        $this->general->title = "Sign in";
     }
     function index() {
-        return view('sign_in', $this->data);
+        return view('sign_in', ['general' => $this->general]);
     }
     function verify() {
 

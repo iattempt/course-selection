@@ -10,10 +10,10 @@ class SyllabusController extends ModifyController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "Modify syllabus";
+        $this->general->title = "Modify syllabus";
     }
     function index() {
-        return view('authority/modify/syllabus', $this->data);
+        return view('authority/modify/syllabus', ['general' => $this->general]);
     }
     function create() {
     

@@ -9,10 +9,9 @@ class AuthorityController extends Controller
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = 'Authority';
-        $this->data['auth'] = "authority";
+        $this->general->title = "authority";
     }
     function index() {
-        return view('authority', $this->data);
+        return view('authority', ['general' => $this->general]);
     }
 }
