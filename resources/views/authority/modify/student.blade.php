@@ -1,5 +1,5 @@
-@extends('pre-selection')
-@section('main')
+@extends('authority/modify')
+@section('modify')
 <div class="container">
   <form action="student" method="post">
     <div class="form-group row">

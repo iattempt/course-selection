@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('test', 'TestController@index');
 
 Route::get('/', 'Controller@index');
-Route::get('sign_in', 'Member\SignInController@index');
+Route::get('sign_in', 'SignInController@index');
+Route::post('sign_in', 'SignInController@verify');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'IndexController@index');
@@ -25,7 +25,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 //authority
     Route::get('authority', 'AuthorityController@index');
-    Route::group(['namespace' => 'Authority'], function () {
+    Route::group(['prefix' => 'authority', 'namespace' => 'Authority'], function () {
         Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
             Route::get('professor', 'ProfessorController@index');
             Route::get('course', 'CourseController@index');
@@ -117,18 +117,19 @@ Route::group(['middleware' => 'guest'], function () {
             Route::group(['prefix' => 'enroll', 
                 'namespace' => 'Enroll'], function () {
                 Route::get('recommendation', 'RecommendationController@index');
-                Route::post('recommendation', 'RecommendationController@verify');
                 Route::get('in_required', 'InRequiredController@index');
-                Route::post('in_required', 'InRequiredController@verify');
                 Route::get('common_required', 'CommonRequiredController@index');
-                Route::post('common_required', 'CommonRequiredController@verify');
                 Route::get('in_force_elective', 'InForceElectiveController@index');
-                Route::post('in_force_elective', 'InForceElectiveController@verify');
                 Route::get('in_elective', 'InElectiveController@index');
-                Route::post('in_elective', 'InElectiveController@verify');
                 Route::get('out_elective', 'OutElectiveController@index');
-                Route::post('out_elective', 'OutElectiveController@verify');
                 Route::get('general', 'GeneralController@index');
+
+                Route::post('recommendation', 'RecommendationController@verify');
+                Route::post('in_required', 'InRequiredController@verify');
+                Route::post('common_required', 'CommonRequiredController@verify');
+                Route::post('in_force_elective', 'InForceElectiveController@verify');
+                Route::post('in_elective', 'InElectiveController@verify');
+                Route::post('out_elective', 'OutElectiveController@verify');
                 Route::post('general', 'GeneralController@verify');
             });
         });

@@ -1,5 +1,5 @@
-@extends('schema/preset')
-@section('main')
+@extends('authority/modify')
+@section('modify')
 <div class="container">
   <form action="course" method="post">
     <div class="form-group row">

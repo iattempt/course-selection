@@ -2,9 +2,6 @@
 @section('nav')
 
 <li class="nav-item">
-  <a class="nav-link active" href="/professor">首頁</a>
-</li>
-<li class="nav-item">
   <a class="nav-link" href="/professor/approve">審核特殊加選</a>
 </li>
 <li class="nav-item">
@@ -17,5 +14,8 @@
 @endsection
 
 @section('main')
-@parent
+
+@section('professor')
+@show
+
 @endsection

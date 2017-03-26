@@ -1,3 +1,3 @@
-@extends('schema/preset')
-@section('main')
+@extends('student/selection')
+@section('selection')
 @endsection
