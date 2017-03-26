@@ -13,6 +13,6 @@ class AuthorityController extends Controller
         $this->data['auth'] = "authority";
     }
     function index() {
-        return view('course_search', $this->data);
+        return view('authority', $this->data);
     }
 }

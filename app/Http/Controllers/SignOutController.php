@@ -13,6 +13,6 @@ class SignOutController extends Controller
         $this->data['title'] = "Sign out";
     }
     function index() {
-        return view('member/sign_out', $this->data);
+        return view('sign_out', $this->data);
     }
 }
