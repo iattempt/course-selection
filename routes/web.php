@@ -121,7 +121,7 @@ Route::group(['middleware' => 'guest'], function () {
                 Route::get('common_required', 'CommonRequiredController@index');
                 Route::get('in_force_elective', 'InForceElectiveController@index');
                 Route::get('in_elective', 'InElectiveController@index');
-                Route::get('out_elective', 'OutElectiveController@index');
+                Route::get('elective', 'ElectiveController@index');
                 Route::get('general', 'GeneralController@index');
 
                 Route::post('recommendation', 'RecommendationController@verify');
@@ -129,16 +129,13 @@ Route::group(['middleware' => 'guest'], function () {
                 Route::post('common_required', 'CommonRequiredController@verify');
                 Route::post('in_force_elective', 'InForceElectiveController@verify');
                 Route::post('in_elective', 'InElectiveController@verify');
-                Route::post('out_elective', 'OutElectiveController@verify');
+                Route::post('elective', 'ElectiveController@verify');
                 Route::post('general', 'GeneralController@verify');
             });
         });
-        Route::group(['prefix' => 'state', 
-                'namespace' => 'State'], function () {
-            Route::get('pre_syllabus', 'PreSyllabusController@index');
-            Route::get('syllabus', 'SyllabusController@index');
-            Route::get('threshold', 'ThresholdController@index');
-            Route::get('threshold_print', 'ThresholdController@print');
-        });
+        Route::get('pre_syllabus', 'PreSyllabusController@index');
+        Route::get('syllabus', 'SyllabusController@index');
+        Route::get('threshold', 'ThresholdController@index');
+        Route::get('threshold_print', 'ThresholdController@print');
     });
 });

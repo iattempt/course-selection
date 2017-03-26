@@ -9,7 +9,7 @@ class CourseSearchController extends Controller
     //
     function __construct () {
         parent::__construct();
-        $this->general->title = 'Course search';
+        $this->general->title = 'student';
     }
     function index() {
         return view('course_search', ['general' => $this->general]);
