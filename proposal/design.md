@@ -14,17 +14,17 @@
 + [目標](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#目標)
    * [特性](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#特性)
    * [功能](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#功能)
-+ [程式碼實作](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#程式碼實作)
++ [準備事宜](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#準備事宜)
+   * [資源](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#資源)
+   * [工具](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#工具)
+   * [分工](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#分工)
 + [介面](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#介面)
    * [學生](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#學生)
    * [教授](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#教授)
    * [行政人員](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#行政人員)
    * [共有](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#共有)
-+ [系統](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#系統)
-+ [準備事宜](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#準備事宜)
-   * [資源](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#資源)
-   * [工具](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#工具)
-   * [分工](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#分工)
+   * [系統](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#系統)
++ [程式碼實作](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#程式碼實作)
 
 ---
 ## 目標
@@ -73,11 +73,76 @@
        `註：`~~提供負向表列設定功能，以進行時段排外，或者增加一個上下班時段排外功能~~
 
 ---
-### 程式碼實作
-+ 可讀性
-+ 可維護性
-+ 可擴充性
-+ ...
+## 準備事宜
+
+#### 資源
+1. 筆記型電腦
+   * 進行網頁設計
+   * 查詢資料
+   * 報告撰寫
+1. 虛擬主機
+   * 網頁上線用
+1. 網域
+   * [網頁上線用](http://iattempt.net)
+1. 參考書籍/官方文件
+   * front end
+      + [打造最強網頁UI/UX設計腦:設計師都該懂的絕佳設計.溝通法則](http://www.books.com.tw/products/0010723121)
+   * back end
+      + [重構-改善既有程式的設計](http://www.books.com.tw/products/0010411649)
+      + [Laravel framework](https://laravel.com/docs/5.4/routing)
+      + [Easy Laravel 5](http://www.easylaravelbook.com)
+         1. Eloquent ORM
+         2. Migration
+         3. ...
+      + [無暇程式碼](http://www.books.com.tw/products/0010579897?sloc=reprod_i_1)
+         1. Meaningful names
+         2. ...
+   * others
+      + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
+      + [Github](https://gist.github.com/guweigang/9848271)
+---
+#### 工具
+1. 文字編輯
+   * Vim
+   * Sublime 3
+1. 版本控制
+   * Git
+1. 程式語言
+   * PHP
+   * HTML5
+   * CSS
+   * Javascript
+   * SQL
+   * Markdown
+   * bash
+
+---
+#### 分工
+```
+build by Chang and Lin
+```
+`可量化, W = week`
+1. 軟體安裝與測試
+   * 2W : Chang
+1. 系統分析與設計
+   * 10W : Chang
+1. 資料庫分析與設計
+   * 2W : Chang
+1. 整體測試
+   * N/A W : Chang
+1. 文件製作
+   * N/A W : Lin
+1. 報告撰寫
+   * N/A W : Lin
+1. 程式設計
+   * 15W : Chang
+1. 伺服器架設與測試
+   * N/A W : Chang
+`難以量化`
+1. 資料搜集
+   * Chang, Lin
+1. 理論探索
+   * Chang
 
 ---
 ## 介面
@@ -189,73 +254,8 @@
    1. 修課
 
 ---
-## 準備事宜
-
-#### 資源
-1. 筆記型電腦
-   * 進行網頁設計
-   * 查詢資料
-   * 報告撰寫
-1. 虛擬主機
-   * 網頁上線用
-1. 網域
-   * [網頁上線用](http://iattempt.net)
-1. 參考書籍/官方文件
-   * front end
-      + [打造最強網頁UI/UX設計腦:設計師都該懂的絕佳設計.溝通法則](http://www.books.com.tw/products/0010723121)
-   * back end
-      + [重構-改善既有程式的設計](http://www.books.com.tw/products/0010411649)
-      + [Laravel framework](https://laravel.com/docs/5.4/routing)
-      + [Easy Laravel 5](http://www.easylaravelbook.com)
-         1. Eloquent ORM
-         2. Migration
-         3. ...
-      + [無暇程式碼](http://www.books.com.tw/products/0010579897?sloc=reprod_i_1)
-         1. Meaningful names
-         2. ...
-   * others
-      + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
-      + [Github](https://gist.github.com/guweigang/9848271)
----
-#### 工具
-1. 文字編輯
-   * Vim
-   * Sublime 3
-1. 版本控制
-   * Git
-1. 程式語言
-   * PHP
-   * HTML5
-   * CSS
-   * Javascript
-   * SQL
-   * Markdown
-   * bash
-
----
-#### 分工
-```
-build by Chang and Lin
-```
-`可量化, W = week`
-1. 軟體安裝與測試
-   * 2W : Chang
-1. 系統分析與設計
-   * 10W : Chang
-1. 資料庫分析與設計
-   * 2W : Chang
-1. 整體測試
-   * N/A W : Chang
-1. 文件製作
-   * N/A W : Lin
-1. 報告撰寫
-   * N/A W : Lin
-1. 程式設計
-   * 15W : Chang
-1. 伺服器架設與測試
-   * N/A W : Chang
-`難以量化`
-1. 資料搜集
-   * Chang, Lin
-1. 理論探索
-   * Chang
+### 程式碼實作
++ 可讀性
++ 可維護性
++ 可擴充性
++ ...
