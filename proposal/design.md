@@ -10,6 +10,23 @@
 [整合測試](./test.md)|如果可以，請他人幫忙使用網站，不行就團隊內部再模擬角色測試。
 
 ---
+## 目錄
++ [目標](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#目標)
+   * [特性](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#特性)
+   * [功能](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#功能)
++ [程式碼實作](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#程式碼實作)
++ [介面](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#介面)
+   * [學生](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#學生)
+   * [教授](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#教授)
+   * [行政人員](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#行政人員)
+   * [共有](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#共有)
++ [系統](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#系統)
++ [準備事宜](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#準備事宜)
+   * [資源](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#資源)
+   * [工具](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#工具)
+   * [分工](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#分工)
+
+---
 ## 目標
 
 #### 特性
@@ -200,7 +217,7 @@
       + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
       + [Github](https://gist.github.com/guweigang/9848271)
 ---
-#### 網站設計工具
+#### 工具
 1. 文字編輯
    * Vim
    * Sublime 3
@@ -216,7 +233,7 @@
    * bash
 
 ---
-#### 甘特圖
+#### 分工
 ```
 build by Chang and Lin
 ```
