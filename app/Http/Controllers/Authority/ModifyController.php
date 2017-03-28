@@ -11,4 +11,7 @@ class ModifyController extends AuthorityController
     public function __construct() {
         parent::__construct();
     }
+    public function index() {
+    
+    }
 }

@@ -9,7 +9,7 @@ class FeedbackController extends Controller
     //
     function __construct () {
         parent::__construct();
-        $this->genral->title = "Feedback";
+        $this->general->title = "Feedback";
     }
     function index() {
         return view('feedback', ['general' => $this->general]);

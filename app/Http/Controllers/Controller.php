@@ -7,13 +7,15 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public $general;
-
     public function __construct () {
         $this->general = new General();
+
+        $this->general->school = new School();
 
         $this->general->school->name = "東海";
         $this->general->school->calender = "http://www.thu.edu.tw/web/calendar/detail.php?scid=23&sid=36";
@@ -26,7 +28,6 @@ Class General
     public $title;
     public $school; //School class
     public function __construct () {
-        $this->school = new School();
     }
 }
 
@@ -35,4 +36,7 @@ class School
     public $name;
     public $calender;
     public $website;
+    
+    public function __construct () {
+    }
 }
