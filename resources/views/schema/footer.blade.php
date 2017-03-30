@@ -1,6 +1,8 @@
 @extends('schema/nav')
 @section('footer')
-  <footer class="row fixed-bottom">
+
+<div class="contrainer-fluid">
+  <div class="row fixed-bottom">
     <span class="mx-auto">
       &copy; 2017 Designed and maintained by the
       <a href="https://github.com/iattempt">Ernest</a>
@@ -10,7 +12,7 @@
       &nbsp;with the help of
       <a href="https://github.com/">the Github, inc.</a>
     </span>
-  </footer>
-</body>
-</html>
+  </div>
+</div>
+
 @endsection

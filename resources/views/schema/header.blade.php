@@ -4,8 +4,9 @@
   <head>
     <meta charset="utf-8">
     <title>{{ $general->title }}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
     @section('bootstrap_cdn')
-      @parent
+    @parent
     @endsection
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   </head>
@@ -18,5 +19,7 @@
   @section('main')
   @show
   @section('footer')
+  @show
+  @section('script')
   @show
 

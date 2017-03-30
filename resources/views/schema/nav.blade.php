@@ -1,5 +1,6 @@
 @extends('schema/header')
 @section('main-nav')
+
 <div class="container-fluid">
   <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary row">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,7 +9,7 @@
     <a class="navbar-brand mx-auto" href="/">選課系統</a>
     <div class="collapse navbar-collapse show" id="navbarSupportedContent">
       <hr class="bg-faded d-lg-none">
-      <ul class="navbar-nav mr-auto">
+      <ul id="nav" class="navbar-nav mr-auto">
         @section('nav')
         @show
         <li class="dropdown nav-item">
@@ -25,4 +26,5 @@
     </div>
   </nav>
 </div>
+
 @endsection

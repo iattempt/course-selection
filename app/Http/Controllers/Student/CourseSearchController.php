@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Student;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\StudentController;
 
-class CourseSearchController extends Controller
+class CourseSearchController extends StudentController
 {
     //
     function __construct () {

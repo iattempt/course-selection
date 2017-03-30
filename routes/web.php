@@ -18,13 +18,13 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('sign_out', 'SignOutController@index');
 
     Route::get('feedback', 'FeedbackController@index');
-    Route::get('course_search', 'CourseSearchController@index');
 
 //authority
     Route::get('authority', 'AuthorityController@index');
     Route::group(['prefix' => 'authority',
         'namespace' => 'Authority'], function () {
             Route::get('modify', 'ModifyController@index');
+            Route::get('course_search', 'CourseSearchController@index');
             Route::group(['prefix' => 'modify', 
                 'namespace' => 'Modify'], function () {
             Route::resource('classroom', 'ClassroomController');
@@ -42,6 +42,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('professor', 'ProfessorController@index');
     Route::group(['prefix' => 'professor', 
         'namespace' => 'Professor'], function() {
+        Route::get('course_search', 'CourseSearchController@index');
         Route::get('approve', 'ApproveController@index');
         Route::get('unit_course', 'UnitCourseController@index');
         Route::get('my_course', 'MyCourseController@index');
@@ -54,6 +55,7 @@ Route::group(['middleware' => 'guest'], function () {
         Route::get('pre_syllabus', 'PreSyllabusController@index');
         Route::get('syllabus', 'SyllabusController@index');
         Route::get('threshold', 'ThresholdController@index');
+        Route::get('course_search', 'CourseSearchController@index');
 
         Route::get('selection', 'SelectionController@index');
         Route::group(['prefix' => 'selection', 

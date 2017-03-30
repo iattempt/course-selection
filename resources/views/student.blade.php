@@ -2,6 +2,9 @@
 @section('nav')
 
 <li class="nav-item">
+  <a class="nav-link" href="/student">首頁</a>
+</li>
+<li class="nav-item">
   <a class="nav-link" href="/student/threshold">修課概覽</a>
 </li>
 <li class="nav-item">
@@ -11,7 +14,7 @@
   <a class="nav-link" href="/student/pre_syllabus">預選課表</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="/course_search">課程搜尋</a>
+  <a class="nav-link" href="/student/course_search">課程搜尋</a>
 </li>
 <li class="dropdown nav-item">
   <a class="nav-link dropdown-toggle" id="dropdownModify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

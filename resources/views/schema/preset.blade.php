@@ -1,2 +1,2 @@
-@extends('schema/footer')
+@extends('schema/script')
 
