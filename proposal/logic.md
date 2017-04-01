@@ -3,7 +3,13 @@
    ```
    Declare global variable. school-name or school-website, etc.
    ```
-   - StudentController  `Student\`
+#### General
+   - FeedbackController
+   - SignInController
+   - SignOutController
+---
+#### Student
+   - StudentController
       + SelectionController  `Selection\`
          * ApplyForController
          * DropController
@@ -18,7 +24,10 @@
          * PreSyllabusController
          * SyllabusController
          * ThresholdController
-   - AuthorityController  `Authority\`
+      + CourseSearchController
+---
+#### Authority
+   - AuthorityController
       + ModifyController  `Modify\`
          * ClassroomController
          * CourseBaseController
@@ -28,12 +37,34 @@
          * SyllabusController
          * ThresholController
          * UnitController
-   - ProfessorController  `Professor\`
+      + CourseSearchController
+---
+#### Professor
+   - ProfessorController
       + ApproveController
       + MyCourseController
       + UnitCourseController
-   - FeedbackController
-   - CourseSearchController
-   - `Member\`
-      + SignInController
-      + SignOutController
+      + CourseSearchController
+---
+## Viewer
+* Viewer
+   - Schema
+      ```
+      預先載入必須的 css, js, and 設計 general navigation bar, etc.
+      整個載入過程是必須按照下列順序的
+      ```
+      1. bootstrap_cdn
+      1. head
+      1. header
+      1. script
+      1. preset
+   - Student
+   - Professor
+   - Authority
+---
+## Model
+* Model
+   - Repository
+      ```
+      使用MySQL
+      ```
