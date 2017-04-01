@@ -20,8 +20,4 @@
 @endsection
 
 @section('main')
-
-@section('professor')
-@show
-
 @endsection

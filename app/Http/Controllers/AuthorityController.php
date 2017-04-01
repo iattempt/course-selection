@@ -9,6 +9,7 @@ class AuthorityController extends Controller
     //
     function __construct () {
         parent::__construct();
+        $this->general->identity = "authority";
         $this->general->title = "authority";
     }
     function index() {

@@ -9,12 +9,11 @@
     for (var i = 0; i < anchor.length; i++) {
         if (anchor[i].href == current || anchor[i].href + "/" == current) {
             anchor[i].className += " active";
+            anchor[i].className += " active";
         }
     }
 })();
 
 </script>
-</body>
-</html>
 
 @endsection

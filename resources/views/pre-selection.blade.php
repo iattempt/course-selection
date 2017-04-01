@@ -1,5 +1,5 @@
-@extends( ($general->title === "student")
-            ? 'student' : (($general->title === "professor")
-            ? 'professor' : ($general->title === "authority"
+@extends( ($general->identity === "student")
+            ? 'student' : (($general->identity === "professor")
+            ? 'professor' : ($general->identity === "authority"
             ? 'authority' : 'errors/404')))
 
