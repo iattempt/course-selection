@@ -2,6 +2,7 @@
 @section('main')
 @parent
 
+<div class="container-fluid">
   <form action="/sign_out" method="post">
     {{ csrf_field() }}
     <!-- Filter -->
@@ -62,5 +63,6 @@
     </div>
   </div>
   <!-- end of Display result-->
+</div>
 
 @endsection
