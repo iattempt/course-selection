@@ -17,6 +17,6 @@ class IndexController extends Controller
         if (Auth::check()){
             return redirect(Auth::user()->getType());
         }
-        return redirect('login');
+        return redirect('sign_in');
     }
 }

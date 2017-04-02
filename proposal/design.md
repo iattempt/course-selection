@@ -49,6 +49,9 @@
       * MVC(Model View Control)：降低邏輯、視圖及資料間的耦合
       * SRP(Single Responsibility Principle)：[所有Class盡可能做最少的事情](./logic.md)
       * ...
+   1. 防呆機制：
+      * 登入驗證無須自行選擇登入身份，系統自動判定
+      * ...
    1. ...
 
 ---

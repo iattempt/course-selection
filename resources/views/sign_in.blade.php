@@ -1,7 +1,7 @@
 @extends('schema/preset')
 @section('main')
 <div class="container">
-  <form action="/sign_in" method="post">
+  <form action="{{ route('login') }}" method="POST">
     {{ csrf_field() }}
     <div class="form-group row d-flex justify-content-center">
       <div class="col-12 col-sm-8 col-md-6 row my-4">
@@ -16,7 +16,7 @@
         </div>
         @endforeach
         @endif
-        <a href="#">忘記密碼?</a>
+        <a href="{{ route('password.request') }}">忘記密碼?</a>
         <hr class="col-12">
         <div class="input-group d-flex justify-content-end">
           <span class="input-group-addon">
