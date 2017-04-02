@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Selection\User;
+use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
@@ -12,6 +14,9 @@ class IndexController extends Controller
     }
 
     public function index() {
-        return 'Welcome';
+        if (Auth::check()){
+            return redirect(Auth::user()->getType());
+        }
+        return redirect('login');
     }
 }

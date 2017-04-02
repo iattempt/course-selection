@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Selection\Account;
+use App\Selection\User;
 
 class SignInController extends Controller
 {
@@ -17,10 +17,10 @@ class SignInController extends Controller
         return view('sign_in', ['general' => $this->general]);
     }
     function verify() {
-        $accounts = Account::all();
+        $accounts = User::all();
         for ($i = 0; $i<count($accounts); $i++)
         {
-            if ($accounts[$i]->account == $_POST["account"] && $accounts[$i]->password ==$_POST["password"]){
+            if ($accounts[$i]->email == $_POST["email"] && $accounts[$i]->password ==$_POST["password"]){
                 return redirect($accounts[$i]->type);
             }
         }

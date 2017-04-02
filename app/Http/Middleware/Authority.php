@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class Authority
 {
@@ -15,6 +16,10 @@ class Authority
      */
     public function handle($request, Closure $next)
     {
-        return $next($request);
+        if (Auth::check() && Auth::user()->isAuthority())
+        {
+            return $next($request);
+        }
+        return redirect('/');
     }
 }

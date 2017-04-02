@@ -11,12 +11,10 @@
 |
 */
 
-Route::get('sign_in', 'SignInController@index');
-Route::post('sign_in', 'SignInController@verify');
+Auth::routes();
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'IndexController@index');
-    Route::get('sign_out', 'SignOutController@index');
     Route::get('feedback', 'FeedbackController@index');
     Route::get('{id}/course_search', 'CourseSearchController@index');
 
@@ -24,8 +22,8 @@ Route::group(['middleware' => 'guest'], function () {
     Route::group(['middleware' => 'authority'], function () {
         Route::get('authority', 'AuthorityController@index');
         Route::group(['prefix' => 'authority', 'namespace' => 'Authority'], function () {
-                Route::get('modify', 'ModifyController@index');
-                Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
+            Route::get('modify', 'ModifyController@index');
+            Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
                 Route::resource('classroom', 'ClassroomController');
                 Route::resource('course_base', 'CourseBaseController');
                 Route::resource('course', 'CourseController');

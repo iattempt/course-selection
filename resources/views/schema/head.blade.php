@@ -16,6 +16,7 @@
   </a>
   @section('header')
   @show
+  <div class="my-3"></div>
   @section('main')
   @show
   @section('footer')

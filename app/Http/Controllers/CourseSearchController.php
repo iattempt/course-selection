@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use \App\Selection\Course;
 
 class CourseSearchController extends Controller
@@ -16,7 +17,10 @@ class CourseSearchController extends Controller
         $this->general->lists = Course::all();
     }
     function index($id) {
-        $this->general->identity = $id;
-        return view('course_search', ['general' => $this->general]);
+        if (Auth::check() && $id == Auth::user()->getType()) {
+            $this->general->identity = Auth::user()->getType();
+            return view('course_search', ['general' => $this->general]);
+        }
+        return redirect('/');
     }
 }

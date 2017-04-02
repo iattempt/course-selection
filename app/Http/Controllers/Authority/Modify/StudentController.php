@@ -13,6 +13,7 @@ class StudentController extends ModifyController
         $this->general->title = "Modify student";
     }
     function index() {
+        return redirect('register');
         return view('authority/modify/student', ['general' => $this->general]);
     }
     /**
