@@ -7,7 +7,7 @@
       <div class="col-12 col-sm-8 col-md-6 row my-4">
         <h2>登入</h2>
         <hr class="col-12">
-        <input type="email" class="form-control" autofocus="autofocus" name="email" placeholder="account@email.com">
+        <input type="email" class="form-control" autofocus name="email" placeholder="account@email.com">
         <input type="password" class="form-control my-2" name="password" placeholder="password">
         @if(isset($errors))
         @foreach($errors as $error)

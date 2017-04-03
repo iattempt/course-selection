@@ -6,6 +6,8 @@ use App\Selection\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -47,10 +49,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        var_dump($data); 
         return Validator::make($data, [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'type' => 'required|max:255',
+            'type' => 'required',
             'password' => 'required|min:6|confirmed',
         ]);
     }
@@ -69,5 +72,15 @@ class RegisterController extends Controller
             'type' => $data['type'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 }
