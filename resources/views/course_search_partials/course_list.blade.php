@@ -15,9 +15,9 @@
     {{$list->name}}
   </span>
   <span class="col-2">{{$list->professor}}</span>
-  <span class="col-1">修別</span>
-  <span class="col-1">星期</span>
-  <span class="col-1">時段</span>
+  <span class="col-1">{{$list->type}}</span>
+  <span class="col-1">{{$list->day}}</span>
+  <span class="col-1">{{$list->period}}</span>
 </li>
 <div class="row">
   <div class="collapse" id="collapseExample{{$list->name}}">

@@ -24,6 +24,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::group(['middleware' => 'authority'], function () {
         Route::get('authority', 'AuthorityController@index');
         Route::group(['prefix' => 'authority', 'namespace' => 'Authority'], function () {
+            Route::get('register', 'RegisterController@index');
             Route::get('modify', 'ModifyController@index');
             Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
                 Route::resource('classroom', 'ClassroomController');
@@ -52,11 +53,11 @@ Route::group(['middleware' => 'guest'], function () {
     Route::group(['middleware' => 'student'], function () {
         Route::get('student', 'StudentController@index');
         Route::group(['prefix' => 'student', 'namespace' => 'Student'], function () {
-            Route::get('pre_syllabus', 'PreSyllabusController@index');
-            Route::get('syllabus', 'SyllabusController@index');
-            Route::get('threshold', 'ThresholdController@index');
+            Route::group(['prefix' => 'state', 'namespace' => 'State'], function () {
+                Route::get('curriculum', 'CurriculumController@index');
+                Route::get('threshold', 'ThresholdController@index');
+            });
 
-            Route::get('selection', 'SelectionController@index');
             Route::group(['prefix' => 'selection', 'namespace' => 'Selection'], function () {
                 Route::get('apply_for', 'ApplyForController@index');
                 Route::get('drop', 'DropController@index');

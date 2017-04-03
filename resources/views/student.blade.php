@@ -9,9 +9,8 @@
     個人資訊
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownInfo">
-    <a class="dropdown-item" href="/student/threshold">修課概覽</a>
-    <a class="dropdown-item" href="/student/syllabus">課表</a>
-    <a class="dropdown-item" href="/student/pre_syllabus">預選課表</a>
+    <a class="dropdown-item" href="/student/state/threshold">修課概覽</a>
+    <a class="dropdown-item" href="/student/state/curriculum">課表</a>
   </div>
 </li>
 <li class="nav-item">

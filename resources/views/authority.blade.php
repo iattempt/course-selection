@@ -22,6 +22,9 @@
     <a class="dropdown-item" href="/authority/modify/classroom">教室</a>
   </div>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="/authority/register">新增人員</a>
+</li>
 
 @endsection
 

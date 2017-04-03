@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers\Student\State;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\Student\StateController;
 
-class ThresholdController extends StudentController
+class ThresholdController extends StateController
 {
     //
     function __construct () {
