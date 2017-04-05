@@ -3,16 +3,21 @@
 namespace App\Http\Controllers\Student\Selection\Enroll;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Student\Selection\EnrollController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class RecommendationController extends EnrollController
+use App\Http\Controllers\CourseSearchController;
+
+class RecommendationController  extends CourseSearchController
 {
     //
     function __construct () {
         parent::__construct();
-        $this->general->title = "Enroll recommendation";
+        $this->general->title = "Enroll in-required";
     }
     function index() {
-        return view('student/selection/enroll/recommendation', ['general' => $this->general]);
+        parent::index();
+        $this->general->lists = DB::table('courses')->where('unit_name', (DB::table('students')->where('id', Auth::user()->id)->get()[0]->unit_name))->get();
+        return view('course_search', ['general' => $this->general]);
     }
 }

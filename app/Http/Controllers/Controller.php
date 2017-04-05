@@ -15,6 +15,7 @@ class Controller extends BaseController
     public function __construct () {
         $this->general = new General();
         $this->general->identity = "";
+        $this->general->my_unit;
 
         $this->general->school = new School();
         $this->general->school->name = "東海";
@@ -27,6 +28,7 @@ Class General
 {
     public $title;
     public $identity;
+    public $my_unit;
     public $school; //School class
     public $errors;
 

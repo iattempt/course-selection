@@ -19,6 +19,7 @@
   <div class="my-3"></div>
   @section('main')
   @show
+  <div style="padding-bottom: 50px"></div> <!-- footer space -->
   @section('footer')
   @show
   @section('script')

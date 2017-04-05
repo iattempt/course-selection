@@ -59,11 +59,11 @@ Route::group(['middleware' => 'guest'], function () {
             });
 
             Route::group(['prefix' => 'selection', 'namespace' => 'Selection'], function () {
-                Route::get('apply_for', 'ApplyForController@index');
                 Route::get('drop', 'DropController@index');
                 
                 Route::get('enroll', 'EnrollController@index');
                 Route::group(['prefix' => 'enroll', 'namespace' => 'Enroll'], function () {
+                    Route::get('apply_for', 'ApplyForController@index');
                     Route::get('common_required', 'CommonRequiredController@index');
                     Route::get('elective', 'ElectiveController@index');
                     Route::get('general', 'GeneralController@index');

@@ -28,7 +28,7 @@
     <a class="dropdown-item" href="/student/selection/enroll/in_elective">系選</a>
     <a class="dropdown-item" href="/student/selection/enroll/elective">選修</a>
     <a class="dropdown-item" href="/student/selection/enroll/general">通識</a>
-    <a class="dropdown-item" href="/student/selection/apply_for">特殊加選</a>
+    <a class="dropdown-item" href="/student/selection/enroll/apply_for">特殊加選</a>
   </div>
 </li>
 <li class="nav-item">

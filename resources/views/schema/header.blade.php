@@ -7,7 +7,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand mx-auto mx-lg-3" href="/">選課系統</a>
-    <div class="collapse navbar-collapse show mx-3" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
       <hr class="bg-faded d-lg-none">
       <ul class="navbar-nav mr-auto">
         @section('nav')
@@ -20,14 +20,11 @@
           <div class="dropdown-menu" aria-labelledby="dropdownElse">
             <a class="dropdown-item" href="{{ $general->school->website }}">{{ $general->school->name }}首頁</a>
             <a class="dropdown-item" href="{{ $general->school->calender }}">行事曆</a>
-            <a class="dropdown-item" href="/feedback">意見回饋</a>
         </li>
         @endif
       </ul>
       @if ($general->identity !== "")
-      <a class="btn btn-primary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-        登出
-      </a>
+      <a class="btn btn-outline-secondary" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">登出</a>
       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         {{ csrf_field() }}
       </form>

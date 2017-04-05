@@ -20,7 +20,7 @@
         <hr class="col-12">
         <div class="input-group d-flex justify-content-end">
           <span class="input-group-addon">
-            <input type="checkbox" aria-label="Checkbox for following text input">
+            <input type="checkbox" aria-label="Checkbox for following text input" name="remember">
           </span>
           <span class="input-group-addon">記住登入資訊</span>
           <input type="submit" class="btn btn-primary" value="Sign in">

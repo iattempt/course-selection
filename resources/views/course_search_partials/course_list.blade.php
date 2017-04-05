@@ -11,16 +11,15 @@
   @else
   <span class="col-7">
   @endif
-    <a class="" data-toggle="collapse" href="#collapseExample{{$list->name}}" aria-expanded="false">展開</a>
-    {{$list->name}}
+    <a class="" data-toggle="collapse" href="#collapseExample" aria-expanded="false">展開</a>
   </span>
-  <span class="col-2">{{$list->professor}}</span>
-  <span class="col-1">{{$list->type}}</span>
-  <span class="col-1">{{$list->day}}</span>
-  <span class="col-1">{{$list->period}}</span>
+  <span class="col-2"></span>
+  <span class="col-1"></span>
+  <span class="col-1"></span>
+  <span class="col-1"></span>
 </li>
 <div class="row">
-  <div class="collapse" id="collapseExample{{$list->name}}">
+  <div class="collapse" id="collapseExample">
     <div class="card card-block">
       Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
     </div>

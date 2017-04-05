@@ -3,16 +3,21 @@
 namespace App\Http\Controllers\Student\Selection\Enroll;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Student\Selection\EnrollController;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
-class ElectiveController extends EnrollController
+use App\Http\Controllers\CourseSearchController;
+
+class ElectiveController  extends CourseSearchController
 {
     //
     function __construct () {
         parent::__construct();
-        $this->general->title = "Enroll elective";
+        $this->general->title = "Enroll in-required";
     }
     function index() {
-        return view('student/selection/enroll/out_elective', ['general' => $this->general]);
+        parent::index();
+        $this->general->lists = DB::table('courses')->where('unit_name', (DB::table('students')->where('id', Auth::user()->id)->get()[0]->unit_name))->get();
+        return view('course_search', ['general' => $this->general]);
     }
 }

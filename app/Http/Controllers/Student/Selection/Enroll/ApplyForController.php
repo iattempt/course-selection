@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 use App\Http\Controllers\CourseSearchController;
 
-class CommonRequiredController extends CourseSearchController
+class ApplyForController extends CourseSearchController
 {
     //
     function __construct () {
         parent::__construct();
-        $this->general->title = "Enroll in-required";
+        $this->general->title = "Apply For";
     }
     function index() {
         parent::index();

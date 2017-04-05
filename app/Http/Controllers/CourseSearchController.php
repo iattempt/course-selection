@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use \App\Selection\Course;
+use \App\Selection\Student;
 
 class CourseSearchController extends Controller
 {
@@ -12,15 +13,38 @@ class CourseSearchController extends Controller
     function __construct () {
         parent::__construct();
         $this->general->title = 'course search';
-        //temporary
-        //$this->general->course->lists = array('1', '2', '3', '4', '5', '6');
-        $this->general->lists = Course::all();
     }
-    function index($id) {
-        if (Auth::check() && $id == Auth::user()->getType()) {
+    function index() {
+        if (Auth::check()) {
             $this->general->identity = Auth::user()->getType();
+            $this->general->lists = Course::all();
             return view('course_search', ['general' => $this->general]);
         }
-        return redirect('/');
+        return redirect('sign_in');
+    }
+}
+
+class Filter
+{
+    // search elements
+    // unique
+    public $professor = "";
+    public $course = "";
+
+    // multiple
+    public $state;   //enroll, drop or none(identity is not student)
+    public $time;
+    public $type;
+    public $unit;
+    public $credit;
+    public $can_enroll = 1;
+    public $language;
+    public $mooc;
+    public $year;
+    public $semester;
+    public function __construct()
+    {
+        $year = date('Y');
+        $semester = (date('m')<2 && date('m')>8) ? '1' : '2';
     }
 }

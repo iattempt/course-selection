@@ -20,6 +20,6 @@ class Authority
         {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('sign_in');
     }
 }
