@@ -29,7 +29,6 @@ class CurriculumController extends StateController
         //current student
         $this->general->lists = $this->general->lists->where('student_id', Auth::user()->id)->get();
 
-        $this->general->day = date("w");
         $this->general->state = "預選";
 
         return view('student/state/curriculum', ['general' => $this->general]);

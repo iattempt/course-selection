@@ -1,0 +1,85 @@
+@extends('student/state')
+@section('state')
+
+<div class="container">
+  <div id="test"></div>
+  <div class="row">
+  <table class="table table-bordered table-striped">
+    <thead id="curriculum_th" class="thead-inverse">
+    </thead>
+    <tbody id="curriculum_tb">
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<script>
+/*
+      <hr class='my-1 bg-faded'>\
+      <div class='d-flex justify-content-center'>\
+        <a onclick='change("+w_n+", week, "+state+")' class='text-white' href='javascript:void(0)'>切換成週課表</a>\
+      </div>\
+    <th>\
+      <a onclick='change(w1, "+ week_or_day+", "+state+")' class='d-flex justify-content-center' id='w1' href='javascript:void(0)'>一\
+      </a>\
+    </th>\
+    <th>\
+      <a onclick='change(w2, "+ week_or_day+", "+state+")' class='d-flex justify-content-center'  id='w2' href='javascript:void(0)'>二\
+      </a>\
+    </th>\
+    <th>\
+      <a onclick='change(w3, "+ week_or_day+", "+state+")' class='d-flex justify-content-center' id='w3' href='javascript:void(0)'>三\
+      </a>\
+    </th>\
+    <th>\
+      <a onclick='change(w4, "+ week_or_day+", "+state+")' class='d-flex justify-content-center' id='w4'href='javascript:void(0)'>四\
+      </a>\
+    </th>\
+    <th>\
+      <a onclick='change(w5, "+ week_or_day+", "+state+")' class='d-flex justify-content-center' id='w5'href='javascript:void(0)'>五\
+      </a>\
+    </th>\
+    <th>\
+      <a onclick='change(w6, "+ week_or_day+", "+state+")' class='d-flex justify-content-center' id='w6' href='javascript:void(0)'>六\
+      </a>\
+    </th>\
+ */
+
+(function change(w_n, week_or_day, state) {
+  document.getElementById('curriculum_th').innerHTML = '\
+  <tr>\
+    <th>\
+      <div class="d-flex justify-content-center">\
+        <a onclick="arguments.callee('+w_n+', '+week_or_day+', 預選)" href="javascript:void(0)" class="text-white">切換成預選中</a>\
+      </div>\
+    </th>\
+  </tr>';
+  //document.getElementById(w_n).className += " text-white";
+
+  document.getElementById('curriculum_tb').innerHTML = "\
+      @if (isset($general->periods))\
+      @foreach ($general->periods as $period)\
+      <tr>\
+        <th scope='row'>\
+          <div class='d-flex justify-content-center'>\
+            {{$period->name}}\
+          </div>\
+        </th>\
+        <td colspan='6'>\
+          @if (isset($general->lists))\
+          @foreach ($general->lists as $list)\
+            @if ($list->day_name == '" + t.getAttribute("id") + "')\
+              @if ($list->state == $general->state && $list->period_name == $period->name)\
+                <div class='d-flex justify-content-center'><a href='#'>{{$list->name}}</a></div>\
+              @endif\
+            @endif\
+          @endforeach\
+          @endif\
+        </td>\
+      </tr>\
+      @endforeach\
+      @endif";
+})("w5", "week", "正常");
+</script>
+
+@endsection
