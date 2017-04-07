@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use \App\Selection\Course;
-use \App\Selection\Student;
+use Illuminate\Support\Facades\DB;
 
 class CourseSearchController extends Controller
 {
@@ -17,7 +16,8 @@ class CourseSearchController extends Controller
     function index() {
         if (Auth::check()) {
             $this->general->identity = Auth::user()->getType();
-            $this->general->lists = Course::all();
+            $this->general->lists = DB::table('courses')->get();
+            $this->general->filters = array('professor', 'course');
             return view('course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');
@@ -44,7 +44,7 @@ class Filter
     public $semester;
     public function __construct()
     {
-        $year = date('Y');
-        $semester = (date('m')<2 && date('m')>8) ? '1' : '2';
+        //$year = date('Y');
+        //$semester = (date('m')<2 && date('m')>8) ? '1' : '2';
     }
 }

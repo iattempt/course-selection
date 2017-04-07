@@ -1,0 +1,113 @@
+<div class="row">
+  <a class="btn btn-primary col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
+    篩選器
+  </a>
+  <div id="filter" class="collapse col-12">
+    <div class="card">
+      <form action="course_search" method="GET">
+        <!-- Filter options-->
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseProfessor" aria-expanded="false" aria-controls="collapseProfessor">
+          教授名字
+        </a>
+        <div class="collapse" id="collapseProfessor">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">
+          課程名稱
+        </a>
+        <div class="collapse" id="collapseCourse">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
+          可加選
+        </a>
+        <div class="collapse" id="collapseState">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseDay" aria-expanded="false" aria-controls="collapseDay">
+          星期
+        </a>
+        <div class="collapse" id="collapseDay">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapsePeriod" aria-expanded="false" aria-controls="collapsePeriod">
+          時間
+        </a>
+        <div class="collapse" id="collapsePeriod">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
+          開設單位
+        </a>
+        <div class="collapse" id="collapseUnit">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseCredit" aria-expanded="false" aria-controls="collapseCredit">
+          學分數
+        </a>
+        <div class="collapse" id="collapseCredit">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
+          授課語言
+        </a>
+        <div class="collapse" id="collapseLanguage">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseMooc" aria-expanded="false" aria-controls="collapseMooc">
+          MOOC課程
+        </a>
+        <div class="collapse" id="collapseMooc">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseYear" aria-expanded="false" aria-controls="collapseYear">
+          開課年度
+        </a>
+        <div class="collapse" id="collapseYear">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <a class="btn btn-primary" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
+          開課學期
+        </a>
+        <div class="collapse" id="collapseSemester">
+          <div class="card card-block">
+            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+          </div>
+        </div>
+
+        <!-- end of Filter options  -->
+      </form>
+    </div>
+    <r class="my-4">
+  </div>
+</div>

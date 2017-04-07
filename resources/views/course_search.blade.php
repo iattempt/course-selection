@@ -3,35 +3,9 @@
 @parent
 
 <div class="container-fluid">
-  <form action="/sign_out" method="post">
-    {{ csrf_field() }}
-    <!-- Filter -->
-    <div class="row">
-      <a class="btn btn-danger col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
-        篩選器
-      </a>
-      <div id="filter" class="collapse col-12">
-        <div class="card">
-          <!-- Filter options-->
-          <div id="filter_options" role="tablist" aria-multiselectable="true">
-          @if(count($general->lists) > 0)
-            @foreach ($general->lists as $list)
-              @include ('course_search_partials/filter_option')
-            @endforeach
-            @foreach ($general->lists as $list)
-              @include ('course_search_partials/filter_option_div')
-            @endforeach
-          @else
-            None.
-          @endif
-          </div>
-          <!-- end of Filter options  -->
-        </div>
-        <r class="my-4">
-      </div>
-    </div>
-    <!-- end of Filter form  -->
-  </form>
+  <!-- Filter -->
+    @include ('course_search_partials/filter')
+  <!-- end of Filter form  -->
   <!-- Display result -->
   <div class="row">
     <div class="col-12">
