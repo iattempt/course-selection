@@ -4,11 +4,11 @@
   <div class="container-fluid">
     <div class="row">
       <span class="mx-auto">
-        &copy;2016-<?php echo date('Y'); ?>&nbsp;Designed and maintained by the
+        &copy;2016-<?php echo date('Y'); ?>
+      <div class="hidden-md-up col-12"></div>
+        Designed and maintained by the
         <a class="text-white" style="text-decoration: underline" href="https://github.com/iattempt">Ernest</a>
-      </span>
-      <div class="col-12"></div>
-      <span class="mx-auto">
+        <div class="col-12"></div>
         <a class="text-white" style="text-decoration: underline" href="https://github.com/">Contribution</a>
         &nbsp;|&nbsp;
         <a class="text-white" style="text-decoration: underline" href="/feedback">Contact</a>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{{ ucfirst($general->title) }}</title>
-  <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
   @section('bootstrap_cdn')
   @parent
   @endsection
@@ -19,7 +19,7 @@
   <div class="my-3"></div>
   @section('main')
   @show
-  <div style="padding-bottom: 50px"></div> <!-- footer space -->
+  <div style="padding-bottom: 100px"></div> <!-- footer space -->
   @section('footer')
   @show
   @section('script')
