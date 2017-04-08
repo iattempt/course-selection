@@ -1,69 +1,68 @@
 <div class="row">
   <a id="filter-controller" class="btn btn-primary col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
     篩選器
+    <span class="glyphicon glyphicon-triangle-bottom"></span>
   </a>
   <div id="filter" class="collapse col-12">
     <!-- Filter options -->
     <form id="filter-form" action="course_search" method="GET">
       {{ csrf_field() }}
       <!-- button of options -->
-      <div class="row mx-auto">
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseProfessor" aria-expanded="false" aria-controls="collapseProfessor">
+      <div class="row d-flex justify-content-center">
+        <a class="btn col-" data-toggle="collapse" href="#collapseProfessor" aria-expanded="false" aria-controls="collapseProfessor">
           教授名字
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">
+        <a class="btn col-" data-toggle="collapse" href="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">
           課程名稱
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
+        <a class="btn col-" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
           可加選
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseDay" aria-expanded="false" aria-controls="collapseDay">
+        <a class="btn col-" data-toggle="collapse" href="#collapseDay" aria-expanded="false" aria-controls="collapseDay">
           星期
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapsePeriod" aria-expanded="false" aria-controls="collapsePeriod">
+        <a class="btn col-" data-toggle="collapse" href="#collapsePeriod" aria-expanded="false" aria-controls="collapsePeriod">
           時段
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
+        <a class="btn col-" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
           開設單位
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseCredit" aria-expanded="false" aria-controls="collapseCredit">
+        <a class="btn col-" data-toggle="collapse" href="#collapseCredit" aria-expanded="false" aria-controls="collapseCredit">
           學分數
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
+        <a class="btn col-" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
           授課語言
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseMooc" aria-expanded="false" aria-controls="collapseMooc">
+        <a class="btn col-" data-toggle="collapse" href="#collapseMooc" aria-expanded="false" aria-controls="collapseMooc">
           MOOC課程
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseYear" aria-expanded="false" aria-controls="collapseYear">
+        <a class="btn col-" data-toggle="collapse" href="#collapseYear" aria-expanded="false" aria-controls="collapseYear">
           開課年度
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a class="btn col-sm-4 col-md-3 col-lg-2 col-xl-1" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
+        <a class="btn col-" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
           開課學期
           <span class="dropdown-toggle"></span>
         </a>
-
-        <a class="btn btn-success col-sm-4 col-md-3 col-lg-1" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('filter-form').submit();">篩選</a>
         <!-- end button of options -->
 
         <!-- content of button -->
@@ -72,6 +71,7 @@
             <input class="form-control" type="search" value="" placeholder="教授名字">
           </div>
         </div>
+
         <div class="collapse col-12 mx-auto" id="collapseCourse">
           <div class="card card-block">
             <input class="form-control" type="search" value="" placeholder="課程名稱">
@@ -81,16 +81,12 @@
         <div class="collapse col-12 mx-auto" id="collapseState">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" value="can" checked>
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
               可加選
             </label>
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" value="cannot">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
               不可加選
-            </label>
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" value="both">
-              皆可
             </label>
           </div>
         </div>
@@ -241,11 +237,11 @@
         <div class="collapse col-12 mx-auto" id="collapseYear">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" value="can" checked>
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
               2017
             </label>
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" value="can" checked>
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
               2016
             </label>
           </div>
@@ -254,15 +250,17 @@
         <div class="collapse col-12 mx-auto" id="collapseSemester">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" value="can" checked>
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
               第一學期
             </label>
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" value="can" checked>
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
               第二學期
             </label>
           </div>
         </div>
+
+        <a class="btn btn-success col-12" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('filter-form').submit();">篩選</a>
         <!-- end content of button -->
       </div>
     </form>
@@ -272,11 +270,24 @@
 
 <script>
 function changeTriangle() {
-  if (this.classList[this.classList.length-1] == "dropup") {
-    this.classList.remove("dropup");
+  if (this.id=="filter-controller") {
+    var span = this.children[0];
+    if (span.classList[1] == "glyphicon-triangle-bottom") {
+      span.classList.remove("glyphicon-triangle-bottom");
+      span.classList.add("glyphicon-triangle-top");
+    }
+    else {
+      span.classList.remove("glyphicon-triangle-top");
+      span.classList.add("glyphicon-triangle-bottom");
+    }
+    return;
+  }
+
+  if (this.classList[this.classList.length-1] == "bg-faded") {
+    this.classList.remove("dropup", "bg-faded");
     return ;
   }
-  this.classList.add("dropup");
+  this.classList.add("dropup", "bg-faded");
 }
 var all_a = document.getElementsByTagName("a");
 for (var i=0; i<all_a.length; i++) {
