@@ -67,7 +67,7 @@
 
         <!-- content of button -->
         <div class="collapse col-12 mx-auto" id="collapseProfessor">
-          <div class="card card-block mx-auto">
+          <div class="card card-block">
             <input class="form-control" type="search" value="" placeholder="教授名字">
           </div>
         </div>
@@ -270,6 +270,8 @@
 
 <script>
 function changeTriangle() {
+  if (this.parentElement.parentElement.id != "filter-form")
+    return;
   if (this.id=="filter-controller") {
     var span = this.children[0];
     if (span.classList[1] == "glyphicon-triangle-bottom") {
