@@ -25,7 +25,13 @@ class CourseSearchController extends Controller
             $test = CourseType::where('unit_id', '=', User::find(Auth::user()->id)->student->unit_id)->get();
             foreach ($test as $t)
                 var_dump($t->courses->name);
+            return view('course_search', ['general' => $this->general]);
         }
+        return redirect('sign_in');
+    }
+    function filterDay()
+    {
+    
     }
 
 }

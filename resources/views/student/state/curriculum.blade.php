@@ -3,23 +3,47 @@
 
 <div id="test"></div>
 <div class="container-fluid">
-  <div id="curriculum_wrap" class="row d-flex mx-auto">
-    <div id="curriculum_th" class="col-12">
-      <div class="row bg-faded text-center text-muted">
-        <div class="mx-auto">
-          切換為:&nbsp;&nbsp;
-          <a id="change_state" onclick="change(this)" href="javascript:void(0)" ="">學期課表</a>&nbsp;&nbsp;
-          <a id="change_wd" onclick="change(this)" href="javascript:void(0)" cla>"週課表"</a>
-        </div>
+  <div class="row d-flex mx-auto">
+    <div class="col-12 bg-faded text-center text-muted">
+      <div class="mx-auto">
+        切換為:&nbsp;&nbsp;
+        <a id="change_state" onclick="change(this)" href="javascript:void(0)" ="">學期課表</a>&nbsp;&nbsp;
+        <a id="change_wd" onclick="change(this)" href="javascript:void(0)" cla>週課表</a>
       </div>
-      @foreach($general->curricula as $c)
-  <div class="row d-flex text-center my-2">
-    <div class="col-1">
-  </div>');
-        <?php var_dump($c->state)?>
-      @endforeach
+    </div>
+    <div id="curriculum_th" class="col-12">
+      <div class="row">
+        <div class="col"></div>
+        @foreach($general->days as $d)
+          <div class="col">
+            {{$d->name}}
+          </div>
+        @endforeach
+      </div>
     </div>
     <div id="curriculum_tb" class="col-12">
+    @foreach($general->periods as $p)
+      @if($p->id%2==0)
+      <div class="row d-flex">
+      @else
+      <div class="row d-flex bg-faded">
+      @endif
+        <div class="col">{{$p->name}}</div>
+        @foreach($general->days as $d)
+        <div class="col">
+          @foreach($general->curricula as $c)
+            @foreach ($c->course->time as $t)
+              @if ($t->day->name == $d->name && $t->period->name == $p->name)
+              {{$c->course->name}}
+                @break
+              @endif
+            @endforeach
+          @endforeach
+        </div>
+        @endforeach
+      <hr>
+    </div>
+    @endforeach
     </div>
   </div>
 </div>

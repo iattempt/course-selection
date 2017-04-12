@@ -9,10 +9,10 @@ class Curriculum extends Model
     //
     public function student()
     {
-        return $this->belongsTo('App\Selection\Student');
+        return $this->belongsTo('App\Selection\Student', 'student_id');
     }
     public function course()
     {
-        return $this->belongsTo('App\Selection\Course');
+        return $this->belongsTo('App\Selection\Course', 'course_id');
     }
 }
