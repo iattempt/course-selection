@@ -1,8 +1,15 @@
 <div class="row">
-  <a id="filter-controller" class="btn btn-primary col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
+  <a class="btn btn-primary col text-white href="#""> 
+    <span class="glyphicon glyphicon-arrow-left"></span>
+  </a>
+  <a id="filter-controller" class="btn btn-primary col-7" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
     篩選器
     <span class="glyphicon glyphicon-triangle-bottom"></span>
   </a>
+  <a class="btn btn-primary col text-white" href="#"> 
+    <span class="glyphicon glyphicon-arrow-right"></span>
+  </a>
+
   <div id="filter" class="collapse col-12">
     <!-- Filter options -->
     <form id="filter-form" action="course_search" method="GET">
@@ -68,24 +75,24 @@
         <!-- content of button -->
         <div class="collapse col-12 mx-auto" id="collapseProfessor">
           <div class="card card-block">
-            <input class="form-control" type="search" value="" placeholder="教授名字">
+            <input class="form-control" type="search" value="" placeholder="教授名字" value="{{old('professorName')}}" name="{{old('professName')}}">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseCourse">
           <div class="card card-block">
-            <input class="form-control" type="search" value="" placeholder="課程名稱">
+            <input id='courseName' class="form-control" type="search" placeholder="課程名稱" value="{{old('courseName')}}" name="courseName">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseState">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('canEnroll')}}" name="canEnroll">
               可加選
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('canNotEnroll')}}" name="canNotEnroll">
               不可加選
             </label>
           </div>
@@ -124,70 +131,79 @@
           <div class="card card-block">
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第一節 07:10-08:00
+              07:10-08:00 第一節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第二節 08:10-09:00
+              08:10-09:00 第二節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第三節 09:10-10:00
+              09:10-10:00 第三節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第四節 10:20-11:10
+              10:20-11:10 第四節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第五節 11:20-12:10
+              11:20-12:10 第五節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第六節 12:10-13:00
+              12:10-13:00 第六節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第七節 13:10-14:00
+              13:10-14:00 第七節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第八節 14:10-15:00
+              14:10-15:00 第八節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第九節 15:20-16:10
+              15:20-16:10 第九節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第十節 16:20-17:10
+              16:20-17:10 第十節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第十一節 17:20-18:10
+              17:20-18:10 第十一節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第十二節 18:20-18:10
+              18:20-18:10 第十二節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第十三節 19:20-20:10
+              19:20-20:10 第十三節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第十四節 20:20-21:10
+              20:20-21:10 第十四節
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input">
-              第十五節 21:20-22:10
+              21:20-22:10 第十五節
             </label>
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseUnit">
           <div class="card card-block">
-            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            @foreach($general->units as $unit)
+              @if ($unit->name == "其餘")
+                @continue
+              @else
+              <label class="form-check-label">
+                <input type="checkbox" class="my-3 my-lg-2 form-check-input">
+                {{$unit->name}}
+              </label>
+              @endif
+            @endforeach
           </div>
         </div>
 
@@ -259,16 +275,18 @@
             </label>
           </div>
         </div>
-
-        <a class="btn btn-success col-12" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('filter-form').submit();">篩選</a>
         <!-- end content of button -->
       </div>
+      <a class="btn btn-success col" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('filter-form').submit();">
+        <span class="glyphicon glyphicon-refresh"></span>
+      </a>
     </form>
     <!-- end of Filter options-->
   </div>
 </div>
 
 <script>
+
 function changeTriangle() {
   if (this.parentElement.parentElement.id != "filter-form")
     return;
@@ -295,4 +313,5 @@ var all_a = document.getElementsByTagName("a");
 for (var i=0; i<all_a.length; i++) {
   all_a[i].addEventListener("click", changeTriangle, false);
 }
+
 </script>

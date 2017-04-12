@@ -4,11 +4,11 @@ namespace App\Selection;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CourseBase extends Model
+class Day extends Model
 {
     //
     public function courses()
     {
-        return $this->hasMany('App\Selection\Course');
+        return $this->hasMany('App\Selection\CourseTime');
     }
 }

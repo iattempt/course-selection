@@ -3,12 +3,32 @@
 namespace App\Selection;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Selection\CoursePeriod;
-use App\Selection\CourseDay;
-use App\Selection\CourseProfessor;
-use App\Selection\CourseType;
-use App\Selection\CourseBase;
+
 class Course extends Model
 {
     //
+    public function professors()
+    {
+        return $this->hasMany('App\Selection\CourseProfessor');
+    }
+    public function time()
+    {
+        return $this->hasMany('App\Selection\CourseTime');
+    }
+    public function types()
+    {
+        return $this->hasMany('App\Selection\CourseType');
+    }
+    public function unit()
+    {
+        return $this->belongsTo('App\Selection\Unit');
+    }
+    public function classroom()
+    {
+        return $this->belongsTo('App\Selection\Classroom');
+    }
+    public function course_base()
+    {
+        return $this->belongsTo('App\Selection\CourseBase');
+    }
 }

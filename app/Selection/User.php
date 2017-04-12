@@ -27,19 +27,36 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function isAuthority() {
+
+    
+    public function student()
+    {
+        return $this->hasOne('App\Selection\Student', 'id');
+    }
+    public function professor()
+    {
+        return $this->hasOne('App\Selection\Professor', 'id');
+    }
+
+
+
+    public function isAuthority()
+    {
         return $this->type == "authority" ? true : false;
     }
 
-    public function isStudent() {
+    public function isStudent()
+    {
         return $this->type == "student" ? true : false;
     }
 
-    public function isProfessor() {
+    public function isProfessor()
+    {
         return $this->type == "professor" ? true : false;
     }
 
-    public function getType() {
+    public function getType()
+    {
         return $this->type;
     }
 }
