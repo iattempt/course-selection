@@ -12,7 +12,7 @@ class ProfessorController extends Controller
         $this->general->identity = "professor";
         $this->general->title = "professor";
     }
-    function index() {
+    function index(Request $request) {
         return view('professor', ['general' => $this->general]);
     }
 }

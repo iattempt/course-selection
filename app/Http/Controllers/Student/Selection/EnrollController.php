@@ -11,7 +11,7 @@ class EnrollController extends SelectionController
     public function __construct () {
         parent::__construct();
     }
-    public function index() {
+    function index(Request $request) {
     
     }
 }

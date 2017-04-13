@@ -11,7 +11,7 @@ class SelectionController extends StudentController
     public function __construct() {
         parent::__construct();
     }
-    public function index() {
+    function index(Request $request) {
     
     }
 }

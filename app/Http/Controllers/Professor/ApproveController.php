@@ -12,7 +12,7 @@ class ApproveController extends ProfessorController
         parent::__construct();
         $this->general->title = "Approve";
     }
-    function index() {
+    function index(Request $request) {
         return view('professor/approve', ['general' => $this->general]);
     }
 }

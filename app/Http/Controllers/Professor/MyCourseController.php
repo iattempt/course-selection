@@ -12,7 +12,7 @@ class MyCourseController extends ProfessorController
         parent::__construct();
         $this->general->title = "My course";
     }
-    function index() {
+    function index(Request $request) {
         return view('professor/my_course', ['general' => $this->general]);
     }
 }

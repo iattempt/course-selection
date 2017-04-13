@@ -31,18 +31,18 @@
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="day" class="btn col-" data-toggle="collapse" href="#collapseDay" aria-expanded="false" aria-controls="collapseDay">
-          星期
+        <a id="type" class="btn col-" data-toggle="collapse" href="#collapseType" aria-expanded="false" aria-controls="collapseType">
+          修別
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="period" class="btn col-" data-toggle="collapse" href="#collapsePeriod" aria-expanded="false" aria-controls="collapsePeriod">
+        <a id="time" class="btn col-" data-toggle="collapse" href="#collapseTime" aria-expanded="false" aria-controls="collapseTime">
           時段
           <span class="dropdown-toggle"></span>
         </a>
 
         <a id="unit" class="btn col-" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
-          開設單位
+          開課單位
           <span class="dropdown-toggle"></span>
         </a>
 
@@ -75,7 +75,7 @@
         <!-- content of button -->
         <div class="collapse col-12 mx-auto" id="collapseProfessor">
           <div class="card card-block">
-            <input class="form-control" type="search" value="" placeholder="教授名字" value="{{old('professorName')}}" name="{{old('professName')}}">
+            <input id='professorName' class="form-control" type="search" placeholder="教授名字" value="{{old('professorName')}}" name="professorName">
           </div>
         </div>
 
@@ -98,97 +98,45 @@
           </div>
         </div>
 
-        <div class="collapse col-12 mx-auto" id="collapseDay">
+        <div class="collapse col-12 mx-auto" id="collapseType">
           <div class="card card-block">
+            @foreach ($general->types as $t)
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('星期一')}}" name="星期一">
-              星期一
+              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{old($t->name)}}" name="{{$t->name}}">
+              {{$t->name}}
             </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('星期二')}}" name="星期二">
-              星期二
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('星期三')}}" name="星期三"> 
-              星期三
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('星期四')}}" name="星期四">
-              星期四
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('星期五')}}" name="星期五">
-              星期五
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('星期六')}}" name="星期六">
-              星期六
-            </label>
+            @endforeach
           </div>
         </div>
 
-        <div class="collapse col-12 mx-auto" id="collapsePeriod">
+        <div class="collapse col-12 mx-auto" id="collapseDay">
           <div class="card card-block">
+            @foreach ($general->days as $d)
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第一節')}}" name="第一節">
-              07:10-08:00 第一節
+              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{old($d->name)}}" name="{{$d->name}}">
+              {{$d->name}}
             </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第二節')}}" name="第二節"> 
-              08:10-09:00 第二節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第三節')}}" name="第三節">   
-              09:10-10:00 第三節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第四節')}}" name="第四節">
-              10:20-11:10 第四節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第五節')}}" name="第五節">
-              11:20-12:10 第五節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第六節')}}" name="第六節">
-              12:10-13:00 第六節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第七節')}}" name="第七節">
-              13:10-14:00 第七節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第八節')}}" name="第八節">
-              14:10-15:00 第八節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第九節')}}" name="第九節">
-              15:20-16:10 第九節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第十節')}}" name="第十節">
-              16:20-17:10 第十節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第十一節')}}" name="第十一節">
-              17:20-18:10 第十一節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第十二節')}}" name="第十二節">
-              18:20-18:10 第十二節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第十三節')}}" name="第十三節">
-              19:20-20:10 第十三節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第十四節')}}" name="第十四節">
-              20:20-21:10 第十四節
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('第十五節')}}" name="第十五節">
-              21:20-22:10 第十五節
-            </label>
+            @endforeach
+          </div>
+        </div>
+
+        <div class="collapse col-12 mx-auto" id="collapseTime">
+          <div class="card card-block">
+            @foreach ($general->periods as $p)
+              @if ($loop->index%2==0)
+              <div class="row">
+              @else
+              <div class="row bg-faded">
+              @endif
+              @foreach ($general->days as $d)
+              <label class="col form-check-label">
+                <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{old($d->name)}}{{old($p->name)}}" name="{{$d->name}}{{$p->name}}">
+                {{$d->name}}＊{{$p->name}}
+              </label>
+              @endforeach
+              <div class="col-12"></div>
+            </div>
+            @endforeach
           </div>
         </div>
 
@@ -198,10 +146,10 @@
               @if ($unit->name == "其餘")
                 @continue
               @else
-              <label class="form-check-label">
-                <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old($unit->name)}}" name="{{$unit->name}}">
-                {{$unit->name}}
-              </label>
+                <label class="form-check-label">
+                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old($unit->name)}}" name="{{$unit->name}}">
+                  {{$unit->name}}
+                </label>
               @endif
             @endforeach
           </div>
@@ -210,11 +158,11 @@
         <div class="collapse col-12 mx-auto" id="collapseCredit">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old($credit-2)}}" name="creadit-2">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('creadit-2')}}" name="creadit-2">
                 2學分
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old($credit-3)}}" name="creadit-3">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('credit-2')}}" name="creadit-3">
                 3學分
             </label>
           </div>
@@ -284,8 +232,6 @@
 <script>
 
 function changeTriangle() {
-  if (this.parentElement.parentElement.id != "filter-form")
-    return;
   if (this.id=="filter-controller") {
     var span = this.children[0];
     if (span.classList[1] == "glyphicon-triangle-bottom") {
@@ -298,6 +244,8 @@ function changeTriangle() {
     }
     return;
   }
+  if (this.parentElement.parentElement.id != "filter-form")
+    return;
 
   if (this.classList[this.classList.length-1] == "bg-faded") {
     this.classList.remove("dropup", "bg-faded");

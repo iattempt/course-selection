@@ -12,7 +12,7 @@ class SignOutController extends Controller
         parent::__construct();
         $this->general->title = "Sign out";
     }
-    function index() {
+    function index(Request $request) {
         return view('sign_out', ['general' => $this->general]);
     }
 }

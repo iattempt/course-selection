@@ -7,4 +7,7 @@ use App\Http\Controllers\StudentController;
 
 class StateController extends StudentController{
     //
+    function index(Request $request) {
+    
+    }
 }

@@ -11,4 +11,8 @@ class Student extends Model
     {
         return $this->belongsTo('App\Selection\User');
     }
+    public function unit()
+    {
+        return $this->belongsTo('App\Selection\Unit');
+    }
 }

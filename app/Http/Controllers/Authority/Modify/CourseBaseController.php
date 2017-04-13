@@ -12,7 +12,7 @@ class CourseBaseController extends ModifyController
         parent::__construct();
         $this->general->title = "Modify course base";
     }
-    function index() {
+    function index(Request $request) {
         return view('authority/modify/course_base', ['general' => $this->general]);
     }
     /**

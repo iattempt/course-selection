@@ -12,7 +12,7 @@ class SyllabusController extends ModifyController
         parent::__construct();
         $this->general->title = "Modify syllabus";
     }
-    function index() {
+    function index(Request $request) {
         return view('authority/modify/syllabus', ['general' => $this->general]);
     }
     /**

@@ -12,7 +12,7 @@ class ProfessorController extends ModifyController
         parent::__construct();
         $this->general->title = "Modify professor";
     }
-    function index() {
+    function index(Request $request) {
         return view('authority/modify/professor', ['general' => $this->general]);
     }
     /**

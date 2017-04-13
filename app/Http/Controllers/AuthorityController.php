@@ -12,7 +12,7 @@ class AuthorityController extends Controller
         $this->general->identity = "authority";
         $this->general->title = "authority";
     }
-    function index() {
+    function index(Request $request) {
         return view('authority', ['general' => $this->general]);
     }
 }

@@ -12,7 +12,7 @@ class UnitController extends ModifyController
         parent::__construct();
         $this->general->title = "Modify unit";
     }
-    function index() {
+    function index(Request $request) {
         return view('authority/modify/unit', ['general' => $this->general]);
     }
     /**

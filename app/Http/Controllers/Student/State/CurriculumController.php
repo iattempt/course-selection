@@ -17,7 +17,7 @@ class CurriculumController extends StateController
         parent::__construct();
         $this->general->title = "Curricula";
     }
-    function index() {
+    function index(Request $request) {
         $this->general->days = Day::orderby('id', 'asc')->get();
         $this->general->periods = Period::orderby('id', 'asc')->get();
         $this->general->curricula = Curriculum::where('student_id', Auth::user()->id)->get();

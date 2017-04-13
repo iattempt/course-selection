@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Student\Selection;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use App\Selection\Curriculum;
 
 use App\Http\Controllers\Student\SelectionController;
 
@@ -15,7 +15,7 @@ class DropController extends SelectionController
         parent::__construct();
         $this->general->title = "Drop";
     }
-    function index() {
+    function index(Request $request) {
         $this->general->lists = DB::table('his_take_courses')->where(['student_id' => Auth::user()->id, 'state' => '預選中'])->get();
         
         return view('student/selection/drop', ['general' => $this->general]);

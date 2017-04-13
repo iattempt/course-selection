@@ -9,7 +9,7 @@ class Course extends Model
     //
     public function professors()
     {
-        return $this->hasMany('App\Selection\CourseProfessor');
+        return $this->hasMany('App\Selection\CourseProfessor', 'course_id', 'id');
     }
     public function time()
     {

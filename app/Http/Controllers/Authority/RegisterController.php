@@ -12,7 +12,7 @@ class RegisterController extends AuthorityController
         parent::__construct();
         $this->general->title = "Register";
     }
-    function index() {
+    function index(Request $request) {
         return view('authority/register', ['general' => $this->general]);
     }
 }

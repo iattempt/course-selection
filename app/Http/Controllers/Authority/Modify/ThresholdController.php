@@ -12,7 +12,7 @@ class ThresholdController extends ModifyController
         parent::__construct();
         $this->general->title = "Modify threshold";
     }
-    function index() {
+    function index(Request $request) {
         return view('authority/modify/threshold', ['general' => $this->general]);
     }
     /**

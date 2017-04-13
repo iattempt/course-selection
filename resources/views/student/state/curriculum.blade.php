@@ -4,49 +4,97 @@
 <div id="test"></div>
 <div class="container-fluid">
   <div class="row d-flex mx-auto">
-    <div class="col-12 bg-faded text-center text-muted">
-      <div class="mx-auto">
-        切換為:&nbsp;&nbsp;
-        <a id="change_state" onclick="change(this)" href="javascript:void(0)" ="">學期課表</a>&nbsp;&nbsp;
-        <a id="change_wd" onclick="change(this)" href="javascript:void(0)" cla>週課表</a>
-      </div>
-    </div>
     <div id="curriculum_th" class="col-12">
       <div class="row">
-        <div class="col"></div>
+        <div class="col row d-flex justify-content-center">
+            切換為：
+            <a id="change_pre" onclick="changeState(this)" href="javascript:void(0)">預選</a>
+            <a id="change_all" onclick="changeState(this)" href="javascript:void(0)">學期</a>
+            /
+            <a id="change_w" onclick="changeWD(this)" href="javascript:void(0)">週</a>
+            <a id="change_d" onclick="changeWD(this)" href="javascript:void(0)">日</a>
+            課表
+        </div>
         @foreach($general->days as $d)
-          <div class="col">
+          <div class="col d-flex justify-content-center">
             {{$d->name}}
           </div>
         @endforeach
       </div>
     </div>
     <div id="curriculum_tb" class="col-12">
-    @foreach($general->periods as $p)
-      @if($p->id%2==0)
-      <div class="row d-flex">
+    @foreach ($general->periods as $p)
+      @if ($p->id%2 == 0)
+      <div class="row d-flex justify-content-center">
       @else
-      <div class="row d-flex bg-faded">
+      <div class="row d-flex justify-content-center bg-faded">
       @endif
-        <div class="col">{{$p->name}}</div>
-        @foreach($general->days as $d)
         <div class="col">
-          @foreach($general->curricula as $c)
+          <div class="d-flex justify-content-center">
+          {{$p->name}}
+          </div>
+          <div class="d-flex justify-content-center">
+          {{$p->上課時間}}
+          {{$p->下課時間}}
+          </div>
+        </div>
+        @foreach ($general->days as $d)
+        <div class="col row d-flex justify-content-center">
+          @foreach ($general->curricula as $c)
             @foreach ($c->course->time as $t)
               @if ($t->day->name == $d->name && $t->period->name == $p->name)
-              {{$c->course->name}}
+              <div class="col-12 d-flex justify-content-center">{{$c->course->name}}</div>
                 @break
               @endif
             @endforeach
           @endforeach
         </div>
         @endforeach
-      <hr>
-    </div>
+      </div>
     @endforeach
     </div>
   </div>
 </div>
+
+<script>
+(function() {
+  changeWD(this);
+  changeState(this);
+})()
+function changeState(caller){
+  var tb = document.getElementById("curriculum-tb");
+  if (caller.id == "change_all") {
+    document.getElementById("change_all").setAttribute('hidden', 'true');
+    document.getElementById("change_pre").removeAttribute('hidden');
+  }
+  else {
+    document.getElementById("change_pre").setAttribute('hidden', 'true');
+    document.getElementById("change_all").removeAttribute('hidden');
+  }
+}
+function changeWD(caller){
+  var tb = document.getElementById("curriculum-tb");
+  if (caller.id == "change_w") {
+    document.getElementById("change_w").setAttribute('hidden', 'true');
+    document.getElementById("change_d").removeAttribute('hidden');
+  }
+  else if (caller.id == "change_d") {
+    document.getElementById("change_d").setAttribute('hidden', 'true');
+    document.getElementById("change_w").removeAttribute('hidden');
+  }
+  else {
+    if((screen.width < 768) || (window.matchMedia && window.matchMedia('only screen and (max-width: 640px)').matches)) {
+      document.getElementById("change_d").setAttribute('hidden', 'true');
+      document.getElementById("change_w").removeAttribute('hidden');
+    }
+    else {
+      document.getElementById("change_w").setAttribute('hidden', 'true');
+      document.getElementById("change_d").removeAttribute('hidden');
+    }
+  }
+}
+</script>
+
 <!--
 <script>
 (function(){

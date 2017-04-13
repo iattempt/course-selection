@@ -10,6 +10,10 @@ use App\Selection\CourseBase;
 use App\Selection\CourseType;
 use App\Selection\Unit;
 use App\Selection\User;
+use App\Selection\Day;
+use App\Selection\Period;
+use App\Selection\Type;
+use App\Selection\Professor;
 
 class CourseSearchController extends Controller
 {
@@ -22,9 +26,17 @@ class CourseSearchController extends Controller
         if (Auth::check()) {
             $this->general->identity = Auth::user()->getType();
 
-            $test = CourseType::where('unit_id', '=', User::find(Auth::user()->id)->student->unit_id)->get();
-            foreach ($test as $t)
-                var_dump($t->courses->name);
+            $this->general->info = User::find(Auth::user()->id);
+            $this->general->days = Day::orderby('id', 'asc')->get();
+            $this->general->periods = Period::orderby('id', 'asc')->get();
+            $this->general->types = Type::orderby('name', 'asc')->get();
+            $this->general->units = Unit::orderby('subjection', 'asc')->get();
+            //$this->general->lists = Course::where('unit_id', '=', User::find(Auth::user()->id)->student->unit_id)->get();
+
+            var_dump($request->all());
+            $this->general->lists = Course::with('professors')->where('name', 'like', "%{$request->input('professorName')}%");
+            $this->general->lists = $this->general->lists->get();
+
             return view('course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');

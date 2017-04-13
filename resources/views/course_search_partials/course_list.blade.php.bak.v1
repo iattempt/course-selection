@@ -53,12 +53,14 @@
 -->
 
 </li>
-<div class="collapse" id="expand{{$list->id}}">
-  <div class="row">
+<div class="col-12 row">
+  <div class="collapse" id="expand{{$list->id}}">
+    <div class="card card-block">
     @if ($general->info->type == "student")
-      <span class="col"><a href="#">加選</a></span>
+      <span><a href="#">加選</a></span>
     @endif
-    <span class="col">學分{{$list->credit}}</span>
-    <span class="col">教室{{$list->classroom->name}}</span>
+      <span class="hidden-md-up">學分{{$list->credit}}</span>
+      <span class="hidden-md-up">教室{{$list->classroom->name}}</span>
+    </div>
   </div>
 </div>
