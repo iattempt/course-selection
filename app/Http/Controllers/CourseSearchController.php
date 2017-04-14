@@ -13,7 +13,6 @@ use App\Selection\User;
 use App\Selection\Day;
 use App\Selection\Period;
 use App\Selection\Type;
-use App\Selection\Professor;
 
 class CourseSearchController extends Controller
 {
@@ -33,17 +32,19 @@ class CourseSearchController extends Controller
             $this->general->units = Unit::orderby('subjection', 'asc')->get();
             //$this->general->lists = Course::where('unit_id', '=', User::find(Auth::user()->id)->student->unit_id)->get();
 
-            var_dump($request->all());
-            $this->general->lists = Course::with('professors')->where('name', 'like', "%{$request->input('professorName')}%");
-            $this->general->lists = $this->general->lists->get();
+            if ($request->input("enroll")!= null)
+                $this->general->lists = Course::where('can_enroll', '=', $request->input('enroll'))->get();
+            else
+                $this->general->lists = Course::all();
+            /*
+            if ($request->input("courseName") == NULL)
+                $this->general->lists = Course::all();
+            else
+                $this->general->lists = Course::where('name', 'like', "%{$request->input('courseName')}%")->get();
+            */
 
             return view('course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');
     }
-    function filterDay()
-    {
-    
-    }
-
 }

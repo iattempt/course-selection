@@ -46,10 +46,12 @@
           <span class="dropdown-toggle"></span>
         </a>
 
+<!--
         <a id="credit" class="btn col-" data-toggle="collapse" href="#collapseCredit" aria-expanded="false" aria-controls="collapseCredit">
           學分數
           <span class="dropdown-toggle"></span>
         </a>
+-->
 
         <a id="language" class="btn col-" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
           授課語言
@@ -75,24 +77,24 @@
         <!-- content of button -->
         <div class="collapse col-12 mx-auto" id="collapseProfessor">
           <div class="card card-block">
-            <input id='professorName' class="form-control" type="search" placeholder="教授名字" value="{{old('professorName')}}" name="professorName">
+            <input id='professorName' class="form-control" type="search" placeholder="教授名字" value="{{old('professorName') or ''}}" name="professorName">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseCourse">
           <div class="card card-block">
-            <input id='courseName' class="form-control" type="search" placeholder="課程名稱" value="{{old('courseName')}}" name="courseName">
+            <input id='courseName' class="form-control" type="search" placeholder="課程名稱" name="courseName">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseState">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('canEnroll')}}" name="canEnroll">
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll">
               可加選
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('canNotEnroll')}}" name="canNotEnroll">
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="0" name="enroll">
               不可加選
             </label>
           </div>
@@ -109,25 +111,40 @@
           </div>
         </div>
 
-        <div class="collapse col-12 mx-auto" id="collapseDay">
-          <div class="card card-block">
-            @foreach ($general->days as $d)
-            <label class="form-check-label">
-              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{old($d->name)}}" name="{{$d->name}}">
-              {{$d->name}}
-            </label>
-            @endforeach
-          </div>
-        </div>
-
         <div class="collapse col-12 mx-auto" id="collapseTime">
           <div class="card card-block">
+            <div class="row">
+              <div class="col d-flex justify-content-center"></div>
+              @foreach ($general->days as $d)
+              <div class="col d-flex justify-content-center">{{$d->name}}</div>
+              @if (!$loop->last)|@endif
+              @endforeach
+            </div>
             @foreach ($general->periods as $p)
-              @if ($loop->index%2==0)
-              <div class="row">
-              @else
-              <div class="row bg-faded">
-              @endif
+            @if ($loop->index%2==0)
+            <div class="row">
+            @else
+            <div class="row bg-info">
+            @endif
+              <div class="col">{{$p->name}}</div>
+              @foreach ($general->days as $d)
+              <div class="col">
+                <label class="form-check-label d-flex justify-content-center">
+                  <input type="checkbox" class"form-check-input" value="{{old($d->name)}}{{old($p->name)}}" name="{{$d->name}}{{$p->name}}">
+                </label>
+              </div>
+              @if (!$loop->last)|@endif
+              @endforeach
+            </div>
+            @endforeach
+            
+            <!--
+            @foreach ($general->periods as $p)
+            @if ($loop->index%2==0)
+            <div class="row">
+            @else
+            <div class="row bg-faded">
+            @endif
               @foreach ($general->days as $d)
               <label class="col form-check-label">
                 <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{old($d->name)}}{{old($p->name)}}" name="{{$d->name}}{{$p->name}}">
@@ -137,6 +154,7 @@
               <div class="col-12"></div>
             </div>
             @endforeach
+            -->
           </div>
         </div>
 
@@ -155,6 +173,7 @@
           </div>
         </div>
 
+<!--
         <div class="collapse col-12 mx-auto" id="collapseCredit">
           <div class="card card-block">
             <label class="form-check-label">
@@ -167,6 +186,7 @@
             </label>
           </div>
         </div>
+-->
 
         <div class="collapse col-12 mx-auto" id="collapseLanguage">
           <div class="card card-block">

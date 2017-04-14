@@ -51,14 +51,18 @@
   </span>
 @endif
 -->
-
-</li>
-<div class="collapse" id="expand{{$list->id}}">
-  <div class="row">
+<div class="collapse col-12" id="expand{{$list->id}}">
+  <div class="card card-block">
     @if ($general->info->type == "student")
-      <span class="col"><a href="#">加選</a></span>
+      <div><a href="#">加選</a></div>
     @endif
-    <span class="col">學分{{$list->credit}}</span>
-    <span class="col">教室{{$list->classroom->name}}</span>
+    <div>授課語言 : {{$list->language}}</div>
+    <div>MOOC : {{$list->mooc==1 ? "是"  :  "否"}}</div>
+    <div>開課學年-學期 : {{$list->year}}-{{$list->semester}}</div>
+    <div>課程剩餘人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>
+    <div class="hidden-md-up">學分 : {{$list->credit}}</div>
+    <div class="hidden-md-up">教室 : {{$list->classroom->name}}</div>
   </div>
 </div>
+
+</li>
