@@ -44,9 +44,7 @@
         </li>
         <!-- end of title -->
         <!-- lists -->
-        @foreach ($general->lists as $list)
-          @include ('course_search_partials/course_list')
-        @endforeach
+        @include ('course_search_partials/course_list')
         <!-- end of lists -->
       </ul>
     </div>

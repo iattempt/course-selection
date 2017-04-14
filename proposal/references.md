@@ -1,4 +1,4 @@
-# 如何編輯.markdown file？
+# 參考資料
 ### 教學
 `以下第一個最為推薦`
 
@@ -10,5 +10,8 @@
 
 ---
 ### 線上編輯器
-
 1. [stackedit](http://stackedit.io)
+
+---
+### 不錯的設計
+1. [SAP](http://www.sap.com/taiwan/index.html)

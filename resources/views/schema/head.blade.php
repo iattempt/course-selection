@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{{ ucfirst($general->title) }}</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   @section('bootstrap_cdn')
   @parent
   @endsection

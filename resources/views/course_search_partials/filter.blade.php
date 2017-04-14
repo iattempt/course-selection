@@ -1,13 +1,7 @@
 <div class="row">
-  <a class="btn btn-primary col text-white href="#""> 
-    <span class="glyphicon glyphicon-arrow-left"></span>
-  </a>
-  <a id="filter-controller" class="btn btn-primary col-7" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
+  <a id="filter-controller" class="btn btn-primary col-12" data-toggle="collapse"  data-parent=""href="#filter" aria-expanded="false" aria-controls="filter">
     篩選器
     <span class="glyphicon glyphicon-triangle-bottom"></span>
-  </a>
-  <a class="btn btn-primary col text-white" href="#"> 
-    <span class="glyphicon glyphicon-arrow-right"></span>
   </a>
 
   <div id="filter" class="collapse col-12">
@@ -63,11 +57,6 @@
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="year" class="btn col-" data-toggle="collapse" href="#collapseYear" aria-expanded="false" aria-controls="collapseYear">
-          開課年度
-          <span class="dropdown-toggle"></span>
-        </a>
-
         <a id="semester" class="btn col-" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
           開課學期
           <span class="dropdown-toggle"></span>
@@ -77,7 +66,7 @@
         <!-- content of button -->
         <div class="collapse col-12 mx-auto" id="collapseProfessor">
           <div class="card card-block">
-            <input id='professorName' class="form-control" type="search" placeholder="教授名字" value="{{old('professorName') or ''}}" name="professorName">
+            <input id='professorName' class="form-control" type="search" placeholder="教授名字" name="professorName">
           </div>
         </div>
 
@@ -90,7 +79,7 @@
         <div class="collapse col-12 mx-auto" id="collapseState">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll">
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" checked>
               可加選
             </label>
             <label class="form-check-label">
@@ -104,7 +93,7 @@
           <div class="card card-block">
             @foreach ($general->types as $t)
             <label class="form-check-label">
-              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{old($t->name)}}" name="{{$t->name}}">
+              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="type[]">
               {{$t->name}}
             </label>
             @endforeach
@@ -130,7 +119,7 @@
               @foreach ($general->days as $d)
               <div class="col">
                 <label class="form-check-label d-flex justify-content-center">
-                  <input type="checkbox" class"form-check-input" value="{{old($d->name)}}{{old($p->name)}}" name="{{$d->name}}{{$p->name}}">
+                  <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]">
                 </label>
               </div>
               @if (!$loop->last)|@endif
@@ -165,7 +154,7 @@
                 @continue
               @else
                 <label class="form-check-label">
-                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old($unit->name)}}" name="{{$unit->name}}">
+                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$unit->name}}" name="unit[]">
                   {{$unit->name}}
                 </label>
               @endif
@@ -191,11 +180,11 @@
         <div class="collapse col-12 mx-auto" id="collapseLanguage">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('中文')}}" name="中文">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="中文" name="language[]">
                 中文
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('英文')}}" name="英文">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="英文" name="language[]">
                 英文
             </label>
           </div>
@@ -204,25 +193,12 @@
         <div class="collapse col-12 mx-auto" id="collapseMooc">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('isMooc')}}" name="isMooc">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="1" name="mooc[]">
                 是
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('isNotMooc')}}" name="isNotMooc">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="0" name="mooc[]">
                 否
-            </label>
-          </div>
-        </div>
-
-        <div class="collapse col-12 mx-auto" id="collapseYear">
-          <div class="card card-block">
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('year_2017')}}" name="year_2017">
-              2017
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('year_2016')}}" name="year_2016">
-              2016
             </label>
           </div>
         </div>
@@ -230,15 +206,20 @@
         <div class="collapse col-12 mx-auto" id="collapseSemester">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('semester_1')}}" name="semester_1">
-              第一學期
+            <input type="radio" class="my-3 my-lg-2 form-check-input" value="2017 1" name="semester">
+              2017-1
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('semester_2')}}" name="semester_2">
-              第二學期
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 2" name="semester">
+              2016-2
+            </label>
+            <label class="form-check-label">
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 1" name="semester">
+              2016-1
             </label>
           </div>
         </div>
+
         <!-- end content of button -->
       </div>
       <a class="btn btn-success col" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('filter-form').submit();">

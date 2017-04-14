@@ -123,7 +123,7 @@
 ---
 #### 分工
 ```
-build by Chang and Lin
+build by Chang, Lin, and Hsu
 ```
 `可量化, W = week`
 1. 軟體安裝與測試
@@ -137,9 +137,9 @@ build by Chang and Lin
 1. 文件製作
    * N/A W : Lin
 1. 報告撰寫
-   * N/A W : Lin
+   * N/A W : Lin, Hsu
 1. 程式設計
-   * 15W : Chang
+   * 17W : Chang
 1. 伺服器架設與測試
    * N/A W : Chang
 `難以量化`
@@ -277,5 +277,5 @@ build by Chang and Lin
    1. ...
 + 實踐
    1. Using Laravel Eloquent instead of plain query of database
-   1. Using Laravel Blade template to seperate section of html file
+   1. Using Laravel Blade template to separate section of html file
    1. Using MVC Pattern
