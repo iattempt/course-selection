@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Selection\Course;
-use App\Selection\CourseProfessor;
 use App\Selection\CourseTime;
 use App\Selection\CourseBase;
 use App\Selection\CourseType;
@@ -32,11 +31,13 @@ class CourseSearchController extends Controller
             $this->general->types = Type::orderby('name', 'asc')->get();
             $this->general->units = Unit::orderby('subjection', 'asc')->get();
             //$this->general->lists = Course::where('unit_id', '=', User::find(Auth::user()->id)->student->unit_id)->get();
+
             //var_dump($request->all());
-            $this->general->lists = Course::all();
+            $this->general->lists = Course::take(20);
             
             $this->filterRequest($request);
 
+            $this->general->lists = $this->general->lists->get();
             return view('course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');
@@ -57,60 +58,38 @@ class CourseSearchController extends Controller
 
     function filterProfessorName(Request $request)
     {
-
-        var_dump($this->general->lists);
-        $this->general->lists = $this->general->lists;
-        
-
         if ($request->has('professorName')) {
-            $this->general->lists = $this->general->lists->filter(function($value, $key) use ($request) {
-                foreach ($value->professors as $p)
-                    if (strstr($p->user->name, $request->input('professorName')))
-                        return $value;
-                return false;
+            $this->general->lists = $this->gereral->lists->filter(function($value, $key) {
+                var_dump($value);
             });
         }
     }
     function filterCourseName(Request $request)
     {
-        if ($request->has('courseName')) {
-            $this->general->lists = $this->general->lists->filter(function($value, $key) use($request) {
-                return strstr($value->name, $request->input('courseName'));
-            });
-        }
+        if ($request->has('courseName'))
+            $this->general->lists = $this->general->lists->where('name', 'like', "%{$request->input('courseName')}%");
     }
     function filterEnroll(Request $request)
     {
         if ($request->has('enroll'))
-            $this->general->lists = $this->general->lists->filter(function($value, $key) use($request){
-                return $value->enroll == $request->input('enroll');
-            });
+            $this->general->lists = $this->general->lists->where('can_enroll', '=', $request->input('enroll'));
     }
     function filterType(Request $request)
     {
-        if ($request->has('type')) {
-            $this->general->lists = $this->general->lists->filter(function($value, $key) use($request){
-                foreach ($value->types as $vt)
-                    foreach ($request->input('type') as $rt) {
-                        if ($vt->unit) {
-                            if (($vt->unit->name == $this->general->info->student->unit->name) && ($vt->type->name == $rt))
-                                return $value;
-                        }
-                }
-                return false;
-            });
+        if ($request->has('professorName')) {
+            $this->general->lists = $this->gereral->lists;
         }
     }
     function filterTime(Request $request)
     {
         if ($request->has('professorName')) {
-            $this->general->lists = $this->general->lists;
+            $this->general->lists = $this->gereral->lists;
         }
     }
     function filterUnit(Request $request)
     {
         if ($request->has('professorName')) {
-            $this->general->lists = $this->general->lists;
+            $this->general->lists = $this->gereral->lists;
         }
     }
     function filterLanguage(Request $request)

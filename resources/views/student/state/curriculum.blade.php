@@ -7,12 +7,14 @@
     <div id="curriculum_th" class="col-12">
       <!--狀態列-->
       <div class="row d-flex justify-content-center">
-        目前為:&nbsp;
+        目前為:
+        &nbsp;
         <a id="c_pre" onclick="changeState(this)" href="javascript:void(0)">預選課表</a>
         <a id="c_all" onclick="changeState(this)" href="javascript:void(0)">學期課表</a>
-        &nbsp;
+        &nbsp;&nbsp;|&nbsp;&nbsp;
         <a id="c_week" onclick="changeWD(this)" href="javascript:void(0)">週課表</a>
         <a id="c_day" onclick="changeWD(this)" href="javascript:void(0)">日課表</a>
+        &nbsp;(點選以切換)
       </div>
       <!--end 狀態列-->
       <!--星期列-->
@@ -20,7 +22,7 @@
         <div class="col-2">
         </div>
         @foreach ($general->days as $d)
-          <a onclick="changeD(this)" id="c_day{{$d->id}}" class="col c_clear" href="javascript:void(0)">
+          <a onclick="changeD(this.id)" id="c_day{{$d->id}}" class="col c_clear" href="javascript:void(0)">
             {{$d->simple_name}}
           </a>
         @endforeach
@@ -55,7 +57,7 @@
                 @if ($c->state=="預選中") 
                   <a class="state_pre">{{$c->course->name}}</a>
                 @elseif ($c->state=="修課中")
-                  <div class="state_now">{{$c->course->name}}</div>
+                  <a class="state_now">{{$c->course->name}}</a>
                 @endif
                 @break
               @endif
@@ -81,7 +83,17 @@ function changeState(caller){
   var tb = document.getElementById("curriculum-tb");
   var pre = document.getElementsByClassName("state_pre");
   var now = document.getElementsByClassName("state_now"); 
-  if (caller.id == "c_pre") {
+  if (caller.id == "c_all") {
+    document.getElementById("c_all").setAttribute('hidden', 'true');
+    document.getElementById("c_pre").removeAttribute('hidden');
+    for (var i = 0, l = pre.length; i < l; i++) {
+      pre[i].removeAttribute('hidden');
+    }
+    for (var i = 0, l = now.length; i < l; i++) {
+      now[i].setAttribute('hidden', 'true');
+    }
+  }
+  else {
     document.getElementById("c_pre").setAttribute('hidden', 'true');
     document.getElementById("c_all").removeAttribute('hidden');
     for (var i = 0, l = now.length; i < l; i++) {
@@ -89,17 +101,6 @@ function changeState(caller){
     }
     for (var i = 0, l = pre.length; i < l; i++) {
       pre[i].setAttribute('hidden', 'true');
-    }
-  }
-  else {
-    document.getElementById("c_all").setAttribute('hidden', 'true');
-    document.getElementById("c_pre").removeAttribute('hidden');
-    
-    for (var i = 0, l = pre.length; i < l; i++) {
-      pre[i].removeAttribute('hidden');
-    }
-    for (var i = 0, l = now.length; i < l; i++) {
-      now[i].setAttribute('hidden', 'true');
     }
   }
 }
@@ -111,35 +112,21 @@ function changeWD(caller){
     document.getElementById("c_week").removeAttribute("hidden");
     for (var i = 0, l = dn.length; i < l; i++) {
       dn[i].removeAttribute("hidden");
-      dn[i].classList.remove("col-");
-      dn[i].classList.remove("d-flex");
-      dn[i].classList.remove("justify-content-center");
+      dn[i].classList.remove("col-", "d-flex", "justify-content-center");
     }
     var clear = document.getElementsByClassName("c_clear");
     for (var i = 0, l = clear.length; i < l; i++) {
-      clear[i].classList.remove("text-white");
-      clear[i].classList.remove("bg-primary");
+      clear[i].classList.remove("text-white", "bg-primary");
     }
   }
   else {
-    document.getElementById("c_week").setAttribute("hidden", "true");
-    document.getElementById("c_day").removeAttribute("hidden");
-    for (var i = 0, l = dn.length; i < l; i++) {
-      dn[i].setAttribute("hidden", "true");
-      dn[i].classList.remove("col-");
-      dn[i].classList.remove("d-flex");
-      dn[i].classList.remove("justify-content-center");
-    }
-    var temp_d = "c_day" + (new Date().getDay());
-    var dv = document.getElementsByClassName(temp_d);
-    for (var i = 0, l = dv.length; i < l; i++) {
-      dv[i].removeAttribute("hidden");
-      dv[i].className += " col- d-flex justify-content-center";
-    }
-    changeDTitle(temp_d);
+    var today = "c_day" + (new Date().getDay());
+    if (today == "c_day0")
+      today="c_day1";
+    changeD(today);
   }
 }
-function changeD(caller)
+function changeD(id)
 {
   var dn = document.getElementsByClassName("c_dayn"); 
   document.getElementById("c_week").setAttribute("hidden", "true");
@@ -147,28 +134,24 @@ function changeD(caller)
   //設定資料顯示
   for (var i = 0, l = dn.length; i < l; i++) {
     dn[i].setAttribute("hidden", "true");
-    dn[i].classList.remove("col-");
-    dn[i].classList.remove("d-flex");
-    dn[i].classList.remove("justify-content-center");
+    dn[i].classList.remove("col-", "d-flex", "justify-content-center");
   }
-  temp_d = caller.id;
+  temp_d = id;
   var dv = document.getElementsByClassName(temp_d);
   for (var i = 0, l = dv.length; i < l; i++) {
     dv[i].removeAttribute("hidden");
-    dv[i].className += " col- d-flex justify-content-center";
+    dv[i].classList.add("col-", "d-flex", "justify-content-center");
   }
-  changeDTitle(caller.id);
+  changeDTitle(id);
 }
 function changeDTitle(id)
 {
-  var display = document.getElementById(id);
+  var highlight = document.getElementById(id);
   var clear = document.getElementsByClassName("c_clear");
   for (var i = 0, l = clear.length; i < l; i++) {
-    clear[i].classList.remove("text-white");
-    clear[i].classList.remove("bg-primary");
+    clear[i].classList.remove("text-white", "bg-primary");
   }
-  display.className += " text-white";
-  display.className += " bg-primary";
+  highlight.classList.add("text-white", "bg-primary");
 }
 </script>
 

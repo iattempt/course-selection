@@ -17,7 +17,7 @@ class Course extends Model
     }
     public function types()
     {
-        return $this->hasMany('App\Selection\CourseType');
+        return $this->hasMany('App\Selection\CourseType', 'course_id', 'id');
     }
     public function unit()
     {

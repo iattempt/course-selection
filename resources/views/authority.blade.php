@@ -5,7 +5,7 @@
   <a class="nav-link" href="/authority">首頁</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="/authority/course_search">課程搜尋</a>
+  <a class="nav-link" href="/authority/course_search">全部課程</a>
 </li>
 <li class="dropdown nav-item">
   <a class="nav-link dropdown-toggle" id="dropdownModify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

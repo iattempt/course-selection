@@ -17,11 +17,13 @@
     </span>
 
     <span class="col-1">
+<!--bug:非學生全部顯示為選修-->
       @php
       $output = "";
-      foreach ($list->types as $t)
-        if ($t->unit->name == $general->info->student->unit->name)
-          $output = $t->type->name;
+      if ($general->identity == "student")
+        foreach ($list->types as $t)
+          if ($t->unit->name == $general->info->student->unit->name)
+            $output = $t->type->name;
       if ($output == "")
         foreach ($list->types as $t)
           if ($t->unit->name == "其餘")

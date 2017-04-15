@@ -14,6 +14,7 @@
 Auth::routes();
 
 Route::get('sign_in', 'SignInController@index');
+Route::get('test', 'Test@index');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'IndexController@index');
