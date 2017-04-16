@@ -77,7 +77,6 @@
 (function() {
   changeWD(this);
   changeState(this);
-// || ! ((screen.width < 768) || (window.matchMedia && window.matchMedia("only screen and (max-width: 640px)").matches))
 })()
 function changeState(caller){
   var tb = document.getElementById("curriculum-tb");
@@ -107,7 +106,7 @@ function changeState(caller){
 function changeWD(caller){
   var tb = document.getElementById("curriculum-tb");
   var dn = document.getElementsByClassName("c_dayn"); 
-  if (caller.id == "c_day") {
+  if (caller.id != "c_week") {
     document.getElementById("c_day").setAttribute("hidden", "true");
     document.getElementById("c_week").removeAttribute("hidden");
     for (var i = 0, l = dn.length; i < l; i++) {
