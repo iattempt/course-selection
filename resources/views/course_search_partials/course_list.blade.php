@@ -5,6 +5,9 @@
   <li class="list-group-item row bg-faded">
   @endif
     <span class="col-4">
+      @if ($general->info->type == "student")
+        <a href="#">加選</a>&nbsp;&nbsp;&nbsp;
+      @endif
       <a class="" data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
       {{$list->name}}
       </a>
@@ -56,9 +59,6 @@
   -->
   <div class="collapse col-12" id="expand{{$list->id}}">
     <div class="card card-block">
-      @if ($general->info->type == "student")
-        <div><a href="#">加選</a></div>
-      @endif
       <div>授課語言 : {{$list->language}}</div>
       <div>MOOC : {{$list->mooc==1 ? "是"  :  "否"}}</div>
       <div>開課單位 : {{$list->unit->name}}</div>

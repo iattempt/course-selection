@@ -37,12 +37,30 @@ class CourseSearchController extends Controller
             $this->general->lists = Course::all();
             $this->general->request_lists = "";
 
+            $this->passingRequestToView($request);
             $this->listRequest($request);
             $this->filterRequest($request);
+            
+            if ($request->input('flash'))
+                $request->flash();
 
             return view('course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');
+    }
+
+    function passingRequestToView($request)
+    {
+            if ($request->has('type'))
+                $this->general->old_type = $request->input('type');
+            if ($request->has('time'))
+                $this->general->old_time = $request->input('time');
+            if ($request->has('unit'))
+                $this->general->old_unit = $request->input('unit');
+            if ($request->has('language'))
+                $this->general->old_language = $request->input('language');
+            if ($request->has('mooc'))
+                $this->general->old_mooc = $request->input('mooc');
     }
 
     function listRequest(Request $request)

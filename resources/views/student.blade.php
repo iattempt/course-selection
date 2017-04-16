@@ -4,14 +4,11 @@
 <li class="nav-item">
   <a class="nav-link" href="/student">首頁</a>
 </li>
-<li class="dropdown nav-item">
-  <a class="nav-link dropdown-toggle" id="dropdownInfo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    個人資訊
-  </a>
-  <div class="dropdown-menu" aria-labelledby="dropdownInfo">
-    <a class="dropdown-item" href="/student/state/curriculum">課表</a>
-    <a class="dropdown-item" href="/student/state/threshold">修課總覽</a>
-  </div>
+<li class="nav-item">
+  <a class="nav-link" href="/student/state/curriculum">課表</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/student/state/threshold">修課概覽</a>
 </li>
 <li class="dropdown nav-item">
   <a class="nav-link dropdown-toggle" id="dropdownModify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -19,7 +16,7 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownModify">
     <a class="dropdown-item" href="/student/course_search">全部課程</a>
-    <a class="dropdown-item" href="/student/selection/enroll/recommendation">推薦課程</a>
+    <!--<a class="dropdown-item" href="/student/selection/enroll/recommendation">推薦課程</a>-->
     <a class="dropdown-item" href="/student/selection/enroll/in_required">必修</a>
     <a class="dropdown-item" href="/student/selection/enroll/common_required">共必修</a>
     <a class="dropdown-item" href="/student/selection/enroll/in_force_elective">系必選</a>

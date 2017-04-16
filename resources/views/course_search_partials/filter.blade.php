@@ -6,7 +6,7 @@
 
   <div id="filter" class="collapse col-12">
     <!-- Filter options -->
-    <form id="filter-form" action="course_search" method="GET">
+    <form id="filter-form" action="course_search" role="form" method="GET">
       {{ csrf_field() }}
       <!-- button of options -->
       <div class="row d-flex justify-content-center">
@@ -40,13 +40,6 @@
           <span class="dropdown-toggle"></span>
         </a>
 
-<!--
-        <a id="credit" class="btn col-" data-toggle="collapse" href="#collapseCredit" aria-expanded="false" aria-controls="collapseCredit">
-          學分數
-          <span class="dropdown-toggle"></span>
-        </a>
--->
-
         <a id="language" class="btn col-" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
           授課語言
           <span class="dropdown-toggle"></span>
@@ -66,24 +59,24 @@
         <!-- content of button -->
         <div class="collapse col-12 mx-auto" id="collapseProfessor">
           <div class="card card-block">
-            <input id='professorName' class="form-control" type="search" placeholder="教授名字" name="professorName">
+            <input id='professorName' class="form-control" type="search" placeholder="教授名字" value="{{old('professorName')}}" name="professorName">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseCourse">
           <div class="card card-block">
-            <input id='courseName' class="form-control" type="search" placeholder="課程名稱" name="courseName">
+            <input id='courseName' class="form-control" type="search" placeholder="課程名稱" value="{{old('courseName')}}" name="courseName">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseState">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" checked>
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" {{(old('enroll') != '0') ? 'checked' : ''}}>
               可加選
             </label>
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="0" name="enroll">
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="0" name="enroll" {{(old('enroll') == '0') ? 'checked' : ''}}>
               不可加選
             </label>
           </div>
@@ -93,7 +86,15 @@
           <div class="card card-block">
             @foreach ($general->types as $t)
             <label class="form-check-label">
-              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="type[]">
+              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="type[]"
+                @if (old('flash') && old('type'))
+                  @foreach ($general->old_type as $value)
+                    @if ($value == $t->name)
+                      checked
+                    @endif
+                  @endforeach
+                @endif
+                >
               {{$t->name}}
             </label>
             @endforeach
@@ -119,7 +120,15 @@
               @foreach ($general->days as $d)
               <div class="col">
                 <label class="form-check-label d-flex justify-content-center">
-                  <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]">
+                  <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]"
+                    @if (old('flash') && old('time'))
+                      @foreach ($general->old_time as $value)
+                        @if ($value == ($d->name." ".$p->name))
+                          checked
+                        @endif
+                      @endforeach
+                    @endif
+                    >
                 </label>
               </div>
               @if (!$loop->last)|@endif
@@ -149,42 +158,51 @@
 
         <div class="collapse col-12 mx-auto" id="collapseUnit">
           <div class="card card-block">
-            @foreach($general->units as $unit)
-              @if ($unit->name == "其餘")
+            @foreach($general->units as $u)
+              @if ($u->name == "其餘")
                 @continue
               @else
                 <label class="form-check-label">
-                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$unit->name}}" name="unit[]">
-                  {{$unit->name}}
+                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$u->name}}" name="unit[]"
+                    @if (old('flash') && old('unit'))
+                      @foreach ($general->old_unit as $value)
+                        @if ($value == $u->name)
+                          checked
+                        @endif
+                      @endforeach
+                    @endif
+                    >
+                  {{$u->name}}
                 </label>
               @endif
             @endforeach
           </div>
         </div>
 
-<!--
-        <div class="collapse col-12 mx-auto" id="collapseCredit">
-          <div class="card card-block">
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('creadit-2')}}" name="creadit-2">
-                2學分
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{old('credit-2')}}" name="creadit-3">
-                3學分
-            </label>
-          </div>
-        </div>
--->
-
         <div class="collapse col-12 mx-auto" id="collapseLanguage">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="中文" name="language[]">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="中文" name="language[]"
+                    @if (old('flash') && old('language'))
+                      @foreach ($general->old_language as $value)
+                        @if ($value == "中文")
+                          checked
+                        @endif
+                      @endforeach
+                    @endif
+                    >
                 中文
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="英文" name="language[]">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="英文" name="language[]"
+                    @if (old('flash') && old('language'))
+                      @foreach ($general->old_language as $value)
+                        @if ($value == "英文")
+                          checked
+                        @endif
+                      @endforeach
+                    @endif
+                    >
                 英文
             </label>
           </div>
@@ -193,11 +211,27 @@
         <div class="collapse col-12 mx-auto" id="collapseMooc">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="1" name="mooc[]">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="1" name="mooc[]"
+                @if (old('flash') && old('mooc'))
+                  @foreach ($general->old_mooc as $value)
+                    @if ($value == $t->name)
+                      checked
+                    @endif
+                  @endforeach
+                @endif
+                >
                 是
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="0" name="mooc[]">
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="0" name="mooc[]"
+                @if (old('flash') && old('mooc'))
+                  @foreach ($general->old_mooc as $value)
+                    @if ($value == $t->name)
+                      checked
+                    @endif
+                  @endforeach
+                @endif
+                >
                 否
             </label>
           </div>
@@ -214,7 +248,7 @@
               2016-2
             </label>
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 1" name="semester">
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 1" name="semester" {{old('semester')!='2016_1' ?: 'checked'}}>
               2016-1
             </label>
           </div>
@@ -222,16 +256,21 @@
 
         <!-- end content of button -->
       </div>
-      <a class="btn btn-success col" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('filter-form').submit();">
-        <span class="glyphicon glyphicon-refresh"></span>
-      </a>
+      <div class="col-12 d-flex justify-content-center">
+        <label class="form-check-label mb-2">
+          <input type="checkbox" class="mt-3 form-check-input" value="yes" name="flash">
+            保留搜尋條件
+        </label>
+        &nbsp;&nbsp;&nbsp;
+        <input type="submit" value="送出" class="btn btn-success">
+      </div>
     </form>
     <!-- end of Filter options-->
   </div>
   
   <div class="alert alert-info col-12" role="alert">
-    <strong>搜尋完畢，共有{{ count($general->lists) }}筆資料</strong>，條件為：
-    {{ $general->request_lists }}
+    <strong>搜尋完畢，共有{{ count($general->lists) }}筆資料</strong>
+    &nbsp;&nbsp;條件為：{{ $general->request_lists }}
   </div>
 </div>
 
