@@ -61,6 +61,7 @@
       @endif
       <div>授課語言 : {{$list->language}}</div>
       <div>MOOC : {{$list->mooc==1 ? "是"  :  "否"}}</div>
+      <div>開課單位 : {{$list->unit->name}}</div>
       <div>開課學年-學期 : {{$list->year}}-{{$list->semester}}</div>
       <div>課程剩餘人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>
       <div class="hidden-md-up">學分 : {{$list->credit}}</div>

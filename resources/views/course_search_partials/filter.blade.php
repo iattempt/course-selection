@@ -21,7 +21,7 @@
         </a>
 
         <a id="enroll" class="btn col-" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
-          可否加選
+          加選狀況
           <span class="dropdown-toggle"></span>
         </a>
 
@@ -227,6 +227,11 @@
       </a>
     </form>
     <!-- end of Filter options-->
+  </div>
+  
+  <div class="alert alert-info col-12" role="alert">
+    <strong>搜尋完畢，共有{{ count($general->lists) }}筆資料</strong>，條件為：
+    {{ $general->request_lists }}
   </div>
 </div>
 

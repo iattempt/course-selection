@@ -33,13 +33,70 @@ class CourseSearchController extends Controller
             $this->general->units = Unit::orderby('subjection', 'asc')->get();
             //$this->general->lists = Course::where('unit_id', '=', User::find(Auth::user()->id)->student->unit_id)->get();
             //var_dump($request->all());
+
             $this->general->lists = Course::all();
-            
+            $this->general->request_lists = "";
+
+            $this->listRequest($request);
             $this->filterRequest($request);
 
             return view('course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');
+    }
+
+    function listRequest(Request $request)
+    {
+        if ($request->has('professorName')) {
+            $this->general->request_lists .= "教授名字: [";
+            $this->general->request_lists .= $request->input('professorName') . " ] ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('courseName')) {
+            $this->general->request_lists .= "課程名稱: [";
+            $this->general->request_lists .= $request->input('courseName');
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('enroll')) {
+            $this->general->request_lists .= "加選狀況: [ ";
+            $this->general->request_lists .= ($request->input('enroll') ? "可加選" : "不可加選");
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('type')) {
+            $this->general->request_lists .= "修別:[ ";
+            foreach ($request->input('type') as $t)
+                $this->general->request_lists .= $t . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('time')) {
+            $this->general->request_lists .= "時段:[ ";
+            foreach ($request->input('time') as $t)
+                $this->general->request_lists .= $t . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('unit')) {
+            $this->general->request_lists .= "開課單位:[ ";
+            foreach ($request->input('unit') as $t)
+                $this->general->request_lists .= $t . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('language')) {
+            $this->general->request_lists .= "授課語言:[ ";
+            foreach ($request->input('language') as $t)
+                $this->general->request_lists .= $t . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('mooc')) {
+            $this->general->request_lists .= "MOOC課程:[ ";
+            foreach ($request->input('mooc') as $t)
+                $this->general->request_lists .= ($t ? "是" : "否") . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('semester')) {
+            $this->general->request_lists .= "開課學期:[ ";
+            $this->general->request_lists .= $request->input('semester');
+            $this->general->request_lists .= " ] ";
+        }
     }
 
     function filterRequest(Request $request)
@@ -57,11 +114,6 @@ class CourseSearchController extends Controller
 
     function filterProfessorName(Request $request)
     {
-
-        var_dump($this->general->lists);
-        $this->general->lists = $this->general->lists;
-        
-
         if ($request->has('professorName')) {
             $this->general->lists = $this->general->lists->filter(function($value, $key) use ($request) {
                 foreach ($value->professors as $p)
@@ -88,29 +140,41 @@ class CourseSearchController extends Controller
     }
     function filterType(Request $request)
     {
+        //尚未完成
         if ($request->has('type')) {
             $this->general->lists = $this->general->lists->filter(function($value, $key) use($request){
                 foreach ($value->types as $vt)
                     foreach ($request->input('type') as $rt) {
-                        if ($vt->unit) {
-                            if (($vt->unit->name == $this->general->info->student->unit->name) && ($vt->type->name == $rt))
-                                return $value;
-                        }
+                        if (($vt->unit->name == $this->general->info->student->unit->name) && ($vt->type->name == $rt))
+                            return $value;
                 }
-                return false;
             });
         }
     }
     function filterTime(Request $request)
     {
-        if ($request->has('professorName')) {
-            $this->general->lists = $this->general->lists;
+        if ($request->has('time')) {
+            $this->general->lists = $this->general->lists->filter(function($value, $key) use($request){
+                foreach ($request->input('time') as $rt) {
+                    $dp = explode(' ', $rt);
+                    $day = $dp[0];  $period = $dp[1];
+                    foreach ($value->time as $vt) {
+                        if ($vt->day->name == $day && $vt->period->name == $period)
+                            return $value;
+                    }
+                }
+            });
         }
     }
     function filterUnit(Request $request)
     {
-        if ($request->has('professorName')) {
-            $this->general->lists = $this->general->lists;
+        if ($request->has('unit')) {
+            $this->general->lists = $this->general->lists->filter(function($value, $key) use($request){
+                foreach ($request->unit as $u) {
+                    if ($value->unit->name == $u)
+                        return $value;
+                }
+            });
         }
     }
     function filterLanguage(Request $request)
@@ -129,8 +193,7 @@ class CourseSearchController extends Controller
     {
         if ($request->has('semester')) {
             $ys = explode(' ', $request->input('semester'));
-            $y = $ys[0];
-            $s = $ys[1];
+            $y = $ys[0];    $s = $ys[1];
             $this->general->lists = $this->general->lists->where('year', '=', $y);
             $this->general->lists = $this->general->lists->where('semester', '=', $s);
         }
