@@ -142,11 +142,20 @@ class CourseSearchController extends Controller
     {
         //尚未完成
         if ($request->has('type')) {
-            $this->general->lists = $this->general->lists->filter(function($value, $key) use($request){
-                foreach ($value->types as $vt)
-                    foreach ($request->input('type') as $rt) {
+            $this->general->lists = $this->general->lists->filter(function($value, $key) use($request) {
+                foreach ($request->input('type') as $rt) {
+                    $hasMyUnit = false;
+                    foreach ($value->types as $vt) {
+                        if ($vt->unit->name == $this->general->info->student->unit->name)
+                            $hasMyUnit = true;
                         if (($vt->unit->name == $this->general->info->student->unit->name) && ($vt->type->name == $rt))
                             return $value;
+                    }
+                    if (!$hasMyUnit)
+                        foreach ($value->types as $vt) {
+                            if (($vt->unit->name == "其餘") && ($vt->type->name == $rt))
+                                return $value;
+                        }
                 }
             });
         }
