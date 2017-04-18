@@ -1,36 +1,3 @@
-<div class="row">
-  <div class="col-12">
-    <ul class="list-group">
-      <!-- title -->
-      <li class="list-group-item row">
-        <a href="javascript:void(0)" class="col-4">
-          課程名稱
-          <span class="dropdown-toggle"></span>
-        </a>
-        <a href="javascript:void(0)" class="col-3">
-          授課教師
-          <span class="dropdown-toggle"></span>
-        </a>
-        <a href="javascript:void(0)" class="col-1">
-          修別
-          <span class="dropdown-toggle"></span>
-        </a>
-        <a href="javascript:void(0)" class="col">
-          星期/時段
-          <span class="dropdown-toggle"></span>
-        </a>
-        <a href="javascript:void(0)" class="col-1 hidden-sm-down">
-          學分
-          <span class="dropdown-toggle"></span>
-        </a>
-        <a href="javascript:void(0)" class="col-1 hidden-sm-down">
-          教室
-          <span class="dropdown-toggle"></span>
-        </a>
-      </li>
-      <!-- end of title -->
-      <!-- lists -->
-      @foreach ($general->lists as $list)
         @if ($loop->index%2 != 0)
         <li class="list-group-item row">
         @else
@@ -52,7 +19,7 @@
           </span>
 
           <span class="col-1">
-      <!--bug:非學生全部顯示為選修-->
+          <!--bug:非學生全部顯示為選修-->
             @php
             $output = "";
             if ($general->identity == "student")
@@ -102,8 +69,3 @@
         </div>
 
         </li>
-      @endforeach
-      <!-- end of lists -->
-    </ul>
-  </div>
-</div>

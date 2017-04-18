@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+use App\Selection\User;
+
 class StudentController extends Controller
 {
     //
@@ -13,6 +16,7 @@ class StudentController extends Controller
         $this->general->title = "student";
     }
     function index(Request $request) {
+        $this->general->info = User::find(Auth::user()->id);
         return view('student', ['general' => $this->general]);
     }
 }

@@ -72,7 +72,7 @@
         <div class="collapse col-12 mx-auto" id="collapseState">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" {{(old('enroll') != '0') ? 'checked' : ''}}>
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" {{(old('enroll') == '1') ? 'checked' : ''}}>
               可加選
             </label>
             <label class="form-check-label">
@@ -84,6 +84,7 @@
 
         <div class="collapse col-12 mx-auto" id="collapseType">
           <div class="card card-block">
+            <!-- 列出資料庫修別選項 -->
             @foreach ($general->types as $t)
             <label class="form-check-label">
               <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="type[]"
@@ -270,7 +271,7 @@
   
   <div class="alert alert-info col-12" role="alert">
     <strong>搜尋完畢，共有{{ count($general->lists) }}筆資料</strong>
-    &nbsp;&nbsp;條件為：{{ $general->request_lists }}
+    &nbsp;&nbsp;條件為：{{ $general->request_lists ? $general->request_lists :"未設定"}}
   </div>
 </div>
 

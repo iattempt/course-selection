@@ -8,7 +8,7 @@
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          @if ($general->identity === "student")
+          @if ($general->identity == "student")
             <span class="col-1">退選</span>
             <span class="col-6">課程名稱</span>
           @else
@@ -21,7 +21,7 @@
         </li>
         <!-- end of title -->
         <!-- lists -->
-        @if(count($general->lists) > 0)
+        @if (count($general->lists))
           @foreach ($general->lists as $list)
             @include ('course_search_partials/course_list')
           @endforeach

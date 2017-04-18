@@ -10,7 +10,7 @@
         目前為:
         &nbsp;
         <a id="c_pre" onclick="changeState(this)" href="javascript:void(0)">預選課表</a>
-        <a id="c_all" onclick="changeState(this)" href="javascript:void(0)">學期課表</a>
+        <a id="c_cur" onclick="changeState(this)" href="javascript:void(0)">學期課表</a>
         &nbsp;&nbsp;|&nbsp;&nbsp;
         <a id="c_week" onclick="changeWD(this)" href="javascript:void(0)">週課表</a>
         <a id="c_day" onclick="changeWD(this)" href="javascript:void(0)">日課表</a>
@@ -82,8 +82,8 @@ function changeState(caller){
   var tb = document.getElementById("curriculum-tb");
   var pre = document.getElementsByClassName("state_pre");
   var now = document.getElementsByClassName("state_now"); 
-  if (caller.id == "c_all") {
-    document.getElementById("c_all").setAttribute('hidden', 'true');
+  if (caller.id == "c_cur") {
+    document.getElementById("c_cur").setAttribute('hidden', 'true');
     document.getElementById("c_pre").removeAttribute('hidden');
     for (var i = 0, l = pre.length; i < l; i++) {
       pre[i].removeAttribute('hidden');
@@ -94,7 +94,7 @@ function changeState(caller){
   }
   else {
     document.getElementById("c_pre").setAttribute('hidden', 'true');
-    document.getElementById("c_all").removeAttribute('hidden');
+    document.getElementById("c_cur").removeAttribute('hidden');
     for (var i = 0, l = now.length; i < l; i++) {
       now[i].removeAttribute('hidden');
     }

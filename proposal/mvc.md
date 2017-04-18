@@ -1,12 +1,11 @@
 ## Controller
 * Controller
-   ```
-   Declare global variable. school-name or school-website, etc.
-   ```
+   `定義全域變數，諸如目前登入的使用者身份、學校資訊`
 #### General
-   - FeedbackController
    - SignInController
    - SignOutController
+   - CourseSearchController
+   - FeedbackController
 ---
 #### Student
    - StudentController
@@ -24,7 +23,6 @@
          * PreSyllabusController
          * SyllabusController
          * ThresholdController
-      + CourseSearchController
 ---
 #### Authority
    - AuthorityController
@@ -37,27 +35,18 @@
          * SyllabusController
          * ThresholController
          * UnitController
-      + CourseSearchController
 ---
 #### Professor
    - ProfessorController
       + ApproveController
       + MyCourseController
       + UnitCourseController
-      + CourseSearchController
 ---
 ## Viewer
 * Viewer
+   `整理前端頁面資料夾邏輯`
+   `其中Schama載入必須的 css, js, and general navigation bar, etc.`
    - Schema
-      ```
-      預先載入必須的 css, js, and 設計 general navigation bar, etc.
-      整個載入過程是必須按照下列順序的
-      ```
-      1. bootstrap_cdn
-      1. head
-      1. header
-      1. script
-      1. preset
    - Student
    - Professor
    - Authority
@@ -65,6 +54,7 @@
 ## Model
 * Model
    - Repository
-      ```
-      使用MySQL
-      ```
+      `使用MariaDB`
+   - Laravel Eloquent
+      `Laravel 提供的ORM，提供簡潔漂亮的ActiveRecord實作時期與資料庫互動，每個資料表都會對應一個Model`
+
