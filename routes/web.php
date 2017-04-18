@@ -14,12 +14,12 @@
 Auth::routes();
 
 Route::get('sign_in', 'SignInController@index');
-Route::get('test', 'Test@index');
+Route::get('test', 'TestController@index');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'IndexController@index');
     Route::get('feedback', 'FeedbackController@index');
-    Route::get('{id}/course_search', 'CourseSearchController@index');
+    Route::resource('{id}/course_search', 'CourseSearchController');
 
 //authority
     Route::group(['middleware' => 'authority'], function () {

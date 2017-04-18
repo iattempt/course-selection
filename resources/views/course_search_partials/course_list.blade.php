@@ -4,12 +4,18 @@
         <li class="list-group-item row bg-faded">
         @endif
           <span class="col-4">
-            @if ($general->info->type == "student")
-              <a href="#">加選</a>&nbsp;&nbsp;&nbsp;
-            @endif
-            <a class="" data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
+            <a data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
             {{$list->name}}
             </a>
+            <!--欲增加取消功能-->
+            @if ($general->info->type == "student")
+                <form action="course_search/create" method="GET">
+                {{ csrf_field() }}
+                      <input type="hidden" value="{{$general->info->id}}" name="student_id">
+                      <input type="hidden" value="{{$list->id}}" name="course_id">
+                      <input type="submit" value="加選" class="btn btn-success">
+                </form>
+            @endif
           </span>
 
           <span class="col-3">

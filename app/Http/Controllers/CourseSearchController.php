@@ -43,6 +43,85 @@ class CourseSearchController extends Controller
         return redirect('sign_in');
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        if ($request->has('student_id', 'course_id')) {
+            $check = Curriculum::all()->filter(function($value, $key) use($request) {
+                if ($value->student_id == $request->input('student_id'))
+                    if ($value->course_id == $request->input('course_id'))
+                        return $value;
+            });
+            if (!count($check)) {
+                $cu = new Curriculum;
+                $cu->course_id = $request->input('course_id');
+                $cu->student_id = $request->input('student_id');
+                $cu->save();
+            }
+        }
+        return redirect('student/course_search');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
     function passingRequestToView($request)
     {
         if ($request->input('flash'))
