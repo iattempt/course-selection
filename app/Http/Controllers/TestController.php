@@ -15,11 +15,9 @@ class TestController extends Controller
         parent::__construct();
     }
     function index() {
-        $test = Test::find(1);
+        $test = Test::findOrFail(3);
         $test->value1 = '3';
         $test->value2 = '4';
-        
-        $test->delete();
 
         $testall = Test::all();
         dd($testall);

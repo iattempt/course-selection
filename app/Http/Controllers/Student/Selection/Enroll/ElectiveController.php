@@ -14,6 +14,7 @@ class ElectiveController  extends CourseSearchController
     function __construct () {
         parent::__construct();
         $this->general->title = "Enroll in-required";
+        $this->general->view_path .= "/elective";
     }
     function index(Request $request) {
         parent::index();

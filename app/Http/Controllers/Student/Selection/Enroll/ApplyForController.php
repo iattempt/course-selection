@@ -14,6 +14,7 @@ class ApplyForController extends CourseSearchController
     function __construct () {
         parent::__construct();
         $this->general->title = "Apply For";
+        $this->general->view_path .= "/apply_for";
     }
     function index(Request $request) {
         parent::index();

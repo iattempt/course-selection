@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
+use App\Selection\User;
+use App\Selection\Student;
 
 class StudentController extends ModifyController
 {
@@ -11,8 +13,10 @@ class StudentController extends ModifyController
     function __construct () {
         parent::__construct();
         $this->general->title = "Modify student";
+        $this->general->view_path .= "/student";
     }
     function index(Request $request) {
+        $this->general->lists = $this->getUsers('student');
         return view('authority/modify/student', ['general' => $this->general]);
     }
     /**

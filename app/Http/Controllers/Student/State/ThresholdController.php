@@ -14,6 +14,7 @@ class ThresholdController extends StateController
     function __construct () {
         parent::__construct();
         $this->general->title = "Threshold";
+        $this->general->view_path .= "/threshold";
     }
     function index(Request $request) {
         return view('student/state/threshold', ['general' => $this->general]);

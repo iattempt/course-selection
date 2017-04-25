@@ -24,6 +24,7 @@ class DropController extends SelectionController
     function __construct () {
         parent::__construct();
         $this->general->title = "Drop";
+        $this->general->view_path .= "/drop";
     }
     function index(Request $request) {
             $this->general->identity = Auth::user()->getType();

@@ -14,6 +14,7 @@ class AuthorityController extends Controller
         parent::__construct();
         $this->general->identity = "authority";
         $this->general->title = "authority";
+        $this->general->view_path .= "/authority";
     }
     function index(Request $request) {
         $this->general->info = User::find(Auth::user()->id);

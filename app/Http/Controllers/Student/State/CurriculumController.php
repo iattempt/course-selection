@@ -16,6 +16,7 @@ class CurriculumController extends StateController
     function __construct () {
         parent::__construct();
         $this->general->title = "Curricula";
+        $this->general->view_path .= "/curriculum";
     }
     function index(Request $request) {
         $this->general->days = Day::orderby('id', 'asc')->get();

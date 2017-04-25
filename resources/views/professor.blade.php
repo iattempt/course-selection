@@ -8,7 +8,7 @@
   <a class="nav-link" href="/professor/approve">審核特殊加選</a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="/professor/course_search">全部課程</a>
+  <a class="nav-link" href="/course_search">全部課程</a>
 </li>
 <li class="nav-item">
   <a class="nav-link" href="/professor/my_course">我的課程</a>

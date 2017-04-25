@@ -15,7 +15,7 @@
     加選
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownModify">
-    <a class="dropdown-item" href="/student/course_search">全部課程</a>
+    <a class="dropdown-item" href="/course_search">全部課程</a>
     <!--<a class="dropdown-item" href="/student/selection/enroll/recommendation">推薦課程</a>-->
     <a class="dropdown-item" href="/student/selection/enroll/in_required">必修</a>
     <a class="dropdown-item" href="/student/selection/enroll/common_required">共必修</a>

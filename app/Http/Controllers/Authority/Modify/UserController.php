@@ -5,17 +5,24 @@ namespace App\Http\Controllers\Authority\Modify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
 
-class CourseBaseController extends ModifyController
+class UserController extends ModifyController
 {
-    //
-    function __construct () {
+    function __construct() {
         parent::__construct();
-        $this->general->title = "Modify course base";
-        $this->general->view_path .= "/course_base";
+        $this->general->title = "Register";
+        $this->general->view_path .= "/user";
     }
-    function index(Request $request) {
-        return view('authority/modify/course_base', ['general' => $this->general]);
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        return view('authority/modify/user', ['general' => $this->general]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,14 +65,6 @@ class CourseBaseController extends ModifyController
     {
         //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     /**
      * Update the specified resource in storage.

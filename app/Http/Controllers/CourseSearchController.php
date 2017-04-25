@@ -27,7 +27,7 @@ class CourseSearchController extends Controller
         if (Auth::check()) {
             $this->general->identity = Auth::user()->getType();
 
-            $this->general->info = User::find(Auth::user()->id);
+            $this->general->info = User::findOrFail(Auth::user()->id);
             $this->general->days = Day::orderby('id', 'asc')->get();
             $this->general->periods = Period::orderby('id', 'asc')->get();
             $this->general->types = Type::orderby('name', 'asc')->get();
@@ -48,7 +48,17 @@ class CourseSearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
+    {
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         if ($request->has('student_id', 'course_id')) {
             $check = Curriculum::all()->filter(function($value, $key) use($request) {
@@ -63,18 +73,7 @@ class CourseSearchController extends Controller
                 $cu->save();
             }
         }
-        return redirect('student/course_search');
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+        return redirect('course_search');
     }
 
     /**
@@ -119,7 +118,17 @@ class CourseSearchController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->general->info = User::findOrFail(Auth::user()->id);
+        $cu = Curriculum::all()->filter(function ($value, $key) {
+            if ($value->student_id == $this->general->info->id)
+                return $value;
+        });
+        foreach ($cu as $value) {
+            if ($value->course->id == $id){
+                $value->delete();
+            }
+        }
+        return redirect('course_search');
     }
 
     function passingRequestToView($request)

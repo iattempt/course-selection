@@ -19,15 +19,15 @@ Route::get('test', 'TestController@index');
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'IndexController@index');
     Route::get('feedback', 'FeedbackController@index');
-    Route::resource('{id}/course_search', 'CourseSearchController');
+    Route::resource('course_search', 'CourseSearchController');
 
 //authority
     Route::group(['middleware' => 'authority'], function () {
         Route::get('authority', 'AuthorityController@index');
         Route::group(['prefix' => 'authority', 'namespace' => 'Authority'], function () {
-            Route::get('register', 'RegisterController@index');
             Route::get('modify', 'ModifyController@index');
             Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
+                Route::resource('user', 'UserController');
                 Route::resource('classroom', 'ClassroomController');
                 Route::resource('course_base', 'CourseBaseController');
                 Route::resource('course', 'CourseController');

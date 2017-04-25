@@ -10,6 +10,7 @@ class SelectionController extends StudentController
     //
     public function __construct() {
         parent::__construct();
+        $this->general->view_path .= "/selection";
     }
     function index(Request $request) {
     

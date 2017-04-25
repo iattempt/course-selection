@@ -1,6 +1,5 @@
-@extends('authority')
-@section('authority')
-<div class="container">
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseCreate" aria-expanded="false" aria-controls="collapseCreate">新增</a>
+<div id="collapseCreate" class="collapse">
   <form action="{{ route('register') }}" method="POST">
     {{ csrf_field() }}
     <div class="form-group row d-flex justify-content-center">
@@ -34,5 +33,3 @@
     </div>
   </form>
 </div>
-@endsection
-

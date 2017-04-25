@@ -14,6 +14,7 @@ class GeneralController extends CourseSearchController
     function __construct () {
         parent::__construct();
         $this->general->title = "Enroll in-required";
+        $this->general->view_path .= "/general";
     }
     function index(Request $request) {
         parent::index();

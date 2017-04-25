@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
+use App\Selection\Classroom;
 
 class ClassroomController extends ModifyController
 {
@@ -11,9 +12,12 @@ class ClassroomController extends ModifyController
     function __construct() {
         parent::__construct();
         $this->general->title = "Modify classroom";
+        $this->general->view_path .= "/classroom";
     }
     function index(Request $request) {
-        return view('authority/modify/classroom', ['general' => $this->general]);
+        $this->general->lists =  Classroom::all();
+
+        return view($this->general->view_path, ['general' => $this->general]);
     }
 
     /**
@@ -23,7 +27,7 @@ class ClassroomController extends ModifyController
      */
     public function create()
     {
-        //
+        return view($this->general->view_path . "/create", ['general' => $this->general]);
     }
 
     /**
@@ -34,7 +38,7 @@ class ClassroomController extends ModifyController
      */
     public function store(Request $request)
     {
-        //
+        return "created";
     }
 
     /**
@@ -45,7 +49,9 @@ class ClassroomController extends ModifyController
      */
     public function show($id)
     {
-        //
+        $this->general->lists =  Classroom::all();
+        $detail = Classroom::all()->where('id', '=', $id);
+        return view($this->general->view_path . "/show", ['detail' => $detail]);
     }
 
     /**
@@ -56,7 +62,7 @@ class ClassroomController extends ModifyController
      */
     public function edit($id)
     {
-        //
+        return view($this->general->view_path . '/edit', ['general' => $this->general, 'id' => $id]);
     }
 
     /**
@@ -68,7 +74,7 @@ class ClassroomController extends ModifyController
      */
     public function update(Request $request, $id)
     {
-        //
+        return "udpated" . $id;
     }
 
     /**
@@ -79,6 +85,6 @@ class ClassroomController extends ModifyController
      */
     public function destroy($id)
     {
-        //
+        return "deleted" . $id;
     }
 }

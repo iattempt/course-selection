@@ -11,6 +11,7 @@ class UnitController extends ModifyController
     function __construct () {
         parent::__construct();
         $this->general->title = "Modify unit";
+        $this->general->view_path .= "/unit";
     }
     function index(Request $request) {
         return view('authority/modify/unit', ['general' => $this->general]);

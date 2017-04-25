@@ -223,6 +223,8 @@ build by Chang, Lin, and Hsu
 ---
 #### 行政人員
 1. 修改
+   `註：`行政人員其操作皆在辦公室，故無響應式設計
+   1. 人員
    1. 教室
    1. 課程
    1. 教授
@@ -230,8 +232,6 @@ build by Chang, Lin, and Hsu
    1. 單位
    1. 畢業門檻
    1. 課程大綱
-1. 新增人員
-   `admin, professor, or student`
 ---
 #### 共有
 1. 登入

@@ -14,6 +14,7 @@ class ProfessorController extends Controller
         parent::__construct();
         $this->general->identity = "professor";
         $this->general->title = "professor";
+        $this->general->view_path .= "/professor";
     }
     function index(Request $request) {
         $this->general->info = User::find(Auth::user()->id);

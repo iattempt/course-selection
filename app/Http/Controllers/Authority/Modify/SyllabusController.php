@@ -11,6 +11,7 @@ class SyllabusController extends ModifyController
     function __construct () {
         parent::__construct();
         $this->general->title = "Modify syllabus";
+        $this->general->view_path .= "/syllabus";
     }
     function index(Request $request) {
         return view('authority/modify/syllabus', ['general' => $this->general]);
