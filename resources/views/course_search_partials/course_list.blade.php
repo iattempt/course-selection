@@ -5,7 +5,8 @@
         @endif
           <span class="col-4">
             <a data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
-            {{$list->name}}
+              {{$list->name}}
+              <span class="dropdown-toggle"></span>
             </a>
             <!--欲增加取消功能-->
             @if ($general->info->type == "student")
