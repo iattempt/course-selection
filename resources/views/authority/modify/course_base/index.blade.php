@@ -1,4 +1,4 @@
-<a class="btn btn-primary" href="classroom/create">新增</a>
+<a class="btn btn-primary" href="course_base/create">新增</a>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -11,9 +11,9 @@
     @foreach ($general->lists as $list)
       <tr>
         <td>{{$list->id}}</td>
-        <td><a href="classroom/{{$list->id}}">{{$list->name}}</a></td>
+        <td><a href="course_base/{{$list->id}}">{{$list->name}}</a></td>
         <td>
-          <a class="btn btn-primary" href="classroom/{{$list->id}}/edit">修改</a>
+          <a class="btn btn-primary" href="course_base/{{$list->id}}/edit">修改</a>
         </td>
         <td>
           @include ($general->view_path . '/delete')

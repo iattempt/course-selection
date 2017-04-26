@@ -11,12 +11,11 @@ class ClassroomController extends ModifyController
     //
     function __construct() {
         parent::__construct();
-        $this->general->title = "Modify classroom";
-        $this->general->view_path .= "/classroom";
+        $this->general->title = 'Modify classroom';
+        $this->general->view_path .= '/classroom';
+        $this->general->lists =  Classroom::all();
     }
     function index(Request $request) {
-        $this->general->lists =  Classroom::all();
-
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -27,7 +26,6 @@ class ClassroomController extends ModifyController
      */
     public function create()
     {
-        return view($this->general->view_path . "/create", ['general' => $this->general]);
     }
 
     /**
@@ -38,7 +36,20 @@ class ClassroomController extends ModifyController
      */
     public function store(Request $request)
     {
-        return "created";
+        try {
+            if ($request->has('name')){
+                $cr = new Classroom;
+                $cr->name = $request->input('name');
+                $cr->save();
+                $this->general->message = "created";
+                $this->general->message_type = "success";
+            }
+        }
+        catch (\Exception $e){
+            $this->general->message = "failed";
+            $this->general->message_type = "danger";
+        }
+        return redirect('authority/modify/classroom');
     }
 
     /**
@@ -51,7 +62,7 @@ class ClassroomController extends ModifyController
     {
         $this->general->lists =  Classroom::all();
         $detail = Classroom::all()->where('id', '=', $id);
-        return view($this->general->view_path . "/show", ['detail' => $detail]);
+        return view($this->general->view_path . '/show', ['detail' => $detail]);
     }
 
     /**
@@ -62,7 +73,6 @@ class ClassroomController extends ModifyController
      */
     public function edit($id)
     {
-        return view($this->general->view_path . '/edit', ['general' => $this->general, 'id' => $id]);
     }
 
     /**
@@ -74,7 +84,20 @@ class ClassroomController extends ModifyController
      */
     public function update(Request $request, $id)
     {
-        return "udpated" . $id;
+        try {
+            if ($request->has('name')){
+                $cr = Classroom::find($id);
+                $cr->name = $request->input('name');
+                $cr->save();
+                $this->general->message = "created";
+                $this->general->message_type = "success";
+            }
+        }
+        catch (\Exception $e){
+            $this->general->message = "failed";
+            $this->general->message_type = "danger";
+        }
+        return redirect('authority/modify/classroom');
     }
 
     /**
@@ -85,6 +108,15 @@ class ClassroomController extends ModifyController
      */
     public function destroy($id)
     {
-        return "deleted" . $id;
+        try{
+            Classroom::destroy($id);
+            $this->general->message = 'successed';
+            $this->general->message_type = 'success';
+        }
+        catch (\Exception $e){
+            $this->general->message = 'failed';
+            $this->general->message_type = 'danger';
+        }
+        return redirect('authority/modify/classroom');
     }
 }

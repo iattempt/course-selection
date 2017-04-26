@@ -10,7 +10,8 @@ class ModifyController extends AuthorityController
     //
     public function __construct() {
         parent::__construct();
-        $this->general->view_path .= "/modify";
+        $this->general->view_path .= '/modify';
+        $this->general->message = '';
     }
     function index(Request $request) {
     }

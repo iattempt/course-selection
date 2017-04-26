@@ -16,14 +16,16 @@ class Controller extends BaseController
     public $general;
     public function __construct () {
         $this->general = new General();
-        $this->general->identity = "";
+        $this->general->identity = '';
         $this->general->my_unit;
-        $this->general->view_path = "/";
+        $this->general->view_path = '/';
+        $this->general->message = '';
+        $this->general->message_type = '';
 
         $this->general->school = new School();
-        $this->general->school->name = "東海";
-        $this->general->school->calender = "http://www.thu.edu.tw/web/calendar/detail.php?scid=23&sid=36";
-        $this->general->school->website = "http://www.thu.edu.tw";
+        $this->general->school->name = '東海';
+        $this->general->school->calender = 'http://www.thu.edu.tw/web/calendar/detail.php?scid=23&sid=36';
+        $this->general->school->website = 'http://www.thu.edu.tw';
     }
     public function getUsers($type)
     {

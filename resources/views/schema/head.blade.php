@@ -18,6 +18,7 @@
   @section('header')
   @show
   <div class="my-3"></div>
+  @include ('schema/message')
   @section('main')
   @show
   <div style="padding-bottom: 100px"></div> <!-- footer space -->
