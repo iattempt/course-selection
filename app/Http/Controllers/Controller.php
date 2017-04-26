@@ -7,13 +7,54 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+use App\Selection\User;
+
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-    public $school;
+    public $general;
     public function __construct () {
-        $this->data['G_SCHOOL'] = "東海";
-        $this->data['G_SCHOOL_CALANDER'] = "http://www.thu.edu.tw/web/calendar/detail.php?scid=23&sid=36";
-        $this->data['G_SCHOOL_WEBSITE'] = "http://www.thu.edu.tw";
+        $this->general = new General();
+        $this->general->identity = '';
+        $this->general->my_unit;
+        $this->general->view_path = '/';
+        $this->general->message = '';
+        $this->general->message_type = '';
+
+        $this->general->school = new School();
+        $this->general->school->name = '東海';
+        $this->general->school->calender = 'http://www.thu.edu.tw/web/calendar/detail.php?scid=23&sid=36';
+        $this->general->school->website = 'http://www.thu.edu.tw';
+    }
+    public function getUsers($type)
+    {
+        $u = User::all()->filter(function ($value, $key) use($type){
+            if($value->type == $type)
+                return $value;
+        });
+        return $u;
+    }
+}
+
+Class General
+{
+    public $title;
+    public $identity;
+    public $my_unit;
+    public $school; //School class
+    public $errors;
+
+    public function __construct () {
+    }
+}
+
+class School
+{
+    public $name;
+    public $calender;
+    public $website;
+    
+    public function __construct () {
     }
 }

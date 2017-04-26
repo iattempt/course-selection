@@ -10,9 +10,10 @@ class MyCourseController extends ProfessorController
     //
     function __construct () {
         parent::__construct();
-        $this->data['title'] = "My course";
+        $this->general->title = "My course";
+        $this->general->view_path .= "/my_course";
     }
-    function index() {
-        return view('professor/my_course', $this->data);
+    function index(Request $request) {
+        return view('professor/my_course', ['general' => $this->general]);
     }
 }

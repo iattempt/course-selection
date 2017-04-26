@@ -1,59 +1,28 @@
-@extends('schema/preset')
-@section('main')
+@extends('authority/modify')
+@section('modify')
 <div class="container">
-  <form action="course" method="post">
-    <div class="form-group row">
-      <label for="course_base" class="col-2 col-form-label">Course-base</label>
-      <div class="col-10">
-        <select class="form-control" id="course_base">
-          <!--需要搜尋資料庫資料-->
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="classroom" class="col-2 col-form-label">Classroom</label>
-      <div class="col-10">
-        <select class="form-control" id="classroom">
-          <!--需要搜尋資料庫資料-->
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="topic" class="col-2 col-form-label">Topic</label>
-      <div class="col-10">
-        <input type="text" class="form-control" id="topic"></input>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="year" class="col-2 col-form-label">Year</label>
-      <div class="col-10">
-        <select class="form-control" id="year">
-          <!--需要改為偵測本年度 特別小心下學期的年度是去年-->
-          <option>2017</option>
-          <option>2018</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="semester" class="col-2 col-form-label">Semester</label>
-      <div class="col-10">
-        <select class="form-control" id="semester">
-          <option>1</option>
-          <option>2</option>
-        </select>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-  </form>
+  @include ('authority/modify/course/create')
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>代號</th>
+        <th>名稱</th>
+        <th>基底</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+    @foreach ($general->lists as $list)
+      <tr>
+        <td>$list->id</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    @endforeach
+    </tbody>
+  </table>
 </div>
 @endsection

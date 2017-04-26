@@ -10,5 +10,9 @@ class EnrollController extends SelectionController
     //
     public function __construct () {
         parent::__construct();
+        $this->general->view_path .= "/enroll";
+    }
+    function index(Request $request) {
+    
     }
 }

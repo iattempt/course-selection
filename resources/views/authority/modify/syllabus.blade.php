@@ -1,3 +1,3 @@
-@extends('schema/preset')
-@section('main')
+@extends('authority/modify')
+@section('modify')
 @endsection

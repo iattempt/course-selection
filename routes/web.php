@@ -11,85 +11,69 @@
 |
 */
 
-// check post and get class
-//
-Route::get('/', 'Controller@index');
-Route::get('sign_in', 'Member\SignInController@index');
+Auth::routes();
+
+Route::get('sign_in', 'SignInController@index');
+Route::get('test', 'TestController@index');
 
 Route::group(['middleware' => 'guest'], function () {
-    Route::get('sign_out', 'Member\SignOutController@index');
-
+    Route::get('/', 'IndexController@index');
     Route::get('feedback', 'FeedbackController@index');
-    Route::get('course_search', 'CourseSearchController@index');
+    Route::resource('course_search', 'CourseSearchController');
 
 //authority
-    Route::get('authority', 'AuthorityController@index');
-    Route::group(['namespace' => 'Authority'], function () {
-        Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
-            Route::get('professor', 'ProfessorController@index');
-            Route::post('professor', 'ProfessorController@verify');
-            Route::get('course', 'CourseController@index');
-            Route::post('course', 'CourseController@verify');
-            Route::get('unit', 'UnitController@index');
-            Route::post('unit', 'UnitController@verify');
-            Route::get('syllabus', 'SyllabusController@index');
-            Route::post('syllabus', 'SyllabusController@verify');
-            Route::get('student', 'StudentController@index');
-            Route::post('student', 'StudentController@verify');
-            Route::get('course_base', 'CourseBaseController@index');
-            Route::post('course_base', 'CourseBaseController@verify');
-            Route::get('threshold', 'ThresholdController@index');
-            Route::post('threshold', 'ThresholdController@verify');
-            Route::get('classroom', 'ClassroomController@index');
-            Route::post('classroom', 'ClassroomController@verify');
+    Route::group(['middleware' => 'authority'], function () {
+        Route::get('authority', 'AuthorityController@index');
+        Route::group(['prefix' => 'authority', 'namespace' => 'Authority'], function () {
+            Route::get('modify', 'ModifyController@index');
+            Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
+                Route::resource('user', 'UserController');
+                Route::resource('classroom', 'ClassroomController');
+                Route::resource('course_base', 'CourseBaseController');
+                Route::resource('course', 'CourseController');
+                Route::resource('professor', 'ProfessorController');
+                Route::resource('student', 'StudentController');
+                Route::resource('syllabus', 'SyllabusController');
+                Route::resource('threshold', 'ThresholdController');
+                Route::resource('unit', 'UnitController');
+            });
         });
     });
 
 //professor
-    Route::get('professor', 'ProfessorController@index');
-    Route::group(['prefix' => 'professor',
-            'namespace' => 'Professor'], function() {
-        Route::get('approve', 'ApproveController@index');
-        Route::post('approve', 'ApproveController@verify');
-        Route::get('unit_course', 'UnitCourseController@index');
-        Route::get('my_course', 'MyCourseController@index');
-    });    
+    Route::group(['middleware' => 'professor'], function () {
+        Route::get('professor', 'ProfessorController@index');
+        Route::group(['prefix' => 'professor', 'namespace' => 'Professor'], function() {
+            Route::get('approve', 'ApproveController@index');
+            Route::get('unit_course', 'UnitCourseController@index');
+            Route::get('my_course', 'MyCourseController@index');
+        });
+    });
  
 //student
-    Route::get('student', 'StudentController@index');
-    Route::group(['prefix' => 'student',
-            'namespace' => 'Student'], function () {
-        Route::group(['prefix' => 'selection',
-                'namespace' => 'Selection'], function () {
-            Route::get('apply_for', 'ApplyForController@index');
-            Route::post('apply_for', 'ApplyForController@verify');
-            Route::get('drop', 'DropController@index');
-            Route::post('drop', 'DropController@verify');
-
-            Route::group(['prefix' => 'enroll', 
-                'namespace' => 'Enroll'], function () {
-                Route::get('recommendation', 'RecommendationController@index');
-                Route::post('recommendation', 'RecommendationController@verify');
-                Route::get('in_required', 'InRequiredController@index');
-                Route::post('in_required', 'InRequiredController@verify');
-                Route::get('common_required', 'CommonRequiredController@index');
-                Route::post('common_required', 'CommonRequiredController@verify');
-                Route::get('in_force_elective', 'InForceElectiveController@index');
-                Route::post('in_force_elective', 'InForceElectiveController@verify');
-                Route::get('in_elective', 'InElectiveController@index');
-                Route::post('in_elective', 'InElectiveController@verify');
-                Route::get('out_elective', 'OutElectiveController@index');
-                Route::post('out_elective', 'OutElectiveController@verify');
-                Route::get('general', 'GeneralController@index');
-                Route::post('general', 'GeneralController@verify');
+    Route::group(['middleware' => 'student'], function () {
+        Route::get('student', 'StudentController@index');
+        Route::group(['prefix' => 'student', 'namespace' => 'Student'], function () {
+            Route::group(['prefix' => 'state', 'namespace' => 'State'], function () {
+                Route::get('curriculum', 'CurriculumController@index');
+                Route::get('threshold', 'ThresholdController@index');
             });
-        });
-        Route::group(['prefix' => 'state', 
-                'namespace' => 'State'], function () {
-            Route::get('pre_syllabus', 'PreSyllabusController@index');
-            Route::get('syllabus', 'SyllabusController@index');
-            Route::get('threshold', 'ThresholdController@index');
-            Route::get('threshold_print', 'ThresholdController@print');
+
+            Route::group(['prefix' => 'selection', 'namespace' => 'Selection'], function () {
+                Route::get('drop', 'DropController@index');
+                
+                Route::get('enroll', 'EnrollController@index');
+                Route::group(['prefix' => 'enroll', 'namespace' => 'Enroll'], function () {
+                    Route::get('apply_for', 'ApplyForController@index');
+                    Route::get('common_required', 'CommonRequiredController@index');
+                    Route::get('elective', 'ElectiveController@index');
+                    Route::get('general', 'GeneralController@index');
+                    Route::get('in_elective', 'InElectiveController@index');
+                    Route::get('in_force_elective', 'InForceElectiveController@index');
+                    Route::get('in_required', 'InRequiredController@index');
+                    Route::get('recommendation', 'RecommendationController@index');
+                });
+            });
         });
     });
 });

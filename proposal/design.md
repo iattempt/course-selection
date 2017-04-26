@@ -10,6 +10,23 @@
 [整合測試](./test.md)|如果可以，請他人幫忙使用網站，不行就團隊內部再模擬角色測試。
 
 ---
+## 目錄
++ [目標](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#目標)
+   * [特性](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#特性)
+   * [功能](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#功能)
++ [準備事宜](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#準備事宜)
+   * [資源](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#資源)
+   * [工具](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#工具)
+   * [分工](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#分工)
++ [介面](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#介面)
+   * [學生](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#學生)
+   * [教授](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#教授)
+   * [行政人員](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#行政人員)
+   * [共有](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#共有)
+   * [系統](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#系統)
++ [程式碼實作](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#程式碼實作)
+
+---
 ## 目標
 
 #### 特性
@@ -20,6 +37,9 @@
    1. 承擔性質affordance theory：一個圖示背後的意義...認知心理學
       * 展開的選單同一方向
       * 特定顏色屬特定功能
+   1. 響應式網頁
+      `註`運用Bootstrap 4的特性
+   1. ...
 + 智慧化
    `註`參照SDM-SDEV p.4
    1. 安全性：
@@ -27,43 +47,131 @@
       * 利用laravel提供的blade模板，輕易防止所有javascript inject等攻擊
    1. 設計模式：
       * MVC(Model View Control)：降低邏輯、視圖及資料間的耦合
-      * SRP(Single Responsibility Principle)：所有Class盡可能做最少的事情
+      * SRP(Single Responsibility Principle)：[所有Class盡可能做最少的事情](./logic.md)
       * ...
-+ 響應式網頁
-   `註`運用Bootstrap 4的特性
+   1. 防呆機制：
+      * 登入驗證無須自行選擇登入身份，系統自動判定
+      * ...
+   1. ...
 
 ---
 #### 功能
 + 修訂
-   1. 統計個人畢業門檻狀態
-      `註：`使用畢業門檻資訊計算學分，判斷缺少的課程
    1. 課表呈現
       `註：`大尺寸預設為週課表，小尺寸預設為日課表
       * 週課表，簡略提供課程資訊
       * 日課表，預設顯示當日、完整的課程資訊
    1. 加選課程整合至預選課表
       `註：`將加選的課程整合至預選課表，但以不同方式呈現
-   1. 加選功能整合至全校課程搜尋
-      `註：`以get搜尋，但加選按鈕皆為post送出
-+ 新增
-   1. 推薦課程
-      `註：`根據以往選課時段，篩選出建議的本系必選修/通識
-       `註：`~~提供負向表列設定功能，以進行時段排外，或者增加一個上下班時段排外功能~~
+   1. 加選功能整合至全校課程搜尋`註：`學生瀏覽到想要的課程即可選課
    1. 全校課程搜尋
       `註：`使用分層式搜尋，以及區分各大類的方式（e.g. 通識為每系學生搜尋率極高的課程，應該將其歸類在大類別）
       `註：`提供複選的機制，使學生可以一次找出他想要的課程
+   1. ...
++ 新增
+   1. 統計個人畢業門檻狀態
+      `註：`使用畢業門檻資訊計算學分，並告知缺少的課程
+   1. 推薦課程
+      `註：`根據以往選課時段，篩選出建議的本系必選修/通識
+       `註：`~~提供負向表列設定功能，以進行時段排外，或者增加一個上下班時段排外功能~~
 
 ---
-### 程式碼實作
-+ 可讀性
-+ 可維護性
-+ 可擴充性
+## 準備事宜
+
+#### 資源
+1. 筆記型電腦
+   * 進行網頁設計
+   * 查詢資料
+   * 報告撰寫
+1. 虛擬主機
+   * 網頁上線用
+1. 網域
+   * [網頁上線用](http://iattempt.net)
+1. 參考書籍/官方文件
+   * front end
+      + [打造最強網頁UI/UX設計腦:設計師都該懂的絕佳設計.溝通法則](http://www.books.com.tw/products/0010723121)
+   * back end
+      + [重構-改善既有程式的設計](http://www.books.com.tw/products/0010411649)
+      + [Laravel framework](https://laravel.com/docs/5.4/routing)
+      + [Easy Laravel 5](http://www.easylaravelbook.com)
+         1. Eloquent ORM
+         2. Migration
+         3. ...
+      + [無暇程式碼](http://www.books.com.tw/products/0010579897?sloc=reprod_i_1)
+         1. Meaningful names
+         2. ...
+   * others
+      + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
+      + [Github](https://gist.github.com/guweigang/9848271)
+---
+#### 工具
+1. 文字編輯
+   * Vim
+   * Sublime 3
+1. 版本控制
+   * Git
+1. 程式語言
+   * PHP
+   * HTML5
+   * CSS
+   * Javascript
+   * SQL
+   * Markdown
+   * bash
+   * Laravel
+
+---
+#### 分工
+```
+build by Chang, Lin, and Hsu
+```
+`可量化, W = week`
+1. 軟體安裝與測試
+   * 2W : Chang
+1. 系統分析與設計
+   * 10W : Chang
+1. 資料庫分析與設計
+   * 2W : Chang
+1. 整體測試
+   * N/A W : Chang
+1. 文件製作
+   * N/A W : Lin
+1. 報告撰寫
+   * N/A W : Lin, Hsu
+1. 程式設計
+   * 17W : Chang
+1. 伺服器架設與測試
+   * N/A W : Chang
+`難以量化`
+1. 資料搜集
+   * Chang, Lin
+1. 理論探索
+   * Chang
 
 ---
 ## 介面
 
 #### 學生
-1. 選課
+1. 個人資訊
+   1. 個人課表
+      ```
+      課表使用一致的介面模板，降低使用者學習曲線
+      更新時間為：最終階段加退選結束
+      ```
+      * 以按鈕切換預選課表/本學期課表
+         + 預選中未確認加選-黃色，已確認加選-藍色
+            `註`~~以四色定理區隔~~，可能太過混亂，改以兩色分離
+         + 預選中課表，於空白欄位增加按鈕：加選此時段課程
+            `use 課程搜尋filter course via get method`
+      * 以按鈕切換週課表/日課表
+         - 週課表(Default for md-up size)
+         - 日課表(Default for xs, sm size)
+      * 僅將必要的資訊顯示
+
+   1. 修課總表
+      * 使用畢業門檻資訊計算學分，判斷缺少的課程
+
+1. 加選
    ```
    針對不同修別，顯示已加選的課程。
    依照以下順序設立優先權，排除衝堂，而不是衝堂後兩堂都拒絕加選。
@@ -75,13 +183,15 @@
    4. 科系
    5. 年級
    ```
-1. 加選機制
-   `註：`加選機制與全校課程搜尋功能整合
-   1. 推薦課程
-      * 針對學生以往時間點做正、負向表列方式，篩選學生較可能有時間修課的課程
-      * ...
    
-   `註：`以下功能僅作基本get，皆導向至選課系統
+   1. 課程搜尋
+      * 教室位置
+         `新增連結：地圖，標示教室位置`
+
+   `註：`以下功能皆導向至[課程搜尋]
+   1. 推薦課程
+      * 針對學生以往時間點以正、負向表列方式，篩選出學生較可能有時間修課的課程
+      * ...
    1. 必修
       * 基礎必修
       * 系必修
@@ -99,64 +209,52 @@
    1. ~~教育學程~~
       * 必修
       * 選修
-1. 退選機制
    1. 特殊加選
-1. 修課概覽
-   ```
-   本學期課表/欲選課表使用一致的介面模板
-   更新時間為：最終階段加退選結束
-   ```
-   1. 本學期課表
-   1. 預選課表顯示
-      `註`~~以四色定理區隔~~可能太過混亂，改以兩色分離
-      * 於課表增加按鈕：加選此時段課程
-      * 課表
-         + 週課表(Default)
-         + 日課表(顯示該日課表)
-      * 未確認加選-黃色，已確認加選-藍色
-      * 僅將必要的資訊顯示
-
-   1. 學分進度表
-      * 顯示修課總表，將已修/未修區分
-      * 使用畢業門檻資訊計算學分，判斷缺少的課程
+1. 退選機制
 
 ---
 #### 教授
-1. 我的開課
-1. 本系課程
 1. 審核特殊加選
+1. 我的開課
+   `註：`以下功能皆導向至[課程搜尋]
+1. 系上課程
+   `註：`以下功能皆導向至[課程搜尋]
 
 ---
 #### 行政人員
 1. 修改
-   1. 教室o
-   1. 課程o
-   1. 教授o
-   1. 學生o
-   1. 單位o
-   1. 畢業門檻o
-   1. 課程大綱o
-
+   `註：`行政人員其操作皆在辦公室，故無響應式設計
+   1. 人員
+   1. 教室
+   1. 課程
+   1. 教授
+   1. 學生
+   1. 單位
+   1. 畢業門檻
+   1. 課程大綱
 ---
 #### 共有
 1. 登入
-   `註：`自動判斷人員為何
+   `註：`登入者為何原為自選方式，改自動判斷
 1. 登出
 1. ~~註冊~~
-   `註：`以行政人員新增學生/行政人員註冊
-1. 課程加選/搜尋
+   `註：`統一以行政人員新增學生/行政人員註冊
+1. 課程搜尋
    * 篩選方式
+      1. 單選
+         + 教授關鍵字搜尋
+         + 課程關鍵字搜尋
       1. 複選
          `註：`要保留搜尋過的清單
-         + 學分
-         + 星期
-         + 語言
-         + MOOCs
-         + 時段
+         + 可否加選
          + 修別
+         + 時段
          + 開課單位
-      1. 課程關鍵字搜尋
-      1. 教授關鍵字搜尋
+         + 學分數
+         + 授課語言
+         + MOOCs
+         + 開課年度
+         + 開課學期
    * 加選方式
       1. 於可選課程後方，冠上加選的按鈕
 
@@ -170,69 +268,14 @@
    1. 修課
 
 ---
-## 準備事宜
-
-#### 資源
-1. 筆記型電腦
-   * 進行網頁設計
-   * 查詢資料
-   * 報告撰寫
-1. 虛擬主機
-   * 網頁上線用
-1. 網域
-   * [網頁上線用](http://iattempt.net)
-1. 參考書籍/官方文件
-   * front end
-      + 打造最強網頁UI/UX設計腦:設計師都該懂的絕佳設計.溝通法則
-   * back end
-      + 無暇程式碼
-      + 重構-改善既有程式的設計
-      + [Laravel framework](https://laravel.com/docs/5.4/routing)
-   * others
-      + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
-
----
-#### 網站設計工具
-1. 文字編輯
-   * Vim
-   * Sublime 3
-1. 版本控制
-   * [Git](https://github.com/iattempt/elegant-selection)
-1. 程式語言
-   * PHP
-   * HTML5
-   * CSS
-   * Javascript
-   * SQL
-      - MySQL
-   * Markdown
-   * bash
-   * git
-
----
-#### 甘特圖
-```
-builder Mr. Chang and Mr. Lin
-```
-`可量化, W = week`
-1. 軟體安裝與測試
-   * 2W : Chang
-1. 系統分析與設計
-   * 10W : Chang
-1. 資料庫分析與設計
-   * 2W : Chang
-1. 整體測試
-   * N/A W : Chang
-1. 文件製作
-   * N/A W : Lin
-1. 報告撰寫
-   * N/A W : Lin
-1. 程式設計
-   * 15W : Chang
-1. 伺服器架設與測試
-   * N/A W : Chang
-`難以量化`
-1. 資料搜集
-   * Chang, Lin
-1. 理論探索
-   * Chang
+### 程式碼實作
++ 要求
+   1. 可讀性readable
+   1. 可維護性maintainable
+   1. 可擴充性scalability
+   1. 可重用性reusable
+   1. ...
++ 實踐
+   1. Using Laravel Eloquent instead of plain query of database
+   1. Using Laravel Blade template to separate section of html file
+   1. Using MVC Pattern

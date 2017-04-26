@@ -1,20 +1,25 @@
-@extends('schema/preset')
-@section('main')
+@extends('authority/modify')
+@section('modify')
 <div class="container">
-  <form action="classroom" method="get">
-    <div class="form-group row">
-      <label for="name_tw" class="col-2 col-form-label">Name (tw)</label>
-      <div class="col-10">
-        <input class="form-control"type="text" id="name_tw" placeholder="教室">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="name_tw" class="col-2 col-form-label">Name (en)</label>
-      <div class="col-10">
-        <input class="form-control"type="text" id="name_tw" placeholder="Classroom">
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-  </form>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>教室代號</th>
+        <th>教室名稱</th>
+        <th colspan="3">異動</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        @include ('authority/modify/crud/create', array('create' => 'classroom'))
+      </tr>
+      @foreach ($general->lists as $list)
+      <tr>
+        @include ('authority/modify/crud/contain', array('contain' => 'classroom'))
+        @include ('authority/modify/crud/delete', array('delete' => 'classroom'))
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
 </div>
 @endsection
