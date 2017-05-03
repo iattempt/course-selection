@@ -23,7 +23,6 @@
    * [教授](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#教授)
    * [行政人員](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#行政人員)
    * [共有](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#共有)
-   * [系統](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#系統)
 + [程式碼實作](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#程式碼實作)
 
 ---
@@ -262,20 +261,16 @@ build by Chang, Lin, and Hsu
 1. 成員登入/登出按鈕
 
 ---
-#### 系統
-1. 紀錄
-   1. 加選
-   1. 修課
-
----
 ### 程式碼實作
 + 要求
-   1. 可讀性readable
-   1. 可維護性maintainable
-   1. 可擴充性scalability
-   1. 可重用性reusable
+   1. 可讀性
+   1. 可維護性
+   1. 可擴充性
+   1. 可重用性
+   1. 解耦合
    1. ...
 + 實踐
-   1. Using Laravel Eloquent instead of plain query of database
-   1. Using Laravel Blade template to separate section of html file
-   1. Using MVC Pattern
+   1. 使用Eloquent ORM代替傳統資料庫query，增加可讀性、可維護性等
+   1. 使用Blade模板引擎，分割與整合前端頁面，增進可重用性等
+   1. 使用Design Pattern，應用在大大小小的程式碼當中，增加可讀性、可維護性等
+   1. ...

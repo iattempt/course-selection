@@ -39,9 +39,9 @@ class CourseBaseController extends ModifyController
     {
         try {
             if ($request->has('name')){
-                $cr = new CourseBase;
-                $cr->name = $request->input('name');
-                $cr->save();
+                $data = new CourseBase;
+                $data->name = $request->input('name');
+                $data->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";
             }
@@ -88,9 +88,9 @@ class CourseBaseController extends ModifyController
     {
         try {
             if ($request->has('name')){
-                $cr = CourseBase::find($id);
-                $cr->name = $request->input('name');
-                $cr->save();
+                $data = CourseBase::find($id);
+                $data->name = $request->input('name');
+                $data->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";
             }

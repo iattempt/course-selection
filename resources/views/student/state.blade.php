@@ -1,7 +1,5 @@
-@extends('student')
-@section('student')
+@extends ('student')
 
-@section('state')
-@show
-
+@section ('student')
+@yield ('state')
 @endsection

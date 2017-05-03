@@ -1,11 +1,15 @@
-@extends('pre-selection')
-@section('main')
-@parent
+@extends ($general->identity)
 
+@section ($general->identity)
 <div class="container-fluid">
+  <!-- Display Pre-Curriculum -->
+    @include ('common/course_search_partials/pre_curriculum')
+  <!-- end of Display Pre-Curriculum -->
+
   <!-- Filter -->
-    @include ('course_search_partials/filter')
+    @include ('common/course_search_partials/filter')
   <!-- end of Filter form  -->
+
   <!-- Display result -->
   <div class="row">
     <div class="col-12">
@@ -36,16 +40,11 @@
             教室
             <span class="dropdown-toggle"></span>
           </a>
-        <!--
-        @if ($general->identity === "student")
-          <span class="col">加選</span>
-        @endif
-        -->
         </li>
         <!-- end of title -->
         <!-- lists -->
         @foreach ($general->lists as $list)
-          @include ('course_search_partials/course_list')
+          @include ('common/course_search_partials/course_list')
         @endforeach
         <!-- end of lists -->
       </ul>
@@ -53,5 +52,4 @@
   </div>
   <!-- end of Display result-->
 </div>
-
 @endsection

@@ -1,3 +1,4 @@
-@extends('professor')
-@section('professor')
+@extends ('professor')
+
+@section ('professor')
 @endsection

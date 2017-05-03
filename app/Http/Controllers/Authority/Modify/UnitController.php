@@ -4,18 +4,21 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
+use App\Selection\Unit;
 
 class UnitController extends ModifyController
 {
     //
-    function __construct () {
+    function __construct() {
         parent::__construct();
-        $this->general->title = "Modify unit";
-        $this->general->view_path .= "/unit";
+        $this->general->title = 'Modify unit';
+        $this->general->view_path .= '/unit';
+        $this->general->lists =  Unit::all();
     }
     function index(Request $request) {
-        return view('authority/modify/unit', ['general' => $this->general]);
+        return view($this->general->view_path, ['general' => $this->general]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -23,7 +26,6 @@ class UnitController extends ModifyController
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -34,7 +36,20 @@ class UnitController extends ModifyController
      */
     public function store(Request $request)
     {
-        //
+        try {
+            if ($request->has('name')){
+                $data = new Unit;
+                $data->name = $request->input('name');
+                $data->save();
+                $this->general->message = "created";
+                $this->general->message_type = "success";
+            }
+        }
+        catch (\Exception $e){
+            $this->general->message = "failed";
+            $this->general->message_type = "danger";
+        }
+        return redirect('authority/modify/unit');
     }
 
     /**
@@ -45,7 +60,9 @@ class UnitController extends ModifyController
      */
     public function show($id)
     {
-        //
+        $this->general->lists =  Unit::all();
+        $detail = Unit::all()->where('id', '=', $id);
+        return view($this->general->view_path . '/show', ['detail' => $detail]);
     }
 
     /**
@@ -56,16 +73,7 @@ class UnitController extends ModifyController
      */
     public function edit($id)
     {
-        //
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
 
     /**
      * Update the specified resource in storage.
@@ -76,7 +84,20 @@ class UnitController extends ModifyController
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            if ($request->has('name')){
+                $data = Unit::find($id);
+                $data->name = $request->input('name');
+                $data->save();
+                $this->general->message = "created";
+                $this->general->message_type = "success";
+            }
+        }
+        catch (\Exception $e){
+            $this->general->message = "failed";
+            $this->general->message_type = "danger";
+        }
+        return redirect('authority/modify/unit');
     }
 
     /**
@@ -87,6 +108,15 @@ class UnitController extends ModifyController
      */
     public function destroy($id)
     {
-        //
+        try{
+            Unit::destroy($id);
+            $this->general->message = 'successed';
+            $this->general->message_type = 'success';
+        }
+        catch (\Exception $e){
+            $this->general->message = 'failed';
+            $this->general->message_type = 'danger';
+        }
+        return redirect('authority/modify/unit');
     }
 }

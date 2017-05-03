@@ -4,23 +4,19 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
+use App\Selection\User;
 
 class UserController extends ModifyController
 {
+    //
     function __construct() {
         parent::__construct();
-        $this->general->title = "Register";
-        $this->general->view_path .= "/user";
+        $this->general->title = 'Modify user';
+        $this->general->view_path .= '/user';
+        $this->general->lists =  User::all();
     }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Request $request)
-    {
-        return view('authority/modify/user', ['general' => $this->general]);
+    function index(Request $request) {
+        return view($this->general->view_path, ['general' => $this->general]);
     }
 
     /**
@@ -30,7 +26,6 @@ class UserController extends ModifyController
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -41,7 +36,23 @@ class UserController extends ModifyController
      */
     public function store(Request $request)
     {
-        //
+        try {
+            if ($request->has('name')){
+                $data = new User;
+                $data->name = $request->input('name');
+                $data->email = $request->input('email');
+                $data->password = bcrypt($request->input('password'));
+                $data->type = $request->input('type');
+                $data->save();
+                $this->general->message = "created";
+                $this->general->message_type = "success";
+            }
+        }
+        catch (\Exception $e){
+            $this->general->message = "failed";
+            $this->general->message_type = "danger";
+        }
+        return redirect('authority/modify/user');
     }
 
     /**
@@ -52,7 +63,9 @@ class UserController extends ModifyController
      */
     public function show($id)
     {
-        //
+        $this->general->lists =  User::all();
+        $detail = User::all()->where('id', '=', $id);
+        return view($this->general->view_path . '/show', ['detail' => $detail]);
     }
 
     /**
@@ -63,7 +76,6 @@ class UserController extends ModifyController
      */
     public function edit($id)
     {
-        //
     }
 
     /**
@@ -75,7 +87,23 @@ class UserController extends ModifyController
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            if ($request->has('name', 'email', 'password', 'type')){
+                $data = User::find($id);
+                $data->name = $request->input('name');
+                $data->email = $request->input('email');
+                $data->password = bcrypt($request->input('password'));
+                $data->type = $request->input('type');
+                $data->save();
+                $this->general->message = "created";
+                $this->general->message_type = "success";
+            }
+        }
+        catch (\Exception $e){
+            $this->general->message = "failed";
+            $this->general->message_type = "danger";
+        }
+        return redirect('authority/modify/user');
     }
 
     /**
@@ -86,6 +114,15 @@ class UserController extends ModifyController
      */
     public function destroy($id)
     {
-        //
+        try{
+            User::destroy($id);
+            $this->general->message = 'successed';
+            $this->general->message_type = 'success';
+        }
+        catch (\Exception $e){
+            $this->general->message = 'failed';
+            $this->general->message_type = 'danger';
+        }
+        return redirect('authority/modify/user');
     }
 }

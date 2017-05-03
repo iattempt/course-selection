@@ -1,3 +1,4 @@
-@extends('student/selection')
-@section('selection')
+@extends ('student/selection')
+
+@section ('selection')
 @endsection

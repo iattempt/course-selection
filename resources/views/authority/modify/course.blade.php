@@ -1,28 +1,22 @@
-@extends('authority/modify')
-@section('modify')
-<div class="container">
-  @include ('authority/modify/course/create')
+@extends ('authority/modify')
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>代號</th>
-        <th>名稱</th>
-        <th>基底</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-    @foreach ($general->lists as $list)
-      <tr>
-        <td>$list->id</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    @endforeach
-    </tbody>
-  </table>
-</div>
+@section ('modify')
+<thead>
+  <tr>
+    <th>課程代號</th>
+    <th>課程名稱</th>
+    <th colspan="3">異動</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    @include ('authority/modify/course/create', array('caller' => 'course'))
+  </tr>
+  @foreach ($general->lists as $list)
+  <tr>
+    @include ('authority/modify/course/edit', array('caller' => 'course'))
+    @include ('authority/modify/course/delete', array('caller' => 'course'))
+  </tr>
+  @endforeach
+</tbody>
 @endsection

@@ -1,65 +1,27 @@
-@extends('authority/modify')
-@section('modify')
-<div class="container">
-  <form action="threshold" method="post">
-    <div class="form-group row">
-      <label for="unit" class="col-2 col-form-label">Unit</label>
-      <div class="col-10">
-        <select class="form-control" id="unit">
-          <!--需要搜尋資料庫資料-->
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="course_base" class="col-2 col-form-label">Course base</label>
-      <div class="col-10">
-        <select class="form-control" id="course_base">
-          <!--需要搜尋資料庫資料-->
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="year" class="col-2 col-form-label">Year</label>
-      <div class="col-10">
-        <select class="form-control" id="year">
-          <!--需要改為偵測本年度 特別小心下學期的年度是去年-->
-          <option>2017</option>
-          <option>2018</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="default_grade" class="col-2 col-form-label">Default grade</label>
-      <div class="col-10">
-        <select class="form-control" id="default_grade">
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
-          <option>4</option>
-          <option>5</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="default_semester" class="col-2 col-form-label">Default semester</label>
-      <div class="col-10">
-        <select class="form-control" id="default_semester">
-          <option>1</option>
-          <option>2</option>
-        </select>
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-  </form>
-</div>
+@extends ('authority/modify')
+
+@section ('modify')
+<thead>
+  <tr>
+    <th>門檻代號</th>
+    <th>單位名稱</th>
+    <th>修別名稱</th>
+    <th>課程基底名稱</th>
+    <th>適用學年度</th>
+    <th>開課年級</th>
+    <th>開課學期</th>
+    <th colspan="3">異動</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    @include ('authority/modify/threshold/create', array('caller' => 'threshold'))
+  </tr>
+  @foreach ($general->lists as $list)
+  <tr>
+    @include ('authority/modify/threshold/edit', array('caller' => 'threshold'))
+    @include ('authority/modify/threshold/delete', array('caller' => 'threshold'))
+  </tr>
+  @endforeach
+</tbody>
 @endsection

@@ -215,7 +215,7 @@
               <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="1" name="mooc[]"
                 @if (old('flash') && old('mooc'))
                   @foreach ($general->old_mooc as $value)
-                    @if ($value == $t->name)
+                    @if ($value == "1")
                       checked
                     @endif
                   @endforeach
@@ -227,7 +227,7 @@
               <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="0" name="mooc[]"
                 @if (old('flash') && old('mooc'))
                   @foreach ($general->old_mooc as $value)
-                    @if ($value == $t->name)
+                    @if ($value == "0")
                       checked
                     @endif
                   @endforeach

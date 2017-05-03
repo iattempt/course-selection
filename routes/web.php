@@ -13,14 +13,16 @@
 
 Auth::routes();
 
-Route::get('sign_in', 'SignInController@index');
-Route::get('test', 'TestController@index');
-
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/', 'IndexController@index');
-    Route::get('feedback', 'FeedbackController@index');
-    Route::resource('course_search', 'CourseSearchController');
+    Route::get('sign_in', 'SignInController@index');
+    Route::get('test', 'TestController@index');
 
+//common
+    Route::group(['namespace' => 'Common'], function() {
+        Route::get('feedback', 'FeedbackController@index');
+        Route::resource('course_search', 'CourseSearchController');
+    });
 //authority
     Route::group(['middleware' => 'authority'], function () {
         Route::get('authority', 'AuthorityController@index');
@@ -31,8 +33,6 @@ Route::group(['middleware' => 'guest'], function () {
                 Route::resource('classroom', 'ClassroomController');
                 Route::resource('course_base', 'CourseBaseController');
                 Route::resource('course', 'CourseController');
-                Route::resource('professor', 'ProfessorController');
-                Route::resource('student', 'StudentController');
                 Route::resource('syllabus', 'SyllabusController');
                 Route::resource('threshold', 'ThresholdController');
                 Route::resource('unit', 'UnitController');

@@ -1,6 +1,6 @@
-@extends('student/selection')
-@section('selection')
+@extends ('student/selection')
 
+@section ('selection')
 <div class="container-fluid">
   <!-- Display result -->
   <div class="row">
@@ -34,5 +34,4 @@
   </div>
   <!-- end of Display result-->
 </div>
-
 @endsection

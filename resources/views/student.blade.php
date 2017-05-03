@@ -1,6 +1,6 @@
 @extends('schema/preset')
-@section('nav')
 
+@section('nav')
 <li class="nav-item">
   <a class="nav-link" href="/student">首頁</a>
 </li>
@@ -16,7 +16,6 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownModify">
     <a class="dropdown-item" href="/course_search">全部課程</a>
-    <!--<a class="dropdown-item" href="/student/selection/enroll/recommendation">推薦課程</a>-->
     <a class="dropdown-item" href="/student/selection/enroll/in_required">必修</a>
     <a class="dropdown-item" href="/student/selection/enroll/common_required">共必修</a>
     <a class="dropdown-item" href="/student/selection/enroll/in_force_elective">系必選</a>
@@ -29,10 +28,8 @@
 <li class="nav-item">
   <a class="nav-link" href="/student/selection/drop">退選</a>
 </li>
-
 @endsection
 
-@section('main')
-@section('student')
-@show
+@section ('main')
+@yield ('student')
 @endsection

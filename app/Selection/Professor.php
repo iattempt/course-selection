@@ -11,4 +11,8 @@ class Professor extends Model
     {
         return $this->belongsTo('App\Selection\User', 'id');
     }
+    public function unit()
+    {
+        return $this->belongsTo('App\Selection\Unit');
+    }
 }

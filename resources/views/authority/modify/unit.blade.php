@@ -1,20 +1,22 @@
-@extends('authority/modify')
-@section('modify')
-<div class="container">
-  <form action="unit" method="post">
-    <div class="form-group row">
-      <label for="name_tw" class="col-2 col-form-label">Name (tw)</label>
-      <div class="col-10">
-        <input class="form-control"type="text" id="name_tw" placeholder="單位">
-      </div>
-    </div>
-    <div class="form-group row">
-      <label for="name_tw" class="col-2 col-form-label">Name (en)</label>
-      <div class="col-10">
-        <input class="form-control"type="text" id="name_tw" placeholder="Unit">
-      </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Create</button>
-  </form>
-</div>
+@extends ('authority/modify')
+
+@section ('modify')
+<thead>
+  <tr>
+    <th>單位代號</th>
+    <th>單位名稱</th>
+    <th colspan="3">異動</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    @include ('authority/modify/crud/create', array('caller' => 'unit'))
+  </tr>
+  @foreach ($general->lists as $list)
+  <tr>
+    @include ('authority/modify/crud/edit', array('caller' => 'unit'))
+    @include ('authority/modify/crud/delete', array('caller' => 'unit'))
+  </tr>
+  @endforeach
+</tbody>
 @endsection

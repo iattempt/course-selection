@@ -1,3 +1,4 @@
-@extends('authority/modify')
-@section('modify')
+@extends ('authority/modify')
+
+@section ('modify')
 @endsection

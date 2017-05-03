@@ -38,9 +38,9 @@ class ClassroomController extends ModifyController
     {
         try {
             if ($request->has('name')){
-                $cr = new Classroom;
-                $cr->name = $request->input('name');
-                $cr->save();
+                $data = new Classroom;
+                $data->name = $request->input('name');
+                $data->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";
             }
@@ -86,9 +86,9 @@ class ClassroomController extends ModifyController
     {
         try {
             if ($request->has('name')){
-                $cr = Classroom::find($id);
-                $cr->name = $request->input('name');
-                $cr->save();
+                $data = Classroom::find($id);
+                $data->name = $request->input('name');
+                $data->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";
             }

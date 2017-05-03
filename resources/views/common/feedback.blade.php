@@ -1,5 +1,6 @@
-@extends('pre-selection')
-@section('main')
+@extends ($general->identity)
+
+@section ($general->identity)
 <div class="container">
   <form action="feedback" method="post">
     <div class="form-group">

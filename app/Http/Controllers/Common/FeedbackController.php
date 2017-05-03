@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Common;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,7 @@ class FeedbackController extends Controller
     function index() {
         if (Auth::check()) {
             $this->general->identity = Auth::user()->getType();
-            return view('feedback', ['general' => $this->general]);
+            return view('common/feedback', ['general' => $this->general]);
         }
         return redirect('sign_in'); 
     }

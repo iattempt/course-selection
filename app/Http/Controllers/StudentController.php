@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 use App\Selection\User;
+use App\Selection\Student;
 
 class StudentController extends Controller
 {
@@ -18,6 +19,7 @@ class StudentController extends Controller
     }
     function index(Request $request) {
         $this->general->info = User::find(Auth::user()->id);
-        return view('student', ['general' => $this->general]);
+
+        return view('student/index', ['general' => $this->general]);
     }
 }

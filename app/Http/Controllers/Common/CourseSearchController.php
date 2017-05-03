@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Common;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Selection\Course;
@@ -38,7 +39,7 @@ class CourseSearchController extends Controller
             $this->listRequest($request);
             $this->filterRequest($request);
             
-            return view('course_search', ['general' => $this->general]);
+            return view('common/course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');
     }
