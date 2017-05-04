@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-use App\Http\Controllers\CourseSearchController;
+use App\Http\Controllers\Common\CourseSearchController;
 
 class ElectiveController  extends CourseSearchController
 {
@@ -17,8 +17,7 @@ class ElectiveController  extends CourseSearchController
         $this->general->view_path .= "/elective";
     }
     function index(Request $request) {
-        parent::index();
-        $this->general->lists = DB::table('courses')->where('unit_name', (DB::table('students')->where('id', Auth::user()->id)->get()[0]->unit_name))->get();
-        return view('course_search', ['general' => $this->general]);
+        $request->input('type')[0] = "選修";
+        dd($request);
     }
 }

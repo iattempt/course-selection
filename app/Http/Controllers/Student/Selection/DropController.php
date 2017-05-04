@@ -27,20 +27,40 @@ class DropController extends SelectionController
         $this->general->view_path .= "/drop";
     }
     function index(Request $request) {
-            $this->general->identity = Auth::user()->getType();
-            $this->general->info = User::find(Auth::user()->id);
-            $this->general->days = Day::orderby('id', 'asc')->get();
-            $this->general->periods = Period::orderby('id', 'asc')->get();
-            $this->general->types = Type::orderby('name', 'asc')->get();
-            $this->general->units = Unit::orderby('subjection', 'asc')->get();
+        $this->general->identity = Auth::user()->getType();
         $this->general->info = User::find(Auth::user()->id);
-        $this->general->lists = Curriculum::all()->filter(function($value, $key){
-            if ($value->student_id == Auth::user()->id) {
+        $this->general->days = Day::orderby('id', 'asc')->get();
+        $this->general->periods = Period::orderby('id', 'asc')->get();
+        $this->general->types = Type::orderby('name', 'asc')->get();
+        $this->general->units = Unit::orderby('subjection', 'asc')->get();
+        $this->general->info = User::find(Auth::user()->id);
+        $own = $this->getOwnCurricula();
+        $own = $own->keyBy('course_id')->keys()->toArray();
+        $this->general->lists = Course::all()->only($own);
+        $this->general->curricula = $this->getOwnCurricula();
+        
+        return view('student/selection/drop', ['general' => $this->general]);
+    }
+    function destroy($id)
+    {
+        $own = $this->getOwnCurricula(); 
+        $req = Course::all()->only($id);
+
+        foreach ($own as $o) {
+            foreach($req as $r)
+                if ($o->course_id === $r->id)
+                    $own->find($o->id)->delete();
+        }
+        return back()->withInput();
+    }
+    function getOwnCurricula()
+    {
+        $this->general->info = User::find(Auth::user()->id);
+        $own = Curriculum::all()->filter(function($value, $key){
+            if ($value->student_id == $this->general->info->id) {
                 return $value;
             }
         });
-        var_dump($this->general->lists);
-        
-        return view('student/selection/drop', ['general' => $this->general]);
+        return $own;
     }
 }

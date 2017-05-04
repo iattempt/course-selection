@@ -3,6 +3,7 @@
 namespace App\Selection;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Professor extends Model
 {

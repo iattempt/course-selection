@@ -61,20 +61,29 @@ class CourseSearchController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->has('student_id', 'course_id')) {
-            $check = Curriculum::all()->filter(function($value, $key) use($request) {
-                if ($value->student_id == $request->input('student_id'))
-                    if ($value->course_id == $request->input('course_id'))
-                        return $value;
+        if ($request->has('reg_enroll')) {
+            $this->general->info = User::findOrFail(Auth::user()->id);
+
+            //搜尋自身預選課程
+            $own = Curriculum::all()->filter(function($value, $key) {
+                if($value->student_id == $this->general->info->id)
+                    return $value;
             });
-            if (!count($check)) {
-                $cu = new Curriculum;
-                $cu->course_id = $request->input('course_id');
-                $cu->student_id = $request->input('student_id');
-                $cu->save();
+            $own = $own->keyBy('course_id')->keys()->toArray();
+            //申請加選課程
+            $req = $request->input('reg_enroll');
+            //過濾課程
+            $new_enroll = Course::all()->only($req)->except($own);
+            //登陸
+            foreach ($new_enroll as $i) {
+                $c = new Curriculum;
+                $c->course_id = $i->id;
+                $c->student_id = $this->general->info->id;
+                $c->save();
             }
         }
-        return redirect('course_search');
+        //return redirect('course_search');
+        return back()->withInput();
     }
 
     /**
@@ -120,16 +129,16 @@ class CourseSearchController extends Controller
     public function destroy($id)
     {
         $this->general->info = User::findOrFail(Auth::user()->id);
-        $cu = Curriculum::all()->filter(function ($value, $key) {
+        $own = Curriculum::all()->filter(function ($value, $key) {
             if ($value->student_id == $this->general->info->id)
                 return $value;
         });
-        foreach ($cu as $value) {
-            if ($value->course->id == $id){
-                $value->delete();
+        foreach ($own as $i) {
+            if ($i->course->id == $id){
+                $i->delete();
             }
         }
-        return redirect('course_search');
+        return back()->withInput();
     }
 
     function passingRequestToView($request)

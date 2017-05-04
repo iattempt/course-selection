@@ -10,6 +10,13 @@
 <li class="nav-item">
   <a class="nav-link" href="/student/state/threshold">修課概覽</a>
 </li>
+<li class="nav-item">
+    <a class="nav-link" href="/course_search">加選</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/student/selection/drop">退選</a>
+</li>
+<!--
 <li class="dropdown nav-item">
   <a class="nav-link dropdown-toggle" id="dropdownModify" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     加選
@@ -25,9 +32,7 @@
     <a class="dropdown-item" href="/student/selection/enroll/apply_for">特殊加選</a>
   </div>
 </li>
-<li class="nav-item">
-  <a class="nav-link" href="/student/selection/drop">退選</a>
-</li>
+-->
 @endsection
 
 @section ('main')

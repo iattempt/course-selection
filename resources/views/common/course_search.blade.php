@@ -13,14 +13,17 @@
   <!-- Display result -->
   <div class="row">
     <div class="col-12">
+      <form action="course_search" method="POST">
+        {{ csrf_field() }}
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          <a href="javascript:void(0)" class="col-4">
+          <input type="submit" value="加選" class="col-2 col-md-1 btn btn-success">
+          <a href="javascript:void(0)" class="col-3">
             課程名稱
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-3">
+          <a href="javascript:void(0)" class="col-2">
             授課教師
             <span class="dropdown-toggle"></span>
           </a>
@@ -48,6 +51,7 @@
         @endforeach
         <!-- end of lists -->
       </ul>
+      </form>
     </div>
   </div>
   <!-- end of Display result-->

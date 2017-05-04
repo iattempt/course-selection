@@ -61,6 +61,7 @@ Route::group(['middleware' => 'guest'], function () {
 
             Route::group(['prefix' => 'selection', 'namespace' => 'Selection'], function () {
                 Route::get('drop', 'DropController@index');
+                Route::delete('drop/{id}', 'DropController@destroy');
                 
                 Route::get('enroll', 'EnrollController@index');
                 Route::group(['prefix' => 'enroll', 'namespace' => 'Enroll'], function () {

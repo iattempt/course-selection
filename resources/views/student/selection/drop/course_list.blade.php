@@ -3,21 +3,20 @@
 @else
 <li class="list-group-item row bg-faded">
 @endif
-  <span class="col-2 col-md-1">
-    <label class="form-control-label" for="enroll{{$list->id}}">選取</label>
-    <input id="enroll{{$list->id}}" type="checkbox" value="{{$list->id}}" name="reg_enroll[]">
-
-  </span>
+  @if ($general->info->type == "student")
+    <span class="col-2">
+      <form action="drop/{{$list->id}}" method="POST">
+        {{ csrf_field() }}
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="退選" name="drop" class="btn btn-success">
+      </form>
+    </span>
+  @endif
   <span class="col-3">
     <a data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
       {{$list->name}}
       <span class="dropdown-toggle"></span>
     </a>
-    <!--欲增加取消功能
-    @if ($general->info->type == "student")
-          <input type="hidden" value="{{$general->info->id}}" name="student_id">
-          <input type="hidden" value="{{$list->id}}" name="course_id">
-    @endif-->
   </span>
 
   <span class="col-2">
@@ -78,9 +77,9 @@
     <div>開課單位 : {{$list->unit->name}}</div>
     <div>開課學年-學期 : {{$list->year}}-{{$list->semester}}</div>
     <div>課程剩餘人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>
-    <a href="javascript:void(0)">課程大綱</a>
     <div class="hidden-md-up">學分 : {{$list->credit}}</div>
     <div class="hidden-md-up">教室 : {{$list->classroom->name}}</div>
+    <a href="javascript:void(0)">課程大綱</a>
   </div>
 </div>
 

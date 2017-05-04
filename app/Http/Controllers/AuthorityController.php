@@ -18,6 +18,7 @@ class AuthorityController extends Controller
     }
     function index(Request $request) {
         $this->general->info = User::find(Auth::user()->id);
+        
         return view('authority/index', ['general' => $this->general]);
     }
 }

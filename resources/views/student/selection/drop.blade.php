@@ -1,33 +1,49 @@
-@extends ('student/selection')
+@extends ($general->identity)
 
-@section ('selection')
+@section ($general->identity)
 <div class="container-fluid">
+  <!-- Display Pre-Curriculum -->
+    @include ('common/course_search_partials/pre_curriculum')
+  <!-- end of Display Pre-Curriculum -->
   <!-- Display result -->
   <div class="row">
     <div class="col-12">
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          @if ($general->identity == "student")
-            <span class="col-1">退選</span>
-            <span class="col-6">課程名稱</span>
-          @else
-          <span class="col-7">課程名稱</span>
+          @if ($general->info->type == "student")
+          <div class="col-2"></div>
           @endif
-          <span class="col-2">授課教師</span>
-          <span class="col-1">修別</span>
-          <span class="col-1">星期</span>
-          <span class="col-1">時段</span>
+          <a href="javascript:void(0)" class="col-3">
+            課程名稱
+            <span class="dropdown-toggle"></span>
+          </a>
+          <a href="javascript:void(0)" class="col-2">
+            授課教師
+            <span class="dropdown-toggle"></span>
+          </a>
+          <a href="javascript:void(0)" class="col-1">
+            修別
+            <span class="dropdown-toggle"></span>
+          </a>
+          <a href="javascript:void(0)" class="col">
+            星期/時段
+            <span class="dropdown-toggle"></span>
+          </a>
+          <a href="javascript:void(0)" class="col-1 hidden-sm-down">
+            學分
+            <span class="dropdown-toggle"></span>
+          </a>
+          <a href="javascript:void(0)" class="col-1 hidden-sm-down">
+            教室
+            <span class="dropdown-toggle"></span>
+          </a>
         </li>
         <!-- end of title -->
         <!-- lists -->
-        @if (count($general->lists))
-          @foreach ($general->lists as $list)
-            @include ('course_search_partials/course_list')
-          @endforeach
-        @else
-          <div>None.</div>  
-        @endif
+        @foreach ($general->lists as $list)
+          @include ('student/selection/drop/course_list')
+        @endforeach
         <!-- end of lists -->
       </ul>
     </div>
