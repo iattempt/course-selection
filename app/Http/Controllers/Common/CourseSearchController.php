@@ -29,11 +29,11 @@ class CourseSearchController extends Controller
             $this->general->identity = Auth::user()->getType();
 
             $this->general->info = User::findOrFail(Auth::user()->id);
-            $this->general->days = Day::orderby('id', 'asc')->get();
-            $this->general->periods = Period::orderby('id', 'asc')->get();
-            $this->general->types = Type::orderby('name', 'asc')->get();
-            $this->general->units = Unit::get();
-            $this->general->curricula = Curriculum::where('student_id', Auth::user()->id)->get();
+            $this->general->days = Day::all()->sortBy('id');
+            $this->general->periods = Period::all()->sortBy('id');
+            $this->general->types = Type::all()->sortBy('name');
+            $this->general->units = Unit::all();
+            $this->general->curricula = Curriculum::all()->where('student_id', Auth::user()->id);
 
             $this->passingRequestToView($request);
             $this->listRequest($request);
@@ -52,7 +52,7 @@ class CourseSearchController extends Controller
             }
 
             dd($test);
-            dd(Type::get());
+            dd(Type::all());
             */
             return view('common/course_search', ['general' => $this->general]);
         }

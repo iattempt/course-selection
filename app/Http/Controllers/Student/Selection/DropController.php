@@ -29,10 +29,10 @@ class DropController extends SelectionController
     function index(Request $request) {
         $this->general->identity = Auth::user()->getType();
         $this->general->info = User::find(Auth::user()->id);
-        $this->general->days = Day::orderby('id', 'asc')->get();
-        $this->general->periods = Period::orderby('id', 'asc')->get();
-        $this->general->types = Type::orderby('name', 'asc')->get();
-        $this->general->units = Unit::orderby('unit_base_id', 'asc')->get();
+        $this->general->days = Day::all()->sortBy('id');
+        $this->general->periods = Period::all()->sortBy('id');
+        $this->general->types = Type::all()->sortBy('name');
+        $this->general->units = Unit::all()->sortBy('unit_base_id');
         $this->general->info = User::find(Auth::user()->id);
         $own = $this->getOwnCurricula();
         $own = $own->keyBy('course_id')->keys()->toArray();

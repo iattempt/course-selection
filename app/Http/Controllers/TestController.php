@@ -18,8 +18,5 @@ class TestController extends Controller
         $test = Test::findOrFail(3);
         $test->value1 = '3';
         $test->value2 = '4';
-
-        $testall = Test::all();
-        dd($testall);
     }
 }

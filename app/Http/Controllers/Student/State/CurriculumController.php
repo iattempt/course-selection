@@ -19,9 +19,9 @@ class CurriculumController extends StateController
         $this->general->view_path .= "/curriculum";
     }
     function index(Request $request) {
-        $this->general->days = Day::orderby('id', 'asc')->get();
-        $this->general->periods = Period::orderby('id', 'asc')->get();
-        $this->general->curricula = Curriculum::where('student_id', Auth::user()->id)->get();
+        $this->general->days = Day::all()->sortBy('id');
+        $this->general->periods = Period::all()->sortBy('id');
+        $this->general->curricula = Curriculum::all()->where('student_id', Auth::user()->id);
 
         return view('student/state/curriculum', ['general' => $this->general]);
     }
