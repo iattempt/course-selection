@@ -8,6 +8,10 @@ use App\Selection\Course;
 use App\Selection\Unit;
 use App\Selection\CourseBase;
 use App\Selection\Classroom;
+use App\Selection\User;
+use App\Selection\Period;
+use App\Selection\Day;
+use App\Selection\Type;
 
 class CourseController extends ModifyController
 {
@@ -20,6 +24,12 @@ class CourseController extends ModifyController
         $this->general->units =  Unit::all();
         $this->general->course_bases =  CourseBase::all();
         $this->general->classrooms = Classroom::all();
+        $this->general->days = Day::orderby('id', 'asc')->get();
+        $this->general->periods = Period::orderby('id', 'asc')->get();
+        $this->general->types = Type::orderby('name', 'asc')->get();
+        $this->general->professors = User::all()->filter(function($value, $key) {
+            return $value->type === "professor";
+        });
     }
     function index(Request $request) {
         return view($this->general->view_path, ['general' => $this->general]);

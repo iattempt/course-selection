@@ -15,6 +15,23 @@
     @endforeach
   </select>
 </td>
+<td><!--教授-->
+  <select multiple class="edit_{{ $list->id }} form-control" name="professors" disabled>
+    @php
+      foreach ($general->professors as $pro) {
+        $isIt = false;
+        foreach ($list->professors as $own_pro) {
+          if ($own_pro->user->id == $pro->id)
+            $isIt = true;
+        }
+        if ($isIt)
+          echo '<option value="'.$pro->id.'" selected>'.$pro->name.'</option>';
+        else
+          echo '<option value="'.$pro->id.'">'.$pro->name.'</option>';
+      }
+    @endphp
+  </select>
+</td>
 <td>
   <select class="edit_{{ $list->id }} form-control" name="unit_id" disabled>
     @foreach ($general->units as $value)
@@ -37,6 +54,40 @@
     @endforeach
   </select>
 </td>
+<td><!--時段-->
+  <select multiple class="edit_{{ $list->id }} form-control" name="professors" disabled>
+    @php
+      foreach ($general->professors as $pro) {
+        $isIt = false;
+        foreach ($list->professors as $own_pro) {
+          if ($own_pro->user->id == $pro->id)
+            $isIt = true;
+        }
+        if ($isIt)
+          echo '<option value="'.$pro->id.'" selected>'.$pro->name.'</option>';
+        else
+          echo '<option value="'.$pro->id.'">'.$pro->name.'</option>';
+      }
+    @endphp
+  </select>
+</td>
+<td><!--修別-->
+  <select multiple class="edit_{{ $list->id }} form-control" name="professors" disabled>
+    @php
+      foreach ($general->professors as $pro) {
+        $isIt = false;
+        foreach ($list->professors as $own_pro) {
+          if ($own_pro->user->id == $pro->id)
+            $isIt = true;
+        }
+        if ($isIt)
+          echo '<option value="'.$pro->id.'" selected>'.$pro->name.'</option>';
+        else
+          echo '<option value="'.$pro->id.'">'.$pro->name.'</option>';
+      }
+    @endphp
+  </select>
+</td>
 <td>
   <input type="text" class="edit_{{ $list->id }} form-control" name="topic" value="{{ $list->topic }}" readonly>
 </td>
@@ -56,8 +107,8 @@
 </td>
 <td>
   <select class="edit_{{ $list->id }} form-control" name="mooc" disabled>
-    <option value="0" {{ ($list->mooc == '0' ? 'selected' : '') }}>0</option>
-    <option value="1" {{ ($list->mooc == '1' ? 'selected' : '') }}>1</option>
+    <option value="否" {{ ($list->mooc == '否' ? 'selected' : '') }}>否</option>
+    <option value="是" {{ ($list->mooc == '是' ? 'selected' : '') }}>是</option>
   </select>
 </td>
 <td>

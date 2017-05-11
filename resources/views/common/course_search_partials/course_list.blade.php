@@ -4,20 +4,26 @@
 <li class="list-group-item row bg-faded">
 @endif
   <span class="col-2 col-md-1">
-    <label class="form-control-label" for="enroll{{$list->id}}">選取</label>
-    <input id="enroll{{$list->id}}" type="checkbox" value="{{$list->id}}" name="reg_enroll[]">
-
+    @php
+      $isEnrolled = false;
+      foreach($general->curricula as $c)
+        if ($c->course_id === $list->id) 
+          $isEnrolled = true;
+      if (!$isEnrolled && $list->enrollment_remain>0)
+        echo '<label class="form-control-label" for="enroll'.
+              $list->id .
+              '">選取</label><input id="enroll'.
+              $list->id.
+              '" type="checkbox" value="'.
+              $list->id.
+              '" name="reg_enroll[]">';
+    @endphp
   </span>
   <span class="col-3">
     <a data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
       {{$list->name}}
       <span class="dropdown-toggle"></span>
     </a>
-    <!--欲增加取消功能
-    @if ($general->info->type == "student")
-          <input type="hidden" value="{{$general->info->id}}" name="student_id">
-          <input type="hidden" value="{{$list->id}}" name="course_id">
-    @endif-->
   </span>
 
   <span class="col-2">
@@ -74,7 +80,7 @@
   <div class="card card-block">
     <div>課程代號: {{$list->id}}</div>
     <div>授課語言 : {{$list->language}}</div>
-    <div>MOOC : {{$list->mooc==1 ? "是"  :  "否"}}</div>
+    <div>MOOCs : {{$list->mooc==1 ? "是"  :  "否"}}</div>
     <div>開課單位 : {{$list->unit->name}}</div>
     <div>開課學年-學期 : {{$list->year}}-{{$list->semester}}</div>
     <div>課程剩餘人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>

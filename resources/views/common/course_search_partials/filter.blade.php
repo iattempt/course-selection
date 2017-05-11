@@ -21,7 +21,7 @@
         </a>
 
         <a id="enroll" class="btn col-" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
-          加選狀況
+          人數狀況
           <span class="dropdown-toggle"></span>
         </a>
 
@@ -72,11 +72,11 @@
         <div class="collapse col-12 mx-auto" id="collapseState">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" {{(old('enroll') == '1') ? 'checked' : ''}}>
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" {{(old('enroll') === '1') ? 'checked' : ''}}>
               可加選
             </label>
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="0" name="enroll" {{(old('enroll') == '0') ? 'checked' : ''}}>
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="0" name="enroll" {{(old('enroll') === '0') ? 'checked' : ''}}>
               不可加選
             </label>
           </div>
@@ -88,9 +88,9 @@
             @foreach ($general->types as $t)
             <label class="form-check-label">
               <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="type[]"
-                @if (old('flash') && old('type'))
-                  @foreach ($general->old_type as $value)
-                    @if ($value == $t->name)
+                @if (old('type'))
+                  @foreach (old('type') as $value)
+                    @if ($value === $t->name)
                       checked
                     @endif
                   @endforeach
@@ -112,7 +112,7 @@
               @endforeach
             </div>
             @foreach ($general->periods as $p)
-            @if ($loop->index%2==0)
+            @if ($loop->index%2 === 0)
             <div class="row">
             @else
             <div class="row bg-info">
@@ -122,9 +122,9 @@
               <div class="col">
                 <label class="form-check-label d-flex justify-content-center">
                   <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]"
-                    @if (old('flash') && old('time'))
-                      @foreach ($general->old_time as $value)
-                        @if ($value == ($d->name." ".$p->name))
+                    @if (old('time'))
+                      @foreach (old('time') as $value)
+                        @if ($value === ($d->name." ".$p->name))
                           checked
                         @endif
                       @endforeach
@@ -136,38 +136,20 @@
               @endforeach
             </div>
             @endforeach
-            
-            <!--
-            @foreach ($general->periods as $p)
-            @if ($loop->index%2==0)
-            <div class="row">
-            @else
-            <div class="row bg-faded">
-            @endif
-              @foreach ($general->days as $d)
-              <label class="col form-check-label">
-                <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{old($d->name)}}{{old($p->name)}}" name="{{$d->name}}{{$p->name}}">
-                {{$d->name}}＊{{$p->name}}
-              </label>
-              @endforeach
-              <div class="col-12"></div>
-            </div>
-            @endforeach
-            -->
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseUnit">
           <div class="card card-block">
             @foreach($general->units as $u)
-              @if ($u->name == "其餘")
+              @if ($u->name === "其餘")
                 @continue
               @else
                 <label class="form-check-label">
                   <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$u->name}}" name="unit[]"
-                    @if (old('flash') && old('unit'))
-                      @foreach ($general->old_unit as $value)
-                        @if ($value == $u->name)
+                    @if (old('unit'))
+                      @foreach (old('unit') as $value)
+                        @if ($value === $u->name)
                           checked
                         @endif
                       @endforeach
@@ -184,9 +166,9 @@
           <div class="card card-block">
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="中文" name="language[]"
-                    @if (old('flash') && old('language'))
-                      @foreach ($general->old_language as $value)
-                        @if ($value == "中文")
+                    @if (old('language'))
+                      @foreach (old('language') as $value)
+                        @if ($value === "中文")
                           checked
                         @endif
                       @endforeach
@@ -196,9 +178,9 @@
             </label>
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="英文" name="language[]"
-                    @if (old('flash') && old('language'))
-                      @foreach ($general->old_language as $value)
-                        @if ($value == "英文")
+                    @if (old('language'))
+                      @foreach (old('language') as $value)
+                        @if ($value === "英文")
                           checked
                         @endif
                       @endforeach
@@ -212,10 +194,10 @@
         <div class="collapse col-12 mx-auto" id="collapseMooc">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="1" name="mooc[]"
-                @if (old('flash') && old('mooc'))
-                  @foreach ($general->old_mooc as $value)
-                    @if ($value == "1")
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="是" name="mooc[]"
+                @if (old('mooc'))
+                  @foreach (old('mooc') as $value)
+                    @if ($value === "1")
                       checked
                     @endif
                   @endforeach
@@ -224,10 +206,10 @@
                 是
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="0" name="mooc[]"
-                @if (old('flash') && old('mooc'))
-                  @foreach ($general->old_mooc as $value)
-                    @if ($value == "0")
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="否" name="mooc[]"
+                @if (old('mooc'))
+                  @foreach (old('mooc') as $value)
+                    @if ($value === "0")
                       checked
                     @endif
                   @endforeach
@@ -241,11 +223,11 @@
         <div class="collapse col-12 mx-auto" id="collapseSemester">
           <div class="card card-block">
             <label class="form-check-label">
-            <input type="radio" class="my-3 my-lg-2 form-check-input" value="2017 1" name="semester">
+            <input type="radio" class="my-3 my-lg-2 form-check-input" value="2017 1" name="semester" {{old('semester')!='2016_2' ?: 'checked'}}>
               2017-1
             </label>
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 2" name="semester">
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 2" name="semester" {{old('semester')!='2016_2' ?: 'checked'}}>
               2016-2
             </label>
             <label class="form-check-label">
@@ -278,7 +260,7 @@
 <script>
 
 function changeTriangle() {
-  if (this.id=="filter-controller") {
+  if (this.id == "filter-controller") {
     var span = this.children[0];
     if (span.classList[1] == "glyphicon-triangle-bottom") {
       span.classList.remove("glyphicon-triangle-bottom");

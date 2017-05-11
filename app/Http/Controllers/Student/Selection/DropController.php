@@ -32,7 +32,7 @@ class DropController extends SelectionController
         $this->general->days = Day::orderby('id', 'asc')->get();
         $this->general->periods = Period::orderby('id', 'asc')->get();
         $this->general->types = Type::orderby('name', 'asc')->get();
-        $this->general->units = Unit::orderby('subjection', 'asc')->get();
+        $this->general->units = Unit::orderby('unit_base_id', 'asc')->get();
         $this->general->info = User::find(Auth::user()->id);
         $own = $this->getOwnCurricula();
         $own = $own->keyBy('course_id')->keys()->toArray();
@@ -48,8 +48,11 @@ class DropController extends SelectionController
 
         foreach ($own as $o) {
             foreach($req as $r)
-                if ($o->course_id === $r->id)
+                if ($o->course_id === $r->id) {
                     $own->find($o->id)->delete();
+                    $r->enrollment_remain++;
+                    $r->save();
+                }
         }
         return back()->withInput();
     }

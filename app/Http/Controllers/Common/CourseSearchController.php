@@ -32,13 +32,28 @@ class CourseSearchController extends Controller
             $this->general->days = Day::orderby('id', 'asc')->get();
             $this->general->periods = Period::orderby('id', 'asc')->get();
             $this->general->types = Type::orderby('name', 'asc')->get();
-            $this->general->units = Unit::orderby('subjection', 'asc')->get();
+            $this->general->units = Unit::get();
             $this->general->curricula = Curriculum::where('student_id', Auth::user()->id)->get();
 
             $this->passingRequestToView($request);
             $this->listRequest($request);
             $this->filterRequest($request);
-            
+
+            /*
+            $test = Collect([[1,2],[3],[4,5]])->collapse();
+            dd($test);
+
+            $test = Type::all()->toArray();
+            $t = Collect($test)->collapse();
+            dd($t);
+            foreach ($test as $t){
+                dd($t);
+                $t->toArray();
+            }
+
+            dd($test);
+            dd(Type::get());
+            */
             return view('common/course_search', ['general' => $this->general]);
         }
         return redirect('sign_in');
@@ -64,6 +79,7 @@ class CourseSearchController extends Controller
         if ($request->has('reg_enroll')) {
             $this->general->info = User::findOrFail(Auth::user()->id);
 
+            $courses = Course::all();
             //搜尋自身預選課程
             $own = Curriculum::all()->filter(function($value, $key) {
                 if($value->student_id == $this->general->info->id)
@@ -74,12 +90,25 @@ class CourseSearchController extends Controller
             $req = $request->input('reg_enroll');
             //過濾課程
             $new_enroll = Course::all()->only($req)->except($own);
-            //登陸
+            //可否加選
             foreach ($new_enroll as $i) {
-                $c = new Curriculum;
-                $c->course_id = $i->id;
-                $c->student_id = $this->general->info->id;
-                $c->save();
+                $isSecurity = false;
+                foreach ($courses as $j) {
+                    if ($i->id == $j->id) {
+                        if ($j->enrollment_remain>0) {
+                            $j->enrollment_remain--;
+                            $j->save();
+                            $isSecurity = true;
+                        }
+                    }
+                }
+                //登陸課表
+                if ($isSecurity) {
+                    $c = new Curriculum;
+                    $c->course_id = $i->id;
+                    $c->student_id = $this->general->info->id;
+                    $c->save();
+                }
             }
         }
         //return redirect('course_search');
@@ -143,19 +172,8 @@ class CourseSearchController extends Controller
 
     function passingRequestToView($request)
     {
-        if ($request->input('flash'))
-            $request->flash();
-
-        if ($request->has('type'))
-            $this->general->old_type = $request->input('type');
-        if ($request->has('time'))
-            $this->general->old_time = $request->input('time');
-        if ($request->has('unit'))
-            $this->general->old_unit = $request->input('unit');
-        if ($request->has('language'))
-            $this->general->old_language = $request->input('language');
-        if ($request->has('mooc'))
-            $this->general->old_mooc = $request->input('mooc');
+        if ($request->input('flash') === 'yes')
+            $request->flashExcept('flash');
     }
 
     function listRequest(Request $request)

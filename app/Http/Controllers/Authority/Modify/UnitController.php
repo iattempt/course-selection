@@ -13,7 +13,7 @@ class UnitController extends ModifyController
         parent::__construct();
         $this->general->title = 'Modify unit';
         $this->general->view_path .= '/unit';
-        $this->general->lists =  Unit::all();
+        $this->general->lists = Unit::all();
     }
     function index(Request $request) {
         return view($this->general->view_path, ['general' => $this->general]);
@@ -40,12 +40,12 @@ class UnitController extends ModifyController
             if ($request->has('name')){
                 $data = new Unit;
                 $data->name = $request->input('name');
+                $data->unit_base_id = $request->input('unit_base_id');
                 $data->save();
-                $this->general->message = "created";
-                $this->general->message_type = "success";
             }
         }
         catch (\Exception $e){
+            return var_dump($e);
             $this->general->message = "failed";
             $this->general->message_type = "danger";
         }
@@ -88,6 +88,7 @@ class UnitController extends ModifyController
             if ($request->has('name')){
                 $data = Unit::find($id);
                 $data->name = $request->input('name');
+                $data->unit_base_id = $request->input('unit_base_id');
                 $data->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";

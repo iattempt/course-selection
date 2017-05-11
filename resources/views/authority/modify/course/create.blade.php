@@ -46,8 +46,8 @@
   </td>
   <td>
     <select class="form-control" name="mooc">
-      <option value="0">0</option>
-      <option value="1">1</option>
+      <option value="0">否</option>
+      <option value="1">是</option>
     </select>
   </td>
   <td>
