@@ -90,11 +90,12 @@ class UserController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            if ($request->has('name', 'email', 'password', 'type')){
+            if ($request->has('name', 'email', 'type')){
                 $data = User::find($id);
                 $data->name = $request->input('name');
                 $data->email = $request->input('email');
-                $data->password = bcrypt($request->input('password'));
+                if ($request->has('password'))
+                    $data->password = bcrypt($request->input('password'));
                 $data->type = $request->input('type');
                 $data->save();
                 $this->general->message = "created";
@@ -102,6 +103,7 @@ class UserController extends ModifyController
             }
         }
         catch (\Exception $e){
+            dd($e);
             $this->general->message = "failed";
             $this->general->message_type = "danger";
         }
