@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Authority\Modify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
 use App\Selection\CourseBase;
+use App\Selection\User;
+use Illuminate\Support\Facades\Auth;
 
 class CourseBaseController extends ModifyController
 {
@@ -16,6 +18,7 @@ class CourseBaseController extends ModifyController
         $this->general->lists =  CourseBase::all();
     }
     function index(Request $request) {
+        $this->general->info = user::find(auth::user()->id);
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

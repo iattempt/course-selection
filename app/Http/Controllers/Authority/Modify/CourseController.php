@@ -13,6 +13,7 @@ use App\Selection\CourseTime;
 use App\Selection\Period;
 use App\Selection\Day;
 use App\Selection\Type;
+use Illuminate\Support\Facades\Auth;
 
 class CourseController extends ModifyController
 {
@@ -34,6 +35,7 @@ class CourseController extends ModifyController
         });
     }
     function index(Request $request) {
+        $this->general->info = user::find(auth::user()->id);
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

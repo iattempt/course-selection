@@ -27,8 +27,12 @@
   </tr>
   @foreach ($general->lists as $list)
   <tr>
+    @if ($general->info->name === 'admin')
     @include ('authority/modify/course/edit', array('caller' => 'course'))
     @include ('authority/modify/course/delete', array('caller' => 'course'))
+    @else
+    @include ('authority/modify/course/contain', array('caller' => 'user'))
+    @endif
   </tr>
   @endforeach
 </tbody>

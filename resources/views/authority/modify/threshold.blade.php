@@ -19,8 +19,12 @@
   </tr>
   @foreach ($general->lists as $list)
   <tr>
+    @if ($general->info->name === 'admin')
     @include ('authority/modify/threshold/edit', array('caller' => 'threshold'))
     @include ('authority/modify/threshold/delete', array('caller' => 'threshold'))
+    @else
+    @include ('authority/modify/threshold/contain', array('caller' => 'user'))
+    @endif
   </tr>
   @endforeach
 </tbody>

@@ -7,7 +7,9 @@ use App\Http\Controllers\Authority\ModifyController;
 use App\Selection\Threshold;
 use App\Selection\Unit;
 use App\Selection\Type;
+use App\Selection\User;
 use App\Selection\CourseBase;
+use Illuminate\Support\Facades\Auth;
 
 class thresholdController extends ModifyController
 {
@@ -22,6 +24,7 @@ class thresholdController extends ModifyController
         $this->general->types = Type::all();
     }
     function index(Request $request) {
+        $this->general->info = user::find(auth::user()->id);
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Authority\Modify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
 use App\Selection\Unit;
+use App\Selection\User;
+use Illuminate\Support\Facades\Auth;
 
 class UnitController extends ModifyController
 {
@@ -16,6 +18,7 @@ class UnitController extends ModifyController
         $this->general->lists = Unit::all();
     }
     function index(Request $request) {
+        $this->general->info = user::find(auth::user()->id);
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

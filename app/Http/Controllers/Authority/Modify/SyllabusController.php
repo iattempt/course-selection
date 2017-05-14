@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
+use Illuminate\Support\Facades\Auth;
+use App\Selection\User;
 
 class SyllabusController extends ModifyController
 {
@@ -14,6 +16,7 @@ class SyllabusController extends ModifyController
         $this->general->view_path .= "/syllabus";
     }
     function index(Request $request) {
+        $this->general->info = user::find(auth::user()->id);
         return view('authority/modify/syllabus', ['general' => $this->general]);
     }
     /**
