@@ -12,8 +12,6 @@
         <div class="col-12"></div>
         <a class="text-white" style="text-decoration: underline" href="https://github.com/">Contribution</a>
         &nbsp;|&nbsp;
-        <a class="text-white" style="text-decoration: underline" href="/feedback">Contact</a>
-        &nbsp;|&nbsp;
         <a class="text-white" style="text-decoration: underline" href="/feedback">Feedback</a>
       </span>
     </div>

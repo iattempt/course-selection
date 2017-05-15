@@ -18,9 +18,12 @@ Route::group(['middleware' => 'guest'], function () {
     Route::get('test', 'TestController@index');
 
 //common
-    Route::group(['namespace' => 'Common'], function() {
-        Route::get('feedback', 'FeedbackController@index');
-        Route::resource('course_search', 'CourseSearchController');
+    Route::group(['middleware' => 'common'], function () {
+        Route::group(['namespace' => 'Common'], function() {
+            Route::get('feedback', 'FeedbackController@index');
+            Route::post('feedback', 'FeedbackController@store');
+            Route::resource('course_search', 'CourseSearchController');
+        });
     });
 //authority
     Route::group(['middleware' => 'authority'], function () {

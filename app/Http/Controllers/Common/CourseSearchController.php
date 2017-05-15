@@ -25,38 +25,35 @@ class CourseSearchController extends Controller
         $this->general->title = 'course search';
     }
     function index(Request $request) {
-        if (Auth::check()) {
-            $this->general->identity = Auth::user()->getType();
+        $this->general->identity = Auth::user()->getType();
 
-            $this->general->info = User::findOrFail(Auth::user()->id);
-            $this->general->days = Day::all()->sortBy('id');
-            $this->general->periods = Period::all()->sortBy('id');
-            $this->general->types = Type::all()->sortBy('name');
-            $this->general->units = Unit::all();
-            $this->general->curricula = Curriculum::all()->where('student_id', Auth::user()->id);
+        $this->general->info = User::findOrFail(Auth::user()->id);
+        $this->general->days = Day::all()->sortBy('id');
+        $this->general->periods = Period::all()->sortBy('id');
+        $this->general->types = Type::all()->sortBy('name');
+        $this->general->units = Unit::all();
+        $this->general->curricula = Curriculum::all()->where('student_id', Auth::user()->id);
 
-            $this->passingRequestToView($request);
-            $this->listRequest($request);
-            $this->filterRequest($request);
+        $this->passingRequestToView($request);
+        $this->listRequest($request);
+        $this->filterRequest($request);
 
-            /*
-            $test = Collect([[1,2],[3],[4,5]])->collapse();
-            dd($test);
+        /*
+        $test = Collect([[1,2],[3],[4,5]])->collapse();
+        dd($test);
 
-            $test = Type::all()->toArray();
-            $t = Collect($test)->collapse();
+        $test = Type::all()->toArray();
+        $t = Collect($test)->collapse();
+        dd($t);
+        foreach ($test as $t){
             dd($t);
-            foreach ($test as $t){
-                dd($t);
-                $t->toArray();
-            }
-
-            dd($test);
-            dd(Type::all());
-            */
-            return view('common/course_search', ['general' => $this->general]);
+            $t->toArray();
         }
-        return redirect('sign_in');
+
+        dd($test);
+        dd(Type::all());
+        */
+        return view('common/course_search', ['general' => $this->general]);
     }
 
     /**
@@ -111,7 +108,6 @@ class CourseSearchController extends Controller
                 }
             }
         }
-        //return redirect('course_search');
         return back()->withInput();
     }
 
