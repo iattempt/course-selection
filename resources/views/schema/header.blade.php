@@ -14,12 +14,13 @@
         @show
         @if ($general->identity !== "")
         <li class="dropdown nav-item">
-          <a class="nav-link dropdown-toggle" id="dropdownElse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" role="button" id="dropdownNavElse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             其他
           </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownElse">
+          <div class="dropdown-menu" aria-labelledby="dropdownNavElse">
             <a class="dropdown-item" href="{{ $general->school->website }}">{{ $general->school->name }}首頁</a>
             <a class="dropdown-item" href="{{ $general->school->calender }}">行事曆</a>
+          </div>
         </li>
         @endif
       </ul>

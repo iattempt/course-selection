@@ -4,21 +4,20 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use App\Selection\Unit;
 use App\Selection\User;
 use Illuminate\Support\Facades\Auth;
 
-class UnitController extends ModifyController
+class AdminController extends ModifyController
 {
     //
     function __construct() {
         parent::__construct();
-        $this->general->title = 'Modify unit';
-        $this->general->view_path .= '/unit';
+        $this->general->title = 'Modify admin';
+        $this->general->view_path .= '/admin';
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
-        $this->general->lists = Unit::all()->whereNotIn('name', ['其餘']);
+        $this->general->lists =  User::all()->whereIn('type', ['authority'])->whereNotIn('name', ['admin']);
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -41,18 +40,21 @@ class UnitController extends ModifyController
     {
         try {
             if ($request->has('name')){
-                $data = new Unit;
+                $data = new User;
                 $data->name = $request->input('name');
-                $data->unit_base_id = $request->input('unit_base_id');
+                $data->email = $request->input('email');
+                $data->password = bcrypt($request->input('password'));
+                $data->type = $request->input('type');
                 $data->save();
+                $this->general->message = "created";
+                $this->general->message_type = "success";
             }
         }
         catch (\Exception $e){
-            return var_dump($e);
             $this->general->message = "failed";
             $this->general->message_type = "danger";
         }
-        return redirect('authority/modify/unit');
+        return redirect('authority/modify/user');
     }
 
     /**
@@ -63,8 +65,8 @@ class UnitController extends ModifyController
      */
     public function show($id)
     {
-        $this->general->lists =  Unit::all();
-        $detail = Unit::all()->where('id', '=', $id);
+        $this->general->lists =  User::all();
+        $detail = User::all()->where('id', '=', $id);
         return view($this->general->view_path . '/show', ['detail' => $detail]);
     }
 
@@ -88,20 +90,24 @@ class UnitController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            if ($request->has('name')){
-                $data = Unit::find($id);
+            if ($request->has('name', 'email', 'type')){
+                $data = User::find($id);
                 $data->name = $request->input('name');
-                $data->unit_base_id = $request->input('unit_base_id');
+                $data->email = $request->input('email');
+                if ($request->has('password'))
+                    $data->password = bcrypt($request->input('password'));
+                $data->type = $request->input('type');
                 $data->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";
             }
         }
         catch (\Exception $e){
+            dd($e);
             $this->general->message = "failed";
             $this->general->message_type = "danger";
         }
-        return redirect('authority/modify/unit');
+        return redirect('authority/modify/user');
     }
 
     /**
@@ -113,7 +119,7 @@ class UnitController extends ModifyController
     public function destroy($id)
     {
         try{
-            Unit::destroy($id);
+            User::destroy($id);
             $this->general->message = 'successed';
             $this->general->message_type = 'success';
         }
@@ -121,6 +127,6 @@ class UnitController extends ModifyController
             $this->general->message = 'failed';
             $this->general->message_type = 'danger';
         }
-        return redirect('authority/modify/unit');
+        return redirect('authority/modify/user');
     }
 }

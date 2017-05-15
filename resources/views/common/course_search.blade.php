@@ -18,16 +18,19 @@
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          <input type="submit" value="加選" class="col-2 col-md-1 btn btn-success">
+          <button type="submit" class="col-2 btn btn-success">
+            <i class="glyphicon glyphicon-ok"></i>
+            <span class="hidden-md-down">送出</span>
+          </button>
           <a href="javascript:void(0)" class="col-3">
             課程名稱
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-2">
+          <a href="javascript:void(0)" class="col-2 hidden-xs-down">
             授課教師
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-1">
+          <a href="javascript:void(0)" class="col-2">
             修別
             <span class="dropdown-toggle"></span>
           </a>

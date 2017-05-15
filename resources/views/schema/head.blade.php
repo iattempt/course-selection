@@ -15,16 +15,12 @@
   <a id="skippy" class="sr-only sr-only-focusable" href="#content">
     <span class="skiplink-text">Skip to main content</span>
   </a>
-  @section('header')
-  @show
+  @yield ('header')
   <div class="my-3"></div>
   @include ('schema/message')
-  @section('main')
-  @show
+  @yield ('main')
   <div style="padding-bottom: 100px"></div> <!-- footer space -->
-  @section('footer')
-  @show
-  @section('script')
-  @show
+  @yield ('footer')
+  @yield ('script')
 </body>
 </html>

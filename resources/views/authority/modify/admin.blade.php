@@ -13,15 +13,15 @@
 </thead>
 <tbody>
   <tr>
-    @include ('authority/modify/user/create', array('caller' => 'user'))
+    @include ('authority/modify/admin/create', array('caller' => 'admin'))
   </tr>
   @foreach ($general->lists as $list)
   <tr>
     @if ($general->info->name === 'admin')
-    @include ('authority/modify/user/edit', array('caller' => 'user'))
-    @include ('authority/modify/user/delete', array('caller' => 'user'))
+    @include ('authority/modify/admin/edit', array('caller' => 'admin'))
+    @include ('authority/modify/admin/delete', array('caller' => 'admin'))
     @else
-    @include ('authority/modify/user/contain', array('caller' => 'user'))
+    @include ('authority/modify/admin/contain', array('caller' => 'admin'))
     @endif
   </tr>
   @endforeach

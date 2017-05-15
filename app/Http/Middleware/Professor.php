@@ -20,6 +20,6 @@ class Professor
         {
             return $next($request);
         }
-        return redirect('sign_in');
+        return redirect('login');
     }
 }

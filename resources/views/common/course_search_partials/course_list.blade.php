@@ -12,7 +12,7 @@
       if (!$isEnrolled && $list->enrollment_remain>0)
         echo '<label class="form-control-label" for="enroll'.
               $list->id .
-              '">選取</label><input id="enroll'.
+              '"></label><input id="enroll'.
               $list->id.
               '" type="checkbox" value="'.
               $list->id.
@@ -26,13 +26,13 @@
     </a>
   </span>
 
-  <span class="col-2">
+  <span class="col-2 hidden-xs-down">
   @foreach ($list->professors as $p)
     {{$p->user->name}}&nbsp;
   @endforeach
   </span>
 
-  <span class="col-1">
+  <span class="col-2">
   <!--bug:非學生全部顯示為選修-->
     @if ($general->identity === "student")
       @php
@@ -78,6 +78,12 @@
 -->
 <div class="collapse col-12" id="expand{{$list->id}}">
   <div class="card card-block">
+    <div class="hidden-sm-up">
+      授課教師:
+      @foreach ($list->professors as $p)
+        {{$p->user->name}}&nbsp;
+      @endforeach
+    </div>
     <div>課程代號: {{$list->id}}</div>
     <div>授課語言 : {{$list->language}}</div>
     <div>MOOCs : {{$list->mooc==1 ? "是"  :  "否"}}</div>

@@ -5,18 +5,21 @@ namespace App\Http\Controllers\Authority\Modify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
 use App\Selection\User;
+use App\Selection\Unit;
+use App\Selection\Student;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends ModifyController
+class StudentController extends ModifyController
 {
     //
     function __construct() {
         parent::__construct();
         $this->general->title = 'Modify user';
-        $this->general->view_path .= '/user';
-        $this->general->lists =  User::all();
+        $this->general->view_path .= '/student';
     }
     function index(Request $request) {
+        $this->general->lists =  User::all()->whereIn('type', ['student']);
+        $this->general->units = Unit::all()->whereNotIN('name', ['全部', '其餘']);
         $this->general->info = user::find(auth::user()->id);
         return view($this->general->view_path, ['general' => $this->general]);
     }
@@ -39,13 +42,19 @@ class UserController extends ModifyController
     public function store(Request $request)
     {
         try {
-            if ($request->has('name')){
-                $data = new User;
-                $data->name = $request->input('name');
-                $data->email = $request->input('email');
-                $data->password = bcrypt($request->input('password'));
-                $data->type = $request->input('type');
-                $data->save();
+            if ($request->has('name', 'email', 'year', 'state', 'unit_id', 'password')){
+                $user = new User;
+                $user->name = $request->input('name');
+                $user->email = $request->input('email');
+                $user->password = bcrypt($request->input('password'));
+                $user->type = 'student';
+                $user->save();
+                $student = new Student;
+                $student->id = $user->id;
+                $student->year = $request->input('year');
+                $student->state = $request->input('state');
+                $student->unit_id = $request->input('unit_id');
+                $student->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";
             }
@@ -54,7 +63,7 @@ class UserController extends ModifyController
             $this->general->message = "failed";
             $this->general->message_type = "danger";
         }
-        return redirect('authority/modify/user');
+        return redirect('authority/modify/student');
     }
 
     /**
@@ -90,14 +99,19 @@ class UserController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            if ($request->has('name', 'email', 'type')){
-                $data = User::find($id);
-                $data->name = $request->input('name');
-                $data->email = $request->input('email');
-                if ($request->has('password'))
-                    $data->password = bcrypt($request->input('password'));
-                $data->type = $request->input('type');
-                $data->save();
+            if ($request->has('name', 'email', 'year', 'state', 'unit_id')){
+                $user = User::find($id);
+                $user->name = $request->input('name');
+                $user->email = $request->input('email');
+                if ($request->has('password') !== null)
+                    $user->password = bcrypt($request->input('password'));
+                $user->save();
+                $student = Student::find($id);
+                $student->id = $user->id;
+                $student->year = $request->input('year');
+                $student->state = $request->input('state');
+                $student->unit_id = $request->input('unit_id');
+                $student->save();
                 $this->general->message = "created";
                 $this->general->message_type = "success";
             }
@@ -107,7 +121,7 @@ class UserController extends ModifyController
             $this->general->message = "failed";
             $this->general->message_type = "danger";
         }
-        return redirect('authority/modify/user');
+        return redirect('authority/modify/student');
     }
 
     /**
@@ -119,6 +133,7 @@ class UserController extends ModifyController
     public function destroy($id)
     {
         try{
+            Student::destroy($id);
             User::destroy($id);
             $this->general->message = 'successed';
             $this->general->message_type = 'success';
@@ -127,6 +142,6 @@ class UserController extends ModifyController
             $this->general->message = 'failed';
             $this->general->message_type = 'danger';
         }
-        return redirect('authority/modify/user');
+        return redirect('authority/modify/student');
     }
 }

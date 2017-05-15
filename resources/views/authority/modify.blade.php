@@ -4,9 +4,8 @@
 <div class="container-fluid">
   <div class="row mx-3">
     <table class="col-12 table-striped table-bordered">
-@section('modify')
+@section ('modify')
 @show
-
     </table>
   </div>
 </div>
