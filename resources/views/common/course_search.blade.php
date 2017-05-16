@@ -18,8 +18,8 @@
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          <button type="submit" class="col-2 btn btn-success">
-            <i class="glyphicon glyphicon-ok"></i>
+          <button type="submit" class="col-2 col-md-1 btn btn-success">
+            <i class="glyphicon glyphicon-arrow-up"></i>
             <span class="hidden-md-down">送出</span>
           </button>
           <a href="javascript:void(0)" class="col-3">
