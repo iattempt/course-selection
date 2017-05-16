@@ -5,17 +5,17 @@ namespace App\Http\Controllers\Common;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Selection\Course;
-use App\Selection\CourseProfessor;
-use App\Selection\Curriculum;
-use App\Selection\CourseTime;
-use App\Selection\CourseBase;
-use App\Selection\CourseType;
-use App\Selection\Unit;
-use App\Selection\User;
-use App\Selection\Day;
-use App\Selection\Period;
-use App\Selection\Type;
+use Model\Course;
+use Model\CourseProfessor;
+use Model\Curriculum;
+use Model\CourseTime;
+use Model\CourseBase;
+use Model\CourseType;
+use Model\Unit;
+use Model\Day;
+use Model\Period;
+use Model\Type;
+use App\User;
 
 class CourseSearchController extends Controller
 {

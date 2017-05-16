@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Selection;
+namespace Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Prerequisite extends Model
+class Classroom extends Model
 {
     //
 }

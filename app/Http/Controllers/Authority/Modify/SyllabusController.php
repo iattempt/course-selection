@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Authority\Modify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
 use Illuminate\Support\Facades\Auth;
-use App\Selection\User;
+use App\User;
 
 class SyllabusController extends ModifyController
 {

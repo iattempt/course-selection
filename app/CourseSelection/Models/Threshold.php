@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Selection;
+namespace Model;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,12 +8,12 @@ class Threshold extends Model
 {
     //
     public function unit() {
-        return $this->hasOne('App\Selection\Unit');
+        return $this->hasOne('Model\Unit');
     }
     public function type() {
-        return $this->hasOne('App\Selection\Type');
+        return $this->hasOne('Model\Type');
     }
     public function course_base() {
-        return $this->hasOne('App\Selection\CourseBase');
+        return $this->hasOne('Model\CourseBase');
     }
 }

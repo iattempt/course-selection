@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Selection\Unit;
-use App\Selection\Course;
-use App\Selection\Test;
+use App\CourseSelection\Models\Unit;
+use App\CourseSelection\Models\Course;
+use App\CourseSelection\Models\Test;
 
 class TestController extends Controller
 {

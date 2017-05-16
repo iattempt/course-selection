@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Selection;
+namespace Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HisApplyCourse extends Model
+class SpecialEnroll extends Model
 {
     //
 }

@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Selection;
+namespace Model;
 
+use App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Student extends Model
+class Professor extends Model
 {
     //
     public function info()
     {
-        return $this->belongsTo('App\Selection\User');
+        return $this->belongsTo('App\User', 'id');
     }
     public function unit()
     {
-        return $this->belongsTo('App\Selection\Unit');
+        return $this->belongsTo('Model\Unit');
     }
 }

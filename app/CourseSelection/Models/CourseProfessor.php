@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Selection;
+namespace Model;
 
+use App;
 use Illuminate\Database\Eloquent\Model;
 
 class CourseProfessor extends Model
@@ -9,10 +10,10 @@ class CourseProfessor extends Model
     //
     public function user()
     {
-        return $this->belongsTo('App\Selection\User', 'user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
     public function courses()
     {
-        return $this->hasMany('App\Selection\Course');
+        return $this->hasMany('Model\Course');
     }
 }

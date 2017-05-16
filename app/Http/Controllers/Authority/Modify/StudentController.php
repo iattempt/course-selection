@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use App\Selection\User;
-use App\Selection\Unit;
-use App\Selection\Student;
+use Model\Unit;
+use Model\Student;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class StudentController extends ModifyController

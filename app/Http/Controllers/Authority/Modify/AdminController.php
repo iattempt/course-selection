@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use App\Selection\User;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends ModifyController
