@@ -7,6 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+use Illuminate\Support\Facades\App;
 use App\Selection\User;
 
 
@@ -23,9 +24,9 @@ class Controller extends BaseController
         $this->general->message_type = '';
 
         $this->general->school = new School();
-        $this->general->school->name = '東海';
-        $this->general->school->calender = 'http://www.thu.edu.tw/web/calendar/detail.php?scid=23&sid=36';
-        $this->general->school->website = 'http://www.thu.edu.tw';
+        $this->general->school->name = config('app.name');
+        $this->general->school->website = config('app.website');
+        $this->general->school->calender = config('app.calender');
     }
     public function getUsers($type)
     {

@@ -13,6 +13,8 @@ return [
     */
 
     'name' => '東海大學',
+    'website' => 'http://www.thu.edu.tw',
+    'calender' => 'http://www.thu.edu.tw/web/calendar/ detail.php?scid=23&sid=36',
 
     /*
     |--------------------------------------------------------------------------
