@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use App\Selection\Threshold;
-use App\Selection\Unit;
-use App\Selection\Type;
-use App\Selection\User;
-use App\Selection\CourseBase;
+use App\CourseSelection\Models\Threshold;
+use App\CourseSelection\Models\Unit;
+use App\CourseSelection\Models\Type;
+use App\CourseSelection\Models\User;
+use App\CourseSelection\Models\CourseBase;
 use Illuminate\Support\Facades\Auth;
 
 class thresholdController extends ModifyController

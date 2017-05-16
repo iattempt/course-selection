@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Student\State;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Selection\Day;
-use App\Selection\Period;
-use App\Selection\Curriculum;
+use App\CourseSelection\Models\Day;
+use App\CourseSelection\Models\Period;
+use App\CourseSelection\Models\Curriculum;
 
 use App\Http\Controllers\Student\StateController;
 

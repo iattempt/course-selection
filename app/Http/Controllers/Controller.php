@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use Illuminate\Support\Facades\App;
-use App\Selection\User;
+use App\CourseSelection\Models\User;
 
 
 class Controller extends BaseController

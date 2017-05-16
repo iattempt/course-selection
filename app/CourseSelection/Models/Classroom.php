@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Selection;
+namespace App\CourseSelection\Models;
 
 use Illuminate\Database\Eloquent\Model;
 

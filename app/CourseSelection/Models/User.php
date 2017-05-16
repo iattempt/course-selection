@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Selection;
+namespace App\CourseSelection\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -31,11 +31,11 @@ class User extends Authenticatable
     
     public function student()
     {
-        return $this->hasOne('App\Selection\Student', 'id');
+        return $this->hasOne('App\CourseSelection\Models\Student', 'id');
     }
     public function professor()
     {
-        return $this->hasOne('App\Selection\Professor', 'id');
+        return $this->hasOne('App\CourseSelection\Models\Professor', 'id');
     }
 
 

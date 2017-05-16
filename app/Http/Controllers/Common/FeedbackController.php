@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Common;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Selection\Feedback;
-use App\Selection\User;
+use App\CourseSelection\Models\Feedback;
+use App\CourseSelection\Models\User;
 
 class FeedbackController extends Controller
 {

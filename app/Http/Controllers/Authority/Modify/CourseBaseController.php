@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use App\Selection\CourseBase;
-use App\Selection\User;
+use App\CourseSelection\Models\CourseBase;
+use App\CourseSelection\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class CourseBaseController extends ModifyController

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Selection;
+namespace App\CourseSelection\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +9,6 @@ class Type extends Model
     //
     public function unit()
     {
-        return $this->belongsTo('App\Selection\Unit', 'unit_id');
+        return $this->belongsTo('App\CourseSelection\Models\Unit', 'unit_id');
     }
 }

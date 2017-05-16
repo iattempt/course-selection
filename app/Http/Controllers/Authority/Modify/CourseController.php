@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use App\Selection\Course;
-use App\Selection\Unit;
-use App\Selection\CourseBase;
-use App\Selection\Classroom;
-use App\Selection\User;
-use App\Selection\CourseTime;
-use App\Selection\Period;
-use App\Selection\Day;
-use App\Selection\Type;
+use App\CourseSelection\Models\Course;
+use App\CourseSelection\Models\Unit;
+use App\CourseSelection\Models\CourseBase;
+use App\CourseSelection\Models\Classroom;
+use App\CourseSelection\Models\User;
+use App\CourseSelection\Models\CourseTime;
+use App\CourseSelection\Models\Period;
+use App\CourseSelection\Models\Day;
+use App\CourseSelection\Models\Type;
 use Illuminate\Support\Facades\Auth;
 
 class CourseController extends ModifyController

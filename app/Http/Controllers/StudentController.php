@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
-use App\Selection\User;
-use App\Selection\Student;
+use App\CourseSelection\Models\User;
+use App\CourseSelection\Models\Student;
 
 class StudentController extends Controller
 {
