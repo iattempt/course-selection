@@ -14,7 +14,6 @@
     <th>簡述</th>
     <th>學分</th>
     <th>授課語言</th>
-    <th>MOOCs</th>
     <th>學年度</th>
     <th>學期</th>
     <th>現修人數</th>

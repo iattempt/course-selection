@@ -45,11 +45,6 @@
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="mooc" class="btn col-" data-toggle="collapse" href="#collapseMooc" aria-expanded="false" aria-controls="collapseMooc">
-          MOOC課程
-          <span class="dropdown-toggle"></span>
-        </a>
-
         <a id="semester" class="btn col-" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
           開課學期
           <span class="dropdown-toggle"></span>
@@ -187,35 +182,6 @@
                     @endif
                     >
                 英文
-            </label>
-          </div>
-        </div>
-
-        <div class="collapse col-12 mx-auto" id="collapseMooc">
-          <div class="card card-block">
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="是" name="mooc[]"
-                @if (old('mooc'))
-                  @foreach (old('mooc') as $value)
-                    @if ($value === "1")
-                      checked
-                    @endif
-                  @endforeach
-                @endif
-                >
-                是
-            </label>
-            <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="否" name="mooc[]"
-                @if (old('mooc'))
-                  @foreach (old('mooc') as $value)
-                    @if ($value === "0")
-                      checked
-                    @endif
-                  @endforeach
-                @endif
-                >
-                否
             </label>
           </div>
         </div>

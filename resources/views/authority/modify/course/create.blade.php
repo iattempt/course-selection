@@ -61,13 +61,6 @@
   </td>
 
   <td>
-    <select class="form-control" name="mooc">
-      <option value="0">否</option>
-      <option value="1">是</option>
-    </select>
-  </td>
-
-  <td>
     <select class="form-control" name="year">
       <option value="2017">2017</option>
       <option value="2016">2016</option>

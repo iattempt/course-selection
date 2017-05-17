@@ -216,12 +216,6 @@ class CourseSearchController extends Controller
                 $this->general->request_lists .= $t . " / ";
             $this->general->request_lists .= " ] ";
         }
-        if ($request->has('mooc')) {
-            $this->general->request_lists .= "MOOC課程:[ ";
-            foreach ($request->input('mooc') as $t)
-                $this->general->request_lists .= ($t ? "是" : "否") . " / ";
-            $this->general->request_lists .= " ] ";
-        }
         if ($request->has('semester')) {
             $this->general->request_lists .= "開課學期:[ ";
             $this->general->request_lists .= $request->input('semester');
@@ -238,7 +232,6 @@ class CourseSearchController extends Controller
         $this->filterTime($request);
         $this->filterUnit($request);
         $this->filterLanguage($request);
-        $this->filterMooc($request);
         $this->filterSemester($request);
     }
 
@@ -320,12 +313,6 @@ class CourseSearchController extends Controller
     {
         if ($request->has('language')) {
             $this->general->lists = $this->general->lists->whereIn('language', $request->input('language'));
-        }
-    }
-    function filterMooc(Request $request)
-    {
-        if ($request->has('mooc')) {
-            $this->general->lists = $this->general->lists->whereIn('mooc', $request->input('mooc'));
         }
     }
     function filterSemester(Request $request)

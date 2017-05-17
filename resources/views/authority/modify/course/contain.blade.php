@@ -111,13 +111,6 @@
 </td>
 
 <td>
-  <select class="edit_{{ $list->id }} form-control" name="mooc" disabled>
-    <option value="否" {{ ($list->mooc == '否' ? 'selected' : '') }}>否</option>
-    <option value="是" {{ ($list->mooc == '是' ? 'selected' : '') }}>是</option>
-  </select>
-</td>
-
-<td>
   <select class="edit_{{ $list->id }} form-control" name="year" disabled>
     <option value="2017" {{ ($list->year == '2017' ? 'selected' : '') }}>2017</option>
     <option value="2016" {{ ($list->year == '2016' ? 'selected' : '') }}>2016</option>
