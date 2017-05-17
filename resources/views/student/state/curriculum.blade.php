@@ -2,8 +2,6 @@
 @section('state')
 
 <div id="test"></div>
-<div class="container">
-  <div class="row d-flex mx-auto">
     <!--狀態列-->
     <div>
     </div>
@@ -69,8 +67,6 @@
         @endforeach
       </tbody>
     </table>
-  </div>
-</div>
 
 <script>
 (function() {
