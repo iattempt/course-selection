@@ -11,14 +11,12 @@
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          @if ($general->info->type == "student")
-          <div class="col-2"></div>
-          @endif
+          <div class="col-2 col-md-1"></div>
           <a href="javascript:void(0)" class="col-3">
             課程名稱
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-2">
+          <a href="javascript:void(0)" class="col-2 hidden-xs-down">
             授課教師
             <span class="dropdown-toggle"></span>
           </a>
