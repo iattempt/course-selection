@@ -21,6 +21,7 @@ class Controller extends BaseController
         $this->general->view_path = '/';
         $this->general->message = '';
         $this->general->message_type = '';
+        $this->general->ip = $this->getIP();
 
         $this->general->school = new School();
         $this->general->school->name = config('app.name');
@@ -34,6 +35,18 @@ class Controller extends BaseController
                 return $value;
         });
         return $u;
+    }
+    public function getIP()
+    {
+        if (!empty($_SERVER["HTTP_CLIENT_IP"])){
+                $ip = $_SERVER["HTTP_CLIENT_IP"];
+        }elseif(!empty($_SERVER["HTTP_X_FORWARDED_FOR"])){
+                $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
+        }else{
+                $ip = $_SERVER["REMOTE_ADDR"];
+        }
+             
+        return $ip;
     }
 }
 
