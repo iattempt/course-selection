@@ -17,12 +17,8 @@
   </tr>
   @foreach ($general->lists as $list)
   <tr>
-    @if ($general->info->name === 'admin')
     @include ('authority/modify/admin/edit', array('caller' => 'admin'))
     @include ('authority/modify/admin/delete', array('caller' => 'admin'))
-    @else
-    @include ('authority/modify/admin/contain', array('caller' => 'admin'))
-    @endif
   </tr>
   @endforeach
 </tbody>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use Model\Unit;
 use Model\Student;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -18,9 +17,9 @@ class StudentController extends ModifyController
         $this->general->view_path .= '/student';
     }
     function index(Request $request) {
-        $this->general->lists =  User::all()->whereIn('type', ['student']);
-        $this->general->units = Unit::all()->whereNotIN('name', ['全部', '其餘']);
-        $this->general->info = user::find(auth::user()->id);
+        $this->general->lists =  $this->user->student()->get();
+        $this->general->units = $this->unit->suitRegister()->get();
+        $this->general->info = User::find(auth::user()->id);
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

@@ -9,9 +9,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use Illuminate\Support\Facades\App;
 use App\User;
+use Repository\DayRepository as Day;
+use Repository\PeriodRepository as Period;
+use Repository\CurriculumRepository as Curriculum;
+use Repository\UnitRepository as Unit;
+use Repository\TypeRepository as Type;
+use Repository\UserRepository;
 
 class Controller extends BaseController
 {
+    protected $day;
+    protected $period;
+    protected $curriculum;
+    protected $unit;
+    protected $type;
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public $general;
     public function __construct () {
@@ -27,6 +38,13 @@ class Controller extends BaseController
         $this->general->school->name = config('app.name');
         $this->general->school->website = config('app.website');
         $this->general->school->calender = config('app.calender');
+
+        $this->day = Day::instance();
+        $this->period = Period::instance();
+        $this->curriculum = Curriculum::instance();
+        $this->unit = new Unit();
+        $this->user = new UserRepository();
+        $this->type = Type::instance();
     }
     public function getUsers($type)
     {

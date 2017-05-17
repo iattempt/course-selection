@@ -3,15 +3,15 @@
 namespace Repository;
 
 use Illuminate\Database\Eloquent\Model;
-use Model\Curriculum;
+use Model\Test;
 
-class CurriculumRepository extends BaseRepository
+class TestRepository extends BaseRepository
 {
     private static $Instance;
     static function instance()
     {
         if (self::$Instance === null)
-            self::$Instance = new CurriculumRepository();
+            self::$Instance = new TestRepository();
         return self::$Instance;
     }
     /**
@@ -21,23 +21,16 @@ class CurriculumRepository extends BaseRepository
      */
     private function __construct()
     {
-        $this->model = $this->model === null ? null : Curriculum::all();
+        $this->model = $this->model === null ? null : Test::all();
     }
 
     /**
      * return static
      * */
-    function all()
+    function getTest()
     {
         if (!$this->model)
             return null;
-        return $this->model->sortBy('course_id');
-    }
-
-    function own($id)
-    {
-        if (!$this->model)
-            return null;
-        return $this->model->where('student_id', $id);
+        return $this->model->sortBy('id');
     }
 }

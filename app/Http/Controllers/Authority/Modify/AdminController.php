@@ -16,8 +16,7 @@ class AdminController extends ModifyController
         $this->general->view_path .= '/admin';
     }
     function index(Request $request) {
-        $this->general->info = user::find(auth::user()->id);
-        $this->general->lists =  User::all()->whereIn('type', ['authority'])->whereNotIn('name', ['admin']);
+        $this->general->lists =  $this->user->authority()->get();
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
