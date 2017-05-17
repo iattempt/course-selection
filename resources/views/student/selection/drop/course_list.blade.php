@@ -10,15 +10,16 @@
       <span class="hidden-md-down">退選</span>
       <i class="glyphicon glyphicon-remove"></i>
     </button>
+
     <a class="col-3" data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
       {{$list->name}}
       <span class="dropdown-toggle"></span>
     </a>
 
-    <span class="col-2 hidden-xs-down">
-    @foreach ($list->professors as $p)
-      {{$p->user->name}}&nbsp;
-    @endforeach
+    <span class="col-3 col-md-2">
+      @foreach ($list->professors as $p)
+        <div>{{$p->user->name}}</div>
+      @endforeach
     </span>
 
     <span class="col-2">
@@ -43,9 +44,9 @@
       @endif
     </span>
 
-    <span class="col">
+    <span class="col-1">
       @foreach ($list->time->sortBy('period') as $t)
-        <div>{{$t->day->name}} {{$t->period->name}}</div>
+        <div>{{$t->day->simple_name}}:{{$t->period->id}}</div>
       @endforeach
     </span>
 
@@ -58,12 +59,6 @@
     </span>
     <div class="collapse col-12" id="expand{{$list->id}}">
       <div class="card card-block">
-        <div class="hidden-sm-up">
-          授課教師:
-          @foreach ($list->professors as $p)
-            {{$p->user->name}}&nbsp;
-          @endforeach
-        </div>
         <div>課程代號: {{$list->id}}</div>
         <div>授課語言 : {{$list->language}}</div>
         <div>開課單位 : {{$list->unit->name}}</div>

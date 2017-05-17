@@ -16,16 +16,16 @@
             課程名稱
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-2 hidden-xs-down">
+          <a href="javascript:void(0)" class="col-3 col-md-2">
             授課教師
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-1">
+          <a href="javascript:void(0)" class="col-2">
             修別
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col">
-            星期/時段
+          <a href="javascript:void(0)" class="col-1">
+            上課時間
             <span class="dropdown-toggle"></span>
           </a>
           <a href="javascript:void(0)" class="col-1 hidden-sm-down">
