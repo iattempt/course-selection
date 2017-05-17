@@ -16,7 +16,7 @@ class AdminController extends ModifyController
         $this->general->view_path .= '/admin';
     }
     function index(Request $request) {
-        $this->general->lists =  $this->user->authority()->get();
+        $this->general->lists =  $this->admin->instance()->get();
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

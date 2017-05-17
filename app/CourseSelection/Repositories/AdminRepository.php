@@ -5,7 +5,7 @@ namespace Repository;
 use Illuminate\Database\Eloquent\Model;
 use App\User;
 
-class StudentRepository extends BaseRepository
+class AdminRepository extends BaseRepository
 {
     /**
      * The Model name.
@@ -14,10 +14,9 @@ class StudentRepository extends BaseRepository
      */
     function __construct()
     {}
-
     function instance()
     {
-        $this->model = $this->model === null ? null : User::all()->whereIn('type', ['student']);
+        $this->model = $this->model === null ? null : User::all()->whereIn('type', ['authority'])->whereNotIn('name', ['admin']);
         return $this; 
     }
 }

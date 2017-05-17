@@ -85,4 +85,12 @@ class BaseRepository
             return null;
         return $this->model;
     }
+
+    /**
+     * lazy
+     * */
+    function instance()
+    {
+        return $this;
+    }
 }

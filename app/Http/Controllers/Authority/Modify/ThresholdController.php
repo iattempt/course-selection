@@ -4,10 +4,6 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use Model\Threshold;
-use Model\Unit;
-use Model\Type;
-use Model\CourseBase;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,13 +14,13 @@ class thresholdController extends ModifyController
         parent::__construct();
         $this->general->title = 'Modify threshold';
         $this->general->view_path .= '/threshold';
-        $this->general->lists =  Threshold::all();
-        $this->general->units =  Unit::all();
-        $this->general->course_bases =  CourseBase::all();
-        $this->general->types = Type::all();
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
+        $this->general->lists =  $this->threshold->instance()->get();
+        $this->general->units =  $this->unit->instance()->get();
+        $this->general->course_bases =  $this->course_base->instance()->get();
+        $this->general->types = $this->type->instance()->get();
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

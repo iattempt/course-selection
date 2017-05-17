@@ -11,18 +11,29 @@ use Illuminate\Support\Facades\App;
 use App\User;
 use Repository\DayRepository as Day;
 use Repository\PeriodRepository as Period;
-use Repository\CurriculumRepository as Curriculum;
 use Repository\UnitRepository as Unit;
+use Repository\CourseBaseRepository as CourseBase;
+use Repository\CurriculumRepository as Curriculum;
 use Repository\TypeRepository as Type;
 use Repository\UserRepository;
+use Repository\AdminRepository as Admin;
+use Repository\ProfessorRepository as Professor;
+use Repository\StudentRepository as Student;
+use Repository\ThresholdRepository as Threshold;
 
 class Controller extends BaseController
 {
     protected $day;
     protected $period;
-    protected $curriculum;
     protected $unit;
+    protected $curriculum;
     protected $type;
+    protected $user;
+    protected $admin;
+    protected $professor;
+    protected $student;
+    protected $threshold;
+
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public $general;
     public function __construct () {
@@ -39,12 +50,17 @@ class Controller extends BaseController
         $this->general->school->website = config('app.website');
         $this->general->school->calender = config('app.calender');
 
-        $this->day = Day::instance();
-        $this->period = Period::instance();
-        $this->curriculum = Curriculum::instance();
+        $this->day = new Day();
+        $this->period = new Period();
         $this->unit = new Unit();
+        $this->course_base = new CourseBase();
+        $this->curriculum = new Curriculum();
+        $this->type = new Type();
         $this->user = new UserRepository();
-        $this->type = Type::instance();
+        $this->admin = new Admin();
+        $this->professor = new Professor();
+        $this->student = new Student();
+        $this->threshold = new Threshold();
     }
     public function getUsers($type)
     {

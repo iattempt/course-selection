@@ -7,30 +7,16 @@ use Model\Day;
 
 class DayRepository extends BaseRepository
 {
-    private static $Instance;
-    static function instance()
-    {
-        if (self::$Instance === null)
-            self::$Instance = new DayRepository();
-        return self::$Instance;
-    }
     /**
      * The Model name.
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    private function __construct()
-    {
-        $this->model = $this->model === null ? null : Day::all();
-    }
+    function __construct(){}
 
-    /**
-     * return static
-     * */
-    function all()
+    function instance()
     {
-        if (!$this->model)
-            return null;
-        return $this->model->sortBy('id');
+        $this->model = $this->model === null ? null : Day::all()->sordBy('id');
+        return $this;
     }
 }

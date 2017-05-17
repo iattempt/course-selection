@@ -12,9 +12,12 @@ class UnitRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct()
+    function __construct(){}
+
+    function instance()
     {
         $this->model = $this->model === null ? null : Unit::all();
+        return $this;
     }
 
     function suitRegister()

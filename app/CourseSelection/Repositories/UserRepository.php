@@ -13,24 +13,11 @@ class UserRepository extends BaseRepository
      * @var \Illuminate\Database\Eloquent\Model;
      */
     function __construct()
-    {
-        $this->model = $this->model === null ? null : User::all();
-    }
+    {}
 
-    function authority()
+    function instance()
     {
-        if (!$this->model)
-            return null;
-        $this->model = $this->model->whereIn('type', ['authority']);
-        $this->model = $this->model->whereNotIn('name', ['admin']);
-        return $this;
-    }
-
-    function student()
-    {
-        if (!$this->model)
-            return null;
-        $this->model = $this->model->whereIn('type', ['student']);
-        return $this;
+        $this->model = $this->model === null ? null : User::all()->whereNotIN('name', 'admin');
+        return $this; 
     }
 }

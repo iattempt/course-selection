@@ -15,10 +15,10 @@ class CourseBaseController extends ModifyController
         parent::__construct();
         $this->general->title = 'Modify course base';
         $this->general->view_path .= '/course_base';
-        $this->general->lists =  CourseBase::all();
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
+        $this->general->lists =  $this->course_base->instance()->get();
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

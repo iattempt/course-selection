@@ -18,7 +18,7 @@ class UnitController extends ModifyController
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
-        $this->general->lists = Unit::all()->whereNotIn('name', ['其餘']);
+        $this->general->lists = $this->unit->instance()->get();
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

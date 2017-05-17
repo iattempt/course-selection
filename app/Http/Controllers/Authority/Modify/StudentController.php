@@ -17,8 +17,8 @@ class StudentController extends ModifyController
         $this->general->view_path .= '/student';
     }
     function index(Request $request) {
-        $this->general->lists =  $this->user->student()->get();
-        $this->general->units = $this->unit->suitRegister()->get();
+        $this->general->lists =  $this->student->instance()->get();
+        $this->general->units = $this->unit->instance()->suitRegister()->get();
         $this->general->info = User::find(auth::user()->id);
         return view($this->general->view_path, ['general' => $this->general]);
     }
