@@ -2,13 +2,13 @@
 @section('state')
 
 <div id="test"></div>
-<div class="container-fluid">
+<div class="container">
   <div class="row d-flex mx-auto">
     <!--狀態列-->
     <div>
     </div>
     <!--end 狀態列-->
-    <table id="curriculum_th" class="table table-bordered table-striped">
+    <table id="curriculum_th" class="table table-bordered table-striped table-sm">
       <thead> 
         <tr>
           <td>
