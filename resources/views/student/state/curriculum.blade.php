@@ -1,11 +1,6 @@
 @extends('student/state')
 @section('state')
 
-<div id="test"></div>
-    <!--狀態列-->
-    <div>
-    </div>
-    <!--end 狀態列-->
     <table id="curriculum_th" class="table table-bordered table-striped table-sm">
       <thead> 
         <tr>
@@ -109,7 +104,7 @@ function changeWD(caller){
     }
     var clear = document.getElementsByClassName("c_clear");
     for (var i = 0, l = clear.length; i < l; i++) {
-      clear[i].classList.remove("text-white", "bg-primary");
+      clear[i].classList.remove("text-danger");
     }
   }
   else {

@@ -89,9 +89,9 @@
     <div>開課單位 : {{$list->unit->name}}</div>
     <div>開課學年-學期 : {{$list->year}}-{{$list->semester}}</div>
     <div>課程剩餘人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>
-    <a href="javascript:void(0)">課程大綱</a>
     <div class="hidden-md-up">學分 : {{$list->credit}}</div>
     <div class="hidden-md-up">教室 : {{$list->classroom->name}}</div>
+    <a href="javascript:void(0)">課程大綱</a>
   </div>
 </div>
 
