@@ -2,13 +2,11 @@
 @section('state')
 
 <div id="test"></div>
-<div class="container-fluid">
-  <div class="row d-flex mx-auto">
     <!--狀態列-->
     <div>
     </div>
     <!--end 狀態列-->
-    <table id="curriculum_th" class="table table-bordered table-striped">
+    <table id="curriculum_th" class="table table-bordered table-striped table-sm">
       <thead> 
         <tr>
           <td>
@@ -23,11 +21,9 @@
           <!--星期列-->
           @foreach ($general->days as $d)
           <td>
-            <div class="mx-auto">
-              <a onclick="changeDContext(this.id)" id="c_day{{$d->id}}" class="col c_clear" href="javascript:void(0)">
-                {{$d->simple_name}}
-              </a>
-            </div>
+            <a onclick="changeDContext(this.id)" id="c_day{{$d->id}}" class="col c_clear" href="javascript:void(0)">
+              {{$d->simple_name}}
+            </a>
           </td>
           @endforeach
           <!--end 星期列-->
@@ -69,8 +65,6 @@
         @endforeach
       </tbody>
     </table>
-  </div>
-</div>
 
 <script>
 (function() {
@@ -146,9 +140,9 @@ function changeDTitle(id)
   var highlight = document.getElementById(id);
   var clear = document.getElementsByClassName("c_clear");
   for (var i = 0, l = clear.length; i < l; i++) {
-    clear[i].classList.remove("text-white", "bg-primary");
+    clear[i].classList.remove("text-danger");
   }
-  highlight.classList.add("text-white", "bg-primary");
+  highlight.classList.add("text-danger");
 }
 </script>
 
