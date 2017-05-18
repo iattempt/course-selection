@@ -44,8 +44,10 @@
             {{$p->name}}
             </div>
             <div class="d-flex justify-content-center">
-            {{$p->上課時間}}
-            {{$p->下課時間}}
+            {{date('H:i', strtotime($p->上課時間))}}
+            </div>
+            <div class="d-flex justify-content-center">
+            {{date('H:i', strtotime($p->下課時間))}}
             </div>
           </div>
           <!--end 時間行-->
