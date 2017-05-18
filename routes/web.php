@@ -36,7 +36,9 @@ Route::group(['middleware' => 'guest'], function () {
                 Route::resource('classroom', 'ClassroomController');
                 Route::resource('course_base', 'CourseBaseController');
                 Route::resource('course', 'CourseController');
-                Route::resource('syllabus', 'SyllabusController');
+                Route::resource('course_professor', 'CourseProfessorController');
+                Route::resource('course_time', 'CourseTimeController');
+                Route::resource('course_type', 'CourseTypeController');
                 Route::resource('threshold', 'ThresholdController');
                 Route::resource('unit', 'UnitController');
             });

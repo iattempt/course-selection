@@ -14,12 +14,8 @@
   </tr>
   @foreach ($general->lists as $list)
   <tr>
-    @if ($general->info->name === 'admin')
     @include ('authority/modify/crud/edit', array('caller' => 'classroom'))
     @include ('authority/modify/crud/delete', array('caller' => 'classroom'))
-    @else
-    @include ('authority/modify/crud/contain', array('caller' => 'user'))
-    @endif
   </tr>
   @endforeach
 </tbody>

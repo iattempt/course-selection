@@ -12,11 +12,11 @@ class ClassroomRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct()
-    {}
+    function __construct(){}
+
     function instance()
     {
         $this->model = $this->model === null ? null : Classroom::all();
-        return $this; 
+        return $this;
     }
 }

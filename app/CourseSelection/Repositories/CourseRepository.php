@@ -3,40 +3,43 @@
 namespace Repository;
 
 use Illuminate\Database\Eloquent\Model;
-use Model\CourseBase;
 use Model\Course;
-use Model\CoursePeriod;
-use Model\CourseProfessor;
-use Model\CourseTime;
 use Model\CourseType;
-use Model\Classroom;
+use Model\CourseTime;
+use Model\CourseProfessor;
 
 class CourseRepository extends BaseRepository
 {
-    private static $Instance;
-    static function instance()
-    {
-        if (self::$Instance === null)
-            self::$Instance = new CourseRepository();
-        return self::$Instance;
-    }
     /**
      * The Model name.
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    private function __construct()
+    function __construct(){}
+    function instance()
     {
         $this->model = $this->model === null ? null : Course::all();
+        return $this;
     }
-
-    /**
-     * return static
-     * */
-    function all()
+    function suitCurriculum($ownCurriculum)
     {
         if (!$this->model)
             return null;
-        return $this->model->sortBy('id');
+        $this->model = $this->model->filter(function ($value, $key) use ($ownCurriculum) {
+            foreach ($ownCurriculum as $o) {
+                if ($value->id === $o->course_id)
+                    return $value;
+            }
+        });
+        return $this;
+    }
+    function subEnrollment($id)
+    {
+        if (!$this->model)
+            return null;
+        $data = $this->getById($id);
+        $data->enrollment_remain--;
+        $data->save();
+        return $this;
     }
 }
