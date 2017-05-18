@@ -5,13 +5,7 @@ namespace App\Http\Controllers\Authority\Modify;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
 use Model\Course;
-use Model\Unit;
-use Model\CourseBase;
-use Model\Classroom;
 use Model\CourseTime;
-use Model\Period;
-use Model\Day;
-use Model\Type;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,16 +17,14 @@ class CourseController extends ModifyController
         $this->general->title = 'Modify course';
         $this->general->view_path .= '/course';
         $this->general->lists =  Course::all();
-        $this->general->units =  Unit::all();
-        $this->general->course_bases =  CourseBase::all();
-        $this->general->classrooms = Classroom::all();
+        $this->general->units =  $this->unit->instance()->suitRegister()->get();
+        $this->general->course_bases = $this->course_base->instance()->get();
+        $this->general->classrooms = $this->classroom->instance()->get();
         $this->general->course_times = CourseTime::all();
-        $this->general->days = Day::all()->sortBy('id');
-        $this->general->periods = Period::all()->sortBy('id');
-        $this->general->types = Type::all()->sortBy('name');
-        $this->general->professors = User::all()->filter(function($value, $key) {
-            return $value->type === "professor";
-        });
+        $this->general->days = $this->day->instance()->get();
+        $this->general->periods = $this->period->instance()->get();
+        $this->general->types = $this->type->instance()->get();
+        $this->general->professors = $this->professor->instance()->get();
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);

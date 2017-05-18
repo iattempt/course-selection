@@ -15,9 +15,9 @@ class CurriculumController extends StateController
     }
     
     function index(Request $request) {
-        $this->general->days = $this->day->all();
-        $this->general->periods = $this->period->all();
-        $this->general->curricula = $this->curriculum->own(Auth::user()->id);
+        $this->general->days = $this->day->instance()->get();
+        $this->general->periods = $this->period->instance()->get();
+        $this->general->curricula = $this->curriculum->instance()->suitOwn(Auth::user()->id)->get();
 
         return view('student/state/curriculum', ['general' => $this->general]);
     }

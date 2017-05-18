@@ -18,9 +18,9 @@ class thresholdController extends ModifyController
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
         $this->general->lists =  $this->threshold->instance()->get();
-        $this->general->units =  $this->unit->instance()->get();
+        $this->general->units =  $this->unit->instance()->suitRegister()->get();
         $this->general->course_bases =  $this->course_base->instance()->get();
-        $this->general->types = $this->type->instance()->get();
+        $this->general->types = $this->type->instance()->suitForce()->get();
         return view($this->general->view_path, ['general' => $this->general]);
     }
 

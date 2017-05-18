@@ -38,7 +38,7 @@ class BaseRepository
      */
     public function getById($id)
     {
-        return $this->model->findOrFail($id);
+        return $this->model->find($id);
     }
 
     /**
@@ -47,9 +47,10 @@ class BaseRepository
      * @param $id
      * @param array $inputs
      */
-    public function update($id, array $inputs)
+    public function update(array $inputs, $id)
     {
         $this->getById($id)->update($inputs);
+        return $this;
     }
 
     /**
@@ -62,6 +63,7 @@ class BaseRepository
     public function destroy($id)
     {
         $this->getById($id)->delete();
+        return $this;
     }
 
     /**
@@ -91,6 +93,18 @@ class BaseRepository
      * */
     function instance()
     {
+        //$this->model = Model::all();
         return $this;
+    }
+
+    function isDuplicate($new_model)
+    {
+        //$cnt = $this->model->filter(function (int $value) use ($new_model) {
+        //    return (($value->course_id == $new_model->course_id)
+        //            &&($value->day_id == $new_model->day_id)
+        //           &&($value->period_id == $new_model->period_id));
+        //})->count();
+        //return $cnt>0;
+        return $true;
     }
 }

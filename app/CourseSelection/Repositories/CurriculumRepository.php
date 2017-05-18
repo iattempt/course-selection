@@ -23,6 +23,16 @@ class CurriculumRepository extends BaseRepository
     {
         if (!$this->model)
             return null;
-        return $this->model->where('student_id', $id);
+        $this->model = $this->model->whereIn('student_id', $id);
+        return $this;
+    }
+    function getCourseOfOwn($id, $course_id)
+    {
+        $this->suitOwn(id);
+        foreach ($this->model as $value) {
+            if ($value->course_id == $course_id)
+                return value;
+        }
+        return null;
     }
 }

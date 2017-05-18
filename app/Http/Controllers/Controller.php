@@ -12,6 +12,11 @@ use App\User;
 use Repository\DayRepository as Day;
 use Repository\PeriodRepository as Period;
 use Repository\UnitRepository as Unit;
+use Repository\ClassroomRepository as Classroom;
+use Repository\CourseRepository as Course;
+use Repository\CourseTimeRepository as CourseTime;
+use Repository\CourseTypeRepository as CourseType;
+use Repository\CourseProfessorRepository as CourseProfessor;
 use Repository\CourseBaseRepository as CourseBase;
 use Repository\CurriculumRepository as Curriculum;
 use Repository\TypeRepository as Type;
@@ -23,17 +28,6 @@ use Repository\ThresholdRepository as Threshold;
 
 class Controller extends BaseController
 {
-    protected $day;
-    protected $period;
-    protected $unit;
-    protected $curriculum;
-    protected $type;
-    protected $user;
-    protected $admin;
-    protected $professor;
-    protected $student;
-    protected $threshold;
-
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public $general;
     public function __construct () {
@@ -53,6 +47,11 @@ class Controller extends BaseController
         $this->day = new Day();
         $this->period = new Period();
         $this->unit = new Unit();
+        $this->classroom = new Classroom();
+        $this->course = new Course();
+        $this->course_time = new CourseTime();
+        $this->course_type = new CourseType();
+        $this->course_professor = new CourseProfessor();
         $this->course_base = new CourseBase();
         $this->curriculum = new Curriculum();
         $this->type = new Type();

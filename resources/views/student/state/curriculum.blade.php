@@ -1,18 +1,19 @@
 @extends('student/state')
 @section('state')
 
+<div class="row d-flex justify-content-center">
+  目前為:
+  <div class="hidden-md-up"></div>
+  <a id="c_pre" onclick="changeState(this)" href="javascript:void(0)">預選課表</a>
+  <a id="c_cur" onclick="changeState(this)" href="javascript:void(0)">學期課表</a>
+  <div class="hidden-md-up"></div>
+  <a id="c_week" onclick="changeWD(this)" href="javascript:void(0)">週課表</a>
+  <a id="c_day" onclick="changeWD(this)" href="javascript:void(0)">日課表</a>
+</div>
     <table id="curriculum_th" class="table table-bordered table-striped table-sm">
       <thead> 
         <tr>
-          <td>
-            目前為:
-            <div class="hidden-md-up"></div>
-            <a id="c_pre" onclick="changeState(this)" href="javascript:void(0)">預選課表</a>
-            <a id="c_cur" onclick="changeState(this)" href="javascript:void(0)">學期課表</a>
-            <div class="hidden-md-up"></div>
-            <a id="c_week" onclick="changeWD(this)" href="javascript:void(0)">週課表</a>
-            <a id="c_day" onclick="changeWD(this)" href="javascript:void(0)">日課表</a>
-          </td>
+          <td></td>
           <!--星期列-->
           @foreach ($general->days as $d)
           <td>
@@ -31,9 +32,8 @@
           <!--時間行-->
           <td>
             {{$p->name}}
-            <div></div>
-            {{$p->上課時間}}
-            {{$p->下課時間}}
+            {{date('H:i', strtotime($p->上課時間))}}
+            {{date('H:i', strtotime($p->下課時間))}}
           </td>
           <!--end 時間行-->
           <!--星期行-課表-->

@@ -16,7 +16,7 @@ class DayRepository extends BaseRepository
 
     function instance()
     {
-        $this->model = $this->model === null ? null : Day::all()->sordBy('id');
+        $this->model = $this->model === null ? null : Day::all()->sortBy('id');
         return $this;
     }
 }
