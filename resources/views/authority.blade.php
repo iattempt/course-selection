@@ -11,11 +11,14 @@
   <div class="dropdown-menu" aria-labelledby="dropdownModify">
     <a class="dropdown-item" href="/authority/modify/admin">行政人員</a>
     <a class="dropdown-item" href="/authority/modify/student">學生</a>
-    <a class="dropdown-item" href="/authority/modify/course">課程</a>
     <a class="dropdown-item" href="/authority/modify/course_base">課程基底</a>
+    <div class="dropdown-item">課程 -</div>
+    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course">基本資料</a>
+    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_professor">教師</a>
+    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_time">時段</a>
+    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_type">修別</a>
     <a class="dropdown-item" href="/authority/modify/unit">單位</a>
     <a class="dropdown-item" href="/authority/modify/threshold">畢業門檻</a>
-    <a class="dropdown-item" href="/authority/modify/syllabus">課程大綱</a>
     <a class="dropdown-item" href="/authority/modify/classroom">教室</a>
   </div>
 </li>
