@@ -32,6 +32,7 @@ Route::group(['middleware' => 'guest'], function () {
             Route::get('modify', 'ModifyController@index');
             Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
                 Route::resource('admin', 'AdminController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('professor', 'ProfessorController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('student', 'StudentController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('classroom', 'ClassroomController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('course_base', 'CourseBaseController', ['only' => ['index', 'store', 'update', 'destroy']]);

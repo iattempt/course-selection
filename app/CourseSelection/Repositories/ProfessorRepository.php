@@ -4,6 +4,7 @@ namespace Repository;
 
 use Illuminate\Database\Eloquent\Model;
 use App\User;
+use Model\Professor;
 
 class ProfessorRepository extends BaseRepository
 {
@@ -26,7 +27,6 @@ class ProfessorRepository extends BaseRepository
         $inputs['type'] = 'professor';
 
         $user_inputs = $inputs;
-        unset($user_inputs['series']);
         unset($user_inputs['title']);
         unset($user_inputs['skills']);
         unset($user_inputs['unit_id']);
@@ -37,7 +37,7 @@ class ProfessorRepository extends BaseRepository
         unset($check_dupl_inputs['name']);
         unset($check_dupl_inputs['password']);
         unset($check_dupl_inputs['type']);
-        if ($this->isDuplicate($check_dupl_inputs))
+        if ($this->isDuplicate($check_dupl_inputs, $this->store_model->id))
             $this->store_model->delete();
         else {
             $professor_inputs = $inputs;
@@ -52,20 +52,20 @@ class ProfessorRepository extends BaseRepository
     }
     function update(array $inputs, $id)
     {
-        $inputs['password'] = bcrypt($inputs['password']);
+        if ($inputs['password'])
+            $inputs['password'] = bcrypt($inputs['password']);
+        else
+            $inputs['password'] = $this->getById($id)->password;
         $inputs['type'] = 'professor';
 
         $check_dupl_inputs = $inputs;
-        unset($check_dupl_inputs['series']);
-        unset($check_dupl_inputs['title']);
-        unset($check_dupl_inputs['skills']);
         unset($check_dupl_inputs['name']);
         unset($check_dupl_inputs['password']);
         unset($check_dupl_inputs['type']);
-        unset($check_dupl_inputs['year']);
-        unset($check_dupl_inputs['state']);
         unset($check_dupl_inputs['unit_id']);
-        if (!$this->isDuplicate($check_dupl_inputs)) {
+        unset($check_dupl_inputs['title']);
+        unset($check_dupl_inputs['skills']);
+        if (!$this->isDuplicate($check_dupl_inputs, $id)) {
             try {
                 Professor::find($id)->update($inputs);
                 $this->getById($id)->update($inputs);

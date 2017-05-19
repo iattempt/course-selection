@@ -20,11 +20,11 @@ use Repository\CourseProfessorRepository as CourseProfessor;
 use Repository\CourseBaseRepository as CourseBase;
 use Repository\CurriculumRepository as Curriculum;
 use Repository\TypeRepository as Type;
-use Repository\UserRepository;
 use Repository\AdminRepository as Admin;
 use Repository\ProfessorRepository as Professor;
 use Repository\StudentRepository as Student;
 use Repository\ThresholdRepository as Threshold;
+use Repository\UserRepository;
 
 class Controller extends BaseController
 {

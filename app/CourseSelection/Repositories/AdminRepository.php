@@ -29,19 +29,22 @@ class AdminRepository extends BaseRepository
         unset($check_dupl_inputs['name']);
         unset($check_dupl_inputs['password']);
         unset($check_dupl_inputs['type']);
-        if ($this->isDuplicate($check_dupl_inputs))
+        if ($this->isDuplicate($check_dupl_inputs, $this->store_model->id))
             $this->store_model->delete();
         return $this;
     }
     function update(array $inputs, $id)
     {
-        $inputs['password'] = bcrypt($inputs['password']);
+        if ($inputs['password'])
+            $inputs['password'] = bcrypt($inputs['password']);
+        else
+            $inputs['password'] = $this->getById($id)->password;
         $inputs['type'] = 'authority';
         $check_dupl_inputs = $inputs;
         unset($check_dupl_inputs['name']);
         unset($check_dupl_inputs['password']);
         unset($check_dupl_inputs['type']);
-        if (!$this->isDuplicate($check_dupl_inputs))
+        if (!$this->isDuplicate($check_dupl_inputs, $id))
             $this->getById($id)->update($inputs);
         return $this;
     }

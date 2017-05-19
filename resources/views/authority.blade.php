@@ -10,6 +10,7 @@
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownModify">
     <a class="dropdown-item" href="/authority/modify/admin">行政人員</a>
+    <a class="dropdown-item" href="/authority/modify/professor">教授</a>
     <a class="dropdown-item" href="/authority/modify/student">學生</a>
     <a class="dropdown-item" href="/authority/modify/course_base">課程基底</a>
     <div class="dropdown-item">課程 -</div>

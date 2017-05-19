@@ -37,7 +37,7 @@ class StudentRepository extends BaseRepository
         unset($check_dupl_inputs['name']);
         unset($check_dupl_inputs['password']);
         unset($check_dupl_inputs['type']);
-        if ($this->isDuplicate($check_dupl_inputs))
+        if (parent::isDuplicate($check_dupl_inputs, $this->store_model->id))
             $this->store_model->delete();
         else {
             $student_inputs = $inputs;
@@ -52,9 +52,11 @@ class StudentRepository extends BaseRepository
     }
     function update(array $inputs, $id)
     {
-        $inputs['password'] = bcrypt($inputs['password']);
+        if ($inputs['password'])
+            $inputs['password'] = bcrypt($inputs['password']);
+        else
+            $inputs['password'] = $this->getById($id)->password;
         $inputs['type'] = 'student';
-
         $check_dupl_inputs = $inputs;
         unset($check_dupl_inputs['name']);
         unset($check_dupl_inputs['password']);
@@ -62,7 +64,7 @@ class StudentRepository extends BaseRepository
         unset($check_dupl_inputs['year']);
         unset($check_dupl_inputs['state']);
         unset($check_dupl_inputs['unit_id']);
-        if (!$this->isDuplicate($check_dupl_inputs)) {
+        if (!$this->isDuplicate($check_dupl_inputs, $id)) {
             try {
                 Student::find($id)->update($inputs);
                 $this->getById($id)->update($inputs);
