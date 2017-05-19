@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Authority\Modify;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Authority\ModifyController;
-use Model\Course;
-use Model\CourseTime;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,11 +14,11 @@ class CourseController extends ModifyController
         parent::__construct();
         $this->general->title = 'Modify course';
         $this->general->view_path .= '/course';
-        $this->general->lists =  Course::all();
+        $this->general->lists =  $this->course->instance()->get();
         $this->general->units =  $this->unit->instance()->suitRegister()->get();
         $this->general->course_bases = $this->course_base->instance()->get();
         $this->general->classrooms = $this->classroom->instance()->get();
-        $this->general->course_times = CourseTime::all();
+        $this->general->course_times = $this->course_time->instance()->get();
         $this->general->days = $this->day->instance()->get();
         $this->general->periods = $this->period->instance()->get();
         $this->general->types = $this->type->instance()->get();
@@ -32,16 +30,6 @@ class CourseController extends ModifyController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view($this->general->view_path . "/create", ['general' => $this->general]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -50,54 +38,13 @@ class CourseController extends ModifyController
     public function store(Request $request)
     {
         try {
-            if ($request->has('name', 'course_base_id', 'unit_id', 'classroom_id', 'credit', 'language', 'mooc', 'year', 'semester', 'enrollment_max')){
-                $data = new Course;
-                $data->name = $request->input('name');
-                $data->course_base_id = $request->input('course_base_id');
-                $data->unit_id = $request->input('unit_id');
-                $data->classroom_id = $request->input('classroom_id');
-                $data->credit = $request->input('credit');
-                $data->language = $request->input('language');
-                $data->mooc = $request->input('mooc');
-                $data->year = $request->input('year');
-                $data->semester = $request->input('semester');
-                $data->enrollment_max = $request->input('enrollment_max');
-                $data->enrollment_remain = $request->input('enrollment_max');
-                $data->enroll = 1;
-                $data->save();
-                $this->general->message = "created";
-                $this->general->message_type = "success";
-            }
+            $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'credit', 'language', 'year', 'semester', 'enrollment_max']);
+            $this->course->instance()->store($inputs);
         }
         catch (\Exception $e){
-            $this->general->message = "failed";
-            $this->general->message_type = "danger";
+            dd($e);
         }
         return redirect('authority/modify/course');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $this->general->lists =  Course::all();
-        $detail = Course::all()->where('id', '=', $id);
-        return view($this->general->view_path . '/show', ['detail' => $detail]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view($this->general->view_path . '/edit', ['general' => $this->general, 'id' => $id]);
     }
 
     /**
@@ -110,27 +57,11 @@ class CourseController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            if ($request->has('name', 'course_base_id', 'unit_id', 'classroom_id', 'credit', 'language', 'mooc', 'year', 'semester', 'enrollment_max')){
-                $data = Course::find($id);
-                $data->name = $request->input('name');
-                $data->course_base_id = $request->input('course_base_id');
-                $data->unit_id = $request->input('unit_id');
-                $data->classroom_id = $request->input('classroom_id');
-                $data->topic = $request->input('topic');
-                $data->credit = $request->input('credit');
-                $data->language = $request->input('language');
-                $data->mooc = $request->input('mooc');
-                $data->year = $request->input('year');
-                $data->semester = $request->input('semester');
-                $data->enrollment_max = $request->input('enrollment_max');
-                $data->save();
-                $this->general->message = "created";
-                $this->general->message_type = "success";
-            }
+            $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'credit', 'language', 'year', 'semester', 'enrollment_max']);
+            $this->course->instance()->update($inputs, $id);
         }
         catch (\Exception $e){
-            $this->general->message = "failed";
-            $this->general->message_type = "danger";
+            dd($e);
         }
         return redirect('authority/modify/course');
     }
@@ -144,13 +75,10 @@ class CourseController extends ModifyController
     public function destroy($id)
     {
         try{
-            Course::destroy($id);
-            $this->general->message = 'successed';
-            $this->general->message_type = 'success';
+            $this->course->instance()->destroy($id);
         }
         catch (\Exception $e){
-            $this->general->message = 'failed';
-            $this->general->message_type = 'danger';
+            dd($e);
         }
         return redirect('authority/modify/course');
     }

@@ -25,16 +25,6 @@ class CourseprofessorController extends ModifyController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view($this->general->view_path . "/create", ['general' => $this->general]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -43,34 +33,13 @@ class CourseprofessorController extends ModifyController
     public function store(Request $request)
     {
         try {
-            $inputs = $request->only(['course_id', 'professor_id']);
-            $this->course_professor->store($inputs);
+            $inputs = $request->only(['course_id', 'user_id']);
+            $this->course_professor->instance()->store($inputs);
         }
         catch (\Exception $e){
             dd($e);
         }
         return redirect('authority/modify/course_professor');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view($this->general->view_path . '/edit', ['general' => $this->general, 'id' => $id]);
     }
 
     /**
@@ -83,8 +52,8 @@ class CourseprofessorController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            $inputs = $request->only(['course_id', 'professor_id']);
-            $this->course_professor->update($inputs, $id);
+            $inputs = $request->only(['course_id', 'user_id']);
+            $this->course_professor->instance()->update($inputs, $id);
         }
         catch (\Exception $e){
             dd($e);

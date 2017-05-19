@@ -7,7 +7,6 @@
     <th>人員名稱</th>
     <th>電子郵件</th>
     <th>密碼</th>
-    <th>身份</th>
     <th colspan="3">異動</th>
   </tr>
 </thead>

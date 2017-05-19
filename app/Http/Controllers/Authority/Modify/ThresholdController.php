@@ -25,15 +25,6 @@ class thresholdController extends ModifyController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -42,47 +33,13 @@ class thresholdController extends ModifyController
     public function store(Request $request)
     {
         try {
-            if ($request->has('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester')){
-                $data = new threshold;
-                $data->unit_id = $request->input('unit_id');
-                $data->type_id = $request->input('type_id');
-                $data->course_base_id = $request->input('course_base_id');
-                $data->adopt_year = $request->input('adopt_year');
-                $data->default_grade = $request->input('default_grade');
-                $data->default_semester = $request->input('default_semester');
-                $data->save();
-                $this->general->message = "created";
-                $this->general->message_type = "success";
-            }
+            $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester');
+            $this->threshold->instance()->store($inputs);
         }
         catch (\Exception $e){
-            $this->general->message = "failed";
-            $this->general->message_type = "danger";
+            dd($e);
         }
         return redirect('authority/modify/threshold');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $this->general->lists =  threshold::all();
-        $detail = threshold::all()->where('id', '=', $id);
-        return view($this->general->view_path . '/show', ['detail' => $detail]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
     }
 
     /**
@@ -95,22 +52,11 @@ class thresholdController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            if ($request->has('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester')){
-                $data = threshold::find($id);
-                $data->unit_id = $request->input('unit_id');
-                $data->type_id = $request->input('type_id');
-                $data->course_base_id = $request->input('course_base_id');
-                $data->adopt_year = $request->input('adopt_year');
-                $data->default_grade = $request->input('default_grade');
-                $data->default_semester = $request->input('default_semester');
-                $data->save();
-                $this->general->message = "created";
-                $this->general->message_type = "success";
-            }
+            $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester');
+            $this->threshold->instance()->update($inputs, $id);
         }
         catch (\Exception $e){
-            $this->general->message = "failed";
-            $this->general->message_type = "danger";
+            dd($e);
         }
         return redirect('authority/modify/threshold');
     }
@@ -124,13 +70,10 @@ class thresholdController extends ModifyController
     public function destroy($id)
     {
         try{
-            threshold::destroy($id);
-            $this->general->message = 'successed';
-            $this->general->message_type = 'success';
+            $this->threshold->instance()->destroy($id);
         }
         catch (\Exception $e){
-            $this->general->message = 'failed';
-            $this->general->message_type = 'danger';
+            dd($e);
         }
         return redirect('authority/modify/threshold');
     }

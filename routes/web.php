@@ -22,7 +22,7 @@ Route::group(['middleware' => 'guest'], function () {
         Route::group(['namespace' => 'Common'], function() {
             Route::get('feedback', 'FeedbackController@index');
             Route::post('feedback', 'FeedbackController@store');
-            Route::resource('course_search', 'CourseSearchController');
+            Route::resource('course_search', 'CourseSearchController', ['only' => ['index', 'store']]);
         });
     });
 //authority
@@ -31,16 +31,16 @@ Route::group(['middleware' => 'guest'], function () {
         Route::group(['prefix' => 'authority', 'namespace' => 'Authority'], function () {
             Route::get('modify', 'ModifyController@index');
             Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
-                Route::resource('admin', 'AdminController');
-                Route::resource('student', 'StudentController');
-                Route::resource('classroom', 'ClassroomController');
-                Route::resource('course_base', 'CourseBaseController');
-                Route::resource('course', 'CourseController');
-                Route::resource('course_professor', 'CourseProfessorController');
-                Route::resource('course_time', 'CourseTimeController');
-                Route::resource('course_type', 'CourseTypeController');
-                Route::resource('threshold', 'ThresholdController');
-                Route::resource('unit', 'UnitController');
+                Route::resource('admin', 'AdminController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('student', 'StudentController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('classroom', 'ClassroomController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('course_base', 'CourseBaseController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('course', 'CourseController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('course_professor', 'CourseProfessorController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('course_time', 'CourseTimeController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('course_type', 'CourseTypeController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('threshold', 'ThresholdController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('unit', 'UnitController', ['only' => ['index', 'store', 'update', 'destroy']]);
             });
         });
     });

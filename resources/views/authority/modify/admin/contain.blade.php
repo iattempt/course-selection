@@ -10,6 +10,3 @@
 <td>
   <input type="password" class="edit_{{$list->id}} form-control" name="password" placeholder="********" readonly>
 </td>
-<td>
-  <input type="text" class="edit_{{$list->id}} form-control" name="type" value="{{$list->type}}" readonly>
-</td>

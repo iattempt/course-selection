@@ -9,7 +9,7 @@
     <th>密碼</th>
     <th>入學年度</th>
     <th>學籍狀態</th>
-    <th>所屬系級</th>
+    <th>所屬系別</th>
     <th colspan="3">異動</th>
   </tr>
 </thead>

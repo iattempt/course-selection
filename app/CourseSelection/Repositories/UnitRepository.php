@@ -27,4 +27,19 @@ class UnitRepository extends BaseRepository
         $this->model = $this->model->whereNotIn('name', ['其餘', '全部']);
         return $this;
     }
+    function store(array $inputs)
+    {
+        $this->store_model = Unit::create($inputs);
+        $check_dupl_inputs = $inputs;
+        if ($this->isDuplicate($check_dupl_inputs))
+            $this->store_model->delete();
+        return $this;
+    }
+    function update(array $inputs, $id)
+    {
+        $check_dupl_inputs = $inputs;
+        if (!$this->isDuplicate($check_dupl_inputs))
+            $this->getById($id)->update($inputs);
+        return $this;
+    }
 }

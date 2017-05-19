@@ -13,7 +13,7 @@
   </td>
 
   <td><!--教授-->
-    <select class="form-control" name="professor_id">
+    <select class="form-control" name="user_id">
       @foreach ($general->professor as $value)
         <option value="{{ $value->id }}">{{ $value->name }}</option>
       @endforeach

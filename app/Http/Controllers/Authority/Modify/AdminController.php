@@ -21,15 +21,6 @@ class AdminController extends ModifyController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,45 +29,13 @@ class AdminController extends ModifyController
     public function store(Request $request)
     {
         try {
-            if ($request->has('name')){
-                $data = new User;
-                $data->name = $request->input('name');
-                $data->email = $request->input('email');
-                $data->password = bcrypt($request->input('password'));
-                $data->type = $request->input('type');
-                $data->save();
-                $this->general->message = "created";
-                $this->general->message_type = "success";
-            }
+            $inputs = $request->only(['name', 'email', 'password']);
+            $this->admin->instance()->store($inputs);
         }
         catch (\Exception $e){
-            $this->general->message = "failed";
-            $this->general->message_type = "danger";
+            dd($e);
         }
-        return redirect('authority/modify/user');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $this->general->lists =  User::all();
-        $detail = User::all()->where('id', '=', $id);
-        return view($this->general->view_path . '/show', ['detail' => $detail]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
+        return redirect('authority/modify/admin');
     }
 
     /**
@@ -89,24 +48,13 @@ class AdminController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            if ($request->has('name', 'email', 'type')){
-                $data = User::find($id);
-                $data->name = $request->input('name');
-                $data->email = $request->input('email');
-                if ($request->has('password'))
-                    $data->password = bcrypt($request->input('password'));
-                $data->type = $request->input('type');
-                $data->save();
-                $this->general->message = "created";
-                $this->general->message_type = "success";
-            }
+            $inputs = $request->only(['name', 'email', 'password']);
+            $this->admin->instance()->update($inputs, $id);
         }
         catch (\Exception $e){
             dd($e);
-            $this->general->message = "failed";
-            $this->general->message_type = "danger";
         }
-        return redirect('authority/modify/user');
+        return redirect('authority/modify/admin');
     }
 
     /**
@@ -118,14 +66,11 @@ class AdminController extends ModifyController
     public function destroy($id)
     {
         try{
-            User::destroy($id);
-            $this->general->message = 'successed';
-            $this->general->message_type = 'success';
+            $this->admin->instance()->destroy($id);
         }
         catch (\Exception $e){
-            $this->general->message = 'failed';
-            $this->general->message_type = 'danger';
+            dd($e);
         }
-        return redirect('authority/modify/user');
+        return redirect('authority/modify/admin');
     }
 }

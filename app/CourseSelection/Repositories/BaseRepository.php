@@ -14,6 +14,8 @@ class BaseRepository
      * otherwise set as null always return null.
      */
     protected $model = 1;
+    protected $store_model = null;
+    protected $update_model = null;
 
     /**
      * Create a new model and return the instance.
@@ -22,9 +24,13 @@ class BaseRepository
      *
      * @return Model instance
      */
-    public function store(array $inputs)
+    function store(array $inputs)
     {
-        return $this->model->create($inputs);
+        //$this->store_model = CourseType::create($inputs);
+        //$check_dupl_input = $inputs;
+        //if ($this->isDuplicate($check_dupl_input))
+        //    $this->store_model->delete();
+        //return $this;
     }
 
     /**
@@ -49,8 +55,12 @@ class BaseRepository
      */
     public function update(array $inputs, $id)
     {
-        $this->getById($id)->update($inputs);
-        return $this;
+        //須事先確認沒有重複
+        //以省下紀錄舊有資訊的工作
+        //$check_dupl_input = $inputs;
+        //if (!$this->isDuplicate($check_dupl_input))
+        //    $this->getById($id)->update($inputs);
+        //return $this;
     }
 
     /**
@@ -97,14 +107,19 @@ class BaseRepository
         return $this;
     }
 
-    function isDuplicate($new_model)
+    function isDuplicate(array $inputs)
     {
-        //$cnt = $this->model->filter(function (int $value) use ($new_model) {
-        //    return (($value->course_id == $new_model->course_id)
-        //            &&($value->day_id == $new_model->day_id)
-        //           &&($value->period_id == $new_model->period_id));
-        //})->count();
-        //return $cnt>0;
-        return $true;
+        $cnt = $this->model->filter(function ($value) use ($inputs) {
+            $isDupl = true;
+            foreach ($inputs as $key => $item){
+                if ($value->$key != $item) {
+                    $isDupl = false;
+                    break;
+                }
+            }
+            if ($isDupl)
+                return true;
+        })->count();
+        return $cnt > 0;
     }
 }

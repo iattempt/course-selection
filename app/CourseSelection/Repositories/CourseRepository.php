@@ -4,9 +4,6 @@ namespace Repository;
 
 use Illuminate\Database\Eloquent\Model;
 use Model\Course;
-use Model\CourseType;
-use Model\CourseTime;
-use Model\CourseProfessor;
 
 class CourseRepository extends BaseRepository
 {
@@ -19,6 +16,22 @@ class CourseRepository extends BaseRepository
     function instance()
     {
         $this->model = $this->model === null ? null : Course::all();
+        return $this;
+    }
+    function store(array $inputs)
+    {
+        $inputs['enrollment_remain'] = $inputs['enrollment_max'];
+        $inputs['enroll'] = $inputs['enrollment_max'] > $inputs['enrollment_remain'] ? 1 : 0;
+        $this->store_model = Course::create($inputs);
+        return $this;
+    }
+    function update(array $inputs, $id)
+    {
+        $inputs['enrollment_remain'] = $this->getById($id)->enrollment_remain;
+        if ($inputs['enrollment_remain'] > $inputs['enrollment_max'])
+            return $this;
+        $inputs['enroll'] = $inputs['enrollment_max'] > $inputs['enrollment_remain'] ? 1 : 0;
+        $this->getById($id)->update($inputs);
         return $this;
     }
     function suitCurriculum($ownCurriculum)

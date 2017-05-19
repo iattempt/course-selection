@@ -26,16 +26,6 @@ class CourseTypeController extends ModifyController
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view($this->general->view_path . "/create", ['general' => $this->general]);
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,33 +35,12 @@ class CourseTypeController extends ModifyController
     {
         try {
             $inputs = $request->only(['course_id', 'unit_id', 'type_id']);
-            $this->course_type->store($inputs);
+            $this->course_type->instance()->store($inputs);
         }
         catch (\Exception $e){
             dd($e);
         }
         return redirect('authority/modify/course_type');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        return view($this->general->view_path . '/edit', ['general' => $this->general, 'id' => $id]);
     }
 
     /**
@@ -85,7 +54,7 @@ class CourseTypeController extends ModifyController
     {
         try {
             $inputs = $request->only(['course_id', 'unit_id', 'type_id']);
-            $this->course_type->update($inputs, $id);
+            $this->course_type->instance()->update($inputs, $id);
         }
         catch (\Exception $e){
             dd($e);

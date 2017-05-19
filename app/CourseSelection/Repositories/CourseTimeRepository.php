@@ -18,21 +18,19 @@ class CourseTimeRepository extends BaseRepository
         $this->model = $this->model === null ? null : CourseTime::all();
         return $this;
     }
-    public function store(array $inputs)
+    function store(array $inputs)
     {
-        $data = new CourseTime();
-        $data->create($inputs);
-        if ($this->isDuplicate($data))
-            $data->delete();
+        $this->store_model = CourseTime::create($inputs);
+        $check_dupl_inputs = $inputs;
+        if ($this->isDuplicate($check_dupl_inputs))
+            $this->store_model->delete();
         return $this;
     }
-    function isDuplicate($new_model)
+    function update(array $inputs, $id)
     {
-        $cnt = $this->model->filter(function ($value) use ($new_model) {
-            return (($value->course_id == $new_model->course_id)
-                    &&($value->day_id == $new_model->day_id)
-                    &&($value->period_id == $new_model->period_id));
-        })->count();
-        return $cnt > 0;
+        $check_dupl_inputs = $inputs;
+        if (!$this->isDuplicate($check_dupl_inputs))
+            $this->getById($id)->update($inputs);
+        return $this;
     }
 }

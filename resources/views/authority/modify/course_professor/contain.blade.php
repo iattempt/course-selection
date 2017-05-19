@@ -15,9 +15,9 @@
 </td>
 
 <td><!--教授-->
-  <select class="edit_{{ $list->id }} form-control" name="professor_id" disabled>
+  <select class="edit_{{ $list->id }} form-control" name="user_id" disabled>
     @foreach ($general->professor as $value)
-      @if ($value->id === $list->professor_id)
+      @if ($value->id === $list->user_id)
         <option value="{{ $value->id }}" selected>{{ $value->name }}</option>
       @else
         <option value="{{ $value->id }}">{{ $value->name }}</option>

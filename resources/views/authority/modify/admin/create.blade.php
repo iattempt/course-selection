@@ -12,9 +12,6 @@
   <td>
     <input class="form-control" type="password" name="password">
   </td>
-  <td>
-    <input class="form-control" type="text" name="type">
-  </td>
   <td colspan="2">
     <input class="btn btn-success" type="submit" value="新增">
   </td>

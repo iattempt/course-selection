@@ -9,6 +9,17 @@ class Course extends Model
 {
     use SoftDeletes;
     //
+    protected $fillable = [ 'name',
+                            'course_base_id',
+                            'unit_id',
+                            'classroom_id',
+                            'credit',
+                            'language',
+                            'year',
+                            'semester',
+                            'enrollment_remain',
+                            'enrollment_max',
+                            'enroll'];
     public function professors()
     {
         return $this->hasMany('Model\CourseProfessor', 'course_id', 'id');
