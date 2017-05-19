@@ -107,9 +107,9 @@ class BaseRepository
         return $this;
     }
 
-    function isDuplicate(array $inputs)
+    function isDuplicate(array $inputs,int $id)
     {
-        $cnt = $this->model->filter(function ($value) use ($inputs) {
+        $cnt = $this->model->except($id)->filter(function ($value) use ($inputs) {
             $isDupl = true;
             foreach ($inputs as $key => $item){
                 if ($value->$key != $item) {

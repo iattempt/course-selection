@@ -10,7 +10,6 @@ class Professor extends Model
 {
     //
     protected $fillable = [ 'id',
-                            'series',
                             'title',
                             'skills',
                             'unit_id'];

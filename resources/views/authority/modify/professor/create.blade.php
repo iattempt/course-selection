@@ -16,12 +16,12 @@
     <input class="form-control" type="password" name="password">
   </td>
 
-  <td><!--入學年度-->
-    <input class="form-control" type="text" name="year" value="<?php echo date('Y'); ?>">
+  <td><!--職稱-->
+    <input class="form-control" type="text" name="title" autofocus>
   </td>
 
-  <td><!--學籍狀態-->
-    <input class="form-control" type="text" name="state" value="在學">
+  <td><!--專長-->
+    <input class="form-control" type="text" name="skills">
   </td>
 
   <td><!--所屬系別-->
