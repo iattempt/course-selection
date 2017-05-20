@@ -9,8 +9,4 @@ class Unit extends Model
     //
     protected $fillable = [ 'name',
                             'unit_base_id'];
-    public function courses()
-    {
-        return $this->hasMany('Model\Course');
-    }
 }

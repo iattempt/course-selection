@@ -19,8 +19,8 @@
     <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_time">時段</a>
     <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_type">修別</a>
     <a class="dropdown-item" href="/authority/modify/unit">單位</a>
-    <a class="dropdown-item" href="/authority/modify/threshold">畢業門檻</a>
-    <a class="dropdown-item" href="/authority/modify/classroom">教室</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="/authority/modify/export_sql">備份並下載SQL</a>
   </div>
 </li>
 @endsection

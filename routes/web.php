@@ -42,6 +42,7 @@ Route::group(['middleware' => 'guest'], function () {
                 Route::resource('course_type', 'CourseTypeController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('threshold', 'ThresholdController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('unit', 'UnitController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::get('export_sql', 'ExportSQLController@index');
             });
         });
     });
