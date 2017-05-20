@@ -30,7 +30,10 @@ class CourseRepository extends BaseRepository
         $inputs['enrollment_remain'] = $this->getById($id)->enrollment_remain;
         if ($inputs['enrollment_remain'] > $inputs['enrollment_max'])
             return $this;
-        $inputs['enroll'] = $inputs['enrollment_max'] > $inputs['enrollment_remain'] ? 1 : 0;
+        else if ($inputs['enrollment_max'] > $this->getById($id)->enrollment_max) {
+            $inputs['enrollment_remain'] += $inputs['enrollment_max'] - $this->getById($id)->enrollment_max;
+        }
+        $inputs['enroll'] = $inputs['enrollment_remain']>0 ? 0 : 1;
         $this->getById($id)->update($inputs);
         return $this;
     }
