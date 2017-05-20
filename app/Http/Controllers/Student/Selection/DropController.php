@@ -35,7 +35,7 @@ class DropController extends SelectionController
     }
     function destroy($id)
     {
-        $this->course->instance()->subEnrollment($id);
+        $this->course->instance()->addEnrollment($id);
         $this->curriculum->instance()->destroy($this->curriculum->instance()->getCourseOfOwn(Auth::user()->id, $id));
         return back()->withInput();
     }

@@ -49,12 +49,12 @@ class CourseRepository extends BaseRepository
         });
         return $this;
     }
-    function subEnrollment($id)
+    function addEnrollment($id)
     {
         if (!$this->model)
             return null;
         $data = $this->getById($id);
-        $data->enrollment_remain--;
+        $data->enrollment_remain++;
         $data->save();
         return $this;
     }

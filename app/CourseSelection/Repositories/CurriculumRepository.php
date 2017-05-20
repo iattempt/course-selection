@@ -28,10 +28,10 @@ class CurriculumRepository extends BaseRepository
     }
     function getCourseOfOwn($id, $course_id)
     {
-        $this->suitOwn(id);
+        $this->suitOwn($id);
         foreach ($this->model as $value) {
             if ($value->course_id == $course_id)
-                return value;
+                return $value;
         }
         return null;
     }
