@@ -12,4 +12,5 @@ Homestead.yaml
 /views
 /middlewares
 /models
-/public/customBackup/*
+/public/customBackup
+/public/temporary
