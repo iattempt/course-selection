@@ -17,7 +17,6 @@ class ExportSQLController extends Controller
     function index()
     {
         $this->temporary_file_path = 'temporary/';
-        $this->rebuildTemporaryDirection();
         $this->dumpFile();
         $this->zipFileToZIP();
 
@@ -35,16 +34,9 @@ class ExportSQLController extends Controller
     }
     function zipFileToZIP()
     {
-        $this->zip_file_path = 'customBackup/backup.zip';
-        $process = new Process('zip -u '.$this->zip_file_path.' '.$this->sql_file_path);
-        $process->run();
-    }
-    function rebuildTemporaryDirection()
-    {
-        $process = new Process('rm -r '.$this->temporary_file_path);
-        $process->run();
-
-        $process = new Process('mkdir '.$this->temporary_file_path);
+        $this->zip_file_path = 'customBackup/backup_sql.zip';
+        $password = env('DB_DUMP_PASSWORD');
+        $process = new Process("zip -ruP $password $this->zip_file_path $this->sql_file_path");
         $process->run();
     }
 }
