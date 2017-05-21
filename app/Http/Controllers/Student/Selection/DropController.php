@@ -28,7 +28,7 @@ class DropController extends SelectionController
         $this->general->periods = $this->period->instance()->get();
         $this->general->types = $this->type->instance()->get();
         $this->general->units = $this->unit->instance()->get();
-        $this->general->curricula = $this->curriculum->instance()->suitOwn(Auth::User()->id)->get();
+        $this->general->curricula = $this->curriculum->instance()->suitPreselection()->suitOwn(Auth::User()->id)->get();
         $this->general->lists = $this->course->instance()->suitCurriculum($this->general->curricula)->get();
         
         return view('student/selection/drop', ['general' => $this->general]);

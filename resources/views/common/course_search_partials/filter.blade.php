@@ -82,7 +82,7 @@
             <!-- 列出資料庫修別選項 -->
             @foreach ($general->types as $t)
             <label class="form-check-label">
-              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="type[]"
+              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->id}}" name="type[]"
                 @if (old('type'))
                   @foreach (old('type') as $value)
                     @if ($value === $t->name)
@@ -116,7 +116,7 @@
               @foreach ($general->days as $d)
               <div class="col">
                 <label class="form-check-label d-flex justify-content-center">
-                  <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]"
+                  <input type="checkbox" class"form-check-input" value="{{$d->id}} {{$p->id}}" name="time[]"
                     @if (old('time'))
                       @foreach (old('time') as $value)
                         @if ($value === ($d->name." ".$p->name))
@@ -141,7 +141,7 @@
                 @continue
               @else
                 <label class="form-check-label">
-                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$u->name}}" name="unit[]"
+                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$u->id}}" name="unit[]"
                     @if (old('unit'))
                       @foreach (old('unit') as $value)
                         @if ($value === $u->name)

@@ -18,7 +18,20 @@ class CurriculumRepository extends BaseRepository
         $this->model = $this->model === null ? null : Curriculum::all();
         return $this;
     }
-
+    function suitCurrentSelection()
+    {
+        if (!$this->model)
+            return null;
+        $this->model = $this->model->whereIn('state', '修課中');
+        return $this;
+    }
+    function suitPreSelection()
+    {
+        if (!$this->model)
+            return null;
+        $this->model = $this->model->whereIn('state', '預選中');
+        return $this;
+    }
     function suitOwn($id)
     {
         if (!$this->model)

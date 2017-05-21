@@ -55,7 +55,7 @@
           @foreach ($general->days as $d)
             <div class="c_dayn c_day{{$d->id}} col">
             @foreach ($general->curricula as $c)
-              @foreach ($c->course->time as $t)
+              @foreach ($c->course->times as $t)
                 @if ($t->day->name == $d->name && $t->period->name == $p->name)
                   @if ($c->state=="預選中") 
                     <a class="state_pre">{{$c->course->name}}</a>

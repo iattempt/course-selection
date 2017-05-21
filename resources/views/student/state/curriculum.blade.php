@@ -40,7 +40,7 @@
           @foreach ($general->days as $d)
             <td class="c_dayn c_day{{$d->id}}">
             @foreach ($general->curricula as $c)
-              @foreach ($c->course->time as $t)
+              @foreach ($c->course->times as $t)
                 <div class="d-flex justify-content-center">
                   @if ($t->day->name == $d->name && $t->period->name == $p->name)
                     @if ($c->state=="預選中") 

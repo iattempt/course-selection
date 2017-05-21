@@ -19,7 +19,12 @@ class UnitRepository extends BaseRepository
         $this->model = $this->model === null ? null : Unit::all();
         return $this;
     }
-
+    function getIdByName($name)
+    {
+        if (!$this->model)
+            return null;
+        return $this->model->whereIn('name', $name)[0]->id;
+    }
     function suitRegister()
     {
         if (!$this->model)

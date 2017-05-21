@@ -29,7 +29,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::group(['middleware' => 'authority'], function () {
         Route::get('authority', 'AuthorityController@index');
         Route::group(['prefix' => 'authority', 'namespace' => 'Authority'], function () {
-            Route::get('modify', 'ModifyController@index');
+            Route::get('migrate', 'MigrateController@index');
             Route::group(['prefix' => 'modify', 'namespace' => 'Modify'], function () {
                 Route::resource('admin', 'AdminController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('professor', 'ProfessorController', ['only' => ['index', 'store', 'update', 'destroy']]);

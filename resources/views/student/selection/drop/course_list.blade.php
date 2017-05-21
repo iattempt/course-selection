@@ -45,7 +45,7 @@
     </span>
 
     <span class="col-1">
-      @foreach ($list->time->sortBy('period') as $t)
+      @foreach ($list->times->sortBy('period') as $t)
         <div>{{$t->day->simple_name}}:{{$t->period->id}}</div>
       @endforeach
     </span>

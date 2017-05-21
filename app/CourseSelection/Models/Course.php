@@ -24,7 +24,7 @@ class Course extends Model
     {
         return $this->hasMany('Model\CourseProfessor', 'course_id', 'id');
     }
-    public function time()
+    public function times()
     {
         return $this->hasMany('Model\CourseTime');
     }

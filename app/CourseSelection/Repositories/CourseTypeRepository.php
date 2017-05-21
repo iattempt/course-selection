@@ -33,4 +33,11 @@ class CourseTypeRepository extends BaseRepository
             $this->getById($id)->update($inputs);
         return $this;
     }
+    function suitUnit($id)
+    {
+        if (!$this->model)
+            return null;
+        $this->model = $this->model->whereIn('unit_id', $id);
+        return $this;
+    }
 }
