@@ -1,6 +1,6 @@
 <form id="collapseEdit" class="collapse" action="{{ $caller }}/{{$list->id}}" method="POST">
   {{ csrf_field() }}
-  @include ('authority/modify/threshold/contain', array('caller' => '{{ $caller}}'))
+  @include ('authority/modify/threshold1/contain', array('caller' => '{{ $caller}}'))
 
   <td>
     {{ method_field('PUT') }}

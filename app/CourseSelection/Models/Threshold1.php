@@ -4,13 +4,13 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Threshold extends Model
+class Threshold1 extends Model
 {
     //
+    protected $table = 'thresholds';
     protected $fillable = [ 'unit_id',
                             'type_id',
                             'course_base_id',
-                            'credit',
                             'adopt_year',
                             'default_grade',
                             'default_semester'];

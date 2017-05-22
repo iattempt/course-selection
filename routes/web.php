@@ -40,7 +40,8 @@ Route::group(['middleware' => 'guest'], function () {
                 Route::resource('course_professor', 'CourseProfessorController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('course_time', 'CourseTimeController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('course_type', 'CourseTypeController', ['only' => ['index', 'store', 'update', 'destroy']]);
-                Route::resource('threshold', 'ThresholdController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('threshold1', 'Threshold1Controller', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('threshold2', 'Threshold2Controller', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('unit', 'UnitController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::get('export_sql', 'ExportSQLController@index');
             });

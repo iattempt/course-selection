@@ -13,12 +13,18 @@
     <a class="dropdown-item" href="/authority/modify/professor">教授</a>
     <a class="dropdown-item" href="/authority/modify/student">學生</a>
     <a class="dropdown-item" href="/authority/modify/course_base">課程基底</a>
-    <div class="dropdown-item">課程 -</div>
-    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course">基本資料</a>
-    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_professor">教師</a>
-    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_time">時段</a>
-    <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_type">修別</a>
     <a class="dropdown-item" href="/authority/modify/unit">單位</a>
+
+    <div class="dropdown-item">課程 -</div>
+      <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course">基本資料</a>
+      <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_professor">教師</a>
+      <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_time">時段</a>
+      <a class="col-9 offset-3 dropdown-item" href="/authority/modify/course_type">修別</a>
+
+    <div class="dropdown-item">畢業門檻 -</div>
+      <a class="col-9 offset-3 dropdown-item" href="/authority/modify/threshold1">必修/必選修</a>
+      <a class="col-9 offset-3 dropdown-item" href="/authority/modify/threshold2">選修/通識</a>
+
     <div class="dropdown-divider"></div>
     <a class="dropdown-item" href="/authority/modify/export_sql">備份並下載SQL</a>
   </div>

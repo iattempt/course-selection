@@ -23,7 +23,8 @@ use Repository\TypeRepository as Type;
 use Repository\AdminRepository as Admin;
 use Repository\ProfessorRepository as Professor;
 use Repository\StudentRepository as Student;
-use Repository\ThresholdRepository as Threshold;
+use Repository\Threshold1Repository as Threshold1;
+use Repository\Threshold2Repository as Threshold2;
 use Repository\UserRepository;
 
 class Controller extends BaseController
@@ -59,7 +60,8 @@ class Controller extends BaseController
         $this->admin = new Admin();
         $this->professor = new Professor();
         $this->student = new Student();
-        $this->threshold = new Threshold();
+        $this->threshold1 = new Threshold1();
+        $this->threshold2 = new Threshold2();
     }
     public function getUsers($type)
     {

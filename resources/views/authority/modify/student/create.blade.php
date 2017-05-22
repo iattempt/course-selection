@@ -32,7 +32,7 @@
     </select>
   </td>
 
-  <td colspan="2">
+  <td colspan="2"><!---->
     <input class="btn btn-success" type="submit" value="新增">
   </td>
 </form>

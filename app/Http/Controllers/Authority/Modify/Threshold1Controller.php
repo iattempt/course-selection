@@ -7,17 +7,17 @@ use App\Http\Controllers\Authority\ModifyController;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class thresholdController extends ModifyController
+class Threshold1Controller extends ModifyController
 {
     //
     function __construct() {
         parent::__construct();
-        $this->general->title = 'Modify threshold';
-        $this->general->view_path .= '/threshold';
+        $this->general->title = 'Modify threshold1';
+        $this->general->view_path .= '/threshold1';
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
-        $this->general->lists =  $this->threshold->instance()->get();
+        $this->general->lists =  $this->threshold1->instance()->get();
         $this->general->units =  $this->unit->instance()->suitRegister()->get();
         $this->general->course_bases =  $this->course_base->instance()->get();
         $this->general->types = $this->type->instance()->suitForce()->get();
@@ -34,12 +34,12 @@ class thresholdController extends ModifyController
     {
         try {
             $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester');
-            $this->threshold->instance()->store($inputs);
+            $this->threshold1->instance()->store($inputs);
         }
         catch (\Exception $e){
             dd($e);
         }
-        return redirect('authority/modify/threshold');
+        return redirect('authority/modify/threshold1');
     }
 
     /**
@@ -53,12 +53,12 @@ class thresholdController extends ModifyController
     {
         try {
             $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester');
-            $this->threshold->instance()->update($inputs, $id);
+            $this->threshold1->instance()->update($inputs, $id);
         }
         catch (\Exception $e){
             dd($e);
         }
-        return redirect('authority/modify/threshold');
+        return redirect('authority/modify/threshold1');
     }
 
     /**
@@ -70,11 +70,11 @@ class thresholdController extends ModifyController
     public function destroy($id)
     {
         try{
-            $this->threshold->instance()->destroy($id);
+            $this->threshold1->instance()->destroy($id);
         }
         catch (\Exception $e){
             dd($e);
         }
-        return redirect('authority/modify/threshold');
+        return redirect('authority/modify/threshold1');
     }
 }
