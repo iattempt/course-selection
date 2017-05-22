@@ -46,19 +46,19 @@
   </td>
 
   <td><!--預設年級-->
-    <select class="form-control edit_{{$list->id}}" name="default_grade" disabled>
-      <option value="1" {{$list->default_grade == 1 ? 'selected' : ''}}>1</option>
-      <option value="2" {{$list->default_grade == 2 ? 'selected' : ''}}>2</option>
-      <option value="3" {{$list->default_grade == 3 ? 'selected' : ''}}>3</option>
-      <option value="4" {{$list->default_grade == 4 ? 'selected' : ''}}>4</option>
-      <option value="5" {{$list->default_grade == 5 ? 'selected' : ''}}>5</option>
+    <select class="form-control edit_{{$list->id}}" name="adopt_grade" disabled>
+      <option value="1" {{$list->adopt_grade == 1 ? 'selected' : ''}}>1</option>
+      <option value="2" {{$list->adopt_grade == 2 ? 'selected' : ''}}>2</option>
+      <option value="3" {{$list->adopt_grade == 3 ? 'selected' : ''}}>3</option>
+      <option value="4" {{$list->adopt_grade == 4 ? 'selected' : ''}}>4</option>
+      <option value="5" {{$list->adopt_grade == 5 ? 'selected' : ''}}>5</option>
     </select>
   </td>
 
   <td><!--預設學期-->
-    <select class="form-control edit_{{$list->id}}" name="default_semester" disabled>
-      <option value="1" {{$list->default_semester == '1' ? 'selected' : ''}}>1</option>
-      <option value="2" {{$list->default_semester == '2' ? 'selected' : ''}}>2</option>
+    <select class="form-control edit_{{$list->id}}" name="adopt_semester" disabled>
+      <option value="1" {{$list->adopt_semester == '1' ? 'selected' : ''}}>1</option>
+      <option value="2" {{$list->adopt_semester == '2' ? 'selected' : ''}}>2</option>
     </select>           
   </td>                 
                         

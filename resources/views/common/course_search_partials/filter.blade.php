@@ -189,15 +189,19 @@
         <div class="collapse col-12 mx-auto" id="collapseSemester">
           <div class="card card-block">
             <label class="form-check-label">
-            <input type="radio" class="my-3 my-lg-2 form-check-input" value="2017 1" name="semester" {{old('semester')!='2016_2' ?: 'checked'}}>
+            <input type="radio" class="my-3 my-lg-2 form-check-input" value="2017 2" name="semester" {{old('semester')!='2017 2' ?: 'checked'}}>
+              2017-2
+            </label>
+            <label class="form-check-label">
+            <input type="radio" class="my-3 my-lg-2 form-check-input" value="2017 1" name="semester" {{old('semester')!='2017 1' ?: 'checked'}}>
               2017-1
             </label>
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 2" name="semester" {{old('semester')!='2016_2' ?: 'checked'}}>
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 2" name="semester" {{old('semester')!='2016 2' ?: 'checked'}}>
               2016-2
             </label>
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 1" name="semester" {{old('semester')!='2016_1' ?: 'checked'}}>
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 1" name="semester" {{old('semester')!='2016 1' ?: 'checked'}}>
               2016-1
             </label>
           </div>

@@ -12,8 +12,8 @@ class Threshold1 extends Model
                             'type_id',
                             'course_base_id',
                             'adopt_year',
-                            'default_grade',
-                            'default_semester'];
+                            'adopt_grade',
+                            'adopt_semester'];
     public function unit() {
         return $this->hasOne('Model\Unit');
     }

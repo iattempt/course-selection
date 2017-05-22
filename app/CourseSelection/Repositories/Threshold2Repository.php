@@ -4,6 +4,7 @@ namespace Repository;
 
 use Illuminate\Database\Eloquent\Model;
 use Model\Threshold2;
+use Repository\CurriculumRepository as Curriculum;
 
 class Threshold2Repository extends BaseRepository
 {
@@ -32,6 +33,18 @@ class Threshold2Repository extends BaseRepository
         $check_dupl_inputs = $inputs;
         if (!$this->isDuplicate($check_dupl_inputs, $id))
             $this->getById($id)->update($inputs);
+        return $this;
+    }
+    function getFinishById($id)
+    {
+        if (!$this->model)  return null;
+
+        return $this;
+    }
+    function getNonFinishById($id)
+    {
+        if (!$this->model)  return null;
+
         return $this;
     }
 }

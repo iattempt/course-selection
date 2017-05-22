@@ -9,7 +9,7 @@
       foreach($general->curricula as $c)
         if ($c->course_id === $list->id) 
           $isEnrolled = true;
-      if (!$isEnrolled && $list->enrollment_remain>0)
+      if (!$isEnrolled && $list->enrollment_remain>0 && $list->year == 2017 && $list->semester == 2)
         echo '<label class="form-control-label" for="enroll'.
               $list->id .
               '"></label><input id="enroll'.

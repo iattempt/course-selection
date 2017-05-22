@@ -33,7 +33,7 @@ class Threshold1Controller extends ModifyController
     public function store(Request $request)
     {
         try {
-            $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester');
+            $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'adopt_grade', 'adopt_semester');
             $this->threshold1->instance()->store($inputs);
         }
         catch (\Exception $e){
@@ -52,7 +52,7 @@ class Threshold1Controller extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'default_grade', 'default_semester');
+            $inputs = $request->only('unit_id', 'type_id', 'course_base_id', 'adopt_year', 'adopt_grade', 'adopt_semester');
             $this->threshold1->instance()->update($inputs, $id);
         }
         catch (\Exception $e){

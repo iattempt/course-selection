@@ -36,7 +36,7 @@
   </td>
 
   <td><!--預定年級-->
-    <select class="form-control" name="default_grade">
+    <select class="form-control" name="adopt_grade">
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -46,7 +46,7 @@
   </td>
 
   <td><!--預定學期-->
-    <select class="form-control" name="default_semester">
+    <select class="form-control" name="adopt_semester">
       <option value="1">1</option>
       <option value="2">2</option>
     </select>
