@@ -9,62 +9,64 @@
       {{ csrf_field() }}
       <!-- button of options -->
       <div class="row d-flex justify-content-center">
-        <a id="professor" class="btn col-" data-toggle="collapse" href="#collapseProfessor" aria-expanded="false" aria-controls="collapseProfessor">
+        <a id="professor" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseProfessor" aria-expanded="false" aria-controls="collapseProfessor">
           教授名字
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="course" class="btn col-" data-toggle="collapse" href="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">
+        <a id="course" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">
           課程名稱
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="enroll" class="btn col-" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
+        <a id="enroll" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
           人數狀況
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="type" class="btn col-" data-toggle="collapse" href="#collapseType" aria-expanded="false" aria-controls="collapseType">
+        <a id="type" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseType" aria-expanded="false" aria-controls="collapseType">
           修別
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="time" class="btn col-" data-toggle="collapse" href="#collapseTime" aria-expanded="false" aria-controls="collapseTime">
+        <a id="time" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseTime" aria-expanded="false" aria-controls="collapseTime">
           時段
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="unit" class="btn col-" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
+        <a id="unit" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
           開課單位
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="language" class="btn col-" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
+        <a id="language" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
           授課語言
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="semester" class="btn col-" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
+        <a id="semester" class="btn col-6 col-md-3 col-lg-1" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
           開課學期
           <span class="dropdown-toggle"></span>
         </a>
         <!-- end button of options -->
 
+        <hr class="col-12 my-1">
+
         <!-- content of button -->
         <div class="collapse col-12 mx-auto" id="collapseProfessor">
-          <div class="card card-block">
+          <div class="">
             <input id="professorName" class="form-control" type="search" placeholder="教授名字" value="{{old("professorName")}}" name="professorName">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseCourse">
-          <div class="card card-block">
+          <div class="">
             <input id="courseName" class="form-control" type="search" placeholder="課程名稱" value="{{old("courseName")}}" name="courseName">
           </div>
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseState">
-          <div class="card card-block">
+          <div class="">
             <label class="form-check-label">
               <input type="radio" class="my-3 my-lg-2 form-check-input" value="1" name="enroll" {{(old("enroll") === "1") ? "checked" : ""}}>
               可加選
@@ -77,7 +79,7 @@
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseType">
-          <div class="card card-block">
+          <div class="">
             <!-- 列出資料庫修別選項 -->
             @foreach ($general->types as $t)
             <label class="form-check-label">
@@ -97,44 +99,42 @@
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseTime">
-          <div class="card card-block">
-            <div class="row">
-              <div class="col d-flex justify-content-center"></div>
-              @foreach ($general->days as $d)
-              <div class="col d-flex justify-content-center">{{$d->name}}</div>
-              @if (!$loop->last)|@endif
-              @endforeach
-            </div>
-            @foreach ($general->periods as $p)
-            @if ($loop->index%2 === 0)
-            <div class="row">
-            @else
-            <div class="row bg-info">
-            @endif
-              <div class="col">{{$p->name}}</div>
-              @foreach ($general->days as $d)
-              <div class="col">
-                <label class="form-check-label d-flex justify-content-center">
-                  <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]"
-                    @if (old("time"))
-                      @foreach (old("time") as $value)
-                        @if ($value === ($d->name." ".$p->name))
-                          checked
-                        @endif
-                      @endforeach
-                    @endif
-                    >
-                </label>
-              </div>
-              @if (!$loop->last)|@endif
-              @endforeach
+          <!--顯示日期-->
+          <div class="row">
+            <div class="col-2"></div>
+            @foreach ($general->days as $d)
+            <div class="col d-flex justify-content-center">{{$d->simple_name}}</div>
+            @endforeach
+          </div>
+          @foreach ($general->periods as $p)
+
+          <!--時段迴圈-->
+          @if ($loop->index%2 === 0)
+          <div class="row">
+          @else
+          <div class="row bg-faded">
+          @endif
+
+            <div class="col-2 my-2">{{$p->id}}</div>
+            @foreach ($general->days as $d)
+            <div class="col my-2">
+                <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]"
+                  @if (old("time"))
+                    @foreach (old("time") as $value)
+                      @if ($value === ($d->name." ".$p->name))
+                        checked
+                      @endif
+                    @endforeach
+                  @endif
+                  >
             </div>
             @endforeach
           </div>
+          @endforeach
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseUnit">
-          <div class="card card-block">
+          <div class="">
             @foreach($general->units as $u)
               @if ($u->name === "其餘")
                 @continue
@@ -157,7 +157,7 @@
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseLanguage">
-          <div class="card card-block">
+          <div class="">
             <label class="form-check-label">
               <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="中文" name="language[]"
                     @if (old("language"))
@@ -186,7 +186,7 @@
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseSemester">
-          <div class="card card-block">
+          <div class="">
             @for ($y = 2016; $y<=date("Y"); $y++)
               @for ($s = 1; $s<=2; $s++)
                 <label class="form-check-label">
@@ -203,6 +203,7 @@
 
         <!-- end content of button -->
       </div>
+
       <div class="col-12 d-flex justify-content-center">
         <label class="form-check-label mb-2">
           <input type="checkbox" class="mt-3 form-check-input" value="yes" name="flash">
