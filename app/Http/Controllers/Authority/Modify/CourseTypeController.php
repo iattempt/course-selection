@@ -15,8 +15,8 @@ class CourseTypeController extends ModifyController
         $this->general->title = 'Modify course type';
         $this->general->view_path .= '/course_type';
 
-        $this->general->lists = $this->course_type->instance()->get();
         $this->general->course = $this->course->instance()->get();
+        $this->general->lists = $this->course_type->instance()->suitCourse($this->general->course)->get();
         $this->general->type = $this->type->instance()->get();
         $this->general->unit = $this->unit->instance()->get();
     }

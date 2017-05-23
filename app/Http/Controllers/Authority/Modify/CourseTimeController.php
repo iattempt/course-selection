@@ -15,8 +15,8 @@ class CourseTimeController extends ModifyController
         $this->general->title = 'Modify course time';
         $this->general->view_path .= '/course_time';
 
-        $this->general->lists = $this->course_time->instance()->get();
         $this->general->course = $this->course->instance()->get();
+        $this->general->lists = $this->course_time->instance()->suitCourse($this->general->course)->get();
         $this->general->period = $this->period->instance()->get();
         $this->general->day = $this->day->instance()->get();
     }

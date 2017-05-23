@@ -33,4 +33,16 @@ class CourseTypeRepository extends BaseRepository
             $this->getById($id)->update($inputs);
         return $this;
     }
+    function suitCourse($inputs)
+    {
+        if (!$this->model)  return null;
+
+        $this->model = $this->model->filter(function ($value, $key) use($inputs) {
+            foreach ($inputs as $input) {
+                if ($value->course_id == $input->id)
+                    return $value;
+            }
+        });
+        return $this;
+    }
 }
