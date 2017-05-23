@@ -35,7 +35,7 @@
           @foreach ($general->days as $d)
             <div class="pre_c_dayn pre_c_day{{$d->id}} col row">
             @foreach ($general->pre_curriculum as $c)
-              @foreach ($c->course->time as $t)
+              @foreach ($c->course->times as $t)
                 <div class="d-flex justify-content-center col-12">
                   @if ($t->period->name == $p->name && $t->day->name == $d->name)
                     <a>{{$c->course->name}}</a>
