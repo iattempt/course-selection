@@ -3,7 +3,7 @@
     預選課表
 </a>
 <div id="PreSelection" class="collapse">
-  <div class="card card-block">
+  <div>
     <table id="pre_curriculum_th" class="table table-bordered table-striped table-sm">
       <thead> 
         <tr>

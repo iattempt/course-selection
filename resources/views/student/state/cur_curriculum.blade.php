@@ -3,7 +3,7 @@
     現修課表
 </a>
 <div id="CurSelection" class="collapse show">
-  <div class="card card-block">
+  <div>
     <table id="cur_curriculum_th" class="table table-bordered table-striped table-sm">
       <thead> 
         <tr>
