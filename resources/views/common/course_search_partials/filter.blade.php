@@ -201,7 +201,7 @@
               2016-2
             </label>
             <label class="form-check-label">
-              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 1" name="semester" {{old('semester')!='2016 1' ?: 'checked'}}>
+              <input type="radio" class="my-3 my-lg-2 form-check-input" value="2016 1" name="semester" {{old('semester')!='2016 1' ?: 'checked'}} checked>
               2016-1
             </label>
           </div>

@@ -16,7 +16,7 @@ class CourseBaseRepository extends BaseRepository
 
     function instance()
     {
-        $this->model = $this->model === null ? null : CourseBase::all();
+        $this->model = $this->model === null ? null : CourseBase::all()->sortBy('name');
         return $this;
     }
     function store(array $inputs)

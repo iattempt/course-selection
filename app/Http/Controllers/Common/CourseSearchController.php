@@ -95,6 +95,7 @@ class CourseSearchController extends Controller
                     $c = new Curriculum;
                     $c->course_id = $i->id;
                     $c->student_id = $this->general->info->id;
+                    $c->state = "預選中";
                     $c->save();
                 }
             }
