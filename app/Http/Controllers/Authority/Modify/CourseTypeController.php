@@ -18,7 +18,7 @@ class CourseTypeController extends ModifyController
         $this->general->course = $this->course->instance()->get();
         $this->general->lists = $this->course_type->instance()->suitCourse($this->general->course)->get();
         $this->general->type = $this->type->instance()->get();
-        $this->general->unit = $this->unit->instance()->get();
+        $this->general->unit = $this->unit->instance()->suitCourseType()->get();
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
