@@ -2,56 +2,55 @@
 <a class="btn btn-primary col-12 d-flex justify-content-center" id="HeaderPreSelection" data-toggle="collapse" href="#PreSelection" aria-expanded="true" aria-controll="PreSelection">
     預選課表
 </a>
-<div id="PreSelection" class="collapse">
-  <div>
-    <table id="pre_curriculum_th" class="table table-bordered table-striped table-sm">
-      <thead> 
-        <tr>
-          <td>
-            <a id="pre_c_week" onclick="pre_changeWD(this)" href="javascript:void(0)">週課表</a>
-            <a id="pre_c_day" onclick="pre_changeWD(this)" href="javascript:void(0)">日課表</a>
-          </td>
-          <!--星期列-->
-          @foreach ($general->days as $d)
-          <td>
-            <a onclick="pre_changeDContext(this.id)" id="pre_c_day{{$d->id}}" class="col pre_c_clear" href="javascript:void(0)">
-              {{$d->simple_name}}
-            </a>
-          </td>
-          @endforeach
-          <!--end 星期列-->
-        </tr>
-      </thead>
+<div id="PreSelection" class="collapse col-12">
+  <div class="row d-flex justify-content-center">
+    <div id="pre_curriculum_th" class="col-12">
+      <div class="row">
+        <div class="col-2 d-flex justify-content-center">
+          <a id="pre_c_week" onclick="pre_changeWD(this)" href="javascript:void(0)">週課表</a>
+          <a id="pre_c_day" onclick="pre_changeWD(this)" href="javascript:void(0)">日課表</a>
+        </div>
+        <!--星期列-->
+        @foreach ($general->days as $d)
+        <div class="col">
+          <a onclick="pre_changeDContext(this.id)" id="pre_c_day{{$d->id}}" class="d-flex justify-content-center col pre_c_clear" href="javascript:void(0)">
+            {{$d->simple_name}}
+          </a>
+        </div>
+        @endforeach
+        <!--end 星期列-->
+      </div>
 
-      <tbody>
+      <div>
         @foreach ($general->periods as $p)
-        <tr>
+        <div class="row">
           <!--時間行-->
-          <td>
+          <div class="col-2 d-flex justify-content-center">
             {{$p->name}}
             {{date('H:i', strtotime($p->上課時間))}}
             {{date('H:i', strtotime($p->下課時間))}}
-          </td>
+          </div>
           <!--end 時間行-->
           <!--星期行-課表-->
           @foreach ($general->days as $d)
-            <td class="pre_c_dayn pre_c_day{{$d->id}}">
+            <div class="pre_c_dayn pre_c_day{{$d->id}} col row">
             @foreach ($general->pre_curriculum as $c)
               @foreach ($c->course->time as $t)
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center col-12">
                   @if ($t->period->name == $p->name && $t->day->name == $d->name)
                     <a>{{$c->course->name}}</a>
                   @endif
                 </div>
               @endforeach
             @endforeach
-            </td>
+            </div>
           @endforeach
           <!--end 星期行-課表-->
-        </tr>
+        </div>
+        <hr class="my-0">
         @endforeach
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
 </div>
 <!--預選課表-->

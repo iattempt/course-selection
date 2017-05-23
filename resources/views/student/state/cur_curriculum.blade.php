@@ -1,68 +1,67 @@
-<!--現修課表-->
+<!--預選課表-->
 <a class="btn btn-primary col-12 d-flex justify-content-center" id="HeaderCurSelection" data-toggle="collapse" href="#CurSelection" aria-expanded="true" aria-controll="CurSelection">
-    現修課表
+    預選課表
 </a>
-<div id="CurSelection" class="collapse show">
-  <div>
-    <table id="cur_curriculum_th" class="table table-bordered table-striped table-sm">
-      <thead> 
-        <tr>
-          <td>
-            <a id="cur_c_week" onclick="cur_changeWD(this)" href="javascript:void(0)">週課表</a>
-            <a id="cur_c_day" onclick="cur_changeWD(this)" href="javascript:void(0)">日課表</a>
-          </td>
-          <!--星期列-->
-          @foreach ($general->days as $d)
-          <td>
-            <a onclick="cur_changeDContext(this.id)" id="cur_c_day{{$d->id}}" class="col cur_c_clear" href="javascript:void(0)">
-              {{$d->simple_name}}
-            </a>
-          </td>
-          @endforeach
-          <!--end 星期列-->
-        </tr>
-      </thead>
+<div id="CurSelection" class="collapse col-12">
+  <div class="row d-flex justify-content-center">
+    <div id="cur_curriculum_th" class="col-12">
+      <div class="row">
+        <div class="col-2 d-flex justify-content-center">
+          <a id="cur_c_week" onclick="cur_changeWD(this)" href="javascript:void(0)">週課表</a>
+          <a id="cur_c_day" onclick="cur_changeWD(this)" href="javascript:void(0)">日課表</a>
+        </div>
+        <!--星期列-->
+        @foreach ($general->days as $d)
+        <div class="col">
+          <a onclick="cur_changeDContext(this.id)" id="cur_c_day{{$d->id}}" class="d-flex justify-content-center col cur_c_clear" href="javascript:void(0)">
+            {{$d->simple_name}}
+          </a>
+        </div>
+        @endforeach
+        <!--end 星期列-->
+      </div>
 
-      <tbody>
+      <div>
         @foreach ($general->periods as $p)
-        <tr>
+        <div class="row">
           <!--時間行-->
-          <td>
+          <div class="col-2 d-flex justify-content-center">
             {{$p->name}}
             {{date('H:i', strtotime($p->上課時間))}}
             {{date('H:i', strtotime($p->下課時間))}}
-          </td>
+          </div>
           <!--end 時間行-->
           <!--星期行-課表-->
           @foreach ($general->days as $d)
-            <td class="cur_c_dayn cur_c_day{{$d->id}}">
+            <div class="cur_c_dayn cur_c_day{{$d->id}} col row">
             @foreach ($general->cur_curriculum as $c)
               @foreach ($c->course->time as $t)
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center col-12">
                   @if ($t->period->name == $p->name && $t->day->name == $d->name)
                     <a>{{$c->course->name}}</a>
                   @endif
                 </div>
               @endforeach
             @endforeach
-            </td>
+            </div>
           @endforeach
           <!--end 星期行-課表-->
-        </tr>
+        </div>
+        <hr class="my-0">
         @endforeach
-      </tbody>
-    </table>
+      </div>
+    </div>
   </div>
 </div>
-<!--現修課表-->
+<!--預選課表-->
 
 <script>
 (function() {
   cur_changeWD(this);
 })()
 function cur_changeWD(caller){
-  tb = document.getElementById("cur_curriculum-tb");
-  dn = document.getElementsByClassName("cur_c_dayn"); 
+  var tb = document.getElementById("cur_curriculum-tb");
+  var dn = document.getElementsByClassName("cur_c_dayn"); 
   if (caller.id != "cur_c_week") {
     document.getElementById("cur_c_day").setAttribute("hidden", "true");
     document.getElementById("cur_c_week").removeAttribute("hidden");
@@ -85,14 +84,14 @@ function cur_changeWD(caller){
 }
 function cur_changeDContext(id)
 {
-  d_hidden = document.getElementsByClassName("cur_c_dayn"); 
+  var d_hidden = document.getElementsByClassName("cur_c_dayn"); 
   document.getElementById("cur_c_week").setAttribute("hidden", "true");
   document.getElementById("cur_c_day").removeAttribute("hidden");
   //設定資料顯示
   for (var i = 0, l = d_hidden.length; i < l; i++) {
     d_hidden[i].setAttribute("hidden", "true");
   }
-  d_display = document.getElementsByClassName(id);
+  var d_display = document.getElementsByClassName(id);
   for (var i = 0, l = d_display.length; i < l; i++) {
     d_display[i].removeAttribute("hidden");
     d_display[i].setAttribute("colspan", "6");
@@ -101,8 +100,8 @@ function cur_changeDContext(id)
 }
 function cur_changeDTitle(id)
 {
-  highlight = document.getElementById(id);
-  clear = document.getElementsByClassName("cur_c_clear");
+  var highlight = document.getElementById(id);
+  var clear = document.getElementsByClassName("cur_c_clear");
   for (var i = 0, l = clear.length; i < l; i++) {
     clear[i].classList.remove("text-white", "bg-primary");
   }
