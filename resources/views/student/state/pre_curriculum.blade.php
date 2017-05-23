@@ -6,9 +6,9 @@
   <div class="row d-flex justify-content-center">
     <div id="pre_curriculum_th" class="col-12">
       <div class="row">
-        <div class="col-2 d-flex justify-content-center">
-          <a id="pre_c_week" onclick="pre_changeWD(this)" href="javascript:void(0)">週課表</a>
-          <a id="pre_c_day" onclick="pre_changeWD(this)" href="javascript:void(0)">日課表</a>
+        <div class="col row d-flex justify-content-center">
+          <a id="pre_c_week" onclick="pre_changeWD(this)" href="javascript:void(0)" class="col-12 text-white bg-primary">週課表</a>
+          <a id="pre_c_day" onclick="pre_changeWD(this)" href="javascript:void(0)" class="col-12">日課表</a>
         </div>
         <!--星期列-->
         @foreach ($general->days as $d)
