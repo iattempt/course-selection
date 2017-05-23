@@ -13,7 +13,7 @@
         <!--星期列-->
         @foreach ($general->days as $d)
         <div class="col">
-          <a onclick="cur_changeDContext(this.id)" id="cur_c_day{{$d->id}}" class="d-flex justify-content-center col cur_c_clear" href="javascript:void(0)">
+          <a onclick="cur_changeDContext(this.id)" id="cur_c_day{{$d->id}}" class="d-flex justify-content-center cur_c_clear" href="javascript:void(0)">
             {{$d->simple_name}}
           </a>
         </div>
