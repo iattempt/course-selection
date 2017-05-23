@@ -1,6 +1,6 @@
-<!--預選課表-->
+<!--現修課表-->
 <a class="btn btn-primary col-12 d-flex justify-content-center" id="HeaderCurSelection" data-toggle="collapse" href="#CurSelection" aria-expanded="true" aria-controll="CurSelection">
-    預選課表
+    現修課表
 </a>
 <div id="CurSelection" class="collapse col-12">
   <div class="row d-flex justify-content-center">
@@ -12,8 +12,8 @@
         </div>
         <!--星期列-->
         @foreach ($general->days as $d)
-        <div class="col">
-          <a onclick="cur_changeDContext(this.id)" id="cur_c_day{{$d->id}}" class="d-flex justify-content-center cur_c_clear" href="javascript:void(0)">
+        <div class="col row">
+          <a onclick="cur_changeDContext(this.id)" id="cur_c_day{{$d->id}}" class="col-12 d-flex justify-content-center cur_c_clear" href="javascript:void(0)">
             {{$d->simple_name}}
           </a>
         </div>

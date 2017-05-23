@@ -12,8 +12,8 @@
         </div>
         <!--星期列-->
         @foreach ($general->days as $d)
-        <div class="col">
-          <a onclick="pre_changeDContext(this.id)" id="pre_c_day{{$d->id}}" class="d-flex justify-content-center pre_c_clear" href="javascript:void(0)">
+        <div class="col row">
+          <a onclick="pre_changeDContext(this.id)" id="pre_c_day{{$d->id}}" class="col-12 d-flex justify-content-center pre_c_clear" href="javascript:void(0)">
             {{$d->simple_name}}
           </a>
         </div>
