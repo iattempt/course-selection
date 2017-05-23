@@ -22,8 +22,8 @@ class MigrateRepository extends BaseRepository
     function changeState()
     {
         //warning: 這邊順序不能隨便變更
-        changeStateCurrent2Finish();
-        changeStatePreselection2Current();
+        $this->changeStateCurrent2Finish();
+        $this->changeStatePreselection2Current();
     }
     function changeStatePreselection2Current()
     {
@@ -36,7 +36,7 @@ class MigrateRepository extends BaseRepository
     function changeStateCurrent2Finish()
     {
         $cur2fin = $this->model->whereIn('state', ['修課中']);
-        foreach($pre2cur as $value) {
+        foreach($cur2fin as $value) {
             $value->state = '已修完';
             $value->save();
         }
