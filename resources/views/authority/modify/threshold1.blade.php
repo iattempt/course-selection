@@ -15,12 +15,12 @@
 </thead>
 <tbody>
   <tr>
-    @include ('authority/modify/threshold/create', array('caller' => 'threshold'))
+    @include ('authority/modify/threshold1/create', array('caller' => 'threshold1'))
   </tr>
   @foreach ($general->lists as $list)
   <tr>
-    @include ('authority/modify/threshold/edit', array('caller' => 'threshold'))
-    @include ('authority/modify/threshold/delete', array('caller' => 'threshold'))
+    @include ('authority/modify/threshold1/edit', array('caller' => 'threshold1'))
+    @include ('authority/modify/threshold1/delete', array('caller' => 'threshold1'))
   </tr>
   @endforeach
 </tbody>

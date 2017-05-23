@@ -37,35 +37,39 @@
       <option value="0">0</option>
       <option value="1">1</option>
       <option value="2">2</option>
-      <option value="3">3</option>
+      <option value="3" selected>3</option>
     </select>
   </td>
 
   <td><!--授課語言-->
     <select class="form-control" name="language">
       <option value="英文">英文</option>
-      <option value="中文">中文</option>
+      <option value="中文" selected>中文</option>
     </select>
   </td>
 
   <td><!--學年度-->
     <select class="form-control" name="year">
-      @for ($i = 2016; $i<=date('Y'); $i++)
+        <!--
+        @for ($i = 2016; $i<=date('Y'); $i++)
         <option value="{{$i}}">{{$i}}</option>
-      @endfor
+        @endfor
+        -->
+        <option value="2016" selected>2016</option>
+        <option value="2017">2017</option>
     </select>
   </td>
 
   <td><!--學期-->
     <select class="form-control" name="semester">
-      <option value="1">1</option>
+      <option value="1" selected>1</option>
       <option value="2">2</option>
     </select>
   </td>
 
   <td><!--限修人數-->
     <select class="form-control" name="enrollment_max">
-      @for ($i=0; $i<100; $i++)
+      @for ($i=30; $i<100; $i++)
         <option value="{{$i}}">{{$i}}</option>
       @endfor
     </select>

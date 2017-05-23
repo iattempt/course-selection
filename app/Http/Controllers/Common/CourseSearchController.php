@@ -28,12 +28,15 @@ class CourseSearchController extends Controller
         $this->general->identity = Auth::user()->getType();
 
         $this->general->info = User::findOrFail(Auth::user()->id);
-        $this->general->days = $this->day->instance()->get();
-        $this->general->periods = $this->period->instance()->get();
-        $this->general->types = $this->type->instance()->get();
-        $this->general->units = $this->unit->instance()->suitRegister()->get();
-        $this->general->curricula = $this->curriculum->instance()->suitPreSelection()->suitOwn('student_id', $this->general->info->id)->get();
-        
+        $this->general->days = Day::all()->sortBy('id');
+        $this->general->periods = Period::all()->sortBy('id');
+        $this->general->types = Type::all()->sortBy('name');
+        $this->general->units = Unit::all();
+        if ($this->general->identity == 'student') {
+            $this->general->pre_curriculum = $this->curriculum->instance()->suitOwn(Auth::user()->id);
+            $this->general->pre_curriculum = $this->general->pre_curriculum->suitPre()->get();
+        }
+
         $this->passingRequestToView($request);
         $this->general->lists = $this->course->instance();
         $this->listRequest($request);
@@ -80,7 +83,7 @@ class CourseSearchController extends Controller
                     $c = new Curriculum;
                     $c->course_id = $i->id;
                     $c->student_id = $this->general->info->id;
-                    $c->state = '預選中';
+                    $c->state = "預選中";
                     $c->save();
                 }
             }

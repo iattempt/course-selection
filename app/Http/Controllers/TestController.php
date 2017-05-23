@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\CourseSelection\Models\Unit;
-use App\CourseSelection\Models\Course;
-use App\CourseSelection\Models\Test;
-
 class TestController extends Controller
 {
     //
@@ -15,8 +11,11 @@ class TestController extends Controller
         parent::__construct();
     }
     function index() {
-        $test = Test::findOrFail(3);
-        $test->value1 = '3';
-        $test->value2 = '4';
+        $this->threshold1 = $this->threshold1->instance()->getByUnit(9);
+        $this->general->units = $this->unit->instance()->get();
+        $this->general->types = $this->type->instance()->get();
+        $this->general->course_bases = $this->course_base->instance()->get();
+        $this->general->lists = $this->threshold1->get();
+        return view('authority/modify/threshold1', ['general' => $this->general]);
     }
 }

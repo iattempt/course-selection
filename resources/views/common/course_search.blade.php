@@ -3,7 +3,9 @@
 @section ($general->identity)
 <div class="container-fluid">
   <!-- Display Pre-Curriculum -->
-    @include ('common/course_search_partials/pre_curriculum')
+    <div class="row">
+      @include ('student/state/pre_curriculum')
+    </div>
   <!-- end of Display Pre-Curriculum -->
 
   <!-- Filter -->

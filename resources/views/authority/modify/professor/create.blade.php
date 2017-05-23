@@ -9,19 +9,19 @@
   </td>
 
   <td><!--電子郵件-->
-    <input class="form-control" type="email" name="email">
+    <input class="form-control" type="email" name="email" value="@thu.edu.tw">
   </td>
 
   <td><!--密碼-->
-    <input class="form-control" type="password" name="password">
+    <input class="form-control" type="password" name="password" value="1234">
   </td>
 
   <td><!--職稱-->
-    <input class="form-control" type="text" name="title" autofocus>
+    <input class="form-control" type="text" name="title" value="教授">
   </td>
 
   <td><!--專長-->
-    <input class="form-control" type="text" name="skills">
+    <input class="form-control" type="text" name="skills" value="asfdnkjsad">
   </td>
 
   <td><!--所屬系別-->
@@ -32,7 +32,7 @@
     </select>
   </td>
 
-  <td colspan="2">
+  <td colspan="2"><!---->
     <input class="btn btn-success" type="submit" value="新增">
   </td>
 </form>

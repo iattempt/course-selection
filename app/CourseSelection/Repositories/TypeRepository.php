@@ -26,4 +26,12 @@ class TypeRepository extends BaseRepository
         $this->model = $this->model->whereIn('name', ['必修', '必選修']);
         return $this;
     }
+    function suitElective()
+    {
+        if (!$this->model)
+            return null;
+        $this->model = $this->model->whereIn('subjection', ['通識']);
+        $this->model = $this->model->merge(Type::all()->whereIn('name', ['選修']));
+        return $this;
+    }
 }

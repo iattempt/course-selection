@@ -6,10 +6,10 @@
   <span class="col-2 col-md-1">
     @php
       $isEnrolled = false;
-      foreach($general->curricula as $c)
+      foreach($general->pre_curriculum as $c)
         if ($c->course_id === $list->id) 
           $isEnrolled = true;
-      if (!$isEnrolled && $list->enrollment_remain>0)
+      if (!$isEnrolled && $list->enrollment_remain>0 && $list->year == env("CURRENT_YEAR") && $list->semester == env("CURRENT_SEMESTER"))
         echo '<label class="form-control-label" for="enroll'.
               $list->id .
               '"></label><input id="enroll'.

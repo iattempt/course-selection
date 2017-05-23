@@ -7,20 +7,19 @@ use App\Http\Controllers\Authority\ModifyController;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 
-class CourseprofessorController extends ModifyController
+class Threshold2Controller extends ModifyController
 {
     //
     function __construct() {
         parent::__construct();
-        $this->general->title = 'Modify course professor';
-        $this->general->view_path .= '/course_professor';
-
-        $this->general->course = $this->course->instance()->get();
-        $this->general->lists = $this->course_professor->instance()->suitCourse($this->general->course)->get();
-        $this->general->professor = $this->professor->instance()->get();
+        $this->general->title = 'Modify threshold2';
+        $this->general->view_path .= '/threshold2';
     }
     function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
+        $this->general->lists =  $this->threshold2->instance()->get();
+        $this->general->units =  $this->unit->instance()->suitRegister()->get();
+        $this->general->types = $this->type->instance()->suitElective()->get();
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -33,13 +32,13 @@ class CourseprofessorController extends ModifyController
     public function store(Request $request)
     {
         try {
-            $inputs = $request->only(['course_id', 'user_id']);
-            $this->course_professor->instance()->store($inputs);
+            $inputs = $request->only('unit_id', 'type_id', 'credit', 'adopt_year');
+            $this->threshold2->instance()->store($inputs);
         }
         catch (\Exception $e){
             dd($e);
         }
-        return redirect('authority/modify/course_professor');
+        return redirect('authority/modify/threshold2');
     }
 
     /**
@@ -52,13 +51,13 @@ class CourseprofessorController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            $inputs = $request->only(['course_id', 'user_id']);
-            $this->course_professor->instance()->update($inputs, $id);
+            $inputs = $request->only('unit_id', 'type_id', 'credit', 'adopt_year');
+            $this->threshold2->instance()->update($inputs, $id);
         }
         catch (\Exception $e){
             dd($e);
         }
-        return redirect('authority/modify/course_professor');
+        return redirect('authority/modify/threshold2');
     }
 
     /**
@@ -70,10 +69,11 @@ class CourseprofessorController extends ModifyController
     public function destroy($id)
     {
         try{
-            $this->course_professor->instance()->destroy($id);
-        } catch (\Exception $e) {
+            $this->threshold2->instance()->destroy($id);
+        }
+        catch (\Exception $e){
             dd($e);
         }
-        return redirect('authority/modify/course_professor');
+        return redirect('authority/modify/threshold2');
     }
 }
