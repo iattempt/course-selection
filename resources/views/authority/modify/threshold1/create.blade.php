@@ -30,8 +30,9 @@
 
   <td><!--適用學年度-->
     <select class="form-control" name="adopt_year">
-      <option value="2017">2017</option>
-      <option value="2016">2016</option>
+      @for ($y=2016; $y<=date('Y'); $y++)
+        <option value="{{$y}}" {{env('CURRENT_YEAR')==$y ? 'selected': ''}}>{{$y}}</option>
+      @endfor
     </select>
   </td>
 
