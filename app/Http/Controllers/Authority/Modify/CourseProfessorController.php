@@ -15,8 +15,8 @@ class CourseprofessorController extends ModifyController
         $this->general->title = 'Modify course professor';
         $this->general->view_path .= '/course_professor';
 
-        $this->general->lists = $this->course_professor->instance()->get();
         $this->general->course = $this->course->instance()->get();
+        $this->general->lists = $this->course_professor->instance()->suitCourse($this->general->course)->get();
         $this->general->professor = $this->professor->instance()->get();
     }
     function index(Request $request) {

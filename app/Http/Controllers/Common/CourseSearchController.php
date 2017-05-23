@@ -32,7 +32,10 @@ class CourseSearchController extends Controller
         $this->general->periods = Period::all()->sortBy('id');
         $this->general->types = Type::all()->sortBy('name');
         $this->general->units = Unit::all();
-        $this->general->curricula = Curriculum::all()->where('student_id', Auth::user()->id);
+        if ($this->general->identity == 'student') {
+            $this->general->pre_curriculum = $this->curriculum->instance()->suitOwn(Auth::user()->id);
+            $this->general->pre_curriculum = $this->general->pre_curriculum->suitPre()->get();
+        }
 
         $this->passingRequestToView($request);
         $this->listRequest($request);

@@ -26,6 +26,22 @@ class CurriculumRepository extends BaseRepository
         $this->model = $this->model->whereIn('student_id', $id);
         return $this;
     }
+    function suitPre()
+    {
+        if (!$this->model)
+            return null;
+        $this->model = $this->model->whereIn('state', '預選中');
+        return $this;
+    }
+    function suitCur()
+    {
+    {
+        if (!$this->model)
+            return null;
+        $this->model = $this->model->whereIn('state', '修課中');
+        return $this;
+    }
+    }
     function getCourseOfOwn($id, $course_id)
     {
         $this->suitOwn($id);
