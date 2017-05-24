@@ -4,6 +4,7 @@ namespace Repository;
 
 use Illuminate\Database\Eloquent\Model;
 use Model\Course;
+use App\User;
 use Repository\CourseTypeRepository as CourseType;
 use Repository\UnitRepository as Unit;
 use Repository\TimeRepository as Time;
@@ -96,7 +97,7 @@ class CourseRepository extends BaseRepository
         });
         return $this;
     }
-    function suitTypes($unit, $type_ids)
+    function suitTypes($unit, $types)
     {
         if (!$this->model)  return null;
 
@@ -105,16 +106,16 @@ class CourseRepository extends BaseRepository
         //
         //取得所有此科系的對應修別
         $own_units = (new CourseType())->instance()->suitUnit($unit)->get();
-        $this->model = $this->model->filter(function ($value, $key) use($own_units, $type_ids){
+        $this->model = $this->model->filter(function ($value, $key) use($own_units, $types){
             //跑過所有要求的修別
-            foreach ($type_ids as $type_id) {
+            foreach ($types as $type) {
                 $hasBelongsOwnUnit = false;
                 //第一階段：跑過所有設定此科系修別的課
                 foreach ($own_units as $own_unit) {
                     //如果有匹配到就設為true
                     if ($own_unit->course_id == $value->id) {
                         $hasBelongsOwnUnit = true;
-                        if ($own_unit->type_id == $type_id) {
+                        if ($own_unit->type_id == $type) {
                             return $value;
                         }
                     }
@@ -125,7 +126,7 @@ class CourseRepository extends BaseRepository
                     foreach ($value->types as $vt) {
                         //unit_id: 1=>全部 2=>其餘
                         if (($vt->unit_id == '2' || $vt->unit_id == '1')
-                            &&  $vt->type_id == $type_id)
+                            &&  $vt->type_id == $type)
                             return $value;
                     }
                 }
@@ -133,11 +134,11 @@ class CourseRepository extends BaseRepository
         });
         return $this;
     }
-    function suitLanguage(array $inputs)
+    function suitLanguages(array $languages)
     {
         if (!$this->model)  return null;
 
-        $this->model = $this->model->whereIn('language', $inputs);
+        $this->model = $this->model->whereIn('language', $languages);
         return $this;
     }
     function suitEnroll($input)
@@ -151,14 +152,22 @@ class CourseRepository extends BaseRepository
     {
         if (!$this->model)  return null;
 
-        $this->whereInMatchPartial($name, 'name', 'professors');
+        $this->model = $this->model->filter(function ($value, $key) use($name){
+            foreach ($value->professors as $professor) {
+                if ($professor->user && strstr($professor->user->name, $name))
+                    return true;
+            }
+        });
         return $this;
     }
     function suitCourseName($name)
     {
         if (!$this->model)  return null;
 
-        $this->whereInMatchPartial($name, 'name');
+        $this->model = $this->model->filter(function ($value, $key) use($name) {
+            if (strstr($value->name, $name))
+                return true;
+        });
         return $this;
     }
     function suitCurriculum($ownCurriculum)
@@ -171,26 +180,6 @@ class CourseRepository extends BaseRepository
                     return $value;
             }
         });
-        return $this;
-    }
-    function whereInMatchPartial($partial_name, $matchKey, $relationKey = null)
-    {
-        if (!$this->model)  return null;
-
-        if ($relationKey) {
-            //如果欲匹配的鍵是一對多
-            $this->model = $this->model->filter(function ($value, $key) use($partial_name, $matchKey, $relationKey){
-                foreach ($value->$relationKey as $v) {
-                    if (strstr($v->$matchKey, $partial_name))
-                        return true;
-                }
-            });
-        } else {
-            $this->model = $this->model->filter(function ($value, $key) use($partial_name, $matchKey) {
-                if (strstr($value->$matchKey, $partial_name))
-                    return true;
-            });
-        }
         return $this;
     }
 }

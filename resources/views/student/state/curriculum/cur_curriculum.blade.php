@@ -1,8 +1,8 @@
-<!--預選課表-->
+<!--現修課表-->
 <a class="btn btn-primary col-12" data-toggle="collapse" href="#cur_curriculum_th" aria-expanded="true" aria-controll="cur_curriculum_th">
-    預選課表
+    現修課表
 </a>
-<div id="cur_curriculum_th" class="collapse col-12">
+<div id="cur_curriculum_th" class="collapse col-12 show">
   <!--標題列-->
   <div class="row">
     <div class="col-2">

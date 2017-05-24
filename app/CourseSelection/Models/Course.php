@@ -22,7 +22,7 @@ class Course extends Model
                             'enroll'];
     public function professors()
     {
-        return $this->hasMany('Model\CourseProfessor', 'course_id', 'id');
+        return $this->hasMany('Model\CourseProfessor');
     }
     public function times()
     {
@@ -30,7 +30,7 @@ class Course extends Model
     }
     public function types()
     {
-        return $this->hasMany('Model\CourseType', 'course_id', 'id');
+        return $this->hasMany('Model\CourseType');
     }
     public function unit()
     {

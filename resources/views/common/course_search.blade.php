@@ -4,10 +4,10 @@
 <div class="container-fluid">
   <!-- Display Pre-Curriculum -->
     <div class="row">
-      @include ('student/state/pre_curriculum')
+      @include ('student/state/curriculum/pre_curriculum')
     </div>
   <!-- end of Display Pre-Curriculum -->
-
+    <hr class="my-1">
   <!-- Filter -->
     @include ('common/course_search_partials/filter')
   <!-- end of Filter form  -->

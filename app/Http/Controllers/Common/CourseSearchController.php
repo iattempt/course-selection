@@ -28,10 +28,10 @@ class CourseSearchController extends Controller
         $this->general->identity = Auth::user()->getType();
 
         $this->general->info = User::findOrFail(Auth::user()->id);
-        $this->general->days = Day::all()->sortBy('id');
-        $this->general->periods = Period::all()->sortBy('id');
-        $this->general->types = Type::all()->sortBy('name');
-        $this->general->units = Unit::all();
+        $this->general->days = $this->day->instance()->get();
+        $this->general->periods = $this->period->instance()->get();
+        $this->general->types = $this->type->instance()->suitFilter()->get();
+        $this->general->units = $this->unit->instance()->suitRegister()->get();
         if ($this->general->identity == 'student') {
             $this->general->pre_curriculum = $this->curriculum->instance()->suitOwn(Auth::user()->id);
             $this->general->pre_curriculum = $this->general->pre_curriculum->suitPre()->get();
@@ -42,8 +42,6 @@ class CourseSearchController extends Controller
         $this->listRequest($request);
         $this->filterRequest($request);
 
-        if (!$request->has('semester'))
-            $this->general->lists = $this->course->suitCurrentSemester();
         $this->general->lists = $this->course->get();
 
         return view('common/course_search', ['general' => $this->general]);
@@ -104,12 +102,12 @@ class CourseSearchController extends Controller
         $this->general->request_lists = "";
 
         if ($request->has('professorName')) {
-            $this->general->request_lists .= "教授名字: [";
-            $this->general->request_lists .= $request->input('professorName') . " ] ";
+            $this->general->request_lists .= "教授名字: [ ";
+            $this->general->request_lists .= $request->input('professorName');
             $this->general->request_lists .= " ] ";
         }
         if ($request->has('courseName')) {
-            $this->general->request_lists .= "課程名稱: [";
+            $this->general->request_lists .= "課程名稱: [ ";
             $this->general->request_lists .= $request->input('courseName');
             $this->general->request_lists .= " ] ";
         }
@@ -118,33 +116,33 @@ class CourseSearchController extends Controller
             $this->general->request_lists .= ($request->input('enroll') ? "可加選" : "不可加選");
             $this->general->request_lists .= " ] ";
         }
-        if ($request->has('type')) {
-            $this->general->request_lists .= "修別:[ ";
-            foreach ($request->input('type') as $t)
-                $this->general->request_lists .= $t . " / ";
-            $this->general->request_lists .= " ] ";
-        }
-        if ($request->has('time')) {
-            $this->general->request_lists .= "時段:[ ";
-            foreach ($request->input('time') as $t)
-                $this->general->request_lists .= $t . " / ";
-            $this->general->request_lists .= " ] ";
-        }
-        if ($request->has('unit')) {
-            $this->general->request_lists .= "開課單位:[ ";
-            foreach ($request->input('unit') as $t)
-                $this->general->request_lists .= $t . " / ";
-            $this->general->request_lists .= " ] ";
-        }
-        if ($request->has('language')) {
-            $this->general->request_lists .= "授課語言:[ ";
-            foreach ($request->input('language') as $t)
-                $this->general->request_lists .= $t . " / ";
-            $this->general->request_lists .= " ] ";
-        }
         if ($request->has('semester')) {
-            $this->general->request_lists .= "開課學期:[ ";
+            $this->general->request_lists .= "開課學期: [ ";
             $this->general->request_lists .= $request->input('semester');
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('types')) {
+            $this->general->request_lists .= "修別: [ ";
+            foreach ($request->input('types') as $t)
+                $this->general->request_lists .= $t . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('times')) {
+            $this->general->request_lists .= "時段: [ ";
+            foreach ($request->input('times') as $t)
+                $this->general->request_lists .= $t . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('units')) {
+            $this->general->request_lists .= "開課單位:[ ";
+            foreach ($request->input('units') as $t)
+                $this->general->request_lists .= $t . " / ";
+            $this->general->request_lists .= " ] ";
+        }
+        if ($request->has('languages')) {
+            $this->general->request_lists .= "授課語言:[ ";
+            foreach ($request->input('languages') as $t)
+                $this->general->request_lists .= $t . " / ";
             $this->general->request_lists .= " ] ";
         }
     }
@@ -176,29 +174,29 @@ class CourseSearchController extends Controller
         if ($request->has('enroll'))
             $this->general->lists = $this->general->lists->suitEnroll($request->input('enroll'));
     }
-    function filterType(Request $request)
-    {
-        if ($request->has('type'))
-            $this->general->lists = $this->general->lists->suitTypes($this->general->info->student->unit->id, $request->input('type'));
-    }
-    function filterTime(Request $request)
-    {
-        if ($request->has('time'))
-            $this->general->lists = $this->general->lists->suitTimes($request->input('time'));
-    }
-    function filterUnit(Request $request)
-    {
-        if ($request->has('unit'))
-            $this->general->lists = $this->general->lists->suitUnits($request->input('unit'));
-    }
-    function filterLanguage(Request $request)
-    {
-        if ($request->has('language'))
-            $this->general->lists = $this->general->lists->suitLanguage($request->input('language'));
-    }
     function filterSemester(Request $request)
     {
         if ($request->has('semester'))
             $this->general->lists = $this->general->lists->suitSemester($request->input('semester'));
+    }
+    function filterType(Request $request)
+    {
+        if ($request->has('types'))
+            $this->general->lists = $this->general->lists->suitTypes($this->general->info->student->unit->id, $request->input('types'));
+    }
+    function filterTime(Request $request)
+    {
+        if ($request->has('times'))
+            $this->general->lists = $this->general->lists->suitTimes($request->input('times'));
+    }
+    function filterUnit(Request $request)
+    {
+        if ($request->has('units'))
+            $this->general->lists = $this->general->lists->suitUnits($request->input('units'));
+    }
+    function filterLanguage(Request $request)
+    {
+        if ($request->has('languages'))
+            $this->general->lists = $this->general->lists->suitLanguages($request->input('languages'));
     }
 }

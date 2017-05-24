@@ -34,4 +34,11 @@ class TypeRepository extends BaseRepository
         $this->model = $this->model->merge(Type::all()->whereIn('name', ['選修']));
         return $this;
     }
+    function suitFilter()
+    {
+        if (!$this->model)
+            return null;
+        $this->model = $this->model->whereNotIn('name', ['學校', '外系不可加選']);
+        return $this;
+    }
 }
