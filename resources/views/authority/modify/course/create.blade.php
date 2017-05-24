@@ -50,20 +50,16 @@
 
   <td><!--學年度-->
     <select class="form-control" name="year">
-        <!--
-        @for ($i = 2016; $i<=date('Y'); $i++)
-        <option value="{{$i}}">{{$i}}</option>
-        @endfor
-        -->
-        <option value="2016" selected>2016</option>
-        <option value="2017">2017</option>
+      @for ($y=2016; $y<=date('Y'); $y++)
+        <option value="{{$y}}" {{env('CURRENT_YEAR') == $y ? 'selected': ''}}>{{$y}}</option>
+      @endfor
     </select>
   </td>
 
   <td><!--學期-->
     <select class="form-control" name="semester">
-      <option value="1" selected>1</option>
-      <option value="2">2</option>
+      <option value="1" {{env('CURRENT_SEMESTER') == '1' ? 'selected': ''}}>1</option>
+      <option value="2" {{env('CURRENT_SEMESTER') == '2' ? 'selected': ''}}>2</option>
     </select>
   </td>
 

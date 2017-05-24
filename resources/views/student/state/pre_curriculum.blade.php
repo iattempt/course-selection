@@ -1,110 +1,128 @@
-<!--預選課表-->
-<a class="btn btn-primary col-12 d-flex justify-content-center" id="HeaderPreSelection" data-toggle="collapse" href="#PreSelection" aria-expanded="true" aria-controll="PreSelection">
-    預選課表
+<!--現修課表-->
+<a class="btn btn-primary col-12" data-toggle="collapse" href="#pre_prericulum_th" aria-expanded="true" aria-controll="pre_prericulum_th">
+    現修課表
 </a>
-<div id="PreSelection" class="collapse col-12">
-  <div class="row d-flex justify-content-center">
-    <div id="pre_curriculum_th" class="col-12">
+<div id="pre_prericulum_th" class="collapse col-12">
+  <!--標題列-->
+  <div class="row">
+    <div class="col-2">
+      <!--星期列最左邊-->
       <div class="row">
-        <div class="col row d-flex justify-content-center">
-          <a id="pre_c_week" onclick="pre_changeWD(this)" href="javascript:void(0)" class="col-12 text-white bg-primary">週課表</a>
-          <a id="pre_c_day" onclick="pre_changeWD(this)" href="javascript:void(0)" class="col-12">日課表</a>
+        <div class="col-12">
+          <a id="pre_header_day" class="btn-block pre_col_clear d-flex justify-content-center" onclick="PreChangeToWeekOrDay(this)" href="javascript:void(0)">週課表</a>
         </div>
-        <!--星期列-->
-        @foreach ($general->days as $d)
-        <div class="col row">
-          <a onclick="pre_changeDContext(this.id)" id="pre_c_day{{$d->id}}" class="col-12 d-flex justify-content-center pre_c_clear" href="javascript:void(0)">
-            {{$d->simple_name}}
+      </div>
+      <!--end 星期列最左邊-->
+    </div>
+    <div class="col-10">
+      <!--星期列-->
+      <div class="row">
+      @foreach ($general->days as $d)
+        <div class="col-2">
+          <a onclick="PreChangeContextOfDays(this.id)" id="pre_col_day{{$d->id}}" class="btn-block pre_col_clear d-flex justify-content-center" href="javascript:void(0)">
+            {{$d->name}}
           </a>
         </div>
-        @endforeach
-        <!--end 星期列-->
+      @endforeach
       </div>
-
-      <div>
-        @foreach ($general->periods as $p)
-        <div class="row">
-          <!--時間行-->
-          <div class="col-2 d-flex justify-content-center">
-            {{$p->name}}
-            {{date('H:i', strtotime($p->上課時間))}}
-            {{date('H:i', strtotime($p->下課時間))}}
-          </div>
-          <!--end 時間行-->
-          <!--星期行-課表-->
-          @foreach ($general->days as $d)
-            <div class="pre_c_dayn pre_c_day{{$d->id}} col row">
-            @foreach ($general->pre_curriculum as $c)
-              @foreach ($c->course->times as $t)
-                <div class="d-flex justify-content-center col-12">
-                  @if ($t->period->name == $p->name && $t->day->name == $d->name)
-                    <a>{{$c->course->name}}</a>
-                  @endif
-                </div>
-              @endforeach
-            @endforeach
-            </div>
-          @endforeach
-          <!--end 星期行-課表-->
-        </div>
-        <hr class="my-0">
-        @endforeach
-      </div>
+      <!--end 星期列-->
     </div>
   </div>
+  <hr class="row my-0">
+  <!--end 標題列-->
+
+  @foreach ($general->periods as $p)
+  <!--課表-->
+  <div class="row">
+    <!--課表最左邊  時間行-->
+    <div class="col-2">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center">
+          {{$p->name}}
+          {{date('H:i', strtotime($p->上課時間))}}
+          {{date('H:i', strtotime($p->下課時間))}}
+        </div>
+      </div>
+    </div>
+    <!--end 課表最左邊  時間行-->
+    <!--課表內容-->
+    <div class="col-10">
+      <div class="row">
+      @foreach ($general->days as $d)
+        <div class="col-2 pre_days_n pre_col_day{{$d->id}}">
+    @foreach ($general->pre_curriculum as $c)
+      @foreach ($c->course->times as $t)
+        @if ($t->period->name == $p->name && $t->day->name == $d->name)
+          <div class="d-flex justify-content-center pre_col_clear">
+            <a>{{$c->course->name}}</a>
+          </div>
+        @endif
+      @endforeach
+    @endforeach
+        </div>
+      @endforeach
+      </div>
+    </div>
+    <!--end 課表內容-->
+  </div>
+  <!--end 課表-->
+
+  <hr class="row my-0">
+  @endforeach
 </div>
 <!--預選課表-->
 
 <script>
 (function() {
-  pre_changeWD(this);
+  PreChangeToWeekOrDay(this);
 })()
-function pre_changeWD(caller){
-  var tb = document.getElementById("pre_curriculum-tb");
-  var dn = document.getElementsByClassName("pre_c_dayn"); 
-  if (caller.id != "pre_c_week") {
-    document.getElementById("pre_c_day").setAttribute("hidden", "true");
-    document.getElementById("pre_c_week").removeAttribute("hidden");
-    for (var i = 0, l = dn.length; i < l; i++) {
-      dn[i].removeAttribute("hidden");
-      dn[i].classList.remove("col-", "d-flex", "justify-content-center");
-      dn[i].setAttribute("colspan", "1");
+function PreChangeToWeekOrDay(caller){
+  var days = document.getElementsByClassName("pre_days_n"); 
+  if (caller.id != "pre_header_week") {
+    //代表點選星期
+    document.getElementById("pre_header_day").setAttribute("hidden", "true");
+    for (var i = 0, l = days.length; i < l; i++) {
+      days[i].removeAttribute("hidden");
+      days[i].classList.remove('col-12');
     }
-    var clear = document.getElementsByClassName("pre_c_clear");
-    for (var i = 0, l = clear.length; i < l; i++) {
-      clear[i].classList.remove("text-white", "bg-primary");
-    }
+    PreRemoveAllBg();
+    document.getElementById("pre_header_day").parentNode.classList.add("bg-info");
   }
   else {
-    var today = "pre_c_day" + (new Date().getDay());
-    if (today == "pre_c_day0")
-      today="pre_c_day1";
-    pre_changeDContext(today);
+    var today = "pre_col_day" + (new Date().getDay());
+    if (today == "pre_col_day0")
+      today="pre_col_day1";
+    PreChangeContextOfDays(today);
   }
 }
-function pre_changeDContext(id)
+function PreChangeContextOfDays(id)
 {
-  var d_hidden = document.getElementsByClassName("pre_c_dayn"); 
-  document.getElementById("pre_c_week").setAttribute("hidden", "true");
-  document.getElementById("pre_c_day").removeAttribute("hidden");
-  //設定資料顯示
+  document.getElementById("pre_header_day").removeAttribute("hidden");
+
+  var d_hidden = document.getElementsByClassName("pre_days_n"); 
+  //將所有資料隱藏
   for (var i = 0, l = d_hidden.length; i < l; i++) {
     d_hidden[i].setAttribute("hidden", "true");
   }
+  //將caller資料顯示
   var d_display = document.getElementsByClassName(id);
   for (var i = 0, l = d_display.length; i < l; i++) {
     d_display[i].removeAttribute("hidden");
-    d_display[i].setAttribute("colspan", "6");
+    d_display[i].classList.add('col-12');
   }
-  pre_changeDTitle(id);
+  PreChangeTitleOfDays(id);
 }
-function pre_changeDTitle(id)
+function PreChangeTitleOfDays(id)
 {
   var highlight = document.getElementById(id);
-  var clear = document.getElementsByClassName("pre_c_clear");
+  PreRemoveAllBg();
+  highlight.parentNode.classList.add("bg-info");
+}
+function PreRemoveAllBg()
+{
+  var clear = document.getElementsByClassName("pre_col_clear");
   for (var i = 0, l = clear.length; i < l; i++) {
-    clear[i].classList.remove("text-white", "bg-primary");
+    clear[i].parentNode.classList.remove("bg-info");
   }
-  highlight.classList.add("text-white", "bg-primary");
 }
 </script>
