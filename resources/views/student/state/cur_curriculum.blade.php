@@ -1,6 +1,6 @@
-<!--現修課表-->
+<!--預選課表-->
 <a class="btn btn-primary col-12" data-toggle="collapse" href="#cur_curriculum_th" aria-expanded="true" aria-controll="cur_curriculum_th">
-    現修課表
+    預選課表
 </a>
 <div id="cur_curriculum_th" class="collapse col-12">
   <!--標題列-->
@@ -9,7 +9,7 @@
       <!--星期列最左邊-->
       <div class="row">
         <div class="col-12">
-          <a id="cur_header_day" class="btn-block cur_col_clear d-flex justify-content-center" onclick="CurChangeToWeekOrDay(this)" href="javascript:void(0)">週課表</a>
+          <a id="cur_header_day" class="btn-block cur_header_clear d-flex justify-content-center" onclick="CurChangeToWeekOrDay(this)" href="javascript:void(0)">週課表</a>
         </div>
       </div>
       <!--end 星期列最左邊-->
@@ -19,7 +19,7 @@
       <div class="row">
       @foreach ($general->days as $d)
         <div class="col-2">
-          <a onclick="CurChangeContextOfDays(this.id)" id="cur_col_day{{$d->id}}" class="btn-block cur_col_clear d-flex justify-content-center" href="javascript:void(0)">
+          <a onclick="CurChangeContextOfDays(this.id)" id="cur_col_day{{$d->id}}" class="btn-block cur_header_clear d-flex justify-content-center" href="javascript:void(0)">
             {{$d->name}}
           </a>
         </div>
@@ -28,7 +28,6 @@
       <!--end 星期列-->
     </div>
   </div>
-  <hr class="row my-0">
   <!--end 標題列-->
 
   @foreach ($general->periods as $p)
@@ -50,15 +49,20 @@
       <div class="row">
       @foreach ($general->days as $d)
         <div class="col-2 cur_days_n cur_col_day{{$d->id}}">
+          <div class="d-flex justify-content-center">
+            &nbsp;
     @foreach ($general->cur_curriculum as $c)
-      @foreach ($c->course->times as $t)
-        @if ($t->period->name == $p->name && $t->day->name == $d->name)
-          <div class="d-flex justify-content-center cur_col_clear">
-            <a>{{$c->course->name}}</a>
-          </div>
-        @endif
-      @endforeach
+      @if ($c->course)
+        @foreach ($c->course->times as $t)
+          @if ($t->period && $t->day && $t->period->name == $p->name && $t->day->name == $d->name)
+            <div> 
+            {{$c->course->name}}
+            </div>
+          @endif
+        @endforeach
+      @endif
     @endforeach
+          </div>
         </div>
       @endforeach
       </div>
@@ -84,9 +88,12 @@ function CurChangeToWeekOrDay(caller){
     for (var i = 0, l = days.length; i < l; i++) {
       days[i].removeAttribute("hidden");
       days[i].classList.remove('col-12');
+      if (i%2)
+        days[i].classList.add('bg-faded');
     }
     CurRemoveAllBg();
-    document.getElementById("cur_header_day").parentNode.classList.add("bg-info");
+    document.getElementById("cur_header_day").parentNode.classList.remove("bg-primary");
+    document.getElementById("cur_header_day").classList.remove("text-white");
   }
   else {
     var today = "cur_col_day" + (new Date().getDay());
@@ -103,6 +110,7 @@ function CurChangeContextOfDays(id)
   //將所有資料隱藏
   for (var i = 0, l = d_hidden.length; i < l; i++) {
     d_hidden[i].setAttribute("hidden", "true");
+    d_hidden[i].classList.remove('bg-faded');
   }
   //將caller資料顯示
   var d_display = document.getElementsByClassName(id);
@@ -116,13 +124,15 @@ function CurChangeTitleOfDays(id)
 {
   var highlight = document.getElementById(id);
   CurRemoveAllBg();
-  highlight.parentNode.classList.add("bg-info");
+  highlight.parentNode.classList.remove("bg-primary");
+  highlight.classList.remove("text-white");
 }
 function CurRemoveAllBg()
 {
-  var clear = document.getElementsByClassName("cur_col_clear");
+  var clear = document.getElementsByClassName("cur_header_clear");
   for (var i = 0, l = clear.length; i < l; i++) {
-    clear[i].parentNode.classList.remove("bg-info");
+    clear[i].parentNode.classList.add("bg-primary");
+    clear[i].classList.add("text-white");
   }
 }
 </script>
