@@ -18,7 +18,7 @@ class CourseRepository extends BaseRepository
     function __construct(){}
     function instance()
     {
-        $this->model = $this->model === null ? null : Course::all()->sortBy('year')->sortBy('name')->whereIn('year', env('CURRENT_YEAR'))->whereIn('semester', env('CURRENT_SEMESTER'));
+        $this->model = $this->model === null ? null : Course::all()->sortBy('year')->sortBy('name');
         return $this;
     }
     function store(array $inputs)
