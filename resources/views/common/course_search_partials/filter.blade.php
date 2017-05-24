@@ -9,42 +9,42 @@
       {{ csrf_field() }}
       <!-- button of options -->
       <div class="row d-flex justify-content-center">
-        <a id="professor" class="btn col-" data-toggle="collapse" href="#collapseProfessor" aria-expanded="false" aria-controls="collapseProfessor">
+        <a id="professor" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseProfessor" aria-expanded="false" aria-controls="collapseProfessor">
           教授名字
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="course" class="btn col-" data-toggle="collapse" href="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">
+        <a id="course" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseCourse" aria-expanded="false" aria-controls="collapseCourse">
           課程名稱
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="enroll" class="btn col-" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
+        <a id="enroll" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseState" aria-expanded="false" aria-controls="collapseState">
           人數狀況
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="type" class="btn col-" data-toggle="collapse" href="#collapseType" aria-expanded="false" aria-controls="collapseType">
+        <a id="type" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseType" aria-expanded="false" aria-controls="collapseType">
           修別
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="time" class="btn col-" data-toggle="collapse" href="#collapseTime" aria-expanded="false" aria-controls="collapseTime">
+        <a id="time" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseTime" aria-expanded="false" aria-controls="collapseTime">
           時段
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="unit" class="btn col-" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
+        <a id="unit" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseUnit" aria-expanded="false" aria-controls="collapseUnit">
           開課單位
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="language" class="btn col-" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
+        <a id="language" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseLanguage" aria-expanded="false" aria-controls="collapseLanguage">
           授課語言
           <span class="dropdown-toggle"></span>
         </a>
 
-        <a id="semester" class="btn col-" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
+        <a id="semester" class="btn col-6 col-sm-4 col-md-2 col-lg-1" data-toggle="collapse" href="#collapseSemester" aria-expanded="false" aria-controls="collapseSemester">
           開課學期
           <span class="dropdown-toggle"></span>
         </a>
@@ -97,39 +97,30 @@
         </div>
 
         <div class="collapse col-12 mx-auto" id="collapseTime">
-          <div class="card card-block">
+          <div class="card">
             <div class="row">
-              <div class="col d-flex justify-content-center"></div>
-              @foreach ($general->days as $d)
-              <div class="col d-flex justify-content-center">{{$d->name}}</div>
-              @if (!$loop->last)|@endif
+            @foreach ($general->days as $day)
+              <div class="col-4 col-md-2">
+              @foreach ($general->periods as $period)
+                <div class="row">
+                  <label class="col-12 form-check-label my-2">
+                    <input type="checkbox" class"form-check-input" value="{{$day->name}} {{$period->name}}" name="time[]"
+                      @if (old("time"))
+                        @foreach (old("time") as $value)
+                          @if ($value === ($day->name." ".$period->name))
+                            checked
+                          @endif
+                        @endforeach
+                      @endif
+                      >
+                    {{$day->simple_name}}:{{$period->id}}
+                  </label>
+                </div>
               @endforeach
-            </div>
-            @foreach ($general->periods as $p)
-            @if ($loop->index%2 === 0)
-            <div class="row">
-            @else
-            <div class="row bg-info">
-            @endif
-              <div class="col">{{$p->name}}</div>
-              @foreach ($general->days as $d)
-              <div class="col">
-                <label class="form-check-label d-flex justify-content-center">
-                  <input type="checkbox" class"form-check-input" value="{{$d->name}} {{$p->name}}" name="time[]"
-                    @if (old("time"))
-                      @foreach (old("time") as $value)
-                        @if ($value === ($d->name." ".$p->name))
-                          checked
-                        @endif
-                      @endforeach
-                    @endif
-                    >
-                </label>
+              <hr class="my-2 my-lg-0">
               </div>
-              @if (!$loop->last)|@endif
-              @endforeach
-            </div>
             @endforeach
+            </div>
           </div>
         </div>
 

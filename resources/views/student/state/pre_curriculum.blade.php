@@ -1,6 +1,6 @@
-<!--現修課表-->
+<!--預選課表-->
 <a class="btn btn-primary col-12" data-toggle="collapse" href="#pre_prericulum_th" aria-expanded="true" aria-controll="pre_prericulum_th">
-    現修課表
+    預選課表
 </a>
 <div id="pre_prericulum_th" class="collapse col-12">
   <!--標題列-->
@@ -51,13 +51,15 @@
       @foreach ($general->days as $d)
         <div class="col-2 pre_days_n pre_col_day{{$d->id}}">
     @foreach ($general->pre_curriculum as $c)
-      @foreach ($c->course->times as $t)
-        @if ($t->period->name == $p->name && $t->day->name == $d->name)
-          <div class="d-flex justify-content-center pre_col_clear">
-            <a>{{$c->course->name}}</a>
-          </div>
-        @endif
-      @endforeach
+      @if ($c->course)
+        @foreach ($c->course->times as $t)
+          @if ($t->period && $t->day && $t->period->name == $p->name && $t->day->name == $d->name)
+            <div class="d-flex justify-content-center pre_col_clear">
+              <a>{{$c->course->name}}</a>
+            </div>
+          @endif
+        @endforeach
+      @endif
     @endforeach
         </div>
       @endforeach
