@@ -81,7 +81,7 @@
             <!-- 列出資料庫修別選項 -->
             @foreach ($general->types as $t)
             <label class="form-check-label">
-              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="type[]"
+              <input type="checkbox" class"my-3 my-lg-2 form-check-input" value="{{$t->name}}" name="types[]"
                 @if (old("type"))
                   @foreach (old("type") as $value)
                     @if ($value === $t->name)
@@ -104,7 +104,7 @@
               @foreach ($general->periods as $period)
                 <div class="row">
                   <label class="col-12 form-check-label my-2">
-                    <input type="checkbox" class"form-check-input" value="{{$day->name}} {{$period->name}}" name="time[]"
+                    <input type="checkbox" class"form-check-input" value="{{$day->id}} {{$period->id}}" name="times[]"
                       @if (old("time"))
                         @foreach (old("time") as $value)
                           @if ($value === ($day->name." ".$period->name))
@@ -131,7 +131,7 @@
                 @continue
               @else
                 <label class="form-check-label">
-                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$u->name}}" name="unit[]"
+                  <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="{{$u->name}}" name="units[]"
                     @if (old("unit"))
                       @foreach (old("unit") as $value)
                         @if ($value === $u->name)
@@ -150,7 +150,7 @@
         <div class="collapse col-12 mx-auto" id="collapseLanguage">
           <div class="card card-block">
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="中文" name="language[]"
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="中文" name="languages[]"
                     @if (old("language"))
                       @foreach (old("language") as $value)
                         @if ($value === "中文")
@@ -162,7 +162,7 @@
                 中文
             </label>
             <label class="form-check-label">
-              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="英文" name="language[]"
+              <input type="checkbox" class="my-3 my-lg-2 form-check-input" value="英文" name="languages[]"
                     @if (old("language"))
                       @foreach (old("language") as $value)
                         @if ($value === "英文")

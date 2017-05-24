@@ -15,7 +15,7 @@ class Professor extends Model
                             'unit_id'];
     public function info()
     {
-        return $this->belongsTo('App\User', 'id');
+        return $this->belongsTo('App\User');
     }
     public function unit()
     {
