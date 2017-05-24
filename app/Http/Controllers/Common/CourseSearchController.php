@@ -42,6 +42,8 @@ class CourseSearchController extends Controller
         $this->listRequest($request);
         $this->filterRequest($request);
 
+        if (!$request->has('semester'))
+            $this->general->lists = $this->course->suitCurrentSemester();
         $this->general->lists = $this->course->get();
 
         return view('common/course_search', ['general' => $this->general]);

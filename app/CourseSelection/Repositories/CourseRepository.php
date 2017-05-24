@@ -49,6 +49,13 @@ class CourseRepository extends BaseRepository
         $data->save();
         return $this;
     }
+    function suitCurrentSemester()
+    {
+        if (!$this->model)  return null;
+
+        $this->model = $this->model->whereIn('year', env('CURRENT_YEAR'))->whereIn('semester', env('CURRENT_SEMESTER'));
+        return $this;
+    }
     function suitSemester($semester)
     {
         if (!$this->model)  return null;

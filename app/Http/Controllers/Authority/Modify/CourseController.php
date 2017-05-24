@@ -14,7 +14,7 @@ class CourseController extends ModifyController
         parent::__construct();
         $this->general->title = 'Modify course';
         $this->general->view_path .= '/course';
-        $this->general->lists =  $this->course->instance()->get();
+        $this->general->lists =  $this->course->instance()->suitCurrentSemester()->get();
         $this->general->units =  $this->unit->instance()->suitRegister()->get();
         $this->general->course_bases = $this->course_base->instance()->get();
         $this->general->classrooms = $this->classroom->instance()->get();
