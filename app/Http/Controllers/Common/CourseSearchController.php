@@ -197,6 +197,6 @@ class CourseSearchController extends Controller
     function filterLanguage(Request $request)
     {
         if ($request->has('languages'))
-            $this->general->lists = $this->general->lists->suitLanguages($request->input('languages'));
+            $this->general->lists = $this->general->lists->suitLanguage($request->input('languages'));
     }
 }
