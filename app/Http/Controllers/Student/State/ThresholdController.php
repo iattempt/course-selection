@@ -19,19 +19,13 @@ class ThresholdController extends StateController
         $this->general->view_path .= "/threshold";
     }
     function index(Request $request) {
-        $this->threshold1 = $this->threshold1->instance()->getByUnit(Auth::user()->student->unit_id);
+        $this->threshold1 = $this->threshold1->instance()->suitUnit(Auth::user()->student->unit_id);
         $this->general->units = $this->unit->instance()->get();
         $this->general->types = $this->type->instance()->get();
         $this->general->course_bases = $this->course_base->instance()->get();
-        $this->general->threshold_force = $this->threshold1->instance()->get();
-        $this->general->threshold_elective = $this->threshold2->instance()->get();
         $this->general->curriculum = $this->curriculum->instance()->suitOwn(Auth::user()->id)->get();
 
-        foreach($this->general->threshold_force as $f)
-            echo $f.'<br>';
-        echo '<br>';
-        foreach($this->general->threshold_elective as $e)
-            echo $e.'<br>';
+        $this->general->threshold_force = $this->threshold1->getOwnForceThreshold(Auth::user()->id);
 
         return view('student/state/threshold', ['general' => $this->general]);
     }

@@ -21,6 +21,6 @@ class Threshold1 extends Model
         return $this->hasOne('Model\Type');
     }
     public function course_base() {
-        return $this->hasOne('Model\CourseBase');
+        return $this->hasOne('Model\CourseBase', 'id', 'course_base_id');
     }
 }
