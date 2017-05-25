@@ -24,27 +24,27 @@
             <span class="hidden-md-down">送出</span>
             <i class="glyphicon glyphicon-plus"></i>
           </button>
-          <a href="javascript:void(0)" class="col-3">
+          <a class="col-3">
             課程名稱
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-3 col-md-2">
+          <a class="col-3 col-md-2">
             授課教師
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-2">
+          <a class="col-2">
             修別
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-1">
+          <a class="col-1">
             上課時間
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-1 hidden-sm-down">
+          <a class="col-1 hidden-sm-down">
             學分
             <span class="dropdown-toggle"></span>
           </a>
-          <a href="javascript:void(0)" class="col-1 hidden-sm-down">
+          <a class="col-1 hidden-sm-down">
             教室
             <span class="dropdown-toggle"></span>
           </a>

@@ -4,11 +4,11 @@
 <div id="force_threshold" class="collapse col-12 show">
   <!--標題-->
   <div class="row">
-    <div class="col-5 offset-1">
+    <div class="col-7 offset-1">
       課程名稱
     </div>
-    <div class="col-1">
-      應修學期
+    <div class="col-4">
+      學年-學期
     </div>
   </div>
   <!--end 標題-->
@@ -23,10 +23,10 @@
     @else
     <div class="row bg-faded">
     @endif
-      <div class="col-5 offset-1">
+      <div class="col-7 offset-1">
         {{$course['course_name']}}
       </div>
-      <div class="col-1">
+      <div class="col-4">
         {{$course['adopt_semester']}}
       </div>
     </div>
