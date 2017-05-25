@@ -121,12 +121,15 @@ class CourseRepository extends BaseRepository
                     }
                 } 
                 if (!$hasBelongsOwnUnit){
-                    //第二階段：此科系若沒有設定該課程修別，就過濾有無設定其餘
+                    //第三階段：此科系若沒有設定該課程修別，就過濾有無設定其餘
                     //若有設定為其餘，就匹配是否要求的修別是其餘對應的修別
                     foreach ($value->types as $vt) {
                         //unit_id: 1=>全部 2=>其餘
-                        if (($vt->unit_id == '2' || $vt->unit_id == '1')
+                        if (($vt->unit_id == 2 || $vt->unit_id == 1)
                             &&  $vt->type_id == $type)
+                            return $value;
+                        //確認是否搜尋通識，若是則回傳所有通識的課
+                        if ($type == 1 && $vt->unit_id == 2 && ($vt->type_id == 3 || $vt->type_id == 4 || $vt->type_id == 5 || $vt->type_id ==6))
                             return $value;
                     }
                 }

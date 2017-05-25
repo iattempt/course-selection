@@ -43,6 +43,7 @@ Route::group(['middleware' => 'guest'], function () {
                 Route::resource('threshold1', 'Threshold1Controller', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('threshold2', 'Threshold2Controller', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::resource('unit', 'UnitController', ['only' => ['index', 'store', 'update', 'destroy']]);
+                Route::resource('type', 'TypeController', ['only' => ['index', 'store', 'update', 'destroy']]);
                 Route::get('export_sql', 'ExportSQLController@index');
             });
         });

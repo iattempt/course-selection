@@ -14,10 +14,12 @@
     @include ('authority/modify/unit/create', array('caller' => 'unit'))
   </tr>
   @foreach ($general->lists as $list)
+    @if ($list->id !== 1)
   <tr>
     @include ('authority/modify/unit/edit', array('caller' => 'unit'))
     @include ('authority/modify/unit/delete', array('caller' => 'unit'))
   </tr>
+    @endif
   @endforeach
 </tbody>
 @endsection
