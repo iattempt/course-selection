@@ -36,7 +36,6 @@ class UnitRepository extends BaseRepository
     {
         if (!$this->model)
             return null;
-        $this->model = $this->model->whereNotIn('name', ['全部']);
         $this->model = $this->model->whereNotIn('unit_base_id', ['2']);
         return $this;
     }
