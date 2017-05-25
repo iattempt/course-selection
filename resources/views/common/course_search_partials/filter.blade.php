@@ -183,8 +183,8 @@
                 <label class='form-check-label'>
                   <input type='radio' class='my-3 my-lg-2 form-check-input' value='{{$y}} {{$s}}' name='semester' 
                     {{old("semester") == "$y $s" ? "checked" : ""}} 
-                    {{!old('semester') && env('CURRENT_YEAR') == $y && env('CURRENT_SEMESTER') == $s ?'checked':''}}
     >
+                    <!--{{!old('semester') && env('CURRENT_YEAR') == $y && env('CURRENT_SEMESTER') == $s ?'checked':''}}-->
                   {{$y}}-{{$s}}
                 </label>
               @endfor
