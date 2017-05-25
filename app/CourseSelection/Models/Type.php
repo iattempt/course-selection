@@ -8,5 +8,5 @@ class Type extends Model
 {
     //
     protected $fillable = [ 'name',
-                            'subjection'];
+                            'type_base_id'];
 }

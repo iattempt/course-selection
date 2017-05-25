@@ -30,7 +30,7 @@ class TypeRepository extends BaseRepository
     {
         if (!$this->model)
             return null;
-        $this->model = $this->model->whereIn('subjection', ['通識']);
+        $this->model = $this->model->whereIn('type_base_id', ['通識']);
         $this->model = $this->model->merge(Type::all()->whereIn('name', ['選修']));
         return $this;
     }
@@ -39,6 +39,21 @@ class TypeRepository extends BaseRepository
         if (!$this->model)
             return null;
         $this->model = $this->model->whereNotIn('name', ['學校', '外系不可加選']);
+        return $this;
+    }
+    function store(array $inputs)
+    {
+        $this->store_model = Type::create($inputs);
+        $check_dupl_inputs = $inputs;
+        if ($this->isDuplicate($check_dupl_inputs, $this->store_model->id))
+            $this->store_model->delete();
+        return $this;
+    }
+    function update(array $inputs, $id)
+    {
+        $check_dupl_inputs = $inputs;
+        if (!$this->isDuplicate($check_dupl_inputs, $id))
+            $this->getById($id)->update($inputs);
         return $this;
     }
 }
