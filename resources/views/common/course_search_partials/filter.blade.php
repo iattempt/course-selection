@@ -151,8 +151,8 @@
           <div class='card card-block'>
             <label class='form-check-label'>
               <input type='checkbox' class='my-3 my-lg-2 form-check-input' value='中文' name='languages[]'
-                    @if (old('language'))
-                      @foreach (old('language') as $value)
+                    @if (old('languages'))
+                      @foreach (old('languages') as $value)
                         @if ($value == '中文')
                           checked
                         @endif
@@ -163,8 +163,8 @@
             </label>
             <label class='form-check-label'>
               <input type='checkbox' class='my-3 my-lg-2 form-check-input' value='英文' name='languages[]'
-                    @if (old('language'))
-                      @foreach (old('language') as $value)
+                    @if (old('languages'))
+                      @foreach (old('languages') as $value)
                         @if ($value == '英文')
                           checked
                         @endif
@@ -181,10 +181,15 @@
             @for ($y = 2016; $y<=date('Y'); $y++)
               @for ($s = 1; $s<=2; $s++)
                 <label class='form-check-label'>
-                  <input type='radio' class='my-3 my-lg-2 form-check-input' value='{{$y}} {{$s}}' name='semester' 
-                    {{old("semester") == "$y $s" ? "checked" : ""}} 
-    >
-                    <!--{{!old('semester') && env('CURRENT_YEAR') == $y && env('CURRENT_SEMESTER') == $s ?'checked':''}}-->
+                  <input type='checkbox' class='my-3 my-lg-2 form-check-input' value='{{$y}} {{$s}}' name='semesters[]' 
+                    @if (old('semesters'))
+                      @foreach(old('semesters') as $old_sem)
+                        @if ($old_sem  == "$y $s")
+                          checked 
+                        @endif
+                      @endforeach
+                    @endif
+                    >
                   {{$y}}-{{$s}}
                 </label>
               @endfor

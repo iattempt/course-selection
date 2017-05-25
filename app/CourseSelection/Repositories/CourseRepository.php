@@ -57,14 +57,19 @@ class CourseRepository extends BaseRepository
         $this->model = $this->model->whereIn('year', env('CURRENT_YEAR'))->whereIn('semester', env('CURRENT_SEMESTER'));
         return $this;
     }
-    function suitSemester($semester)
+    function suitSemesters($semesters)
     {
         if (!$this->model)  return null;
 
-        $ys = explode(' ', $semester);
-        $year = $ys[0]; $semester = $ys[1];
-        $this->model = $this->model->whereIn('year', $year);
-        $this->model = $this->model->whereIn('semester', $semester);
+        $this->model = $this->model->filter(function ($value, $key) use($semesters) {
+            foreach ($semesters as $semester) {
+                $ys = explode(' ', $semester);
+                $y = $ys[0];
+                $s = $ys[1];
+                if ($value->year == $y && $value->semester ==$s)
+                    return $value;
+            }
+        });
         return $this;
     }
     function suitTimes($times)
