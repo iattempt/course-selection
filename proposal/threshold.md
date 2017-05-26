@@ -1,7 +1,9 @@
 # 總覽
 ## 架構
-   *  狀態              [依Curriculum/State分組]
-      - 種類            [依Course/Type分組]
+   *  狀態
+      `依Curriculum/State分組`
+      - 種類
+         `依Course/Type分組`
          + 對應資訊
 ## 實作
    * 未修科目[]
