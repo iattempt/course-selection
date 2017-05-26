@@ -21,8 +21,7 @@ Route::group(['middleware' => 'guest'], function () {
 //common
     Route::group(['middleware' => 'common'], function () {
         Route::group(['namespace' => 'Common'], function() {
-            Route::get('feedback', 'FeedbackController@index');
-            Route::post('feedback', 'FeedbackController@store');
+            Route::resource('feedback', 'FeedbackController', ['only' => ['index', 'store']]);
             Route::resource('course_search', 'CourseSearchController', ['only' => ['index', 'store']]);
         });
     });
