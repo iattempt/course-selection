@@ -15,6 +15,8 @@ class IndexController extends Controller
 
     public function index() {
         if (Auth::check()){
+            if (Auth::user()->getType() == 'student')
+                return redirect(Auth::user()->getType().'/state/curriculum');
             return redirect(Auth::user()->getType());
         }
         return redirect('login');
