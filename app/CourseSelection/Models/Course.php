@@ -4,7 +4,6 @@ namespace Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
 class Course extends Model
 {
     use SoftDeletes;
@@ -43,5 +42,11 @@ class Course extends Model
     public function course_base()
     {
         return $this->belongsTo('Model\CourseBase');
+    }
+    public function isCommon()
+    {
+        if ($this->unit_id == 20)
+            return true;
+        return false;
     }
 }

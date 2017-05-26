@@ -20,40 +20,38 @@ class CurriculumRepository extends BaseRepository
     }
     function suitCurrentSelection()
     {
-        if (!$this->model)
-            return null;
+        if (!$this->model)  return null;
+
         $this->model = $this->model->whereIn('state', '修課中');
         return $this;
     }
     function suitPreSelection()
     {
-        if (!$this->model)
-            return null;
+        if (!$this->model)  return null;
+
         $this->model = $this->model->whereIn('state', '預選中');
         return $this;
     }
     function suitOwn($id)
     {
-        if (!$this->model)
-            return null;
+        if (!$this->model)  return null;
+
         $this->model = $this->model->whereIn('student_id', $id);
         return $this;
     }
     function suitPre()
     {
-        if (!$this->model)
-            return null;
+        if (!$this->model)  return null;
+
         $this->model = $this->model->whereIn('state', '預選中');
         return $this;
     }
     function suitCur()
     {
-    {
-        if (!$this->model)
-            return null;
+        if (!$this->model)  return null;
+
         $this->model = $this->model->whereIn('state', '修課中');
         return $this;
-    }
     }
     function getCourseOfOwn($id, $course_id)
     {
@@ -63,5 +61,14 @@ class CurriculumRepository extends BaseRepository
                 return $value;
         }
         return null;
+    }
+    function suitCommon()
+    {
+        if (!$this->model)  return null;
+        $this->model = $this->model->filter(function ($value, $key) {
+            if ($value->course && $value->course->isCommon())
+                return $value;
+        });
+        return $this;
     }
 }

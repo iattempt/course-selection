@@ -12,14 +12,14 @@ class CourseType extends Model
                             'type_id'];
     public function type()
     {
-        return $this->belongsTo('Model\Type', 'type_id');
+        return $this->belongsTo('Model\Type');
     }
     public function unit()
     {
-        return $this->belongsTo('Model\Unit', 'unit_id');
+        return $this->belongsTo('Model\Unit');
     }
     public function course()
     {
-        return $this->belongsTo('Model\Course', 'course_id');
+        return $this->belongsTo('Model\Course');
     }
 }

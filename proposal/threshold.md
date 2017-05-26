@@ -1,10 +1,9 @@
 # 總覽
-### 架構
-   *  狀態
-      `依Curriculum/State分組`
-      - 種類
-         `依Course/Type分組`
-         + 對應資訊
+### 項目
+   `依Curriculum/State分組`
+   - 種類
+      `依Course/Type分組`
+      + 對應資訊
 # 實作
    - 以下都採用縮放方式列出
 ### Overview{3 canvas}
