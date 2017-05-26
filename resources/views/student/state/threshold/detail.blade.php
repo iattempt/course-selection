@@ -9,24 +9,32 @@
     <div id="threshold_{{$state_key}}" class="collapse col-12">
       @foreach ($state_value as $type_key => $type_value)
         <div class="row">
-          <div class="col-12">
+          <div class="col-2 bg-info">
             {{$type_key}}
           </div>
-        @foreach ($type_value as $key => $course)
-          <div class="col-4 offset-1">
-            {{$course['course_name']}}
+          <div class="col-12">
+          @foreach ($type_value as $key => $course)
+            @if ($loop->index%2)
+            <div class="row">
+            @else
+            <div class="row bg-faded">
+            @endif
+              <div class="col-4">
+                {{$course['course_name']}}
+              </div>
+              <div class="col-1">
+                {{$course['year']}}
+              </div>
+              <div class="col-1">
+                {{$course['semester']}}
+              </div>
+              <div class="col-1">
+                {{$course['credit']}}
+              </div>
+              <hr class="col-12 my-0">
+            </div>
+          @endforeach
           </div>
-          <div class="col-1">
-            {{$course['year']}}
-          </div>
-          <div class="col-1">
-            {{$course['semester']}}
-          </div>
-          <div class="col-1">
-            {{$course['credit']}}
-          </div>
-          <hr class="col-12 my-0">
-        @endforeach
         </div>
       @endforeach
     </div>
