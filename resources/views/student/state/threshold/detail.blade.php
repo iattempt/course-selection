@@ -22,7 +22,7 @@
               <div class="col-4">
                 {{$course['course_name']}}
               </div>
-              <div class="col-1">
+              <div class="col-2">
                 {{$course['year']}}
               </div>
               <div class="col-1">
