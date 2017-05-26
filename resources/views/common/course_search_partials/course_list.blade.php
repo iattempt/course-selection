@@ -90,7 +90,7 @@
     <div>開課單位 : {{$list->unit->name}}</div>
   @endif
     <div>開課學年-學期 : {{$list->year}}-{{$list->semester}}</div>
-    <div>課程剩餘可登記人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>
+    <div>尚可登記人數/總人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>
     <div class="hidden-md-up">學分 : {{$list->credit}}</div>
   @if ($list->classroom)
     <div class="hidden-md-up">教室 : {{$list->classroom->name}}</div>
