@@ -18,8 +18,9 @@ class ThresholdController extends StateController
         $this->general->view_path .= "/threshold";
     }
     function index(Request $request) {
-        $this->general->threshold = (new Threshold(Auth::id()))->suitAll()->get();
-
+        $threshold = (new Threshold(Auth::id()))->suitAll();
+        $this->general->threshold = $threshold->copy()->getList();
+        $this->general->credit = $threshold->copy()->getCredit();
         return view('student/state/threshold', ['general' => $this->general]);
     }
 }

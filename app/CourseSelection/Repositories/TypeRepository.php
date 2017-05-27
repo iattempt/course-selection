@@ -30,7 +30,7 @@ class TypeRepository extends BaseRepository
     {
         if (!$this->model)
             return null;
-        $this->model = $this->model->whereIn('type_base_id', ['通識']);
+        $this->model = $this->model->whereIn('type_base_id', [2]);
         $this->model = $this->model->merge(Type::all()->whereIn('name', ['選修']));
         return $this;
     }

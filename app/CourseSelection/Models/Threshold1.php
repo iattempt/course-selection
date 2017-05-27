@@ -15,12 +15,12 @@ class Threshold1 extends Model
                             'adopt_grade',
                             'adopt_semester'];
     public function unit() {
-        return $this->hasOne('Model\Unit');
+        return $this->belongsTo('Model\Unit');
     }
     public function type() {
-        return $this->hasOne('Model\Type');
+        return $this->belongsTo('Model\Type');
     }
     public function course_base() {
-        return $this->hasOne('Model\CourseBase', 'id', 'course_base_id');
+        return $this->belongsTo('Model\CourseBase');
     }
 }

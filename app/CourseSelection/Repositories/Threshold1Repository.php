@@ -16,6 +16,7 @@ class Threshold1Repository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
+    protected $result;
     function __construct(){}
 
     function instance()
@@ -38,15 +39,15 @@ class Threshold1Repository extends BaseRepository
             $this->getById($id)->update($inputs);
         return $this;
     }
-    function suitUnit($unit)
+    function suitUnit($unit_id)
     {
         if (!$this->model)  return null;
 
-        $subjection = Unit::find($unit)->unit_base_id;
+        $subjection = Unit::find($unit_id)->unit_base_id;
         if (($subjection !=1) || ($subjection !=2))
-            $this->model = $this->model->whereIn('unit_id', [$unit, $subjection]);
+            $this->model = $this->model->whereIn('unit_id', [$unit_id, $subjection]);
         else
-            $this->model = $this->model->whereIn('unit_id', [$unit]);
+            $this->model = $this->model->whereIn('unit_id', [$unit_id]);
         return $this;
     }
     function suitYear($year)
@@ -70,52 +71,16 @@ class Threshold1Repository extends BaseRepository
         $this->model = $this->model->whereIn('adopt_semester', $semester);
         return $this;
     }
-    function getOwnForceThreshold($id)
+    function suitNonSelect($curriculum)
     {
-        if (!$this->model) return null;
-        $force_threshold = [];
-
-        //取得學生
-        $user = (new User)->instance()->suitOwn($id)->get()->values();
-        if (!$user || !$user[0]->student) return null;
+        if (!$this->model)  return null;
         
-        //取得學生單位之必修科目
-        $threshold = $this->model->whereIn('unit_id', $user[0]->student->unit_id)->whereIn('adopt_year', $user[0]->student->year)->values();
-
-        for ($i = 0; $i < count($threshold); $i++) {
-            $force_threshold[$i] = ['course_base_id' => $threshold[$i]->course_base_id, 'course_name' => $threshold[$i]->course_base->name, 'adopt_semester' => $threshold[$i]->adopt_grade . '-' . $threshold[$i]->adopt_semester];
-        }
-
-        //取得學生歷史修課紀錄
-        $curriculum = (new Curriculum)->instance()->suitOwn($id)->get();
-
-        //根據學生修課紀錄，增加狀態
-        for ($i = 0; $i < count($threshold); $i++) {
-            $isNotStudied = true;
-            foreach ($curriculum as $cur)
-                if ($cur->course && $cur->course->course_base_id == $force_threshold[$i]['course_base_id']) {
-                    $force_threshold[$i] += ['state' => $cur->state];
-                    $isNotStudied = false;
-                }
-            if ($isNotStudied)
-                $force_threshold[$i] += ['state' => '未修'];
-        }
-        
-        for ($i = 0; $i < count($force_threshold); $i++) {
-            unset($force_threshold[$i]['course_base_id']);
-        }
-
-        $temp = $force_threshold;
-
-        $force_threshold = [];
-        $force_threshold['未修'] = [];
-        $force_threshold['預選中'] = [];
-        $force_threshold['修課中'] = [];
-        $force_threshold['已修完'] = [];
-        foreach ($temp as $value) {
-            $force_threshold[$value['state']][] = $value;
-        }
-
-        return $force_threshold;
+        $this->model = $this->model->filter(function ($value, $key) use($curriculum){
+            foreach ($curriculum as $cur) {
+                if ($cur->course && $cur->course->course_base_id == $value->course_base_id)
+                    return $value;
+            }
+        });
+        return $this;
     }
 }

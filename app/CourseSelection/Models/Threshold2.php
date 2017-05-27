@@ -12,9 +12,9 @@ class Threshold2 extends Model
                             'credit',
                             'adopt_year'];
     public function unit() {
-        return $this->hasOne('Model\Unit');
+        return $this->belongsTo('Model\Unit');
     }
     public function type() {
-        return $this->hasOne('Model\Type');
+        return $this->belongsTo('Model\Type');
     }
 }
