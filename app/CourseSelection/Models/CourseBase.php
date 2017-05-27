@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class CourseBase extends Model
 {
     //
-    protected $fillable = [ 'name'];
+    protected $fillable = [ 'name', 'credit'];
     public function courses()
     {
         return $this->hasMany('Model\Course');

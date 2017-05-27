@@ -30,7 +30,7 @@ class CourseBaseController extends ModifyController
     public function store(Request $request)
     {
         try {
-            $inputs = $request->only('name');
+            $inputs = $request->only('name', 'credit');
             $this->course_base->instance()->store($inputs);
         }
         catch (\Exception $e){
@@ -49,7 +49,7 @@ class CourseBaseController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            $inputs = $request->only('name');
+            $inputs = $request->only('name', 'credit');
             $this->course_base->instance()->update($inputs, $id);
         }
         catch (\Exception $e){

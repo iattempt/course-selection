@@ -45,7 +45,7 @@ class ThresholdRepository
                 $temp['course_name'] = $value->course->name;
                 $temp['year']        = $value->course->year;
                 $temp['semester']    = $value->course->semester;
-                $temp['credit']      = $value->course->credit;
+                $temp['credit']      = $value->course->course_base->credit;
                 $temp['state']       = $value->state;
 
                 //判定型別
@@ -170,10 +170,8 @@ class ThresholdRepository
         
         return $this;
     }
-    function getCredit()
+    function getSeparateCredit()
     {
-        $this->credit = [];
-
         //取得各別總學分
         foreach ($this->result as $state_key => $state_value) {
             $this->credit[$state_key] = [];
@@ -184,7 +182,9 @@ class ThresholdRepository
                 }
             }
         }
-
+    }
+    function modifyCreditToArray()
+    {
         //-----------------
         //新增總學分之陣列
         $this->credit['總學分'] = [];
@@ -196,21 +196,27 @@ class ThresholdRepository
         unset($this->credit['總學分']['通識社會']);
         unset($this->credit['總學分']['通識自然']);
         unset($this->credit['總學分']['通識文明與經典']);
-
+    }
+    function getCreditOfForce()
+    {
         //取得必修所需總學分
         //$curriculum = (new Curriculum())->instance()->suitOwn($this->user_id)->get();
         $threshold1 = (new Threshold1)->instance()->suitUnit($this->user_unit_ids[0])->get();
         foreach ($threshold1 as $value) {
             $this->credit['總學分'][$value->type->name] += $value->course_base->credit;
         }
-
+    }
+    function getCreditOfCommonAndElective()
+    {
         //-----------------
         //取得選修通識所需總學分
         $threshold2 = (new Threshold2)->instance()->suitUnit($this->user_unit_ids[0])->get();
         foreach ($threshold2 as $value) {
             $this->credit['總學分'][$value->type->name] += $value->credit;
         }
-
+    }
+    function getCreditOfRemainAndState()
+    {
         //----------------
         //取得欠缺之學分
         $this->credit['未修過'] = $this->credit['總學分'];
@@ -244,7 +250,9 @@ class ThresholdRepository
         foreach ($this->credit['學分狀態'] as $key => $value)
             $this->credit['學分狀態'][$key] = $value==0 ? '已達標準' : '學分不足';
         $this->credit['學分狀態']['通識'] .= ($hum_count+$soc_count+$nat_count+$civ_count)<3 ? '、不足三領域' : '';
-
+    }
+    function separateCreditBetweenTotalAndOther()
+    {
         //分類總學分與各項學分
         $temp = [];
         $temp['學分狀態'] = $this->credit['學分狀態'];
@@ -255,7 +263,9 @@ class ThresholdRepository
                 $temp['細項學分'][$key] = $this->credit[$key];
         }
         $this->credit = $temp;
-
+    }
+    function calcPercentagesForCanvas()
+    {
         //----------------
         //取得Canvas數值
         //此數數值是尚未遞增
@@ -308,6 +318,18 @@ class ThresholdRepository
                 $temp = $this->credit['Canvas'][$type_key][$state_key]['end'];
             }
         }
+    }
+    function getCredit()
+    {
+        $this->credit = [];
+
+        $this->getSeparateCredit();
+        $this->modifyCreditToArray();
+        $this->getCreditOfForce();
+        $this->getCreditOfCommonAndElective();
+        $this->getCreditOfRemainAndState();
+        $this->separateCreditBetweenTotalAndOther();
+        $this->calcPercentagesForCanvas();
 
         return $this->credit;
     }

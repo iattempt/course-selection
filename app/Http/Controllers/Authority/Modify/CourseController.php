@@ -38,7 +38,7 @@ class CourseController extends ModifyController
     public function store(Request $request)
     {
         try {
-            $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'credit', 'language', 'year', 'semester', 'enrollment_max']);
+            $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'language', 'year', 'semester', 'enrollment_max']);
             $this->course->instance()->store($inputs);
         }
         catch (\Exception $e){
@@ -57,7 +57,7 @@ class CourseController extends ModifyController
     public function update(Request $request, $id)
     {
         try {
-            $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'credit', 'language', 'year', 'semester', 'enrollment_max']);
+            $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'language', 'year', 'semester', 'enrollment_max']);
             $this->course->instance()->update($inputs, $id);
         }
         catch (\Exception $e){

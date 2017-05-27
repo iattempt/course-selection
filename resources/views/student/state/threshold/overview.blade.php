@@ -11,7 +11,7 @@
             <canvas id="{{$type_key}}" width="100" height="100"></canvas>
           </div>
           <div class="row">
-            {{$type_key}}
+            {{$type_key}} [{{$general->credit['學分狀態'][$type_key]}}]
           </div>
         </div>
         <div class="col-6 col-lg-3">
@@ -39,8 +39,9 @@ window.onload = function(){
     var ctx = document.getElementById(type).getContext("2d");
     for (state in canvas_value[type]) {
       ctx.beginPath();
-      var start = canvas_value[type][state]['start'];
-      var end = canvas_value[type][state]['end'];
+      //+1.5 是為了使得終點為12點鐘
+      var start = canvas_value[type][state]['start']+1.5;
+      var end = canvas_value[type][state]['end']+1.5;
       ctx.arc(50, 50, 24, start * Math.PI, end * Math.PI);
       ctx.lineWidth=50;
       var ctext = document.getElementById(type+state).getContext("2d");

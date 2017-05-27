@@ -32,15 +32,6 @@
     </select>
   </td>
 
-  <td><!--學分-->
-    <select class="form-control" name="credit">
-      <option value="0">0</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3" selected>3</option>
-    </select>
-  </td>
-
   <td><!--授課語言-->
     <select class="form-control" name="language">
       <option value="英文">英文</option>

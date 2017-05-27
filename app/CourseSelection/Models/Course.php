@@ -12,7 +12,6 @@ class Course extends Model
                             'course_base_id',
                             'unit_id',
                             'classroom_id',
-                            'credit',
                             'language',
                             'year',
                             'semester',

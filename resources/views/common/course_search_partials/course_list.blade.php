@@ -65,7 +65,7 @@
   </span>
 
   <span class="col-1 hidden-sm-down">
-    {{$list->credit}}
+    {{$list->course_base->credit}}
   </span>
 
   <span class="col-1 hidden-sm-down">
