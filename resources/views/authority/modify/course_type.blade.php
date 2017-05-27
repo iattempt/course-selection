@@ -5,8 +5,8 @@
   <tr>
     <th>課程代號</th>
     <th>課程名稱</th>
-    <th>單位</th>
-    <th>修別</th>
+    <th>對應單位</th>
+    <th>對應修別</th>
     <th colspan="3">異動</th>
   </tr>
 </thead>
