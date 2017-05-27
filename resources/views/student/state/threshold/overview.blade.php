@@ -2,12 +2,14 @@
   整體狀態
 </a>
 <div id="overview_threshold" class="collapse container show">
-  <div class="row">
+  <div class="row justify-content-center">
     @foreach ($general->credit['Canvas'] as $type_key => $type_value)
-    <div class="col-2">
-      <canvas id="{{$type_key}}" class=""></canvas>
-      {{$type_key}}
-      <div class="row">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-2">
+      <div class="row justify-content-center">
+        <canvas id="{{$type_key}}" class="col-12"></canvas>
+        <div class="col-12">{{$type_key}}</div>
+      </div>
+      <div class="row justify-content-center">
         @foreach ($general->credit['Canvas'][$type_key] as $state_key => $state_value)
           <div class="col-12">
             <canvas id="{{$type_key}}{{$state_key}}" width="50" height="50"></canvas>
@@ -15,6 +17,7 @@
           </div>
         @endforeach
       </div>
+      <hr class="col-12">
     </div>
     @endforeach
   </div>
