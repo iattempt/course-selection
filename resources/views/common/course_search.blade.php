@@ -26,27 +26,27 @@
           </button>
           <a class="col-3">
             課程名稱
-            <span class="dropdown-toggle"></span>
+          <!--<span class="dropdown-toggle"></span>-->
           </a>
           <a class="col-3 col-md-2">
             授課教師
-            <span class="dropdown-toggle"></span>
+          <!--<span class="dropdown-toggle"></span>-->
           </a>
           <a class="col-2">
             修別
-            <span class="dropdown-toggle"></span>
+          <!--<span class="dropdown-toggle"></span>-->
           </a>
           <a class="col-1">
             上課時間
-            <span class="dropdown-toggle"></span>
+          <!--<span class="dropdown-toggle"></span>-->
           </a>
           <a class="col-1 hidden-sm-down">
             學分
-            <span class="dropdown-toggle"></span>
+          <!--<span class="dropdown-toggle"></span>-->
           </a>
           <a class="col-1 hidden-sm-down">
             教室
-            <span class="dropdown-toggle"></span>
+          <!--<span class="dropdown-toggle"></span>-->
           </a>
         </li>
         <!-- end of title -->
