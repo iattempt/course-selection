@@ -1,6 +1,7 @@
 # Fix Bug
    + Delete Button 目前尚未有防呆
    + 全部確認功能是否正常
+   + Migration must needs check conflict time
 # Refactory Feature
    + 尚未完全採用Repository擷取資料
       * 篩選頁面
