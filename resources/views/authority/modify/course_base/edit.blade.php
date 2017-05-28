@@ -1,4 +1,4 @@
-<form id="collapseEdit" class="collapse" action="{{ $caller }}/{{$list->id}}" method="POST">
+<form id="collapseEdit" class="collapse" action="{{ $caller }}/{{$list->id}}" method="POST" onsubmit="return confirm('您確定要送出表單嗎?');">
   {{ csrf_field() }}
   @include ('authority/modify/course_base/contain', array('caller' => '{{ $caller}}'))
 

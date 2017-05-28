@@ -1,4 +1,4 @@
-<form action="drop/{{$list->id}}" method="POST">
+<form action="drop/{{$list->id}}" method="POST" onsubmit="return confirm('您確定要送出表單嗎?');">
   @if ($loop->index%2 != 0)
   <li class="list-group-item row">
   @else
@@ -6,7 +6,7 @@
   @endif
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
-    <button type="submit" class="col-2 col-md-1 btn btn-success">
+    <button type="submit" class="col-2 col-md-1 btn btn-danger">
       <span class="hidden-md-down">退選</span>
       <i class="glyphicon glyphicon-remove"></i>
     </button>
