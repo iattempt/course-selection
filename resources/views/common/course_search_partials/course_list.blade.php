@@ -65,13 +65,13 @@
   </span>
 
   <span class="col-1 hidden-sm-down">
-    {{$list->course_base->credit}}
+    {{$list->course_base ? $ist->course_base->credit : 'NULL'}}
   </span>
 
   <span class="col-1 hidden-sm-down">
-  @if ($list->classroom)
+    @if ($list->classroom)
     {{$list->classroom->name}}
-  @endif
+    @endif
   </span>
 <!--
 @if ($general->identity === "student")
