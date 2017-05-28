@@ -41,11 +41,11 @@
       $output = "";
       if ($general->identity == "student")
         foreach ($list->types as $t)
-          if ($t->unit && $t->unit->name == $general->info->student->unit->name)
+          if ($t->unit && $t->type && $t->unit->name == $general->info->student->unit->name)
             $output = $t->type->name;
       if ($output == "")
         foreach ($list->types as $t)
-          if ($t->unit && $t->unit->name == "其餘")
+          if ($t->unit && $t->type && $t->unit->name == "其餘")
             $output = $t->type->name;
       echo $output;
       @endphp
@@ -60,17 +60,21 @@
 
   <span class="col-1">
     @foreach ($list->times->sortBy('period') as $t)
-      <div>{{$t->day->simple_name}}:{{$t->period->id}}</div>
+      @if ($t->day && $t->period)
+        <div>{{$t->day->simple_name}}:{{$t->period->id}}</div>
+      @endif
     @endforeach
   </span>
 
   <span class="col-1 hidden-sm-down">
-    {{$list->course_base ? $ist->course_base->credit : 'NULL'}}
+    @if ($list->course_base)
+      {{$list->course_base->credit}}
+    @endif
   </span>
 
   <span class="col-1 hidden-sm-down">
     @if ($list->classroom)
-    {{$list->classroom->name}}
+      {{$list->classroom->name}}
     @endif
   </span>
 <!--

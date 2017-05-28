@@ -1,4 +1,4 @@
-@if ($general->info->type == "student")
+@if ($general->info && $general->info->type == "student")
 <div class="row">
   <a id="filter-controller" class="btn btn-primary col-12" data-toggle="collapse"  data-parent="" href="#curriculum" aria-expanded="false" aria-controls="curriculum">
     預選課表
@@ -55,14 +55,16 @@
           @foreach ($general->days as $d)
             <div class="c_dayn c_day{{$d->id}} col">
             @foreach ($general->curricula as $c)
-              @foreach ($c->course->times as $t)
-                @if ($t->day->name == $d->name && $t->period->name == $p->name)
-                  @if ($c->state=="預選中") 
-                    <a class="state_pre">{{$c->course->name}}</a>
+              @if ($c->course)
+                @foreach ($c->course->times as $t)
+                  @if ($t->day && $t->day->name == $d->name && $t->period $t->period->name == $p->name)
+                    @if ($c->state=="預選中") 
+                      <a class="state_pre">{{$c->course->name}}</a>
+                    @endif
+                    @break
                   @endif
-                  @break
-                @endif
-              @endforeach
+                @endforeach
+              @endif
             @endforeach
             </div>
           @endforeach
