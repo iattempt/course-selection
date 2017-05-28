@@ -13,8 +13,8 @@
 
 Auth::routes();
 
-Route::group(['middleware' => 'guest'], function () {
-    Route::get('/', 'IndexController@index');
+Route::get('/', 'IndexController@index');
+Route::group(['middleware' => 'common'], function () {
     Route::get('test', 'TestController@index');
     Route::get('create_test_user', 'CreateTestUser@index');
 
