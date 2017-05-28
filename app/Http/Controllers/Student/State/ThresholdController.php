@@ -20,7 +20,11 @@ class ThresholdController extends StateController
     function index(Request $request) {
         $threshold = (new Threshold(Auth::id()))->suitAll();
         $this->general->threshold = $threshold->copy()->getList();
+
         $this->general->credit = $threshold->copy()->getCredit();
+
+        $this->general->remain_list = $threshold->copy()->getForceList();
+
         return view('student/state/threshold', ['general' => $this->general]);
     }
 }
