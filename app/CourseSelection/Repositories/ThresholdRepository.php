@@ -380,12 +380,23 @@ class ThresholdRepository
                 $k++;
             }
         }
-        dd($excepted);
         return $excepted;
     }
     function getForceList()
     {
-        return $this->exceptOwnCurriculumFromThresholdOfForce();
+        $list = $this->exceptOwnCurriculumFromThresholdOfForce();
+
+        $temp = [];
+        $temp['必修'] = [];
+        $temp['必選修'] = [];
+        $temp['共必修'] = [];
+        $i = 0;
+        foreach ($list as $key => $value) {
+            $temp[$value['修別']][$i] = $list[$key];
+            unset($temp['修別']);
+            $i++;
+        }
+        return $temp;
     }
 
     //--------------------
