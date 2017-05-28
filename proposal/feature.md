@@ -1,7 +1,9 @@
 # Fix Bug
-   + Delete Button 目前尚未有防呆
-   + 全部確認功能是否正常
    + Migration must needs check conflict time
+   + 篩選功能，要改成先確定有無保留搜尋條件
+# New Feature
+   + Inject Service，經爬文Controller需要再一層Service分離
+   + 標題滑動置頂
 # Refactory Feature
    + 尚未完全採用Repository擷取資料
       * 篩選頁面
@@ -14,8 +16,3 @@
       * 全部頁面
    + 修課概覽
       * 目前function太過耦合，且有呼叫順序性
-# New Feature
-   + Inject Service，經爬文Controller需要再一層Service分離
-   + 修課概覽
-      * 必修科目未修課尚未製作列表
-   + 標題滑動置頂
