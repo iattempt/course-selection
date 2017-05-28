@@ -10,14 +10,11 @@
         <div class="row">
           <div class="col-12">
             <div class="row">
-              <div class="col-3">
+              <div class="col-5">
                 課程名稱
               </div>
-              <div class="col-3">
-                修別
-              </div>
-              <div class="col-3">
-                學期
+              <div class="col-4">
+                應修年級
               </div>
               <div class="col-3">
                 學分
@@ -67,7 +64,7 @@
                   課程名稱
                 </div>
                 <div class="col-4">
-                  學期
+                  修課學期
                 </div>
                 <div class="col-3">
                   學分
