@@ -39,38 +39,38 @@ window.onload = function(){
   var i=0 ;
   for (type in canvas_value) {
     i++;
-    var ctx = document.getElementById(type).getContext("2d");
+    var main_pie = document.getElementById(type).getContext("2d");
     for (state in canvas_value[type]) {
-      ctx.beginPath();
+      main_pie.beginPath();
       //+1.5 是為了使得終點為12點鐘
       var start = canvas_value[type][state]['start']+1.5;
       var end = canvas_value[type][state]['end']+1.5;
-      ctx.arc(37.5, 37.5, 18.5, start * Math.PI, end * Math.PI);
-      ctx.lineWidth=37.5;
-      var ctext = document.getElementById(type+state).getContext("2d");
+      main_pie.arc(37.5, 37.5, 18.5, start * Math.PI, end * Math.PI);
+      main_pie.lineWidth=37.5;
+      var leading_text_rect = document.getElementById(type+state).getContext("2d");
       if (state == '未修過') {
-        ctx.strokeStyle='rgb(255, 0, 0)';
-        ctext.fillStyle='rgb(255, 0, 0)';
+        main_pie.strokeStyle='rgb(255, 0, 0)';
+        leading_text_rect.fillStyle='rgb(255, 0, 0)';
       }
       else if (state == '已修完') {
-        ctx.strokeStyle='rgb(0, 255, 0)';
-        ctext.fillStyle='rgb(0, 255, 0)';
+        main_pie.strokeStyle='rgb(0, 255, 0)';
+        leading_text_rect.fillStyle='rgb(0, 255, 0)';
       }
       else if (state == '修課中') {
-        ctx.strokeStyle='rgb(255, 230, 0)';
-        ctext.fillStyle='rgb(255, 230, 0)';
+        main_pie.strokeStyle='rgb(255, 230, 0)';
+        leading_text_rect.fillStyle='rgb(255, 230, 0)';
       }
       else if (state == '預選中') {
-        ctx.strokeStyle='rgb(0, 255, 255)';
-        ctext.fillStyle='rgb(0, 255, 255)';
+        main_pie.strokeStyle='rgb(0, 255, 255)';
+        leading_text_rect.fillStyle='rgb(0, 255, 255)';
       }
 
       if (end-start == 0) {
-        ctx.strokeStyle='rgb(230, 230, 230)';
-        ctext.fillStyle='rgb(230, 230, 230)';
+        main_pie.strokeStyle='rgb(230, 230, 230)';
+        leading_text_rect.fillStyle='rgb(230, 230, 230)';
       }
-      ctext.fillRect(0, 0, 25, 25);
-      ctx.stroke();
+      leading_text_rect.fillRect(0, 0, 25, 25);
+      main_pie.stroke();
     }
   }
 }
