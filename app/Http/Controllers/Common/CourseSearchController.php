@@ -96,8 +96,10 @@ class CourseSearchController extends Controller
 
     function passingRequestToView($request)
     {
-        if ($request->input('flash') === 'yes')
+        if ($request->input('flash') == 'yes')
             $request->flashExcept('flash');
+        else 
+            $request->flashOnly('flash');
     }
 
     function listRequest(Request $request)

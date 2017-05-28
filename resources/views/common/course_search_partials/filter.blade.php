@@ -78,9 +78,9 @@
           @foreach ($general->types as $t)
             <label class='form-check-label'>
               <input type='checkbox' class='my-3 my-lg-2 form-check-input' value='{{$t->id}}' name='types[]'
-          @if (old('type'))
-            @foreach (old('type') as $value)
-              @if ($value == $t->name)
+          @if (old('types'))
+            @foreach (old('types') as $value)
+              @if ($value == $t->id)
                 checked
               @endif
             @endforeach
@@ -105,9 +105,9 @@
                 @foreach ($general->periods as $period)
                   <label class='col-12 form-check-label'>
                     <input type='checkbox' onclick='resetDay("day{{$day->id}}")' class='my-3 my-lg-2 form-check-input day{{$day->id}}' value='{{$day->id}} {{$period->id}}' name='times[]'
-                      @if (old('time'))
-                        @foreach (old('time') as $value)
-                          @if ($value == ($day->name.' '.$period->name))
+                      @if (old('times'))
+                        @foreach (old('times') as $value)
+                          @if ($value == ($day->id.' '.$period->id))
                             checked
                           @endif
                         @endforeach
@@ -132,9 +132,9 @@
               @else
                 <label class='form-check-label'>
                   <input type='checkbox' class='my-3 my-lg-2 form-check-input' value='{{$u->id}}' name='units[]'
-                    @if (old('unit'))
-                      @foreach (old('unit') as $value)
-                        @if ($value == $u->name)
+                    @if (old('units'))
+                      @foreach (old('units') as $value)
+                        @if ($value == $u->id)
                           checked
                         @endif
                       @endforeach
