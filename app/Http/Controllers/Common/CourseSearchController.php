@@ -121,16 +121,20 @@ class CourseSearchController extends Controller
             $this->general->request_lists .= ($request->input('enroll') ? "可加選" : "不可加選");
             $this->general->request_lists .= " ] ";
         }
+
+        $this->general->request_lists .= "開課學期: [ ";
         if ($request->has('semesters')) {
-            $this->general->request_lists .= "開課學期: [ ";
             foreach ($request->input('semesters') as $semester) {
                 $ys = explode(' ', $semester);
                 $y = $ys[0];
                 $s = $ys[1];
                 $this->general->request_lists .= $y."-".$s . " / ";
             }
-            $this->general->request_lists .= " ] ";
         }
+        else
+            $this->general->request_lists .= env('CURRENT_YEAR')."-".env('CURRENT_SEMESTER') . " / ";
+        $this->general->request_lists .= " ] ";
+
         if ($request->has('types')) {
             $this->general->request_lists .= "修別: [ ";
             foreach ($request->input('types') as $t) {
