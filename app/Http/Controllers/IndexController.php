@@ -15,6 +15,9 @@ class IndexController extends Controller
 
     public function index() {
         if (Auth::check()){
+            Auth::user()->last_login = new \DateTime();
+            Auth::user()->last_ip = $this->general->ip;
+            Auth::user()->save();
             if (Auth::user()->getType() == 'student')
                 return redirect(Auth::user()->getType().'/state/curriculum');
             return redirect(Auth::user()->getType());
