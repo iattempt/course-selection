@@ -37,8 +37,12 @@
     <div class="col-2">
       <div class="row">
         <div class="col-12 d-flex justify-content-center">
-          {{$p->name}}
+          {{$p->simple_name}}
+        </div>
+        <div class="col-12 d-flex justify-content-center">
           {{date('H:i', strtotime($p->上課時間))}}
+        </div>
+        <div class="col-12 d-flex justify-content-center">
           {{date('H:i', strtotime($p->下課時間))}}
         </div>
       </div>
