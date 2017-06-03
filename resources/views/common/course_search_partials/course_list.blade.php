@@ -95,7 +95,9 @@
   @endif
     <div>開課學年-學期 : {{$list->year}}-{{$list->semester}}</div>
     <div>尚可登記人數/總人數 : {{$list->enrollment_remain}}/{{$list->enrollment_max}}</div>
-    <div class="hidden-md-up">學分 : {{$list->credit}}</div>
+  @if ($list->course_base)
+    <div class="hidden-md-up">學分 : {{$list->course_base->credit}}</div>
+  @endif
   @if ($list->classroom)
     <div class="hidden-md-up">教室 : {{$list->classroom->name}}</div>
   @endif
