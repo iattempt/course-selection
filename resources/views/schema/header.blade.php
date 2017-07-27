@@ -17,7 +17,7 @@
           <a class="nav-link dropdown-toggle" role="button" id="dropdownNavElse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             其他
           </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownNavElse">
+          <div class="dropdown-menu bg-primary" aria-labelledby="dropdownNavElse">
             <a class="dropdown-item" href="{{ $general->school->website }}">{{ $general->school->name }}首頁</a>
             <a class="dropdown-item" href="{{ $general->school->calender }}">行事曆</a>
           </div>

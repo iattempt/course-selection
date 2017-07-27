@@ -16,4 +16,22 @@ ga('send', 'pageview');
 
 </script>
 
+<!-- append highlight to navs -->
+<script>
+$(document).ready(function() {
+    full_path = window.location.href;
+    if (full_path == "{!! env('APP_URL') !!}/student"
+        || full_path == "{!! env('APP_URL') !!}/admin") {
+        $('#home').addClass('link-current');
+    } else {
+        $('.highlight-nav').each(function(index, elem) {
+            if (full_path.match(elem.href))
+                $(elem).addClass('link-current');
+        });
+        // except home and breackcrumbs
+        $('#home').removeClass('link-current');
+        $('.breackcrumb').removeClass('link-current');
+    }
+});
+</script>
 @endsection
