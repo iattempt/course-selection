@@ -722,7 +722,7 @@ kbd {
   padding: 0.2rem 0.4rem;
   font-size: 90%;
   color: rgba(255, 255, 255, 1);
-  background-color: rgba(28, 121, 227, 1);
+  background-color: rgba(210, 42, 72, 1);
   border-radius: 0.2rem;
 }
 
@@ -737,7 +737,7 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   font-size: 90%;
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
 }
 
 pre code {
@@ -2205,7 +2205,7 @@ pre code {
 
 .thead-inverse th {
   color: rgba(255, 255, 255, 1);
-  background-color: rgba(28, 121, 227, 1);
+  background-color: rgba(210, 42, 72, 1);
 }
 
 .thead-default th {
@@ -2215,7 +2215,7 @@ pre code {
 
 .table-inverse {
   color: rgba(255, 255, 255, 1);
-  background-color: rgba(28, 121, 227, 1);
+  background-color: rgba(210, 42, 72, 1);
 }
 
 .table-inverse th,
@@ -2484,7 +2484,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .has-warning .input-group-addon {
   color: rgba(240, 173, 78, 1);
   border-color: rgba(240, 173, 78, 1);
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 1);;
 }
 
 .has-warning .form-control-warning {
@@ -2707,13 +2707,13 @@ fieldset[disabled] a.btn {
 }
 
 .btn-secondary {
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
   background-color: rgba(255, 255, 255, 1);
   border-color: rgba(204, 204, 204, 1);
 }
 
 .btn-secondary:hover {
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
   background-color: rgba(230, 230, 230, 1);
   border-color: rgba(173, 173, 173, 1);
 }
@@ -2730,7 +2730,7 @@ fieldset[disabled] a.btn {
 
 .btn-secondary:active, .btn-secondary.active,
 .show > .btn-secondary.dropdown-toggle {
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
   background-color: rgba(230, 230, 230, 1);
   background-image: none;
   border-color: rgba(173, 173, 173, 1);
@@ -3198,7 +3198,7 @@ tbody.collapse.show {
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
   font-size: 1rem;
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
   text-align: left;
   list-style: none;
   background-color: rgba(255, 255, 255, 1);
@@ -3221,7 +3221,7 @@ tbody.collapse.show {
   padding: 3px 1.5rem;
   clear: both;
   font-weight: normal;
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
   text-align: inherit;
   white-space: nowrap;
   background: none;
@@ -3873,6 +3873,8 @@ tbody.collapse.show {
 .nav-link.active {
   padding-bottom: 0;
   color: rgba(0, 0, 0, 1);
+  text-decoration: none !important;
+  border-bottom: 2px solid rgba(0, 0, 0, 1);
 }
 
 .nav-tabs {
@@ -4377,7 +4379,7 @@ tbody.collapse.show {
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.open,
 .navbar-light .navbar-nav .nav-link.active {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
 }
 
 .navbar-light .navbar-toggler {
@@ -4394,13 +4396,13 @@ tbody.collapse.show {
 
 .navbar-inverse .navbar-brand,
 .navbar-inverse .navbar-toggler {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);;
 }
 
 .navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-toggler:focus,
 .navbar-inverse .navbar-toggler:hover {
-  color: rgba(255, 255, 255, 1);
+  color: rgba(255, 255, 255, 1);;
 }
 
 .navbar-inverse .navbar-nav .nav-link {
@@ -5162,7 +5164,7 @@ a.badge:focus, a.badge:hover {
 }
 
 .list-group-item-action .list-group-item-heading {
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
 }
 
 .list-group-item-action:focus, .list-group-item-action:hover {
@@ -5172,7 +5174,7 @@ a.badge:focus, a.badge:hover {
 }
 
 .list-group-item-action:active {
-  color: rgba(28, 121, 227, 1);
+  color: rgba(210, 42, 72, 1);
   background-color: rgba(236, 238, 239, 1);
 }
 
@@ -6166,7 +6168,7 @@ a.bg-danger:focus, a.bg-danger:hover {
 }
 
 .bg-inverse {
-  background-color: rgba(28, 121, 227, 1) !important;
+  background-color: rgba(210, 42, 72, 1) !important;
 }
 
 a.bg-inverse:focus, a.bg-inverse:hover {
@@ -9276,7 +9278,7 @@ a.text-danger:focus, a.text-danger:hover {
 }
 
 .text-gray-dark {
-  color: rgba(28, 121, 227, 1) !important;
+  color: rgba(210, 42, 72, 1) !important;
 }
 
 a.text-gray-dark:focus, a.text-gray-dark:hover {

@@ -22,15 +22,15 @@ $(document).ready(function() {
     full_path = window.location.href;
     if (full_path == "{!! env('APP_URL') !!}/student"
         || full_path == "{!! env('APP_URL') !!}/admin") {
-        $('#home').addClass('link-current');
+        $('#home').addClass('active');
     } else {
         $('.highlight-nav').each(function(index, elem) {
             if (full_path.match(elem.href))
-                $(elem).addClass('link-current');
+                $(elem).addClass('active');
         });
         // except home and breackcrumbs
-        $('#home').removeClass('link-current');
-        $('.breackcrumb').removeClass('link-current');
+        $('#home').removeClass('active');
+        $('.breackcrumb').removeClass('active');
     }
 });
 </script>

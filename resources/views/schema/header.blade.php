@@ -2,7 +2,7 @@
 @section('header')
 
 <div class="container-fluid">
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary row">
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse row">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,14 +10,14 @@
     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
       <hr class="bg-faded d-lg-none">
       <ul class="navbar-nav mr-auto">
-        @section('nav')
+        @section ('nav')
         @show
         @if ($general->identity !== "")
         <li class="dropdown nav-item">
           <a class="nav-link dropdown-toggle" role="button" id="dropdownNavElse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             其他
           </a>
-          <div class="dropdown-menu bg-primary" aria-labelledby="dropdownNavElse">
+          <div class="dropdown-menu" aria-labelledby="dropdownNavElse">
             <a class="dropdown-item" href="{{ $general->school->website }}">{{ $general->school->name }}首頁</a>
             <a class="dropdown-item" href="{{ $general->school->calender }}">行事曆</a>
           </div>
