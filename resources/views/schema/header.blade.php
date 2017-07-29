@@ -2,7 +2,7 @@
 @section('header')
 
 <div class="container-fluid">
-  <nav class="navbar navbar-toggleable-md navbar-inverse bg-primary row">
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse row">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
       <hr class="bg-faded d-lg-none">
       <ul class="navbar-nav mr-auto">
-        @section('nav')
+        @section ('nav')
         @show
         @if ($general->identity !== "")
         <li class="dropdown nav-item">

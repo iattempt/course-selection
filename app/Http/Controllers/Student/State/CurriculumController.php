@@ -15,6 +15,12 @@ class CurriculumController extends StateController
     }
     
     function index(Request $request) {
+        if (Auth::check()){
+            Auth::user()->last_login = new \DateTime();
+            Auth::user()->last_ip = $this->general->ip;
+            Auth::user()->save();
+        }
+
         $this->general->days = $this->day->instance()->get();
         $this->general->periods = $this->period->instance()->get();
         $this->general->pre_curriculum = $this->curriculum->instance()->suitOwn(Auth::user()->id);

@@ -1,7 +1,7 @@
 @extends('schema/header')
 @section('footer')
 
-<div class="bg-primary text-white" style="position: absolute; bottom:0; width: 100%;">
+<div class="bg-inverse text-white" style="position: absolute; bottom:0; width: 100%;">
   <div class="container-fluid">
     <div class="row">
       <span class="mx-auto">

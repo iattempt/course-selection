@@ -7,6 +7,10 @@
   <title>{{ ucfirst($general->title) }}</title>
   <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}" />
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<!-- Adjust CSS -->
+<link rel="stylesheet" type="text/css" href="{{ asset('css/own.css') }}" />
+<!-- JQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   @section('bootstrap_cdn')
   @parent
   @endsection
