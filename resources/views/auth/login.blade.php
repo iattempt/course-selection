@@ -1,6 +1,10 @@
-@extends('schema.preset')
+@extends ('schema.preset')
 
-@section('main')
+@section ('recaptcha-script')
+<script src='https://www.google.com/recaptcha/api.js'></script>
+@endsection
+
+@section ('main')
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 col-md-8 mx-auto">
@@ -27,7 +31,13 @@
         </div>
 
         <div class="mx-auto form-group">
-            <button type="submit" class="btn btn-primary">
+            <button
+            class="g-recaptcha"
+            data-sitekey="6Le-BSsUAAAAAKMWgFOyMtowyZMHqeOp6HD6PGCD"
+            data-callback="recaptcha_callback">
+            Submit
+            </button>
+            <button id="login" type="submit" class="btn btn-primary" disabled>
               登入
             </button>
           </div>
@@ -35,4 +45,10 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+    function recaptcha_callback(){
+        alert("callback working");
+        $('#login').prop("disabled", false);
+    }
+</script>
 @endsection

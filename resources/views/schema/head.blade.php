@@ -1,4 +1,3 @@
-@extends('schema/bootstrap_cdn')
 <!DOCTYPE html>
 <html lang='zh-tw' style="min-height: 100%; position: relative;">
 <head>
@@ -11,9 +10,9 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('css/own.css') }}" />
 <!-- JQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  @section('bootstrap_cdn')
-  @parent
-  @endsection
+<!-- reCaptcha -->
+@yield ('recaptcha-script')
+@include ('schema.bootstrap_cdn')
 </head>
 <body data-spy="scroll" data-target=".bd-sidenav-active">
   <a id="skippy" class="sr-only sr-only-focusable" href="#content">
