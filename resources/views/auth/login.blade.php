@@ -8,7 +8,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-12 col-md-8 mx-auto">
-      <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
+      <form id="form" class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
 
         @if ($errors->has('email') | ($errors->has('password')))
@@ -31,24 +31,11 @@
         </div>
 
         <div class="mx-auto form-group">
-            <button
-            class="g-recaptcha"
-            data-sitekey="6Le-BSsUAAAAAKMWgFOyMtowyZMHqeOp6HD6PGCD"
-            data-callback="recaptcha_callback">
-            Submit
-            </button>
-            <button id="login" type="submit" class="btn btn-primary" disabled>
-              登入
-            </button>
+            {!! Recaptcha::render() !!}
+            <button class="btn btn-primary" type="submit">登入</button>
           </div>
       </form>
     </div>
   </div>
 </div>
-<script type="text/javascript">
-    function recaptcha_callback(){
-        alert("callback working");
-        $('#login').prop("disabled", false);
-    }
-</script>
 @endsection

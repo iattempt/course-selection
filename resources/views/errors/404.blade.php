@@ -1,26 +1,15 @@
-@extends('schema/bootstrap_cdn')
-<!DOCTYPE html>
-<html lang='zh-tw'>
-  <head>
-    <meta charset="utf-8">
-    <title>Cannot find page.</title>
-    @section('bootstrap_cdn')
-      @parent
-    @endsection
-    <style>
-      .go-back {
-          position: absolute ;
-          left: 0px;
-          top: 0px;
-      }
-    </style>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  </head>
-  <body class="bd-docs container-fluid" data-spy="scroll" data-target=".bd-sidenav-active">
-    <div class="row">
-      <img src="{{asset('img/404.svg')}}" class="img-fluid mx-auto" alt="Error" />
-      <div class="col-12"></div>
-      <a class="go-back mx-auto btn btn-success" href="javascript:history.back()">Go Back</a>
-    </div>
-  </body>
-</html>
+@extends ('schema.preset')
+
+@section ('main')
+    <p>
+        <h2>404. 錯誤</h2> 將於3秒後轉回首頁
+    </p>
+    <hr>
+    <p>不好意思，您查詢的頁面可能已經移除、重新命名或者暫時無法使用</p>
+    <p>請嘗試回<a href="/">首頁</a>，再次查詢您欲索取的資訊連結</p>
+@endsection
+
+<script>
+var delay = 3000; 
+setTimeout(function(){ window.location = '/'; }, delay);
+</script>

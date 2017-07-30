@@ -1,4 +1,4 @@
-@if ($general->message)
+@if (isset($general) && $general->message)
   @if ($general->message_type == 'success')
     <div class="alert alert-success">{{$general->message}}</div>
   @elseif ($general->message_type == 'danger')
