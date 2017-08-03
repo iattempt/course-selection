@@ -16,6 +16,7 @@
         <li class="dropdown nav-item">
           <a class="nav-link dropdown-toggle" role="button" id="dropdownNavElse" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             其他
+            <i class="material-icons">more_horiz</i>
           </a>
           <div class="dropdown-menu" aria-labelledby="dropdownNavElse">
             <a class="dropdown-item" href="{{ $general->school->website }}">{{ $general->school->name }}首頁</a>
