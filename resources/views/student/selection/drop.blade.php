@@ -13,8 +13,8 @@
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          <div class="col-2 col-md-1"></div>
-          <a class="col-3">
+          <div class="col-1"></div>
+          <a class="col-4">
             課程名稱
             <!--<span class="dropdown-toggle"></span>-->
           </a>

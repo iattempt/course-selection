@@ -6,12 +6,12 @@
   @endif
       {{ csrf_field() }}
       {{ method_field('DELETE') }}
-    <button type="submit" class="col-2 col-md-1 btn btn-danger">
+    <button type="submit" class="col-1 btn btn-danger">
       <span class="hidden-md-down">退選</span>
-      <i class="glyphicon glyphicon-remove"></i>
+      <i class="material-icons">remove</i>
     </button>
 
-    <a class="col-3" data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
+    <a class="col-4" data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
       {{$list->name}}
       <span class="dropdown-toggle"></span>
     </a>

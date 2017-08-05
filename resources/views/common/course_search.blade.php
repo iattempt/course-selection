@@ -20,11 +20,11 @@
       <ul class="list-group">
         <!-- title -->
         <li class="list-group-item row">
-          <button type="submit" class="col-2 col-md-1 btn btn-success">
-            <span class="hidden-md-down">送出</span>
-            <i class="glyphicon glyphicon-plus"></i>
+          <button type="submit" class="col-1 btn btn-primary">
+            <span class="hidden-md-down">加選</span>
+            <i class="material-icons">add</i>
           </button>
-          <a class="col-3">
+          <a class="col-4">
             課程名稱
           <!--<span class="dropdown-toggle"></span>-->
           </a>

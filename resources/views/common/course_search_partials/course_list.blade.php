@@ -3,7 +3,7 @@
 @else
 <li class="list-group-item row bg-faded">
 @endif
-  <span class="col-2 col-md-1">
+  <span class="col-1">
     @php
       $isEnrolled = false;
       foreach($general->pre_curriculum as $c)
@@ -19,7 +19,7 @@
               '" name="reg_enroll[]">';
     @endphp
   </span>
-  <span class="col-3">
+  <span class="col-4">
     <a data-toggle="collapse" href="#expand{{$list->id}}" aria-expanded="false">
       {{$list->name}}
       <span class="dropdown-toggle"></span>
