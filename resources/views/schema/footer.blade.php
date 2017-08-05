@@ -7,10 +7,10 @@
       <span class="mx-auto">
         &copy;2016-<?php echo date('Y'); ?>
       <div class="hidden-md-up col-12"></div>
-        Designed and maintained by the
-        <a class="text-white" style="text-decoration: underline" href="https://github.com/iattempt">Ernest</a>
+        Power by
+        <a class="text-white" style="text-decoration: underline" href="http://www.iattempt.net">Ernest</a>
         <div class="col-12"></div>
-        <a class="text-white" style="text-decoration: underline" href="https://github.com/">Contribution</a>
+        <a class="text-white" style="text-decoration: underline" href="https://github.com/iattempt">Contribution</a>
         &nbsp;|&nbsp;
         <a class="text-white" style="text-decoration: underline" href="/feedback">Feedback</a>
       </span>
