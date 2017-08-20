@@ -12,9 +12,9 @@ class CourseBaseRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct(){}
+    public function __construct(){}
 
-    function instance()
+    public function instance()
     {
         $this->model = $this->model === null
             ? null
@@ -23,7 +23,7 @@ class CourseBaseRepository extends BaseRepository
         return $this;
     }
 
-    function store(array $inputs)
+    public function store(array $inputs)
     {
         $this->store_model = CourseBase::create($inputs);
         $check_dupl_inputs = $inputs;
@@ -33,7 +33,7 @@ class CourseBaseRepository extends BaseRepository
         return $this;
     }
 
-    function update(array $inputs, $id)
+    public function update(array $inputs, $id)
     {
         $check_dupl_inputs = $inputs;
         if (!$this->isDuplicate($check_dupl_inputs, $id))
