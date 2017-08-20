@@ -6,13 +6,11 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\StudentController;
 
 class StateController extends StudentController{
-    //
-    function __construct()
+    public function __construct()
     {
         parent::__construct();
         $this->general->view_path .= "/";
     }
-    function index(Request $request) {
-    
-    }
+
+    public function index(Request $request) {}
 }

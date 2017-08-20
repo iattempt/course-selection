@@ -15,48 +15,60 @@ class Threshold2Repository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct(){}
+    public function __construct() {}
 
-    function instance()
+    public function instance()
     {
         $this->model = $this->model === null ? null : Threshold2::all();
+
         return $this;
     }
-    function store(array $inputs)
+
+    public function store(array $inputs)
     {
         $this->store_model = Threshold2::create($inputs);
         $check_dupl_inputs = $inputs;
         if ($this->isDuplicate($check_dupl_inputs, $this->store_model->id))
             $this->store_model->delete();
+
         return $this;
     }
-    function update(array $inputs, $id)
+
+    public function update(array $inputs, $id)
     {
         $check_dupl_inputs = $inputs;
         if (!$this->isDuplicate($check_dupl_inputs, $id))
             $this->getById($id)->update($inputs);
+
         return $this;
     }
-    function suitUnit($unit)
+
+    public function suitUnit($unit)
     {
-        if (!$this->model)  return null;
+        if (!$this->model)
+            return null;
 
         $subjection = Unit::find($unit)->unit_base_id;
         if (($subjection !=1) || ($subjection !=2))
             $this->model = $this->model->whereIn('unit_id', [$unit, $subjection]);
         else
             $this->model = $this->model->whereIn('unit_id', [$unit]);
-        return $this;
-    }
-    function getFinishById($id)
-    {
-        if (!$this->model)  return null;
 
         return $this;
     }
-    function getNonFinishById($id)
+
+    public function getFinishById($id)
     {
-        if (!$this->model)  return null;
+        if (!$this->model)
+            return null;
+
+        return $this;
+    }
+
+    public function getNonFinishById($id)
+    {
+        if (!$this->model)
+            return null;
 
         return $this;
     }

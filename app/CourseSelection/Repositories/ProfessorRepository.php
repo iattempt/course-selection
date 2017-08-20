@@ -13,15 +13,18 @@ class ProfessorRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct()
-    {}
+    public function __construct() {}
 
-    function instance()
+    public function instance()
     {
-        $this->model = $this->model === null ? null : User::all()->whereIn('type', ['professor']);
+        $this->model = $this->model === null
+            ? null
+            : User::all()->whereIn('type', ['professor']);
+
         return $this; 
     }
-    function store(array $inputs)
+
+    public function store(array $inputs)
     {
         $inputs['password'] = bcrypt($inputs['password']);
         $inputs['type'] = 'professor';
@@ -50,7 +53,8 @@ class ProfessorRepository extends BaseRepository
 
         return $this;
     }
-    function update(array $inputs, $id)
+
+    public function update(array $inputs, $id)
     {
         if ($inputs['password'])
             $inputs['password'] = bcrypt($inputs['password']);
@@ -73,11 +77,14 @@ class ProfessorRepository extends BaseRepository
                 dd($e);
             }
         }
+
         return $this;
     }
-    function destroy($id)
+
+    public function destroy($id)
     {
         Professor::find($id)->delete();
+
         return parent::destroy($id);
     }
 }

@@ -6,7 +6,6 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-
 use Illuminate\Support\Facades\App;
 use App\User;
 use Repository\DayRepository as Day;
@@ -30,7 +29,9 @@ use Repository\UserRepository;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     public $general;
+
     public function __construct () {
         $this->general = new General();
         $this->general->identity = '';
@@ -69,17 +70,17 @@ class Controller extends BaseController
             if($value->type == $type)
                 return $value;
         });
+
         return $u;
     }
     public function getIP()
     {
-        if (!empty($_SERVER["HTTP_CLIENT_IP"])){
+        if (!empty($_SERVER["HTTP_CLIENT_IP"]))
                 $ip = $_SERVER["HTTP_CLIENT_IP"];
-        }elseif(!empty($_SERVER["HTTP_X_FORWARDED_FOR"])){
+        elseif (!empty($_SERVER["HTTP_X_FORWARDED_FOR"]))
                 $ip = $_SERVER["HTTP_X_FORWARDED_FOR"];
-        }else{
+        else
                 $ip = $_SERVER["REMOTE_ADDR"];
-        }
              
         return $ip;
     }
@@ -93,8 +94,7 @@ Class General
     public $school; //School class
     public $errors;
 
-    public function __construct () {
-    }
+    public function __construct () {}
 }
 
 class School
@@ -103,6 +103,5 @@ class School
     public $calender;
     public $website;
     
-    public function __construct () {
-    }
+    public function __construct () {}
 }

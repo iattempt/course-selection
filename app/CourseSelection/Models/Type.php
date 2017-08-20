@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type extends Model
 {
-    //
-    protected $fillable = [ 'name',
-                            'type_base_id'];
+    protected $fillable = [
+        'name',
+        'type_base_id',
+    ];
 }

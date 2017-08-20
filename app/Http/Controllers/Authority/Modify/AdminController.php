@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify admin';
         $this->general->view_path .= '/admin';
     }
-    function index(Request $request) {
+    public function index(Request $request) {
         $this->general->lists =  $this->admin->instance()->get();
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -31,10 +31,10 @@ class AdminController extends ModifyController
         try {
             $inputs = $request->only(['name', 'email', 'password']);
             $this->admin->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/admin');
     }
 
@@ -50,10 +50,10 @@ class AdminController extends ModifyController
         try {
             $inputs = $request->only(['name', 'email', 'password']);
             $this->admin->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/admin');
     }
 
@@ -65,12 +65,12 @@ class AdminController extends ModifyController
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->admin->instance()->destroy($id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/admin');
     }
 }

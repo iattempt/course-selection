@@ -10,15 +10,17 @@ use App\User;
 
 class FeedbackController extends Controller
 {
-    //
-    function __construct () {
+    public function __construct () {
         parent::__construct();
         $this->general->title = "Feedback";
     }
-    function index() {
+
+    public function index() {
         $this->general->identity = Auth::user()->getType();
+
         return view('common/feedback', ['general' => $this->general]);
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -35,6 +37,7 @@ class FeedbackController extends Controller
                 $data->context = $request->input('context');
                 $data->save();
             }
+
             return redirect('feedback');
         } catch (\Exception $e) {
             dd($e);

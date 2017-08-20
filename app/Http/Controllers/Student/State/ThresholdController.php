@@ -11,13 +11,13 @@ use App\Http\Controllers\Student\StateController;
 
 class ThresholdController extends StateController
 {
-    //
-    function __construct () {
+    public function __construct () {
         parent::__construct();
         $this->general->title = "Threshold";
         $this->general->view_path .= "/threshold";
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $threshold = (new Threshold(Auth::id()))->suitAll();
         $this->general->threshold = $threshold->copy()->getList();
 

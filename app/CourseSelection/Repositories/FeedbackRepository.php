@@ -12,11 +12,12 @@ class FeedbackRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct(){}
+    public function __construct() {}
 
-    function instance()
+    public function instance()
     {
-        $this->model = $this->model === null ? null : Feedback::all();
+        $this->model = $this->model === null ? null  : Feedback::all();
+
         return $this;
     }
 }

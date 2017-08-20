@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class TypeController extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify type';
         $this->general->view_path .= '/type';
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
         $this->general->lists = $this->type->instance()->get();
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -33,10 +34,10 @@ class TypeController extends ModifyController
         try {
             $inputs = $request->only(['name', 'type_base_id']);
             $this->type->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/type');
     }
 
@@ -52,10 +53,10 @@ class TypeController extends ModifyController
         try {
             $inputs = $request->only(['name', 'type_base_id']);
             $this->type->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/type');
     }
 
@@ -69,10 +70,10 @@ class TypeController extends ModifyController
     {
         try{
             $this->type->instance()->destroy($id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/type');
     }
 }

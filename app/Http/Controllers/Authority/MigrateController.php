@@ -8,11 +8,11 @@ use Repository\MigrateRepository;
 
 class MigrateController extends AuthorityController
 {
-    //
-    function index(Request $request)
+    public function index(Request $request)
     {
         $pre = new MigrateRepository();
         $pre->instance()->changeState();
+
         return back()->withInput();
     }
 }

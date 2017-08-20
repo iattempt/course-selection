@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseController extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify course';
         $this->general->view_path .= '/course';
@@ -24,8 +23,10 @@ class CourseController extends ModifyController
         $this->general->types = $this->type->instance()->get();
         $this->general->professors = $this->professor->instance()->get();
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -40,10 +41,10 @@ class CourseController extends ModifyController
         try {
             $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'language', 'year', 'semester', 'enrollment_max']);
             $this->course->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course');
     }
 
@@ -59,10 +60,10 @@ class CourseController extends ModifyController
         try {
             $inputs = $request->only(['name', 'course_base_id', 'unit_id', 'classroom_id', 'language', 'year', 'semester', 'enrollment_max']);
             $this->course->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course');
     }
 
@@ -74,12 +75,12 @@ class CourseController extends ModifyController
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->course->instance()->destroy($id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course');
     }
 }

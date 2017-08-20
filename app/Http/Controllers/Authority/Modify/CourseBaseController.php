@@ -9,15 +9,16 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseBaseController extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify course base';
         $this->general->view_path .= '/course_base';
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
         $this->general->lists =  $this->course_base->instance()->get();
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -32,10 +33,10 @@ class CourseBaseController extends ModifyController
         try {
             $inputs = $request->only('name', 'credit');
             $this->course_base->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_base');
     }
 
@@ -51,10 +52,10 @@ class CourseBaseController extends ModifyController
         try {
             $inputs = $request->only('name', 'credit');
             $this->course_base->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_base');
     }
 
@@ -66,12 +67,12 @@ class CourseBaseController extends ModifyController
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->course_base->instance()->destroy($id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_base');
     }
 }

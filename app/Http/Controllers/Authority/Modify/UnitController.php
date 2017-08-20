@@ -10,15 +10,16 @@ use Illuminate\Support\Facades\Auth;
 
 class UnitController extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify unit';
         $this->general->view_path .= '/unit';
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
         $this->general->lists = $this->unit->instance()->get();
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -33,10 +34,10 @@ class UnitController extends ModifyController
         try {
             $inputs = $request->only(['name', 'unit_base_id']);
             $this->unit->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/unit');
     }
 
@@ -52,10 +53,10 @@ class UnitController extends ModifyController
         try {
             $inputs = $request->only(['name', 'unit_base_id']);
             $this->unit->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/unit');
     }
 
@@ -67,12 +68,12 @@ class UnitController extends ModifyController
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->unit->instance()->destroy($id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/unit');
     }
 }

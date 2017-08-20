@@ -12,14 +12,20 @@ class AdminRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct()
-    {}
-    function instance()
+    public function __construct() {}
+
+    public function instance()
     {
-        $this->model = $this->model === null ? null : User::all()->whereIn('type', ['authority'])->whereNotIn('name', ['admin']);
+        $this->model = $this->model === null
+            ? null
+            : User::all()
+            ->whereIn('type', ['authority'])
+            ->whereNotIn('name', ['admin']);
+
         return $this; 
     }
-    function store(array $inputs)
+
+    public function store(array $inputs)
     {
         //需要再修改，目前僅能依靠資料庫設定email為唯一。
         $inputs['password'] = bcrypt($inputs['password']);
@@ -31,9 +37,11 @@ class AdminRepository extends BaseRepository
         unset($check_dupl_inputs['type']);
         if ($this->isDuplicate($check_dupl_inputs, $this->store_model->id))
             $this->store_model->delete();
+
         return $this;
     }
-    function update(array $inputs, $id)
+
+    public function update(array $inputs, $id)
     {
         if ($inputs['password'])
             $inputs['password'] = bcrypt($inputs['password']);
@@ -46,6 +54,7 @@ class AdminRepository extends BaseRepository
         unset($check_dupl_inputs['type']);
         if (!$this->isDuplicate($check_dupl_inputs, $id))
             $this->getById($id)->update($inputs);
+
         return $this;
     }
 }

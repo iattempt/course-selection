@@ -8,14 +8,14 @@ use App\Http\Controllers\Student\StateController;
 
 class CurriculumController extends StateController
 {
-    function __construct () {
+    public function __construct () {
         parent::__construct();
         $this->general->title = "curriculum";
         $this->general->view_path .= "/curriculum";
     }
     
-    function index(Request $request) {
-        if (Auth::check()){
+    public function index(Request $request) {
+        if (Auth::check()) {
             Auth::user()->last_login = new \DateTime();
             Auth::user()->last_ip = $this->general->ip;
             Auth::user()->save();

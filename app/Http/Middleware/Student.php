@@ -16,10 +16,10 @@ class Student
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check() && Auth::user()->isStudent())
-        {
+        if (Auth::check()
+            && Auth::user()->isStudent())
             return $next($request);
-        }
+
         return redirect('login');
     }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Student\Selection;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Http\Controllers\Student\SelectionController;
 use Model\Course;
 use Model\CourseProfessor;
@@ -15,13 +14,13 @@ use App\User;
 
 class DropController extends SelectionController
 {
-    //
-    function __construct () {
+    public function __construct () {
         parent::__construct();
         $this->general->title = "Drop";
         $this->general->view_path .= "/drop";
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->identity = Auth::user()->getType();
         $this->general->info = User::find(Auth::user()->id);
         $this->general->days = $this->day->instance()->get();
@@ -34,10 +33,12 @@ class DropController extends SelectionController
         
         return view('student/selection/drop', ['general' => $this->general]);
     }
-    function destroy($id)
+
+    public function destroy($id)
     {
         $this->course->instance()->addEnrollment($id);
         $this->curriculum->instance()->destroy($this->curriculum->instance()->getCourseOfOwn(Auth::user()->id, $id));
+
         return back()->withInput();
     }
 }

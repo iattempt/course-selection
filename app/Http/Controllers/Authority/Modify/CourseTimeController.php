@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseTimeController extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify course time';
         $this->general->view_path .= '/course_time';
@@ -20,8 +19,10 @@ class CourseTimeController extends ModifyController
         $this->general->period = $this->period->instance()->get();
         $this->general->day = $this->day->instance()->get();
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -36,10 +37,10 @@ class CourseTimeController extends ModifyController
         try {
             $inputs = $request->only(['course_id', 'day_id', 'period_id']);
             $this->course_time->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_time');
     }
 
@@ -55,10 +56,10 @@ class CourseTimeController extends ModifyController
         try {
             $inputs = $request->only(['course_id', 'day_id', 'period_id']);
             $this->course_time->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_time');
     }
 
@@ -70,11 +71,12 @@ class CourseTimeController extends ModifyController
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->course_time->instance()->destroy($id);
         } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_time');
     }
 }

@@ -12,11 +12,14 @@ class PeriodRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct($model = null)
-    {}
-    function instance()
+    public function __construct($model = null) {}
+
+    public function instance()
     {
-        $this->model = $this->model === null ? null : Period::all()->sortBy('id');
+        $this->model = $this->model === null
+            ? null
+            : Period::all()->sortBy('id');
+        
         return $this;
     }
 }

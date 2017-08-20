@@ -7,13 +7,13 @@ use App\Http\Controllers\ProfessorController;
 
 class UnitCourseController extends ProfessorController
 {
-    //
-    function __construct () {
+    public function __construct () {
         parent::__construct();
         $this->general->title = "Unit course";
         $this->general->view_path .= "/unit_course";
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         return view('professor/unit_course', ['general' => $this->general]);
     }
 }

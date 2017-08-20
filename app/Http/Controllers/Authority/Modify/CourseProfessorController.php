@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseprofessorController extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify course professor';
         $this->general->view_path .= '/course_professor';
@@ -19,8 +18,10 @@ class CourseprofessorController extends ModifyController
         $this->general->lists = $this->course_professor->instance()->suitCourse($this->general->course)->get();
         $this->general->professor = $this->professor->instance()->get();
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -35,10 +36,10 @@ class CourseprofessorController extends ModifyController
         try {
             $inputs = $request->only(['course_id', 'user_id']);
             $this->course_professor->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_professor');
     }
 
@@ -54,10 +55,10 @@ class CourseprofessorController extends ModifyController
         try {
             $inputs = $request->only(['course_id', 'user_id']);
             $this->course_professor->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_professor');
     }
 
@@ -69,11 +70,12 @@ class CourseprofessorController extends ModifyController
      */
     public function destroy($id)
     {
-        try{
+        try {
             $this->course_professor->instance()->destroy($id);
         } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/course_professor');
     }
 }

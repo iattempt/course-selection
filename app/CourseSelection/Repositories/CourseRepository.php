@@ -16,20 +16,27 @@ class CourseRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct(){}
-    function instance()
+    public function __construct() {}
+
+    public function instance()
     {
-        $this->model = $this->model === null ? null : Course::all()->sortBy('year')->sortBy('name');
+        $this->model = $this->model === null
+            ? null
+            : Course::all()->sortBy('year')->sortBy('name');
+
         return $this;
     }
-    function store(array $inputs)
+
+    public function store(array $inputs)
     {
         $inputs['enrollment_remain'] = $inputs['enrollment_max'];
         $inputs['enroll'] = $inputs['enrollment_max'] > $inputs['enrollment_remain'] ? 1 : 0;
         $this->store_model = Course::create($inputs);
+
         return $this;
     }
-    function update(array $inputs, $id)
+
+    public function update(array $inputs, $id)
     {
         $inputs['enrollment_remain'] = $this->getById($id)->enrollment_remain;
         if ($inputs['enrollment_remain'] > $inputs['enrollment_max'])
@@ -39,25 +46,31 @@ class CourseRepository extends BaseRepository
         }
         $inputs['enroll'] = $inputs['enrollment_remain']>0 ? 1 : 0;
         $this->getById($id)->update($inputs);
+
         return $this;
     }
-    function addEnrollment($id)
+
+    public function addEnrollment($id)
     {
         if (!$this->model)  return null;
 
         $data = $this->getById($id);
         $data->enrollment_remain++;
         $data->save();
+
         return $this;
     }
-    function suitCurrentSemester()
+
+    public function suitCurrentSemester()
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('year', env('CURRENT_YEAR'))->whereIn('semester', env('CURRENT_SEMESTER'));
+
         return $this;
     }
-    function suitSemesters($semesters)
+
+    public function suitSemesters($semesters)
     {
         if (!$this->model)  return null;
 
@@ -70,9 +83,11 @@ class CourseRepository extends BaseRepository
                     return $value;
             }
         });
+
         return $this;
     }
-    function suitTimes($times)
+
+    public function suitTimes($times)
     {
         if (!$this->model)  return null;
 
@@ -90,7 +105,8 @@ class CourseRepository extends BaseRepository
             
         return $this;
     }
-    function suitUnits($units)
+
+    public function suitUnits($units)
     {
         if (!$this->model)  return null;
 
@@ -100,9 +116,11 @@ class CourseRepository extends BaseRepository
                     return $value;
             }
         });
+
         return $this;
     }
-    function suitTypes($unit, $types)
+
+    public function suitTypes($unit, $types)
     {
         if (!$this->model)  return null;
 
@@ -140,23 +158,29 @@ class CourseRepository extends BaseRepository
                 }
             }
         });
+
         return $this;
     }
-    function suitLanguages(array $languages)
+
+    public function suitLanguages(array $languages)
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('language', $languages);
+
         return $this;
     }
-    function suitEnroll($input)
+
+    public function suitEnroll($input)
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('enroll', $input);
+
         return $this;
     }
-    function suitProfessorName($name)
+
+    public function suitProfessorName($name)
     {
         if (!$this->model)  return null;
 
@@ -166,9 +190,11 @@ class CourseRepository extends BaseRepository
                     return true;
             }
         });
+
         return $this;
     }
-    function suitCourseName($name)
+
+    public function suitCourseName($name)
     {
         if (!$this->model)  return null;
 
@@ -176,9 +202,11 @@ class CourseRepository extends BaseRepository
             if (strstr($value->name, $name))
                 return true;
         });
+
         return $this;
     }
-    function suitCurriculum($ownCurriculum)
+
+    public function suitCurriculum($ownCurriculum)
     {
         if (!$this->model)  return null;
 
@@ -188,6 +216,7 @@ class CourseRepository extends BaseRepository
                     return $value;
             }
         });
+
         return $this;
     }
 }

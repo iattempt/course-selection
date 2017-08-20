@@ -10,11 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ExportSQLController extends Controller
 {
-    //
     private $temporary_file_path;
     private $zip_file_path;
     private $sql_file_path;
-    function index()
+
+    public function index()
     {
         $this->temporary_file_path = 'temporary/';
         $this->dumpFile();
@@ -26,13 +26,15 @@ class ExportSQLController extends Controller
         
         return response()->download($this->sql_file_path);
     }
-    function dumpFile()
+
+    public function dumpFile()
     {
         $this->sql_file_path = $this->temporary_file_path.'user_id:'.Auth::user()->id.'_'.date('M-j_G:i:s').'.sql';
         $process = new Process('mysqldump -uhomestead -p'.env('DB_PASSWORD').' homestead > '.$this->sql_file_path);
         $process->run();
     }
-    function zipFileToZIP()
+
+    public function zipFileToZIP()
     {
         $this->zip_file_path = 'customBackup/backup_sql.zip';
         $password = env('DB_DUMP_PASSWORD');

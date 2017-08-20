@@ -12,63 +12,79 @@ class CurriculumRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct(){}
-    function instance()
+    public function __construct() {}
+
+    public function instance()
     {
         $this->model = $this->model === null ? null : Curriculum::all();
+
         return $this;
     }
-    function suitCurrentSelection()
+
+    public function suitCurrentSelection()
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('state', '修課中');
+
         return $this;
     }
-    function suitPreSelection()
+
+    public function suitPreSelection()
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('state', '預選中');
+
         return $this;
     }
-    function suitOwn($id)
+
+    public function suitOwn($id)
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('student_id', $id);
+
         return $this;
     }
-    function suitPre()
+
+    public function suitPre()
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('state', '預選中');
+
         return $this;
     }
-    function suitCur()
+
+    public function suitCur()
     {
         if (!$this->model)  return null;
 
         $this->model = $this->model->whereIn('state', '修課中');
+
         return $this;
     }
-    function getCourseOfOwn($id, $course_id)
+
+    public function getCourseOfOwn($id, $course_id)
     {
         $this->suitOwn($id);
         foreach ($this->model as $value) {
             if ($value->course_id == $course_id)
                 return $value;
         }
+
         return null;
     }
-    function suitCommon()
+
+    public function suitCommon()
     {
         if (!$this->model)  return null;
         $this->model = $this->model->filter(function ($value, $key) {
             if ($value->course && $value->course->isCommon())
                 return $value;
         });
+
         return $this;
     }
 }

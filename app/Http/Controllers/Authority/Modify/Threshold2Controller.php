@@ -9,17 +9,18 @@ use Illuminate\Support\Facades\Auth;
 
 class Threshold2Controller extends ModifyController
 {
-    //
-    function __construct() {
+    public function __construct() {
         parent::__construct();
         $this->general->title = 'Modify threshold2';
         $this->general->view_path .= '/threshold2';
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         $this->general->info = user::find(auth::user()->id);
         $this->general->lists =  $this->threshold2->instance()->get();
         $this->general->units =  $this->unit->instance()->suitRegister()->get();
         $this->general->types = $this->type->instance()->suitElective()->get();
+
         return view($this->general->view_path, ['general' => $this->general]);
     }
 
@@ -34,10 +35,10 @@ class Threshold2Controller extends ModifyController
         try {
             $inputs = $request->only('unit_id', 'type_id', 'credit', 'adopt_year');
             $this->threshold2->instance()->store($inputs);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/threshold2');
     }
 
@@ -53,10 +54,10 @@ class Threshold2Controller extends ModifyController
         try {
             $inputs = $request->only('unit_id', 'type_id', 'credit', 'adopt_year');
             $this->threshold2->instance()->update($inputs, $id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/threshold2');
     }
 
@@ -70,10 +71,10 @@ class Threshold2Controller extends ModifyController
     {
         try{
             $this->threshold2->instance()->destroy($id);
-        }
-        catch (\Exception $e){
+        } catch (\Exception $e) {
             dd($e);
         }
+
         return redirect('authority/modify/threshold2');
     }
 }

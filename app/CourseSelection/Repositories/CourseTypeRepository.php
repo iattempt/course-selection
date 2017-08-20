@@ -12,35 +12,44 @@ class CourseTypeRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct(){}
-    function instance()
+    public function __construct(){}
+
+    public function instance()
     {
         $this->model = $this->model === null ? null : CourseType::all();
+
         return $this;
     }
-    function store(array $inputs)
+
+    public function store(array $inputs)
     {
         $this->store_model = CourseType::create($inputs);
         $check_dupl_inputs = $inputs;
         if ($this->isDuplicate($check_dupl_inputs, $this->store_model->id))
             $this->store_model->delete();
+
         return $this;
     }
-    function update(array $inputs, $id)
+
+    public function update(array $inputs, $id)
     {
         $check_dupl_inputs = $inputs;
         if (!$this->isDuplicate($check_dupl_inputs, $id))
             $this->getById($id)->update($inputs);
+
         return $this;
     }
-    function suitUnit($id)
+
+    public function suitUnit($id)
     {
         if (!$this->model)
             return null;
         $this->model = $this->model->whereIn('unit_id', $id);
+
         return $this;
     }
-    function suitCourse($inputs)
+
+    public function suitCourse($inputs)
     {
         if (!$this->model)  return null;
 
@@ -50,6 +59,7 @@ class CourseTypeRepository extends BaseRepository
                     return $value;
             }
         });
+
         return $this;
     }
 }

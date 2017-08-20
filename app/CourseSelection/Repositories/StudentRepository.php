@@ -13,15 +13,18 @@ class StudentRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct()
-    {}
+    public function __construct() {}
 
-    function instance()
+    public function instance()
     {
-        $this->model = $this->model === null ? null : User::all()->whereIn('type', ['student']);
+        $this->model = $this->model === null
+            ? null
+            : User::all()->whereIn('type', ['student']);
+
         return $this; 
     }
-    function store(array $inputs)
+
+    public function store(array $inputs)
     {
         $inputs['password'] = bcrypt($inputs['password']);
         $inputs['type'] = 'student';
@@ -37,9 +40,9 @@ class StudentRepository extends BaseRepository
         unset($check_dupl_inputs['name']);
         unset($check_dupl_inputs['password']);
         unset($check_dupl_inputs['type']);
-        if (parent::isDuplicate($check_dupl_inputs, $this->store_model->id))
+        if (parent::isDuplicate($check_dupl_inputs, $this->store_model->id)) {
             $this->store_model->delete();
-        else {
+        } else {
             $student_inputs = $inputs;
             unset($student_inputs['name']);
             unset($student_inputs['email']);
@@ -50,7 +53,8 @@ class StudentRepository extends BaseRepository
 
         return $this;
     }
-    function update(array $inputs, $id)
+
+    public function update(array $inputs, $id)
     {
         if ($inputs['password'])
             $inputs['password'] = bcrypt($inputs['password']);
@@ -72,11 +76,14 @@ class StudentRepository extends BaseRepository
                 dd($e);
             }
         }
+
         return $this;
     }
-    function destroy($id)
+
+    public function destroy($id)
     {
         Student::find($id)->delete();
+
         return parent::destroy($id);
     }
 }

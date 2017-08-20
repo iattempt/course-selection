@@ -21,7 +21,7 @@ class ThresholdRepository
     protected $result;
     protected $curriculum;
     protected $credit;
-    function __construct($id){
+    public function __construct($id){
         $this->user_id = $id;
         $this->curriculum = (new Curriculum)->instance()->suitOwn($id)->get()->sortBy('state');
     }
@@ -29,7 +29,7 @@ class ThresholdRepository
      * para     user_id
      * return   ['course_id', 'course_name', 'year', 'semester', 'credit', 'type']
      */
-    function suitCurriculum()
+    public function suitCurriculum()
     {
         $this->result = [];
         $i = 0;
@@ -72,51 +72,55 @@ class ThresholdRepository
                 $this->result[$i] = $temp;
             }
         }
+
         return $this;
     }
     /*
      * para     userid
      * return   []
      */
-    function suitType($type)
+    public function suitType($type)
     {
         $j = 0;
         $temp = [];
-        foreach ($this->result as $value) {
+        foreach ($this->result as $value)
             if ($value['type'] == $type) {
                 $temp[$j] = $value;
                 unset($temp[$j]['type']);
                 $j++;
             }
-        }
         $this->result = $temp;
+
         return $this;
     }
     
-    function suitState($state)
+    public function suitState($state)
     {
         $j = 0;
         $temp = [];
-        foreach ($this->result as $value) {
+        foreach ($this->result as $value)
             if ($value['state'] == $state) {
                 $temp[$j] = $value;
                 unset($temp[$j]['state']);
                 $j++;
             }
-        }
         $this->result = $temp;
+
         return $this;
     }
-    function copy()
+
+    public function copy()
     {
         $new = new ThresholdRepository($this->user_id);
         $new->result = $this->result;
         $new->curriculum = $this->curriculum;
         $new->user_unit_ids = $this->user_unit_ids;
         $new->credit = $this->credit;
+
         return $new;
     }
-    function suitAllTypeAndState($state)
+
+    public function suitAllTypeAndState($state)
     {
         $this->suitState($state);
         
@@ -150,7 +154,8 @@ class ThresholdRepository
 
         return $this;
     }
-    function suitAll()
+
+    public function suitAll()
     {
         $this->suitCurriculum();
 
@@ -169,7 +174,8 @@ class ThresholdRepository
         
         return $this;
     }
-    function getCreditPerType()
+
+    public function getCreditPerType()
     {
         //取得各別總學分
 
@@ -178,47 +184,51 @@ class ThresholdRepository
             $temp[$state_key] = [];
             foreach ($state_value as $type_key => $type_value) {
                 $temp[$state_key][$type_key] = 0;
-                foreach ($type_value as $course) {
+                foreach ($type_value as $course)
                     $temp[$state_key][$type_key] += $course['credit'];
-                }
             }
         }
+
         return $temp;
     }
-    function addFieldOfTotalCredit($credit_of_all_type)
+
+    public function addFieldOfTotalCredit($credit_of_all_type)
     {
         //-----------------
         //新增總學分之陣列
         $temp = $credit_of_all_type;
-        foreach ($this->result['預選中'] as $type_key => $type) {
+        foreach ($this->result['預選中'] as $type_key => $type)
             $temp['總學分'][$type_key] = 0;
-        }
         $temp['總學分']['通識'] = 0;
         unset($temp['總學分']['通識人文']);
         unset($temp['總學分']['通識社會']);
         unset($temp['總學分']['通識自然']);
         unset($temp['總學分']['通識文明與經典']);
+
         return $temp;
     }
-    function getCreditOfForce($credit_of_total_field)
+
+    public function getCreditOfForce($credit_of_total_field)
     {
         $temp = $credit_of_total_field;
         $threshold_list = (new Threshold1)->instance()->suitUnit($this->user_unit_ids[0])->get();
-        foreach ($threshold_list as $threshold) {
+        foreach ($threshold_list as $threshold)
             $temp[$threshold->type->name] += $threshold->course_base->credit;
-        }
+
         return $temp;
     }
-    function getCreditOfCommonAndElective($credit_of_total_field)
+
+    public function getCreditOfCommonAndElective($credit_of_total_field)
     {
         $temp = $credit_of_total_field;
         $threshol_list = (new Threshold2)->instance()->suitUnit($this->user_unit_ids[0])->get();
-        foreach ($threshol_list as $threshold) {
+        foreach ($threshol_list as $threshold)
             $temp[$threshold->type->name] += $threshold->credit;
-        }
+
         return $temp;
     }
-    function getCreditOfRemainAndState()
+
+    public function getCreditOfRemainAndState()
     {
         //----------------
         //取得欠缺之學分
@@ -229,13 +239,15 @@ class ThresholdRepository
         $nat_count = 0;
         $civ_count = 0;
         foreach ($this->credit as $state_key => $state_value) {
-            if ($state_key == '未修過' || $state_key == '總學分')
+            if ($state_key == '未修過'
+                || $state_key == '總學分')
                 continue;
+
             foreach ($state_value as $type_key => $type_value) {
-                if ($type_key == '通識人文' ||
-                    $type_key == '通識自然' ||
-                    $type_key == '通識社會' ||
-                    $type_key == '通識文明與經典')
+                if ($type_key == '通識人文'
+                    || $type_key == '通識自然'
+                    || $type_key == '通識社會'
+                    || $type_key == '通識文明與經典')
                     $this->credit['未修過']['通識'] -= $type_value;
                 else 
                     $this->credit['未修過'][$type_key] -=$type_value;
@@ -254,20 +266,21 @@ class ThresholdRepository
             $this->credit['學分狀態'][$key] = $value==0 ? '已達標準' : '學分不足';
         $this->credit['學分狀態']['通識'] .= ($hum_count+$soc_count+$nat_count+$civ_count)<3 ? '、不足三領域' : '';
     }
-    function separateCreditBetweenTotalAndOther()
+
+    public function separateCreditBetweenTotalAndOther()
     {
         //分類總學分與各項學分
         $temp = [];
         $temp['學分狀態'] = $this->credit['學分狀態'];
         $temp['總學分'] = $this->credit['總學分'];
         $temp['細項學分'] = [];
-        foreach ($this->credit as $key => $value) {
+        foreach ($this->credit as $key => $value)
             if ($key != '總學分' && $key !='學分狀態')
                 $temp['細項學分'][$key] = $this->credit[$key];
-        }
         $this->credit = $temp;
     }
-    function calcPercentagesForCanvas()
+
+    public function calcPercentagesForCanvas()
     {
         //----------------
         //取得Canvas數值
@@ -278,40 +291,42 @@ class ThresholdRepository
         foreach ($this->credit['Canvas'] as $state_key => $stete_value) {
             if ($state_key != '未修過')
                 $this->credit['Canvas'][$state_key]['通識'] = 0;
-            foreach ($this->credit['Canvas'][$state_key] as $type_key => $type_value) {
-                if ($type_key == '通識人文' ||
-                    $type_key == '通識自然' ||
-                    $type_key == '通識社會' ||
-                    $type_key == '通識文明與經典') {
+            foreach ($this->credit['Canvas'][$state_key] as $type_key => $type_value)
+                if ($type_key == '通識人文'
+                    || $type_key == '通識自然'
+                    || $type_key == '通識社會'
+                    || $type_key == '通識文明與經典')
                     $this->credit['Canvas'][$state_key]['通識'] += $this->credit['Canvas'][$state_key][$type_key];
-                }
-            }
+
             unset($this->credit['Canvas'][$state_key]['通識人文']);
             unset($this->credit['Canvas'][$state_key]['通識自然']);
             unset($this->credit['Canvas'][$state_key]['通識社會']);
             unset($this->credit['Canvas'][$state_key]['通識文明與經典']);
         }
-        foreach ($this->credit['Canvas'] as $state_key => $stete_value) {
+        foreach ($this->credit['Canvas'] as $state_key => $stete_value)
             foreach ($this->credit['Canvas'][$state_key] as $type_key => $type_value) {
                 $temp = ($this->credit['總學分'][$type_key] == 0) ? 0
                         : ($this->credit['Canvas'][$state_key][$type_key] / $this->credit['總學分'][$type_key] * 2);
                 $this->credit['Canvas'][$state_key][$type_key] = [];
                 $this->credit['Canvas'][$state_key][$type_key]['end'] = $temp;
             }
-        }
+
         //反轉狀態/修別 => 修別/狀態
         $temp = [];
         foreach ($this->credit['Canvas']['預選中'] as $type_key => $type_value)
             $temp[$type_key] = [];
+
         foreach ($this->credit['Canvas'] as $state_key => $state_value)
             foreach ($this->credit['Canvas'][$state_key] as $type_key => $type_value)
                 $temp[$type_key][$state_key] = $type_value;
+
         $this->credit['Canvas'] = $temp;
         
         //增加start key
         foreach ($this->credit['Canvas'] as $type_key => $type_value)
             foreach ($this->credit['Canvas'][$type_key] as $state_key => $state_value)
                 $this->credit['Canvas'][$type_key][$state_key]['start'] = 0;
+
         //此數數值為遞增後的，所以回傳的數值直接可以繪圖
         foreach ($this->credit['Canvas'] as $type_key => $type_value) {
             $temp = 0;
@@ -322,7 +337,8 @@ class ThresholdRepository
             }
         }
     }
-    function getCredit()
+
+    public function getCredit()
     {
         $this->credit = [];
 
@@ -339,7 +355,7 @@ class ThresholdRepository
     }
 
     //--------------------
-    function getThresholdOfForce()
+    public function getThresholdOfForce()
     {
         $temp = [];
         $threshold_list = (new Threshold1)->instance()->suitUnit($this->user_unit_ids[0])->get()->values();
@@ -351,14 +367,18 @@ class ThresholdRepository
             $temp[$i]['修別'] = $threshold_list[$i]->type->name;
             $temp[$i]['學期'] = $threshold_list[$i]->adopt_grade . ' - ' . $threshold_list[$i]->adopt_semester;
         }
+
         return $temp;
     }
-    function getCurriculumOfOwn()
+
+    public function getCurriculumOfOwn()
     {
         $curriculum = (new Curriculum())->instance()->suitOwn($this->user_id)->get()->values();
+
         return $curriculum;
     }
-    function exceptOwnCurriculumFromThresholdOfForce()
+
+    public function exceptOwnCurriculumFromThresholdOfForce()
     {
         $threshold= $this->getThresholdOfForce();
         $curriculum = $this->getCurriculumOfOwn();
@@ -366,11 +386,9 @@ class ThresholdRepository
         $k = 0;
         for ($i = 0; $i < count($threshold); $i++) {
             $has = false;
-            foreach ($curriculum as $c) {
-                if ($threshold[$i]['id'] == $c->course->course_base_id) {
+            foreach ($curriculum as $c)
+                if ($threshold[$i]['id'] == $c->course->course_base_id)
                     $has = true;
-                }
-            }
             if (!$has) {
                 $excepted[$k] = [];
                 $excepted[$k]['課程名稱'] = $threshold[$i]['課程名稱'];
@@ -380,9 +398,11 @@ class ThresholdRepository
                 $k++;
             }
         }
+
         return $excepted;
     }
-    function getForceList()
+
+    public function getForceList()
     {
         $list = $this->exceptOwnCurriculumFromThresholdOfForce();
 
@@ -396,11 +416,12 @@ class ThresholdRepository
             unset($temp['修別']);
             $i++;
         }
+
         return $temp;
     }
 
     //--------------------
-    function getList()
+    public function getList()
     {
         return $this->result;
     }

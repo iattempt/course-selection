@@ -12,20 +12,25 @@ class MigrateRepository extends BaseRepository
      *
      * @var \Illuminate\Database\Eloquent\Model;
      */
-    function __construct($model = null)
-    {}
-    function instance()
+    public function __construct($model = null) {}
+
+    public function instance()
     {
-        $this->model = $this->model === null ? null : Curriculum::all()->sortBy('id');
+        $this->model = $this->model === null
+            ? null
+            : Curriculum::all()->sortBy('id');
+
         return $this;
     }
-    function changeState()
+
+    public function changeState()
     {
         //warning: 這邊順序不能隨便變更
         $this->changeStateCurrent2Finish();
         $this->changeStatePreselection2Current();
     }
-    function changeStatePreselection2Current()
+
+    public function changeStatePreselection2Current()
     {
         $pre2cur = $this->model->whereIn('state', ['預選中']);
         foreach($pre2cur as $value) {
@@ -33,7 +38,8 @@ class MigrateRepository extends BaseRepository
             $value->save();
         }
     }
-    function changeStateCurrent2Finish()
+
+    public function changeStateCurrent2Finish()
     {
         $cur2fin = $this->model->whereIn('state', ['修課中']);
         foreach($cur2fin as $value) {

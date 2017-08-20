@@ -24,7 +24,7 @@ class BaseRepository
      *
      * @return Model instance
      */
-    function store(array $inputs)
+    public function store(array $inputs)
     {
         //$this->store_model = CourseType::create($inputs);
         //$check_dupl_input = $inputs;
@@ -73,6 +73,7 @@ class BaseRepository
     public function destroy($id)
     {
         $this->getById($id)->delete();
+
         return $this;
     }
 
@@ -91,23 +92,25 @@ class BaseRepository
     /**
      * return static
      * */
-    function get()
+    public function get()
     {
         if (!$this->model)
             return null;
+
         return $this->model;
     }
 
     /**
      * lazy
      * */
-    function instance()
+    public function instance()
     {
         //$this->model = Model::all();
+
         return $this;
     }
 
-    function isDuplicate(array $inputs,int $id)
+    public function isDuplicate(array $inputs,int $id)
     {
         $cnt = $this->model->except($id)->filter(function ($value) use ($inputs) {
             $isDupl = true;
@@ -120,6 +123,7 @@ class BaseRepository
             if ($isDupl)
                 return true;
         })->count();
+
         return $cnt > 0;
     }
 }

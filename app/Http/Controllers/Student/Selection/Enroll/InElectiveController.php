@@ -10,15 +10,19 @@ use App\Http\Controllers\Common\CourseSearchController;
 
 class InElectiveController extends CourseSearchController
 {
-    //
-    function __construct () {
+    public function __construct () {
         parent::__construct();
         $this->general->title = "Enroll in-required";
         $this->general->view_path .= "/in_elective";
     }
-    function index(Request $request) {
+
+    public function index(Request $request) {
         parent::index();
-        $this->general->lists = DB::table('courses')->where('unit_name', (DB::table('students')->where('id', Auth::user()->id)->get()[0]->unit_name))->get();
+        $this->general->lists = DB::table('courses')
+            ->where('unit_name', (DB::table('students')
+            ->where('id', Auth::user()->id)->get()[0]->unit_name))
+            ->get();
+
         return view('course_search', ['general' => $this->general]);
     }
 }
