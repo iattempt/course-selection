@@ -3,7 +3,7 @@
     篩選器
   </a>
 
-  <div id='filter' class='collapse col-12'>
+  <div id='filter' class='collapse col-12 show'>
     <!-- Filter options -->
     <form id='filter-form' action='course_search' role='form' method='GET'>
       {{ csrf_field() }}
