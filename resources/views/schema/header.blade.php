@@ -23,6 +23,9 @@
             <a class="dropdown-item" href="{{ $general->school->calender }}">行事曆</a>
           </div>
         </li>
+        <li class="nav-item">
+          <a id="home" class="nav-link highlight-nav text-danger" href="https://github.com/iattempt/selection/blob/master/proposal/design.md">Spec.</a>
+        </li>
         @endif
       </ul>
 
