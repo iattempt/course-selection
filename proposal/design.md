@@ -21,14 +21,12 @@
    * [教授](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#教授)
    * [行政人員](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#行政人員)
    * [共有](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#共有)
-+ [程式碼實作](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#程式碼實作)
 
 ---
 ## 目標
 
 #### 特性
-+ 人性化
-   `註`運用心理學研究，使操作直觀
++ 導入與實踐方式
    1. 格式塔：放在一起的東西，在使用者角度看來就是同一種類型
    1. 費茲：重要的東西越集中、越大
    1. 承擔性質affordance theory：一個圖示背後的意義...認知心理學
@@ -36,20 +34,23 @@
       * 特定顏色屬特定功能
    1. 響應式網頁
       `註`運用Bootstrap 4的特性
-   1. ...
-+ 智慧化
-   `註`參照SDM-SDEV p.4
-   1. 安全性：
+   1. 安全性
       * 利用laravel's Middleware and Route機制，輕易管控所有參訪網站的對應權限（get, post...）
       * 利用laravel提供的blade模板，輕易防止所有javascript inject等攻擊
-   1. 設計模式：
+   1. 設計模式
       * MVC(Model View Control)：降低邏輯、視圖及資料間的耦合
       * SRP(Single Responsibility Principle)：[所有Class盡可能做最少的事情](./logic.md)
       * ...
-   1. 防呆機制：
+   1. 防呆機制
       * 登入驗證無須自行選擇登入身份，系統自動判定
-      * ...
-   1. ...
+   1. 可讀性
+      * 使用ORM(Eloquent)代替傳統資料庫query
+   1. 可維護性
+      * 應用Design Pattern
+   1. 可擴充性
+   1. 可重用性
+      * 使用Blade模板引擎，分割與整合前端頁面，增進可重用性等
+   1. 低耦合
 
 ---
 #### 功能
@@ -64,7 +65,6 @@
    1. 全校課程搜尋
       `註：`使用分層式搜尋，以及區分各大類的方式（e.g. 通識為每系學生搜尋率極高的課程，應該將其歸類在大類別）
       `註：`提供複選的機制，使學生可以一次找出他想要的課程
-   1. ...
 + 新增
    1. 統計個人畢業門檻狀態
       `註：`使用畢業門檻資訊計算學分，並告知缺少的課程
@@ -97,6 +97,8 @@
       + [無暇程式碼](http://www.books.com.tw/products/0010579897?sloc=reprod_i_1)
          1. Meaningful names
          2. ...
+      + [Github團隊使用手冊](http://www.books.com.tw/products/0010739370?loc=P_007_026)
+      + [UML物件導向系統分析與設計(第二版)](http://www.books.com.tw/products/0010741404)
    * others
       + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
       + [Github](https://gist.github.com/guweigang/9848271)
@@ -104,7 +106,6 @@
 #### 工具
 1. 文字編輯
    * Vim
-   * Sublime 3
 1. 版本控制
    * Git
 1. 程式語言
@@ -119,31 +120,26 @@
 
 ---
 #### 分工
-```
-build by Chang, Lin, and Hsu
-```
 `可量化, W = week`
 1. 軟體安裝與測試
-   * 2W : Chang
+   * 2W
 1. 系統分析與設計
-   * 10W : Chang
+   * 10W
 1. 資料庫分析與設計
-   * 2W : Chang
+   * 2W
 1. 整體測試
-   * N/A W : Chang
+   * 1W
 1. 文件製作
-   * N/A W : Lin
+   * 2W
 1. 報告撰寫
-   * N/A W : Lin, Hsu
+   * 4W
 1. 程式設計
-   * 17W : Chang
+   * 17W
 1. 伺服器架設與測試
-   * N/A W : Chang
+   * 1W
 `難以量化`
 1. 資料搜集
-   * Chang, Lin
 1. 理論探索
-   * Chang
 
 ---
 ## 介面
@@ -257,18 +253,3 @@ build by Chang, Lin, and Hsu
 
 1. 意見回饋機制
 1. 成員登入/登出按鈕
-
----
-### 程式碼實作
-+ 要求
-   1. 可讀性
-   1. 可維護性
-   1. 可擴充性
-   1. 可重用性
-   1. 解耦合
-   1. ...
-+ 實踐
-   1. 使用Eloquent ORM代替傳統資料庫query，增加可讀性、可維護性等
-   1. 使用Blade模板引擎，分割與整合前端頁面，增進可重用性等
-   1. 使用Design Pattern，應用在大大小小的程式碼當中，增加可讀性、可維護性等
-   1. ...
