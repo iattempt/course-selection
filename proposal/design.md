@@ -8,18 +8,18 @@
 
 ---
 ### 目錄
-+ [目標](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#目標)
-   * [特性](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#特性)
-   * [功能](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#功能)
-+ [準備事宜](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#準備事宜)
-   * [資源](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#資源)
-   * [工具](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#工具)
-   * [分工](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#分工)
-+ [介面](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#介面)
-   * [學生](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#學生)
-   * [教授](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#教授)
-   * [行政人員](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#行政人員)
-   * [共有](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#共有)
++ [目標](https://github.com/iattempt/selection/blob/master/proposal/design.md#目標)
+   * [特性](https://github.com/iattempt/selection/blob/master/proposal/design.md#特性)
+   * [功能](https://github.com/iattempt/selection/blob/master/proposal/design.md#功能)
++ [準備事宜](https://github.com/iattempt/selection/blob/master/proposal/design.md#準備事宜)
+   * [資源](https://github.com/iattempt/selection/blob/master/proposal/design.md#資源)
+   * [工具](https://github.com/iattempt/selection/blob/master/proposal/design.md#工具)
+   * [分工](https://github.com/iattempt/selection/blob/master/proposal/design.md#分工)
++ [介面](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)
+   * [學生](https://github.com/iattempt/selection/blob/master/proposal/design.md#學生)
+   * [教授](https://github.com/iattempt/selection/blob/master/proposal/design.md#教授)
+   * [行政人員](https://github.com/iattempt/selection/blob/master/proposal/design.md#行政人員)
+   * [共有](https://github.com/iattempt/selection/blob/master/proposal/design.md#共有)
 
 ---
 ### 目標
