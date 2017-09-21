@@ -8,7 +8,7 @@
 [架構設計](./design.md)|根據需求規劃設計雛形，這時候網址架構就出來了、導覽列也會有整體的編排，但不涉及程式碼。
 
 ---
-## 目錄
+### 目錄
 + [目標](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#目標)
    * [特性](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#特性)
    * [功能](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#功能)
@@ -23,7 +23,7 @@
    * [共有](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#共有)
 
 ---
-## 目標
+### 目標
 
 #### 特性
 + 導入與實踐方式
@@ -52,7 +52,6 @@
       * 使用Blade模板引擎，分割與整合前端頁面，增進可重用性等
    1. 低耦合
 
----
 #### 功能
 + 修訂
    1. 課表呈現
@@ -73,7 +72,7 @@
        `註：`~~提供負向表列設定功能，以進行時段排外，或者增加一個上下班時段排外功能~~
 
 ---
-## 準備事宜
+### 準備事宜
 
 #### 資源
 1. 筆記型電腦
@@ -142,7 +141,7 @@
 1. 理論探索
 
 ---
-## 介面
+### 介面
 
 #### 學生
 1. 個人資訊
