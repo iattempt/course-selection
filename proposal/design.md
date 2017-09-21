@@ -6,24 +6,22 @@
 -------|---------
 [分析需求](./requirement.md)|我們必須模擬為學校與PM、使用者與設計者，來導出需求：導覽列需要的元素等等。
 [架構設計](./design.md)|根據需求規劃設計雛形，這時候網址架構就出來了、導覽列也會有整體的編排，但不涉及程式碼。
-[系統實作](./implement.md)|根據雛形，進行詳盡的程式開發、網頁架構實作。
-[整合測試](./test.md)|如果可以，請他人幫忙使用網站，不行就團隊內部再模擬角色測試。
 
 ---
 ## 目錄
-+ [目標](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#目標)
-   * [特性](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#特性)
-   * [功能](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#功能)
-+ [準備事宜](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#準備事宜)
-   * [資源](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#資源)
-   * [工具](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#工具)
-   * [分工](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#分工)
-+ [介面](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#介面)
-   * [學生](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#學生)
-   * [教授](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#教授)
-   * [行政人員](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#行政人員)
-   * [共有](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#共有)
-+ [程式碼實作](https://github.com/iattempt/elegant-selection/blob/test/proposal/design.md#程式碼實作)
++ [目標](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#目標)
+   * [特性](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#特性)
+   * [功能](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#功能)
++ [準備事宜](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#準備事宜)
+   * [資源](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#資源)
+   * [工具](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#工具)
+   * [分工](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#分工)
++ [介面](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#介面)
+   * [學生](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#學生)
+   * [教授](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#教授)
+   * [行政人員](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#行政人員)
+   * [共有](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#共有)
++ [程式碼實作](https://github.com/iattempt/elegant-selection/blob/master/proposal/design.md#程式碼實作)
 
 ---
 ## 目標
