@@ -22,10 +22,10 @@
    * [共有](https://github.com/iattempt/selection/blob/master/proposal/design.md#共有)
 
 ---
-[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
+[[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)]
 ### 目標
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#目標)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#目標)]
 #### 特性
 + 導入與實踐方式
    1. 格式塔：放在一起的東西，在使用者角度看來就是同一種類型
@@ -53,7 +53,7 @@
       * 使用Blade模板引擎，分割與整合前端頁面，增進可重用性等
    1. 低耦合
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#目標)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#目標)]
 #### 功能
 + 修訂
    1. 課表呈現
@@ -74,10 +74,10 @@
        `註：`~~提供負向表列設定功能，以進行時段排外，或者增加一個上下班時段排外功能~~
 
 ---
-[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
+[[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)]
 ### 準備事宜
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#準備事宜)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#準備事宜)]
 #### 資源
 1. 筆記型電腦
    * 進行網頁設計
@@ -106,7 +106,7 @@
       + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
       + [Github](https://gist.github.com/guweigang/9848271)
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#準備事宜)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#準備事宜)]
 #### 工具
 1. 文字編輯
    * Vim
@@ -122,7 +122,7 @@
    * bash
    * Laravel
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#準備事宜)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#準備事宜)]
 #### 分工
 `可量化, W = week`
 1. 軟體安裝與測試
@@ -146,10 +146,10 @@
 1. 理論探索
 
 ---
-[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
+[[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)]
 ### 介面
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)]
 #### 學生
 1. 個人資訊
    1. 個人課表
@@ -211,7 +211,7 @@
    1. 特殊加選
 1. 退選機制
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)]
 #### ~~教授~~
 1. 審核特殊加選
 1. 我的開課
@@ -219,7 +219,7 @@
 1. 系上課程
    `註：`以下功能皆導向至[課程搜尋]
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)]
 #### 行政人員
 1. 修改
    `註：`行政人員其操作皆在辦公室，故無響應式設計
@@ -232,7 +232,7 @@
    1. 畢業門檻
    1. 課程大綱
 
-[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)
+[[head](https://github.com/iattempt/selection/blob/master/proposal/design.md#介面)]
 #### 共有
 1. 登入
    `註：`登入者為何原為自選方式，改自動判斷
