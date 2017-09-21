@@ -22,9 +22,9 @@
    * [共有](https://github.com/iattempt/selection/blob/master/proposal/design.md#共有)
 
 ---
-### 目標
+### 目標[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 
-#### 特性
+#### 特性[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 + 導入與實踐方式
    1. 格式塔：放在一起的東西，在使用者角度看來就是同一種類型
    1. 費茲：重要的東西越集中、越大
@@ -51,7 +51,7 @@
       * 使用Blade模板引擎，分割與整合前端頁面，增進可重用性等
    1. 低耦合
 
-#### 功能
+#### 功能[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 + 修訂
    1. 課表呈現
       `註：`大尺寸預設為週課表，小尺寸預設為日課表
@@ -71,9 +71,9 @@
        `註：`~~提供負向表列設定功能，以進行時段排外，或者增加一個上下班時段排外功能~~
 
 ---
-### 準備事宜
+### 準備事宜[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 
-#### 資源
+#### 資源[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 1. 筆記型電腦
    * 進行網頁設計
    * 查詢資料
@@ -101,7 +101,7 @@
       + [Markdown](https://guides.github.com/features/mastering-markdown/#examples)
       + [Github](https://gist.github.com/guweigang/9848271)
 
-#### 工具
+#### 工具[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 1. 文字編輯
    * Vim
 1. 版本控制
@@ -117,7 +117,7 @@
    * Laravel
 
 
-#### 分工
+#### 分工[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 `可量化, W = week`
 1. 軟體安裝與測試
    * 2W
@@ -140,9 +140,9 @@
 1. 理論探索
 
 ---
-### 介面
+### 介面[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 
-#### 學生
+#### 學生[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 1. 個人資訊
    1. 個人課表
       ```
@@ -203,14 +203,14 @@
    1. 特殊加選
 1. 退選機制
 
-#### 教授
+#### ~~教授~~[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 1. 審核特殊加選
 1. 我的開課
    `註：`以下功能皆導向至[課程搜尋]
 1. 系上課程
    `註：`以下功能皆導向至[課程搜尋]
 
-#### 行政人員
+#### 行政人員[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 1. 修改
    `註：`行政人員其操作皆在辦公室，故無響應式設計
    1. 人員
@@ -222,7 +222,7 @@
    1. 畢業門檻
    1. 課程大綱
 
-#### 共有
+#### 共有[top](https://github.com/iattempt/selection/blob/master/proposal/design.md#)
 1. 登入
    `註：`登入者為何原為自選方式，改自動判斷
 1. 登出
