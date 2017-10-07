@@ -4,7 +4,6 @@
 [需求分析](./requirement.md)
 [架構設計](./design.md)
 
----
 ## 目錄
 [需求](https://github.com/iattempt/selection/blob/master/proposal/design.md#需求)
    * [非功能性需求](https://github.com/iattempt/selection/blob/master/proposal/design.md#非功能性需求)
@@ -18,9 +17,7 @@
    * [工具](https://github.com/iattempt/selection/blob/master/proposal/design.md#工具)
    * [分工](https://github.com/iattempt/selection/blob/master/proposal/design.md#分工)
 
----
 ## 需求
-
 ### 非功能性需求
 1. 格式塔：放在一起的東西，在使用者角度看來就是同一種類型
 1. 費茲：重要的東西越集中、越大
@@ -144,7 +141,6 @@
 #### 系統管理員
 1. 列出意見回饋
 
----
 ## 準備事宜
 ### 資源
 1. 筆記型電腦
