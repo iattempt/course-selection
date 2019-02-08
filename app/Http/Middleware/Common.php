@@ -16,14 +16,16 @@ class Common
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()
-            && (
-                Auth::user()->isAuthority()
-                || Auth::user()->isProfessor()
-                || Auth::user()->isStudent()
-            ))
+        if ( Auth::check() && $this->isLogon() )
             return $next($request);
 
         return redirect('login');
+    }
+    
+    private function isLogon()
+    {
+        return ( Auth::user()->isAuthority() ||
+                 Auth::user()->isProfessor() ||
+                 Auth::user()->isStudent() )
     }
 }
