@@ -16,8 +16,8 @@ class Authority
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()
-            && Auth::user()->isAuthority())
+        if (Auth::check() &&
+            Auth::user()->isAuthority())
             return $next($request);
 
         return redirect('login');
