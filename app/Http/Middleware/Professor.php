@@ -16,8 +16,8 @@ class Professor
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()
-            && Auth::user()->isProfessor())
+        if (Auth::check() &&
+            Auth::user()->isProfessor())
             return $next($request);
 
         return redirect('login');
